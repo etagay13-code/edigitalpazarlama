@@ -364,3 +364,62 @@ insert into faqs (scope, question, answer, sort_order) values
 ('home','Mevcut ekibimle nasıl entegre olursunuz?','Şirket içi pazarlama veya teknoloji ekibinizle bir uzantı gibi çalışıyoruz.',5),
 ('home','Fiyatlandırma modeliniz nasıl?','Reklam yönetiminde bütçenizin yüzdesi + sabit yönetim ücreti, SEO ve içerikte aylık retainer modelleriyle çalışıyoruz.',6)
 on conflict do nothing;
+
+-- ---------- PAGE SECTIONS (about) ----------
+-- Hakkımızda sayfasının dinamik section'ları.
+-- body.items: [{ icon, title, desc }] veya [{ title, year }] vb.
+insert into page_sections (page_slug, section_key, eyebrow, title, description, body, sort_order) values
+(
+  'about','values','Değerlerimiz','Bizi biz yapan altı disiplin',
+  'Bir ekip kültürü kelimelerden değil, günlük kararlardan oluşur. İşte bizim her sabah masaya getirdiğimiz altı disiplin.',
+  jsonb_build_object('items', jsonb_build_array(
+    jsonb_build_object('icon','Sparkles','title','Sahiplenme','desc','Müşterimizin işine kendi işimiz gibi yaklaşıyoruz. Sorumluluk parantezler arasında kalmıyor; sonuçlarla ölçülüyor.'),
+    jsonb_build_object('icon','ShieldCheck','title','Şeffaflık','desc','Bütçe, performans ve süreçler her zaman açık. Sürprizler kampanya optimizasyonlarında olur, fatura kalemlerinde değil.'),
+    jsonb_build_object('icon','Gauge','title','Hız','desc','Bir testin sonucu birkaç gün içinde elimizde olur. Yavaş ajans çağı geride kaldı; hız bizim için bir disiplin.'),
+    jsonb_build_object('icon','Users','title','Uzmanlık','desc','Generalist değil, uzman. Reklam, SEO, geliştirme, içerik — her alan kendi içinde ustalaşmış ekiplerce yönetiliyor.'),
+    jsonb_build_object('icon','HeartHandshake','title','Uzun Vade','desc','Tek kampanyalık iş ortaklığı kurmuyoruz. 3 ay ya da 3 yıl, hedefimiz markanızın sürdürülebilir büyümesi.'),
+    jsonb_build_object('icon','Lightbulb','title','Yaratıcılık','desc','Data güzeldir, ama yaratıcılık olmadan bir şey ifade etmez. İkisi bir araya geldiğinde markalar fark yaratır.')
+  )),
+  10
+),
+(
+  'about','culture','İçeriden bir bakış','Ofisimizde nasıl çalışıyoruz?',
+  'Çalışan deneyiminin müşteri deneyimini doğrudan etkilediğine inanıyoruz. Bu yüzden ekibimizin çalışma şartlarını ciddiye alıyoruz.',
+  jsonb_build_object('items', jsonb_build_array(
+    jsonb_build_object('icon','Coffee','title','Async-first çalışma kültürü','desc','Toplantıyı gerçekten gerektiren konular için toplantı yapıyoruz. Geri kalanı Notion ve Slack üzerinden async ilerliyor.'),
+    jsonb_build_object('icon','Trophy','title','Sonuç odaklı, mesai odaklı değil','desc','9-6 değil; hedef-deadline modeli. Ekibimiz hibrit çalışıyor, ofise gelmek tercih, zorunluluk değil.'),
+    jsonb_build_object('icon','Award','title','Sürekli öğrenme bütçesi','desc','Her ekip arkadaşımıza yıllık kurs, konferans ve kitap bütçesi sağlıyoruz. Bilgi yaşlanır, biz tazelemekten yorulmuyoruz.'),
+    jsonb_build_object('icon','Briefcase','title','Anonim müşteri geri bildirimi','desc','Müşteri NPS skorlarını üçer aylık ölçüyoruz. Düşen skorlar ekip OKR''larında doğrudan etki yapıyor.')
+  )),
+  20
+),
+(
+  'about','recognitions','Sertifikalar','Sektörel onaylar ve tanınırlık',
+  'Ödüller işin merkezi değil ama dış doğrulamaya değer veriyoruz. İşte hesaplarımızı yöneten platformların ve sektörün bizi nasıl tanıdığı.',
+  jsonb_build_object('items', jsonb_build_array(
+    jsonb_build_object('title','Google Premier Partner','year','2023, 2024, 2025, 2026'),
+    jsonb_build_object('title','Meta Business Partner','year','2022 – devam ediyor'),
+    jsonb_build_object('title','Clutch Top B2B','year','Türkiye 2024, 2025'),
+    jsonb_build_object('title','Awwwards Honorable Mention','year','2 web projesi (2024)'),
+    jsonb_build_object('title','Mağaza onayı','year','%100 başarı (mobil uyg.)'),
+    jsonb_build_object('title','Ortalama müşteri NPS','year','9.2 / 10')
+  )),
+  30
+),
+(
+  'about','why','Neden Biz?','Bizi diğerlerinden ayıran dört şey',
+  'Pazarlama sektörü kalabalık. Markaların neden bizi tercih ettiğini, müşterilerimizin sözlerinden değil, çalışma modelimizden anlatmayı tercih ediyoruz.',
+  jsonb_build_object('items', jsonb_build_array(
+    jsonb_build_object('title','Tek bir ekipten 360°','desc','Reklam, SEO, sosyal medya, web ve mobil geliştirme için ayrı ajanslarla uğraşmak yerine her şeyi tek bir noktada koordine ediyoruz. İletişim sürtüşmesi sıfır, hız maksimum.'),
+    jsonb_build_object('title','Performansa bağlı raporlama','desc','Aylık raporlar markanın gerçek hedefleriyle eşleşir. Beğeni ve gösterim sayıları değil; satış, lead ve ROAS gibi gerçek metrikler.'),
+    jsonb_build_object('title','Kurucunun doğrudan dahil olması','desc','Junior''lara devredilmeyen, kurucu Emre Tagay''ın stratejik kararlarda doğrudan rol aldığı bir çalışma modeli.'),
+    jsonb_build_object('title','Teknoloji + Pazarlama hibrit DNA''sı','desc','SaaS ve mobil uygulama geliştirebildiğimiz için pazarlama kampanyaları teknik altyapıyı da düşünür. Bu kombinasyon, ajansların büyük çoğunluğunda yok.')
+  )),
+  40
+)
+on conflict (page_slug, section_key) do update set
+  eyebrow = excluded.eyebrow,
+  title = excluded.title,
+  description = excluded.description,
+  body = excluded.body,
+  sort_order = excluded.sort_order;
