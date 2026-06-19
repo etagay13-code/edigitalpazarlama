@@ -37,6 +37,14 @@ const fields: EditorField[] = [
     rows: 3,
     full: true,
   },
+  {
+    name: "body",
+    label: "Body (JSON)",
+    type: "json",
+    rows: 16,
+    full: true,
+    hint: 'Section\'ın liste/kart içeriği. Örnek: { "items": [{ "icon": "Sparkles", "title": "...", "desc": "..." }] }',
+  },
   { name: "sort_order", label: "Sıra", type: "number" },
 ];
 

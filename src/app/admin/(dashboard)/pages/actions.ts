@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { getInt, getStr, trimOrNull } from "@/lib/admin/crud-helpers";
+import type { Json } from "@/lib/db/types";
 
 async function authedClient() {
   const supabase = await createClient();
@@ -13,6 +14,17 @@ async function authedClient() {
   return supabase;
 }
 
+function parseBody(raw: FormDataEntryValue | null): Json {
+  if (raw == null) return null;
+  const s = String(raw).trim();
+  if (!s) return null;
+  try {
+    return JSON.parse(s) as Json;
+  } catch {
+    throw new Error("Body geçerli bir JSON değil.");
+  }
+}
+
 function parse(fd: FormData) {
   return {
     page_slug: getStr(fd, "page_slug") || "home",
@@ -20,7 +32,7 @@ function parse(fd: FormData) {
     eyebrow: trimOrNull(fd.get("eyebrow")),
     title: trimOrNull(fd.get("title")),
     description: trimOrNull(fd.get("description")),
-    body: null,
+    body: parseBody(fd.get("body")),
     sort_order: getInt(fd, "sort_order", 0),
   };
 }

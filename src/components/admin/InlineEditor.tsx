@@ -15,7 +15,7 @@ import {
 export type EditorField = {
   name: string;
   label: string;
-  type?: "text" | "textarea" | "number" | "select" | "array" | "checkbox" | "color";
+  type?: "text" | "textarea" | "number" | "select" | "array" | "checkbox" | "color" | "json";
   rows?: number;
   required?: boolean;
   placeholder?: string;
@@ -314,6 +314,17 @@ function FieldRenderer({
           rows={field.rows ?? 3}
           placeholder={field.placeholder ?? "Her satıra bir madde"}
           className={`${cls} resize-y`}
+        />
+      ) : field.type === "json" ? (
+        <textarea
+          name={field.name}
+          defaultValue={
+            raw == null ? "" : typeof raw === "string" ? raw : JSON.stringify(raw, null, 2)
+          }
+          rows={field.rows ?? 14}
+          placeholder={field.placeholder ?? '{"items": [...]}'}
+          className={`${cls} resize-y font-mono`}
+          spellCheck={false}
         />
       ) : (
         <input
