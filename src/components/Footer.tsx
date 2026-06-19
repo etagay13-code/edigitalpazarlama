@@ -1,48 +1,61 @@
 import Link from "next/link";
 import { Instagram, Linkedin, Twitter, Youtube, Mail, Phone, MapPin } from "lucide-react";
 import { Logo } from "./Logo";
-import { brand } from "@/lib/theme";
-import { services } from "@/lib/services";
+import { getBrand } from "@/lib/theme";
+import { listServicesPublic } from "@/lib/data";
 import { navLinks } from "@/lib/navigation";
 
-export function Footer() {
+export async function Footer() {
+  const [brand, services] = await Promise.all([
+    getBrand(),
+    listServicesPublic(),
+  ]);
+
   return (
     <footer className="relative mt-24 border-t border-white/[0.06] bg-ink-950/80">
       <div className="pointer-events-none absolute inset-x-0 -top-32 h-64 bg-radial-fade opacity-60" />
       <div className="container-x relative py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-5">
-            <Logo size="lg" />
+            <Logo size="lg" src={brand.logoUrl} alt={brand.name} />
             <p className="max-w-xs text-sm text-white/60">{brand.description}</p>
             <div className="flex items-center gap-2">
-              <a
-                href={brand.socials.instagram}
-                aria-label="Instagram"
-                className="grid h-9 w-9 place-items-center rounded-full border border-white/10 bg-white/[0.03] text-white/70 transition hover:bg-white/[0.08] hover:text-white"
-              >
-                <Instagram className="h-4 w-4" />
-              </a>
-              <a
-                href={brand.socials.linkedin}
-                aria-label="LinkedIn"
-                className="grid h-9 w-9 place-items-center rounded-full border border-white/10 bg-white/[0.03] text-white/70 transition hover:bg-white/[0.08] hover:text-white"
-              >
-                <Linkedin className="h-4 w-4" />
-              </a>
-              <a
-                href={brand.socials.twitter}
-                aria-label="Twitter / X"
-                className="grid h-9 w-9 place-items-center rounded-full border border-white/10 bg-white/[0.03] text-white/70 transition hover:bg-white/[0.08] hover:text-white"
-              >
-                <Twitter className="h-4 w-4" />
-              </a>
-              <a
-                href={brand.socials.youtube}
-                aria-label="YouTube"
-                className="grid h-9 w-9 place-items-center rounded-full border border-white/10 bg-white/[0.03] text-white/70 transition hover:bg-white/[0.08] hover:text-white"
-              >
-                <Youtube className="h-4 w-4" />
-              </a>
+              {brand.socials.instagram && (
+                <a
+                  href={brand.socials.instagram}
+                  aria-label="Instagram"
+                  className="grid h-9 w-9 place-items-center rounded-full border border-white/10 bg-white/[0.03] text-white/70 transition hover:bg-white/[0.08] hover:text-white"
+                >
+                  <Instagram className="h-4 w-4" />
+                </a>
+              )}
+              {brand.socials.linkedin && (
+                <a
+                  href={brand.socials.linkedin}
+                  aria-label="LinkedIn"
+                  className="grid h-9 w-9 place-items-center rounded-full border border-white/10 bg-white/[0.03] text-white/70 transition hover:bg-white/[0.08] hover:text-white"
+                >
+                  <Linkedin className="h-4 w-4" />
+                </a>
+              )}
+              {brand.socials.twitter && (
+                <a
+                  href={brand.socials.twitter}
+                  aria-label="Twitter / X"
+                  className="grid h-9 w-9 place-items-center rounded-full border border-white/10 bg-white/[0.03] text-white/70 transition hover:bg-white/[0.08] hover:text-white"
+                >
+                  <Twitter className="h-4 w-4" />
+                </a>
+              )}
+              {brand.socials.youtube && (
+                <a
+                  href={brand.socials.youtube}
+                  aria-label="YouTube"
+                  className="grid h-9 w-9 place-items-center rounded-full border border-white/10 bg-white/[0.03] text-white/70 transition hover:bg-white/[0.08] hover:text-white"
+                >
+                  <Youtube className="h-4 w-4" />
+                </a>
+              )}
             </div>
           </div>
 
@@ -90,16 +103,20 @@ export function Footer() {
                   {brand.email}
                 </a>
               </li>
-              <li className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-white/40" />
-                <a href={`tel:${brand.phone.replace(/\s/g, "")}`} className="hover:text-white">
-                  {brand.phone}
-                </a>
-              </li>
-              <li className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-white/40" />
-                {brand.address}
-              </li>
+              {brand.phone && (
+                <li className="flex items-center gap-2">
+                  <Phone className="h-4 w-4 text-white/40" />
+                  <a href={`tel:${brand.phone.replace(/\s/g, "")}`} className="hover:text-white">
+                    {brand.phone}
+                  </a>
+                </li>
+              )}
+              {brand.address && (
+                <li className="flex items-center gap-2">
+                  <MapPin className="h-4 w-4 text-white/40" />
+                  {brand.address}
+                </li>
+              )}
             </ul>
           </div>
         </div>

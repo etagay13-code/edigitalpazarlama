@@ -2,23 +2,38 @@
 
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { projects, projectCategories } from "@/lib/projects";
 
-export function PortfolioGrid() {
-  const [filter, setFilter] = useState<(typeof projectCategories)[number]>("Tümü");
+type Project = {
+  slug: string;
+  title: string;
+  client: string;
+  category: string;
+  description: string;
+  metric: string | null;
+  gradient: string | null;
+  tags: string[];
+};
+
+const ALL = "Tümü";
+
+export function PortfolioGrid({ items }: { items: Project[] }) {
+  const categories = useMemo(() => {
+    const set = new Set<string>();
+    items.forEach((p) => set.add(p.category));
+    return [ALL, ...Array.from(set).sort()];
+  }, [items]);
+
+  const [filter, setFilter] = useState<string>(ALL);
 
   const filtered = useMemo(
-    () =>
-      filter === "Tümü"
-        ? projects
-        : projects.filter((p) => p.category === filter),
-    [filter],
+    () => (filter === ALL ? items : items.filter((p) => p.category === filter)),
+    [filter, items],
   );
 
   return (
     <div>
       <div className="flex flex-wrap gap-2">
-        {projectCategories.map((c) => (
+        {categories.map((c) => (
           <button
             key={c}
             onClick={() => setFilter(c)}
@@ -45,22 +60,22 @@ export function PortfolioGrid() {
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
               className="card group overflow-hidden p-0"
             >
-              <div className={`relative h-44 bg-gradient-to-br ${p.gradient}`}>
+              <div
+                className={`relative h-44 bg-gradient-to-br ${p.gradient ?? "from-violet-500 to-indigo-500"}`}
+              >
                 <div className="absolute inset-0 bg-grid-faint bg-grid opacity-30 mix-blend-overlay" />
                 <div className="absolute inset-0 flex items-end p-5">
                   <div className="flex items-center justify-between gap-3 w-full">
                     <span className="rounded-full bg-black/30 px-3 py-1 text-xs font-medium text-white backdrop-blur">
                       {p.category}
                     </span>
-                    <span className="font-display text-lg font-semibold text-white drop-shadow">
-                      {p.metric}
-                    </span>
+                    {p.metric && (
+                      <span className="font-display text-lg font-semibold text-white drop-shadow">
+                        {p.metric}
+                      </span>
+                    )}
                   </div>
                 </div>
-                <div
-                  aria-hidden
-                  className="absolute inset-0 bg-black/0 transition group-hover:bg-black/10"
-                />
               </div>
               <div className="p-6">
                 <p className="text-xs font-medium uppercase tracking-[0.18em] text-white/40">

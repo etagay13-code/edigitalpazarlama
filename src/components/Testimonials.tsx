@@ -4,13 +4,21 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { SectionHeader } from "./SectionHeader";
-import { testimonials } from "@/lib/testimonials";
 
-export function Testimonials() {
+type Testimonial = {
+  name: string;
+  role: string | null;
+  company: string | null;
+  quote: string;
+  initials: string | null;
+};
+
+export function Testimonials({ items }: { items: Testimonial[] }) {
   const [i, setI] = useState(0);
-  const t = testimonials[i];
-  const prev = () => setI((p) => (p - 1 + testimonials.length) % testimonials.length);
-  const next = () => setI((p) => (p + 1) % testimonials.length);
+  if (items.length === 0) return null;
+  const t = items[i];
+  const prev = () => setI((p) => (p - 1 + items.length) % items.length);
+  const next = () => setI((p) => (p + 1) % items.length);
 
   return (
     <section className="section">
@@ -69,7 +77,7 @@ export function Testimonials() {
         </div>
 
         <div className="mt-6 flex justify-center gap-1.5">
-          {testimonials.map((_, idx) => (
+          {items.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setI(idx)}

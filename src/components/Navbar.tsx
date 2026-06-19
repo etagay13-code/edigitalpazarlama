@@ -4,12 +4,29 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X, ArrowUpRight, ChevronDown } from "lucide-react";
+import { Menu, X, ArrowUpRight, ChevronDown, Sparkles } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { Logo } from "./Logo";
 import { navLinks } from "@/lib/navigation";
-import { services } from "@/lib/services";
+import { getIcon } from "@/lib/admin/icons-list";
 
-export function Navbar() {
+type NavService = {
+  slug: string;
+  title: string;
+  short: string;
+  icon: string;
+  accent: string;
+};
+
+export function Navbar({
+  services,
+  logoUrl,
+  brandName,
+}: {
+  services: NavService[];
+  logoUrl: string | null;
+  brandName: string;
+}) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -24,14 +41,12 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Sayfa değişince tüm menüleri kapat
   useEffect(() => {
     setOpen(false);
     setServicesOpen(false);
     setMobileServicesOpen(false);
   }, [pathname]);
 
-  // Escape ile dropdown kapanır
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -43,7 +58,6 @@ export function Navbar() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  // Hover'da küçük bir gecikme ile aç/kapat — agresif kapanmayı önlüyor
   const openServicesDelayed = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setServicesOpen(true);
@@ -70,7 +84,7 @@ export function Navbar() {
               : "border-transparent px-4 py-3"
           }`}
         >
-          <Logo />
+          <Logo src={logoUrl} alt={brandName} />
 
           <ul className="hidden items-center gap-1 lg:flex">
             {navLinks.map((link) => {
@@ -113,7 +127,7 @@ export function Navbar() {
                     </Link>
 
                     <AnimatePresence>
-                      {servicesOpen && (
+                      {servicesOpen && services.length > 0 && (
                         <motion.div
                           initial={{ opacity: 0, y: 8 }}
                           animate={{ opacity: 1, y: 0 }}
@@ -124,7 +138,8 @@ export function Navbar() {
                           <div className="w-[720px] overflow-hidden rounded-2xl border border-white/10 bg-ink-900/95 shadow-card backdrop-blur-2xl">
                             <div className="grid grid-cols-2 gap-1 p-3">
                               {services.map((s) => {
-                                const Icon = s.icon;
+                                const Icon: LucideIcon =
+                                  getIcon(s.icon) ?? Sparkles;
                                 return (
                                   <Link
                                     key={s.slug}
@@ -223,7 +238,6 @@ export function Navbar() {
         </nav>
       </div>
 
-      {/* Mobil menü */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -267,12 +281,16 @@ export function Navbar() {
                               initial={{ height: 0, opacity: 0 }}
                               animate={{ height: "auto", opacity: 1 }}
                               exit={{ height: 0, opacity: 0 }}
-                              transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                              transition={{
+                                duration: 0.22,
+                                ease: [0.16, 1, 0.3, 1],
+                              }}
                               className="overflow-hidden"
                             >
                               <ul className="mt-1 space-y-1 border-l border-white/[0.08] pl-3">
                                 {services.map((s) => {
-                                  const Icon = s.icon;
+                                  const Icon: LucideIcon =
+                                    getIcon(s.icon) ?? Sparkles;
                                   return (
                                     <li key={s.slug}>
                                       <Link

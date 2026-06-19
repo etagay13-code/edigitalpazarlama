@@ -2,20 +2,31 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Sparkles } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { Stagger, fadeUp } from "./Reveal";
-import { services } from "@/lib/services";
+import { getIcon } from "@/lib/admin/icons-list";
+
+type ServiceItem = {
+  slug: string;
+  title: string;
+  short: string;
+  icon: string;
+  accent: string;
+};
 
 export function ServicesGrid({
+  items,
   limit,
 }: {
+  items: ServiceItem[];
   limit?: number;
 }) {
-  const items = limit ? services.slice(0, limit) : services;
+  const displayed = limit ? items.slice(0, limit) : items;
   return (
     <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {items.map((s) => {
-        const Icon = s.icon;
+      {displayed.map((s) => {
+        const Icon: LucideIcon = getIcon(s.icon) ?? Sparkles;
         return (
           <motion.div key={s.slug} variants={fadeUp}>
             <Link
@@ -37,7 +48,9 @@ export function ServicesGrid({
               <h3 className="mt-5 font-display text-lg font-semibold text-white">
                 {s.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/60">{s.short}</p>
+              <p className="mt-2 text-sm leading-relaxed text-white/60">
+                {s.short}
+              </p>
             </Link>
           </motion.div>
         );

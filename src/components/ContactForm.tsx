@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, Send } from "lucide-react";
-import { services } from "@/lib/services";
 
 type FormState = {
   name: string;
@@ -37,13 +36,19 @@ function validate(s: FormState): Errors {
   return errors;
 }
 
-export function ContactForm() {
+export function ContactForm({
+  services,
+}: {
+  services: { slug: string; title: string }[];
+}) {
   const [form, setForm] = useState<FormState>(initial);
   const [errors, setErrors] = useState<Errors>({});
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const onChange = (key: keyof FormState) =>
+  const onChange =
+    (key: keyof FormState) =>
     (
       e: React.ChangeEvent<
         HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -55,17 +60,29 @@ export function ContactForm() {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null);
     const v = validate(form);
     setErrors(v);
     if (Object.keys(v).length > 0) return;
 
     setSubmitting(true);
-    // NOT: Burası demo amaçlı simüle edilmiş bir gönderim.
-    // Gerçek kullanımda /api/contact route'una POST atın veya bir form servisine (Resend, Formspree, vb.) bağlayın.
-    await new Promise((r) => setTimeout(r, 900));
-    setSubmitting(false);
-    setSuccess(true);
-    setForm(initial);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error ?? "Gönderim başarısız");
+      }
+      setSuccess(true);
+      setForm(initial);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Bilinmeyen hata");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -86,8 +103,7 @@ export function ContactForm() {
               Mesajınız bize ulaştı!
             </h3>
             <p className="mt-3 max-w-md text-white/60">
-              En geç 48 saat içinde size dönüş yapacağız. Acil durumlar için
-              doğrudan +90 555 000 00 00 numarasını arayabilirsiniz.
+              En geç 48 saat içinde size dönüş yapacağız.
             </p>
             <button
               type="button"
@@ -107,6 +123,12 @@ export function ContactForm() {
             noValidate
             className="card grid gap-5 p-8 sm:p-10"
           >
+            {error && (
+              <div className="rounded-xl border border-rose-400/20 bg-rose-500/10 p-3 text-sm text-rose-200">
+                {error}
+              </div>
+            )}
+
             <div className="grid gap-5 sm:grid-cols-2">
               <Field
                 label="Ad Soyad"
