@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { InlineEditor, type EditorField } from "@/components/admin/InlineEditor";
+import { SectionBodyEditor } from "@/components/admin/SectionBodyEditor";
 import { create, update, remove } from "./actions";
 
 export const metadata = { title: "Sayfa İçerikleri" };
@@ -25,11 +26,11 @@ const fields: EditorField[] = [
     label: "Section key",
     required: true,
     monospace: true,
-    placeholder: "hero, stats, process, ...",
+    placeholder: "values, culture, pricing, ...",
     hint: "Sayfada bu key ile referans edilir.",
   },
-  { name: "eyebrow", label: "Üst başlık (eyebrow)", placeholder: "Hizmetler" },
-  { name: "title", label: "Başlık", full: true, placeholder: "Markanız için bütünsel dijital büyüme" },
+  { name: "eyebrow", label: "Üst başlık (eyebrow)", placeholder: "Değerlerimiz" },
+  { name: "title", label: "Başlık", full: true, placeholder: "Bizi biz yapan altı disiplin" },
   {
     name: "description",
     label: "Açıklama",
@@ -39,11 +40,9 @@ const fields: EditorField[] = [
   },
   {
     name: "body",
-    label: "Body (JSON)",
+    label: "İçerik (kartlar / liste)",
     type: "json",
-    rows: 16,
     full: true,
-    hint: 'Section\'ın liste/kart içeriği. Örnek: { "items": [{ "icon": "Sparkles", "title": "...", "desc": "..." }] }',
   },
   { name: "sort_order", label: "Sıra", type: "number" },
 ];
@@ -61,8 +60,8 @@ export default async function PagesContentPage() {
       <header>
         <h1 className="font-display text-2xl font-semibold">Sayfa İçerikleri</h1>
         <p className="text-sm text-white/55">
-          Public sayfaların section başlık/açıklamaları (Faz 4'te public site
-          buradan okuyacak)
+          Public sayfalardaki kart / liste içerikleri. Her bölümü buradan
+          düzenleyince site otomatik güncellenir.
         </p>
       </header>
       <InlineEditor
@@ -73,7 +72,21 @@ export default async function PagesContentPage() {
         }))}
         fields={fields}
         actions={{ create, update, remove }}
-        newItemDefaults={{ page_slug: "home", sort_order: 0 }}
+        newItemDefaults={{ page_slug: "about", section_key: "", sort_order: 0 }}
+        customFieldRender={(field, item) => {
+          if (field.name === "body") {
+            return (
+              <SectionBodyEditor
+                name="body"
+                sectionKey={
+                  typeof item.section_key === "string" ? item.section_key : null
+                }
+                initialBody={item.body}
+              />
+            );
+          }
+          return null;
+        }}
       />
     </div>
   );

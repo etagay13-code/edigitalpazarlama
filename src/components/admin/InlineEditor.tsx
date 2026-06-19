@@ -46,18 +46,25 @@ type Actions = {
   remove: (id: string) => Promise<{ ok: boolean; error?: string }>;
 };
 
+export type CustomFieldRender = (
+  field: EditorField,
+  item: EditorItem,
+) => React.ReactNode | null;
+
 export function InlineEditor({
   items,
   fields,
   actions,
   newItemDefaults = {},
   emptyHint = "Henüz öğe yok. '+ Yeni' ile başla.",
+  customFieldRender,
 }: {
   items: EditorItem[];
   fields: EditorField[];
   actions: Actions;
   newItemDefaults?: Record<string, unknown>;
   emptyHint?: string;
+  customFieldRender?: CustomFieldRender;
 }) {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [showNew, setShowNew] = useState(false);
@@ -71,6 +78,7 @@ export function InlineEditor({
           mode="create"
           onCreate={actions.create}
           onCancel={() => setShowNew(false)}
+          customFieldRender={customFieldRender}
         />
       )}
 
@@ -100,6 +108,7 @@ export function InlineEditor({
           onCancel={() => setEditingId(null)}
           onUpdate={actions.update}
           onDelete={actions.remove}
+          customFieldRender={customFieldRender}
         />
       ))}
 
@@ -119,6 +128,7 @@ function ItemRow({
   onCreate,
   onUpdate,
   onDelete,
+  customFieldRender,
 }: {
   item: EditorItem;
   fields: EditorField[];
@@ -131,6 +141,7 @@ function ItemRow({
     data: FormData,
   ) => Promise<{ ok: boolean; error?: string }>;
   onDelete?: (id: string) => Promise<{ ok: boolean; error?: string }>;
+  customFieldRender?: CustomFieldRender;
 }) {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
   const [deleting, setDeleting] = useState(false);
@@ -205,9 +216,28 @@ function ItemRow({
   return (
     <form onSubmit={handleSubmit} className="card">
       <div className="grid gap-4 sm:grid-cols-2">
-        {fields.map((field) => (
-          <FieldRenderer key={field.name} field={field} item={item} />
-        ))}
+        {fields.map((field) => {
+          const custom = customFieldRender?.(field, item);
+          if (custom != null) {
+            return (
+              <div
+                key={field.name}
+                className={field.full ? "sm:col-span-2" : ""}
+              >
+                <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text-white/55">
+                  {field.label}
+                </span>
+                {custom}
+                {field.hint && (
+                  <p className="mt-1.5 text-[11px] text-white/40">
+                    {field.hint}
+                  </p>
+                )}
+              </div>
+            );
+          }
+          return <FieldRenderer key={field.name} field={field} item={item} />;
+        })}
       </div>
 
       <div className="mt-5 flex items-center justify-between border-t border-white/[0.05] pt-4">
