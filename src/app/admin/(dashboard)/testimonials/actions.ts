@@ -20,6 +20,7 @@ function parse(fd: FormData) {
     company: trimOrNull(fd.get("company")),
     quote: getStr(fd, "quote"),
     initials: trimOrNull(fd.get("initials")),
+    avatar_url: trimOrNull(fd.get("avatar_url")),
     sort_order: getInt(fd, "sort_order", 0),
     active: getBool(fd, "active"),
   };

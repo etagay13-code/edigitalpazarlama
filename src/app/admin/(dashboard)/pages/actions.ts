@@ -20,6 +20,7 @@ function parse(fd: FormData) {
     eyebrow: trimOrNull(fd.get("eyebrow")),
     title: trimOrNull(fd.get("title")),
     description: trimOrNull(fd.get("description")),
+    body: null,
     sort_order: getInt(fd, "sort_order", 0),
   };
 }

@@ -28,6 +28,7 @@ export type Database = {
           role?: "admin";
         };
         Update: Partial<Database["public"]["Tables"]["profiles"]["Insert"]>;
+        Relationships: [];
       };
 
       site_settings: {
@@ -65,6 +66,7 @@ export type Database = {
           id?: 1;
         };
         Update: Partial<Database["public"]["Tables"]["site_settings"]["Row"]>;
+        Relationships: [];
       };
 
       services: {
@@ -97,6 +99,7 @@ export type Database = {
           id?: string;
         };
         Update: Partial<Database["public"]["Tables"]["services"]["Insert"]>;
+        Relationships: [];
       };
 
       service_process_steps: {
@@ -114,6 +117,7 @@ export type Database = {
         Update: Partial<
           Database["public"]["Tables"]["service_process_steps"]["Insert"]
         >;
+        Relationships: [];
       };
 
       service_faqs: {
@@ -131,6 +135,7 @@ export type Database = {
         Update: Partial<
           Database["public"]["Tables"]["service_faqs"]["Insert"]
         >;
+        Relationships: [];
       };
 
       portfolio_projects: {
@@ -156,6 +161,7 @@ export type Database = {
         Update: Partial<
           Database["public"]["Tables"]["portfolio_projects"]["Insert"]
         >;
+        Relationships: [];
       };
 
       testimonials: {
@@ -178,6 +184,7 @@ export type Database = {
         Update: Partial<
           Database["public"]["Tables"]["testimonials"]["Insert"]
         >;
+        Relationships: [];
       };
 
       team_members: {
@@ -200,6 +207,7 @@ export type Database = {
         Update: Partial<
           Database["public"]["Tables"]["team_members"]["Insert"]
         >;
+        Relationships: [];
       };
 
       timeline_events: {
@@ -218,6 +226,7 @@ export type Database = {
         Update: Partial<
           Database["public"]["Tables"]["timeline_events"]["Insert"]
         >;
+        Relationships: [];
       };
 
       industries: {
@@ -236,6 +245,7 @@ export type Database = {
         Update: Partial<
           Database["public"]["Tables"]["industries"]["Insert"]
         >;
+        Relationships: [];
       };
 
       tech_items: {
@@ -252,6 +262,7 @@ export type Database = {
         Update: Partial<
           Database["public"]["Tables"]["tech_items"]["Insert"]
         >;
+        Relationships: [];
       };
 
       faqs: {
@@ -268,6 +279,7 @@ export type Database = {
           "id"
         > & { id?: string };
         Update: Partial<Database["public"]["Tables"]["faqs"]["Insert"]>;
+        Relationships: [];
       };
 
       page_sections: {
@@ -288,6 +300,7 @@ export type Database = {
         Update: Partial<
           Database["public"]["Tables"]["page_sections"]["Insert"]
         >;
+        Relationships: [];
       };
 
       site_secrets: {
@@ -303,6 +316,7 @@ export type Database = {
           id?: 1;
         };
         Update: Partial<Database["public"]["Tables"]["site_secrets"]["Row"]>;
+        Relationships: [];
       };
 
       messages: {
@@ -328,6 +342,7 @@ export type Database = {
           is_archived?: boolean;
         };
         Update: Partial<Database["public"]["Tables"]["messages"]["Row"]>;
+        Relationships: [];
       };
     };
     Views: { [_ in never]: never };
