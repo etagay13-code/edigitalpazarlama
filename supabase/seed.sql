@@ -423,3 +423,144 @@ on conflict (page_slug, section_key) do update set
   description = excluded.description,
   body = excluded.body,
   sort_order = excluded.sort_order;
+
+-- ---------- PAGE SECTIONS (services) ----------
+insert into page_sections (page_slug, section_key, eyebrow, title, description, body, sort_order) values
+(
+  'services','synergy','Hizmetlerin Sentezi','Ayrı ajanslar yerine tek sinir sistemi',
+  'Bir ajans reklam, bir başkası SEO, başka biri sosyal medya — tipik kurguda her ajans diğerinin işine değil sadece kendi performansına bakar. Biz tek bir takım olduğumuz için kanallar arası kayıp sıfıra iniyor.',
+  jsonb_build_object('items', jsonb_build_array(
+    jsonb_build_object('icon','Layers','title','Tek brief, tüm kanallar','desc','Reklam ekibi, SEO ekibi ve sosyal medya ekibi aynı strateji belgesi üzerinden çalışır. Brief ezberi yok.'),
+    jsonb_build_object('icon','Zap','title','Hızlı iterasyon','desc','Bir kanalda öğrendiğimiz bir içgörü, 48 saat içinde diğer kanallara taşınır. Bilgi silosu yok.'),
+    jsonb_build_object('icon','Crosshair','title','Attribution netliği','desc','Channel-level değil customer-level görüyoruz. Hangi kanalın hangi temas noktasını kazandırdığı net.'),
+    jsonb_build_object('icon','Lock','title','Marka tutarlılığı','desc','Reklamdaki ses tonu, SEO içeriğindeki dille, sosyal medyadaki anlatımla birebir aynı.')
+  )),
+  10
+),
+(
+  'services','pricing','Fiyatlandırma','Şeffaf, üç farklı modelle',
+  'Hangi hizmeti aldığınıza göre fiyatlandırma modeli farklılaşır. Aşağıda tipik aralıkları paylaşıyoruz; net teklif keşif görüşmesinden sonra çıkarılır.',
+  jsonb_build_object('items', jsonb_build_array(
+    jsonb_build_object('title','Retainer Model','range','₺45.000 — ₺120.000 / ay','desc','Süreklilik isteyen hizmetler (reklam yönetimi, SEO, sosyal medya). Minimum 3 ay.','fits','E-ticaret, SaaS, hizmet markaları'),
+    jsonb_build_object('title','Proje Bazlı','range','₺80.000 — ₺850.000','desc','Sabit kapsam-sabit fiyat. Web sitesi, mobil uygulama, MVP geliştirme.','fits','Startup''lar, kurumsal lansmanlar'),
+    jsonb_build_object('title','Performans + Sabit','range','Bütçenin %8-12''si + sabit yönetim','desc','Reklam yönetiminde popüler. Bütçeniz büyüdükçe ölçek avantajı sizin lehinize.','fits','Aylık reklam bütçesi ₺250K+')
+  )),
+  20
+)
+on conflict (page_slug, section_key) do update set
+  eyebrow = excluded.eyebrow,
+  title = excluded.title,
+  description = excluded.description,
+  body = excluded.body,
+  sort_order = excluded.sort_order;
+
+-- ---------- FAQS (services scope) ----------
+insert into faqs (scope, question, answer, sort_order) values
+('services','Hizmetleri tek tek alabilir miyim, yoksa paket mi zorunlu?','Hayır, paket zorunluluğu yok. Tek bir hizmetle başlayıp gerek görüldükçe diğer alanları açabilirsiniz. Çoğu müşterimiz reklam yönetimi veya SEO ile başlar; 6 ay içinde 2-3 hizmete genişler.',1),
+('services','Reklam bütçesi minimum ne olmalı?','Meta Ads''te aylık ₺50.000, Google Ads''te ₺75.000 altında gerçek anlamda test yapmak zor. Bu rakamların altındaki bütçelerde önce organik kanallarla (SEO + sosyal medya) başlamayı öneriyoruz.',2),
+('services','Kreatif üretim dahil mi yoksa ek ücret mi?','Retainer modelimizde aylık belirli sayıda kreatif dahildir (reklam görseli, video, post). Ek kreatif ihtiyaçları net fiyatlandırma ile çözülür — sürpriz fatura yok.',3),
+('services','Beğenmezsem ne olur?','İlk 90 gün ölçülebilir iyileşme garantisi. Olmazsa kontrat sonlanır, son ay ücretini almıyoruz. Bunu sözleşmeye yazıyoruz.',4)
+on conflict do nothing;
+
+-- ---------- PAGE SECTIONS (contact) ----------
+insert into page_sections (page_slug, section_key, eyebrow, title, description, body, sort_order) values
+(
+  'contact','process','Süreç','Formu gönderdikten sonra ne olur?',
+  'Karanlık bir kutu içine başvuru göndermek istemezsiniz. İşte adım adım: formu gönderdiğiniz andan sözleşme imzasına kadar.',
+  jsonb_build_object('items', jsonb_build_array(
+    jsonb_build_object('icon','ClipboardList','title','Form gönderimi','desc','Aşağıdaki formu doldurun. Hedefiniz, mevcut durumunuz ve beklentileriniz hakkında kısa bir özet yeterli.','time','0 dk'),
+    jsonb_build_object('icon','Compass','title','Hızlı ön inceleme','desc','48 saat içinde size dönüş yaparız. Müsait olduğunuz iki-üç zaman dilimi için keşif görüşmesi takvimleriz.','time','0 – 48 saat'),
+    jsonb_build_object('icon','CalendarClock','title','Keşif görüşmesi','desc','30 dakikalık video görüşme. Hedef, bütçe, mevcut kanallar konuşulur. Görüşme sonunda somut bir aksiyon planı taslağı çıkarıyoruz.','time','Hafta 1'),
+    jsonb_build_object('icon','Rocket','title','Teklif ve start','desc','Ücretsiz teklif belgesini iletiyoruz. Onay sonrası 5 iş günü içinde projeye başlıyoruz.','time','Hafta 1 – 2')
+  )),
+  10
+),
+(
+  'contact','guarantees','Beraber Çalışma Şartları','Bizden ne bekleyebilirsiniz?',
+  'Sözlü vaat değil, yazılı taahhüt. İşte ortaklık başlamadan önce size garanti edebileceğimiz dört temel şart.',
+  jsonb_build_object('items', jsonb_build_array(
+    jsonb_build_object('icon','ShieldCheck','title','İlk 90 günde ölçülebilir iyileşme','desc','Tanımladığımız KPI''larda iyileşme olmazsa sözleşme bağlayıcı değildir. Şartlar yazılı.'),
+    jsonb_build_object('icon','Globe','title','Şeffaf raporlama','desc','Looker Studio canlı dashboard. Reklam kreatiflerinden gider kalemlerine kadar her şey açık.'),
+    jsonb_build_object('icon','MessageCircle','title','Mesai içi hızlı yanıt','desc','Slack veya WhatsApp üzerinden ortalama 28 dakikada ilk yanıt. Sessizlik bizim sözlüğümüzde yok.'),
+    jsonb_build_object('icon','Coffee','title','İlk görüşme ücretsiz','desc','Keşif görüşmesi tamamen ücretsizdir. Sonrasında ortak olmak zorunda değilsiniz.')
+  )),
+  20
+)
+on conflict (page_slug, section_key) do update set
+  eyebrow = excluded.eyebrow,
+  title = excluded.title,
+  description = excluded.description,
+  body = excluded.body,
+  sort_order = excluded.sort_order;
+
+-- ---------- FAQS (contact scope) ----------
+insert into faqs (scope, question, answer, sort_order) values
+('contact','Yanıt ne kadar sürede gelir?','Hafta içi gelen form başvurularına ortalama 6-12 saatte, hafta sonu gelen başvurulara ise pazartesi öğlene kadar dönüş sağlıyoruz.',1),
+('contact','Görüşmeye ne hazırlamalıyım?','Mevcut hedefleriniz, varsa son 3 ayın performans dataları, web/uygulama/sosyal medya analytics erişimleri (sadece görüntüleme için) ve mümkünse referans markalarınız. Hiçbiri hazır olmasa bile görüşme yine de verimli geçer.',2),
+('contact','Bütçemi paylaşmam zorunlu mu?','Hayır ama yardımcı oluyor. Bütçe bandı belirsizse görüşmede birlikte netleştiriyoruz. Sizinle bütçe modelinizden bağımsız olarak konuşuyoruz.',3),
+('contact','Yurt dışından çalışabilir miyim?','Elbette. Müşterilerimizin %30''u yurt dışı merkezli (UK, US, AE). Tüm görüşmelerimizi Türkçe veya İngilizce yapabiliriz.',4)
+on conflict do nothing;
+
+-- ---------- PAGE SECTIONS (portfolio) ----------
+insert into page_sections (page_slug, section_key, eyebrow, title, description, body, sort_order) values
+(
+  'portfolio','stats',null,null,null,
+  jsonb_build_object('items', jsonb_build_array(
+    jsonb_build_object('label','Tamamlanan kampanya','to',320,'suffix','+','decimals',0),
+    jsonb_build_object('label','Toplam yönetilen reklam bütçesi','to',18,'prefix','₺','suffix','M+','decimals',0),
+    jsonb_build_object('label','Ortalama ROAS','to',4.6,'suffix','x','decimals',1),
+    jsonb_build_object('label','Müşteri NPS','to',92,'suffix','/100','decimals',0)
+  )),
+  10
+),
+(
+  'portfolio','featured_case','Öne Çıkan Vaka','Lumen Cosmetics — ROAS 2.1x → 4.8x',
+  'Yorulmuş bir reklam hesabı, kanıksanmış bir kreatif yaklaşımı ve fragmente bir analytics altyapısı. Üç aylık restrukturasyon ile rakamların nasıl katlandığını gösteriyoruz.',
+  jsonb_build_object(
+    'metrics', jsonb_build_array(
+      jsonb_build_object('label','ROAS','from','2.1x','to','4.8x','color','from-violet-500 to-indigo-500'),
+      jsonb_build_object('label','Aylık Gelir','from','₺320K','to','₺1.1M','color','from-cyan-500 to-blue-500'),
+      jsonb_build_object('label','CPA','from','₺412','to','₺178','color','from-emerald-500 to-cyan-500'),
+      jsonb_build_object('label','Müşteri Sayısı','from','1.8K','to','6.4K','color','from-pink-500 to-rose-500')
+    ),
+    'quote', jsonb_build_object(
+      'text','E-Digital ile çalıştığımız 6 ayda ROAS''ımız 2.1''den 4.8''e çıktı. En etkileyici olan şey rakamlar değil, ekip dinamiği — markamızı bizim kadar sahipleniyorlar.',
+      'name','Selin Aksoy',
+      'role','Pazarlama Direktörü · Lumen Cosmetics',
+      'initials','SA'
+    ),
+    'steps', jsonb_build_array(
+      jsonb_build_object('title','Audit & Strateji (Hafta 1-2)','desc','Mevcut hesapları, dataları ve müşteri davranışını derinlemesine analiz ettik. 3 hipotez belirledik: yanlış hedefleme, kreatif yorgunluğu ve landing page sızıntısı.'),
+      jsonb_build_object('title','Restrukturasyon (Hafta 3-6)','desc','Hesap yapısını ASC + Advantage+ ağırlıklı olarak yeniden kurguladık. 18 yeni kreatif konsepti, 4 farklı landing page ile A/B testler başladı.'),
+      jsonb_build_object('title','Ölçek (Hafta 7-12)','desc','Kazanan kreatifleri farklı segmentlere ölçeklendirdik, Meta + Google attribution modelini birleştirdik, e-mail flow''ları güçlendirdik.'),
+      jsonb_build_object('title','Sürdürülebilir büyüme (Hafta 13+)','desc','ROAS 4.8x, müşteri sayısı 6.4K, ortalama sepet değeri %22 yükseldi. Aylık iterasyon ritmiyle kazançlar korunuyor.')
+    ),
+    'durationLabel','4 fazda 6 aylık çalışma'
+  ),
+  20
+),
+(
+  'portfolio','sectors','Sektör Çeşitliliği','Çalıştığımız sektörler',
+  'Sektör çeşitliliği bizim için güçlü bir avantaj: bir sektörde işe yarayan bir öğrenmeyi diğerlerine taşıyabiliyoruz.',
+  jsonb_build_object('items', jsonb_build_array(
+    'E-ticaret','SaaS','Fintech','Sağlık Turizmi','Eğitim','Moda',
+    'Mobilite','Kozmetik','Gıda','B2B Yazılım','Emlak Tech','Spor & Wellness'
+  )),
+  30
+),
+(
+  'portfolio','testimonials_summary','Müşterilerimizin Sözleri','Geri bildirim üzerine kuruluyuz',
+  'Müşteri NPS skorlarını üçer aylık ölçüyoruz; bu skorlar ekibin OKR''larına doğrudan etki ediyor.',
+  jsonb_build_object('items', jsonb_build_array(
+    jsonb_build_object('quote','Şeffaf raporlama, hızlı iletişim ve doğru beklenti yönetimi. Ajans değişimi yaparken aradığımız her şeyi tek bir yerde bulduk.','name','Onur Şahin','role','Kurucu Ortak · Greenly Foods'),
+    jsonb_build_object('quote','MVP''mizi 8 haftada yayınladılar. Sadece kod yazmadılar; ürün stratejisinden onboarding flow''una kadar gerçek bir teknoloji ortağı gibi davrandılar.','name','Kerem Doğan','role','Kurucu · Tessera SaaS'),
+    jsonb_build_object('quote','SEO ekibi farkı net gösterdi. 9 ay içinde organik trafiğimiz 4.6 katına çıktı, marka kelimelerimizde 1. sıradayız ve bu trafik artık satışa dönüşüyor.','name','Beyza Yılmaz','role','E-ticaret Müdürü · Nordel Home')
+  )),
+  40
+)
+on conflict (page_slug, section_key) do update set
+  eyebrow = excluded.eyebrow,
+  title = excluded.title,
+  description = excluded.description,
+  body = excluded.body,
+  sort_order = excluded.sort_order;

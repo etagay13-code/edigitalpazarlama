@@ -1,23 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  Layers,
-  Wrench,
-  Zap,
-  Crosshair,
-  Lock,
-  TrendingUp,
-  ArrowUpRight,
-} from "lucide-react";
+import { Wrench, TrendingUp, ArrowUpRight } from "lucide-react";
 import { SectionHeader } from "@/components/SectionHeader";
 import { ServicesGrid } from "@/components/ServicesGrid";
 import { Reveal, Stagger } from "@/components/Reveal";
 import { CTASection } from "@/components/CTASection";
 import { GradientBlobs } from "@/components/GradientBlob";
+import { DynamicIcon } from "@/components/DynamicIcon";
 import {
   listServicesPublic,
   listIndustriesPublic,
   listTechPublic,
+  listFaqsPublic,
+  getPageSection,
 } from "@/lib/data";
 import { getBrand } from "@/lib/theme";
 
@@ -27,76 +22,30 @@ export const metadata: Metadata = {
     "Reklam yönetimi, SEO, sosyal medya, mobil uygulama, SaaS geliştirme, web tasarım ve içerik stratejisi — markanızı büyütecek tüm hizmetler.",
 };
 
-const synergyBenefits = [
-  {
-    icon: Layers,
-    title: "Tek brief, tüm kanallar",
-    desc: "Reklam ekibi, SEO ekibi ve sosyal medya ekibi aynı strateji belgesi üzerinden çalışır. Brief ezberi yok.",
-  },
-  {
-    icon: Zap,
-    title: "Hızlı iterasyon",
-    desc: "Bir kanalda öğrendiğimiz bir içgörü, 48 saat içinde diğer kanallara taşınır. Bilgi silosu yok.",
-  },
-  {
-    icon: Crosshair,
-    title: "Attribution netliği",
-    desc: "Channel-level değil customer-level görüyoruz. Hangi kanalın hangi temas noktasını kazandırdığı net.",
-  },
-  {
-    icon: Lock,
-    title: "Marka tutarlılığı",
-    desc: "Reklamdaki ses tonu, SEO içeriğindeki dille, sosyal medyadaki anlatımla birebir aynı.",
-  },
-];
-
-const pricingModels = [
-  {
-    title: "Retainer Model",
-    range: "₺45.000 — ₺120.000 / ay",
-    desc: "Süreklilik isteyen hizmetler (reklam yönetimi, SEO, sosyal medya). Minimum 3 ay.",
-    fits: "E-ticaret, SaaS, hizmet markaları",
-  },
-  {
-    title: "Proje Bazlı",
-    range: "₺80.000 — ₺850.000",
-    desc: "Sabit kapsam-sabit fiyat. Web sitesi, mobil uygulama, MVP geliştirme.",
-    fits: "Startup'lar, kurumsal lansmanlar",
-  },
-  {
-    title: "Performans + Sabit",
-    range: "Bütçenin %8-12'si + sabit yönetim",
-    desc: "Reklam yönetiminde popüler. Bütçeniz büyüdükçe ölçek avantajı sizin lehinize.",
-    fits: "Aylık reklam bütçesi ₺250K+",
-  },
-];
-
-const serviceFaqs = [
-  {
-    q: "Hizmetleri tek tek alabilir miyim, yoksa paket mi zorunlu?",
-    a: "Hayır, paket zorunluluğu yok. Tek bir hizmetle başlayıp gerek görüldükçe diğer alanları açabilirsiniz. Çoğu müşterimiz reklam yönetimi veya SEO ile başlar; 6 ay içinde 2-3 hizmete genişler.",
-  },
-  {
-    q: "Reklam bütçesi minimum ne olmalı?",
-    a: "Meta Ads'te aylık ₺50.000, Google Ads'te ₺75.000 altında gerçek anlamda test yapmak zor. Bu rakamların altındaki bütçelerde önce organik kanallarla (SEO + sosyal medya) başlamayı öneriyoruz.",
-  },
-  {
-    q: "Kreatif üretim dahil mi yoksa ek ücret mi?",
-    a: "Retainer modelimizde aylık belirli sayıda kreatif dahildir (reklam görseli, video, post). Ek kreatif ihtiyaçları net fiyatlandırma ile çözülür — sürpriz fatura yok.",
-  },
-  {
-    q: "Beğenmezsem ne olur?",
-    a: "İlk 90 gün ölçülebilir iyileşme garantisi. Olmazsa kontrat sonlanır, son ay ücretini almıyoruz. Bunu sözleşmeye yazıyoruz.",
-  },
-];
+type SynergyItem = { icon?: string; title: string; desc: string };
+type PricingItem = { title: string; range: string; desc: string; fits: string };
 
 export default async function ServicesPage() {
-  const [services, industries, techStack, brand] = await Promise.all([
+  const [
+    services,
+    industries,
+    techStack,
+    brand,
+    synergySection,
+    pricingSection,
+    serviceFaqs,
+  ] = await Promise.all([
     listServicesPublic(),
     listIndustriesPublic(),
     listTechPublic(),
     getBrand(),
+    getPageSection("services", "synergy"),
+    getPageSection("services", "pricing"),
+    listFaqsPublic("services"),
   ]);
+
+  const synergyBenefits = ((synergySection?.body as { items?: SynergyItem[] } | null)?.items ?? []) as SynergyItem[];
+  const pricingModels = ((pricingSection?.body as { items?: PricingItem[] } | null)?.items ?? []) as PricingItem[];
   const serviceItems = services.map((s) => ({
     slug: s.slug,
     title: s.title,
@@ -137,21 +86,20 @@ export default async function ServicesPage() {
       </section>
 
       {/* Sentez bölümü */}
-      <section className="section">
-        <div className="container-x">
-          <SectionHeader
-            eyebrow="Hizmetlerin Sentezi"
-            title="Ayrı ajanslar yerine tek sinir sistemi"
-            description="Bir ajans reklam, bir başkası SEO, başka biri sosyal medya — tipik kurguda her ajans diğerinin işine değil sadece kendi performansına bakar. Biz tek bir takım olduğumuz için kanallar arası kayıp sıfıra iniyor."
-          />
-          <Stagger className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {synergyBenefits.map((b) => {
-              const Icon = b.icon;
-              return (
+      {synergyBenefits.length > 0 && (
+        <section className="section">
+          <div className="container-x">
+            <SectionHeader
+              eyebrow={synergySection?.eyebrow ?? undefined}
+              title={synergySection?.title ?? ""}
+              description={synergySection?.description ?? undefined}
+            />
+            <Stagger className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {synergyBenefits.map((b) => (
                 <Reveal key={b.title}>
                   <div className="card h-full">
                     <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-indigo-500 shadow-glow">
-                      <Icon className="h-5 w-5 text-white" />
+                      <DynamicIcon name={b.icon} className="h-5 w-5 text-white" />
                     </div>
                     <h4 className="mt-5 font-display text-lg font-semibold">
                       {b.title}
@@ -159,11 +107,11 @@ export default async function ServicesPage() {
                     <p className="mt-2 text-sm text-white/60">{b.desc}</p>
                   </div>
                 </Reveal>
-              );
-            })}
-          </Stagger>
-        </div>
-      </section>
+              ))}
+            </Stagger>
+          </div>
+        </section>
+      )}
 
       {/* Sektörler */}
       <section className="section">
@@ -224,78 +172,82 @@ export default async function ServicesPage() {
       </section>
 
       {/* Fiyatlandırma yaklaşımı */}
-      <section className="section">
-        <div className="container-x">
-          <SectionHeader
-            eyebrow="Fiyatlandırma"
-            title="Şeffaf, üç farklı modelle"
-            description="Hangi hizmeti aldığınıza göre fiyatlandırma modeli farklılaşır. Aşağıda tipik aralıkları paylaşıyoruz; net teklif keşif görüşmesinden sonra çıkarılır."
-          />
-          <Stagger className="mt-12 grid gap-5 md:grid-cols-3">
-            {pricingModels.map((p) => (
-              <Reveal key={p.title}>
-                <div className="card flex h-full flex-col">
-                  <TrendingUp className="h-5 w-5 text-violet-300" />
-                  <h4 className="mt-5 font-display text-xl font-semibold">
-                    {p.title}
-                  </h4>
-                  <p className="mt-2 text-sm gradient-text font-display text-xl">
-                    {p.range}
-                  </p>
-                  <p className="mt-4 text-sm text-white/60">{p.desc}</p>
-                  <p className="mt-auto pt-6 text-xs uppercase tracking-[0.16em] text-white/40">
-                    Uygun: {p.fits}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </Stagger>
-          <Reveal delay={0.1}>
-            <p className="mt-8 text-center text-sm text-white/50">
-              Sürpriz fatura, gizli kalem, başlangıç ücreti yok. Sözleşme öncesi tüm
-              detaylar yazılı paylaşılır.
-            </p>
-          </Reveal>
-        </div>
-      </section>
+      {pricingModels.length > 0 && (
+        <section className="section">
+          <div className="container-x">
+            <SectionHeader
+              eyebrow={pricingSection?.eyebrow ?? undefined}
+              title={pricingSection?.title ?? ""}
+              description={pricingSection?.description ?? undefined}
+            />
+            <Stagger className="mt-12 grid gap-5 md:grid-cols-3">
+              {pricingModels.map((p) => (
+                <Reveal key={p.title}>
+                  <div className="card flex h-full flex-col">
+                    <TrendingUp className="h-5 w-5 text-violet-300" />
+                    <h4 className="mt-5 font-display text-xl font-semibold">
+                      {p.title}
+                    </h4>
+                    <p className="mt-2 text-sm gradient-text font-display text-xl">
+                      {p.range}
+                    </p>
+                    <p className="mt-4 text-sm text-white/60">{p.desc}</p>
+                    <p className="mt-auto pt-6 text-xs uppercase tracking-[0.16em] text-white/40">
+                      Uygun: {p.fits}
+                    </p>
+                  </div>
+                </Reveal>
+              ))}
+            </Stagger>
+            <Reveal delay={0.1}>
+              <p className="mt-8 text-center text-sm text-white/50">
+                Sürpriz fatura, gizli kalem, başlangıç ücreti yok. Sözleşme öncesi tüm
+                detaylar yazılı paylaşılır.
+              </p>
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       {/* Hizmet FAQ */}
-      <section className="section">
-        <div className="container-x">
-          <SectionHeader
-            eyebrow="Sık Sorulanlar"
-            title="Hizmetlere özel sorular"
-            description="Aklında olup da burada cevabını bulamadığın bir konu varsa, iletişim sayfasından bize doğrudan sorabilirsin."
-          />
-          <div className="mx-auto mt-10 max-w-3xl divide-y divide-white/[0.06] overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02]">
-            {serviceFaqs.map((f) => (
-              <details
-                key={f.q}
-                className="group p-6 transition hover:bg-white/[0.02]"
-              >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
-                  <span className="font-medium text-white">{f.q}</span>
-                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/10 text-white/60 transition group-open:rotate-45 group-open:bg-violet-500/20 group-open:text-violet-200">
-                    +
-                  </span>
-                </summary>
-                <p className="mt-3 text-sm leading-relaxed text-white/65">{f.a}</p>
-              </details>
-            ))}
+      {serviceFaqs.length > 0 && (
+        <section className="section">
+          <div className="container-x">
+            <SectionHeader
+              eyebrow="Sık Sorulanlar"
+              title="Hizmetlere özel sorular"
+              description="Aklında olup da burada cevabını bulamadığın bir konu varsa, iletişim sayfasından bize doğrudan sorabilirsin."
+            />
+            <div className="mx-auto mt-10 max-w-3xl divide-y divide-white/[0.06] overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02]">
+              {serviceFaqs.map((f) => (
+                <details
+                  key={f.id}
+                  className="group p-6 transition hover:bg-white/[0.02]"
+                >
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
+                    <span className="font-medium text-white">{f.question}</span>
+                    <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/10 text-white/60 transition group-open:rotate-45 group-open:bg-violet-500/20 group-open:text-violet-200">
+                      +
+                    </span>
+                  </summary>
+                  <p className="mt-3 text-sm leading-relaxed text-white/65">{f.answer}</p>
+                </details>
+              ))}
+            </div>
+            <Reveal delay={0.1}>
+              <p className="mt-8 text-center text-sm text-white/50">
+                Daha fazla soru için{" "}
+                <a
+                  className="text-white underline-offset-4 hover:underline"
+                  href={`mailto:${brand.email}`}
+                >
+                  {brand.email}
+                </a>
+              </p>
+            </Reveal>
           </div>
-          <Reveal delay={0.1}>
-            <p className="mt-8 text-center text-sm text-white/50">
-              Daha fazla soru için{" "}
-              <a
-                className="text-white underline-offset-4 hover:underline"
-                href={`mailto:${brand.email}`}
-              >
-                {brand.email}
-              </a>
-            </p>
-          </Reveal>
-        </div>
-      </section>
+        </section>
+      )}
 
       <CTASection />
     </>

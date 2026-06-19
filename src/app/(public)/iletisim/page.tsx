@@ -6,13 +6,6 @@ import {
   Clock,
   Instagram,
   Linkedin,
-  MessageCircle,
-  CalendarClock,
-  ClipboardList,
-  Compass,
-  Rocket,
-  ShieldCheck,
-  Globe,
   Building2,
   Coffee,
 } from "lucide-react";
@@ -20,8 +13,9 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { ContactForm } from "@/components/ContactForm";
 import { Reveal, Stagger } from "@/components/Reveal";
 import { GradientBlobs } from "@/components/GradientBlob";
+import { DynamicIcon } from "@/components/DynamicIcon";
 import { getBrand } from "@/lib/theme";
-import { listServicesPublic } from "@/lib/data";
+import { listServicesPublic, listFaqsPublic, getPageSection } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "İletişim",
@@ -29,80 +23,21 @@ export const metadata: Metadata = {
     "Bizimle bağlantıya geçin. Ücretsiz 30 dakikalık keşif görüşmesi ve 48 saat içinde geri dönüş garantisi.",
 };
 
-const process = [
-  {
-    icon: ClipboardList,
-    title: "Form gönderimi",
-    desc: "Aşağıdaki formu doldurun. Hedefiniz, mevcut durumunuz ve beklentileriniz hakkında kısa bir özet yeterli.",
-    time: "0 dk",
-  },
-  {
-    icon: Compass,
-    title: "Hızlı ön inceleme",
-    desc: "48 saat içinde size dönüş yaparız. Müsait olduğunuz iki-üç zaman dilimi için keşif görüşmesi takvimleriz.",
-    time: "0 – 48 saat",
-  },
-  {
-    icon: CalendarClock,
-    title: "Keşif görüşmesi",
-    desc: "30 dakikalık video görüşme. Hedef, bütçe, mevcut kanallar konuşulur. Görüşme sonunda somut bir aksiyon planı taslağı çıkarıyoruz.",
-    time: "Hafta 1",
-  },
-  {
-    icon: Rocket,
-    title: "Teklif ve start",
-    desc: "Ücretsiz teklif belgesini iletiyoruz. Onay sonrası 5 iş günü içinde projeye başlıyoruz.",
-    time: "Hafta 1 – 2",
-  },
-];
-
-const guarantees = [
-  {
-    icon: ShieldCheck,
-    title: "İlk 90 günde ölçülebilir iyileşme",
-    desc: "Tanımladığımız KPI'larda iyileşme olmazsa sözleşme bağlayıcı değildir. Şartlar yazılı.",
-  },
-  {
-    icon: Globe,
-    title: "Şeffaf raporlama",
-    desc: "Looker Studio canlı dashboard. Reklam kreatiflerinden gider kalemlerine kadar her şey açık.",
-  },
-  {
-    icon: MessageCircle,
-    title: "Mesai içi hızlı yanıt",
-    desc: "Slack veya WhatsApp üzerinden ortalama 28 dakikada ilk yanıt. Sessizlik bizim sözlüğümüzde yok.",
-  },
-  {
-    icon: Coffee,
-    title: "İlk görüşme ücretsiz",
-    desc: "Keşif görüşmesi tamamen ücretsizdir. Sonrasında ortak olmak zorunda değilsiniz.",
-  },
-];
-
-const contactFaqs = [
-  {
-    q: "Yanıt ne kadar sürede gelir?",
-    a: "Hafta içi gelen form başvurularına ortalama 6-12 saatte, hafta sonu gelen başvurulara ise pazartesi öğlene kadar dönüş sağlıyoruz.",
-  },
-  {
-    q: "Görüşmeye ne hazırlamalıyım?",
-    a: "Mevcut hedefleriniz, varsa son 3 ayın performans dataları, web/uygulama/sosyal medya analytics erişimleri (sadece görüntüleme için) ve mümkünse referans markalarınız. Hiçbiri hazır olmasa bile görüşme yine de verimli geçer.",
-  },
-  {
-    q: "Bütçemi paylaşmam zorunlu mu?",
-    a: "Hayır ama yardımcı oluyor. Bütçe bandı belirsizse görüşmede birlikte netleştiriyoruz. Sizinle bütçe modelinizden bağımsız olarak konuşuyoruz.",
-  },
-  {
-    q: "Yurt dışından çalışabilir miyim?",
-    a: "Elbette. Müşterilerimizin %30'u yurt dışı merkezli (UK, US, AE). Tüm görüşmelerimizi Türkçe veya İngilizce yapabiliriz.",
-  },
-];
+type ProcessItem = { icon?: string; title: string; desc: string; time: string };
+type GuaranteeItem = { icon?: string; title: string; desc: string };
 
 export default async function ContactPage() {
-  const [brand, services] = await Promise.all([
-    getBrand(),
-    listServicesPublic(),
-  ]);
+  const [brand, services, processSection, guaranteesSection, contactFaqs] =
+    await Promise.all([
+      getBrand(),
+      listServicesPublic(),
+      getPageSection("contact", "process"),
+      getPageSection("contact", "guarantees"),
+      listFaqsPublic("contact"),
+    ]);
+
+  const process = ((processSection?.body as { items?: ProcessItem[] } | null)?.items ?? []) as ProcessItem[];
+  const guarantees = ((guaranteesSection?.body as { items?: GuaranteeItem[] } | null)?.items ?? []) as GuaranteeItem[];
 
   const channels = [
     {
@@ -223,23 +158,22 @@ export default async function ContactPage() {
       </section>
 
       {/* Süreç */}
-      <section className="section">
-        <div className="container-x">
-          <SectionHeader
-            eyebrow="Süreç"
-            title="Formu gönderdikten sonra ne olur?"
-            description="Karanlık bir kutu içine başvuru göndermek istemezsiniz. İşte adım adım: formu gönderdiğiniz andan sözleşme imzasına kadar."
-          />
-          <Stagger className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {process.map((p, i) => {
-              const Icon = p.icon;
-              return (
+      {process.length > 0 && (
+        <section className="section">
+          <div className="container-x">
+            <SectionHeader
+              eyebrow={processSection?.eyebrow ?? undefined}
+              title={processSection?.title ?? ""}
+              description={processSection?.description ?? undefined}
+            />
+            <Stagger className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+              {process.map((p, i) => (
                 <Reveal key={p.title}>
                   <div className="card relative h-full">
                     <span className="font-display text-xs font-semibold tracking-[0.2em] text-violet-300">
                       0{i + 1}
                     </span>
-                    <Icon className="mt-4 h-6 w-6 text-violet-300" />
+                    <DynamicIcon name={p.icon} className="mt-4 h-6 w-6 text-violet-300" />
                     <h4 className="mt-5 font-display text-lg font-semibold">
                       {p.title}
                     </h4>
@@ -250,65 +184,66 @@ export default async function ContactPage() {
                     </p>
                   </div>
                 </Reveal>
-              );
-            })}
-          </Stagger>
-        </div>
-      </section>
+              ))}
+            </Stagger>
+          </div>
+        </section>
+      )}
 
       {/* Garantiler */}
-      <section className="section">
-        <div className="container-x">
-          <SectionHeader
-            eyebrow="Beraber Çalışma Şartları"
-            title="Bizden ne bekleyebilirsiniz?"
-            description="Sözlü vaat değil, yazılı taahhüt. İşte ortaklık başlamadan önce size garanti edebileceğimiz dört temel şart."
-          />
-          <Stagger className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {guarantees.map((g) => {
-              const Icon = g.icon;
-              return (
+      {guarantees.length > 0 && (
+        <section className="section">
+          <div className="container-x">
+            <SectionHeader
+              eyebrow={guaranteesSection?.eyebrow ?? undefined}
+              title={guaranteesSection?.title ?? ""}
+              description={guaranteesSection?.description ?? undefined}
+            />
+            <Stagger className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {guarantees.map((g) => (
                 <Reveal key={g.title}>
                   <div className="card h-full">
-                    <Icon className="h-6 w-6 text-violet-300" />
+                    <DynamicIcon name={g.icon} className="h-6 w-6 text-violet-300" />
                     <h4 className="mt-5 font-display text-lg font-semibold">
                       {g.title}
                     </h4>
                     <p className="mt-2 text-sm text-white/60">{g.desc}</p>
                   </div>
                 </Reveal>
-              );
-            })}
-          </Stagger>
-        </div>
-      </section>
+              ))}
+            </Stagger>
+          </div>
+        </section>
+      )}
 
       {/* İletişim FAQ */}
-      <section className="section">
-        <div className="container-x">
-          <SectionHeader
-            eyebrow="Sık Sorulanlar"
-            title="İletişim ve görüşme süreci"
-            description="Sözleşme öncesi olası soruların hızlı cevapları. Daha fazlasını sormak için form yeterli."
-          />
-          <div className="mx-auto mt-10 max-w-3xl divide-y divide-white/[0.06] overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02]">
-            {contactFaqs.map((f) => (
-              <details
-                key={f.q}
-                className="group p-6 transition hover:bg-white/[0.02]"
-              >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
-                  <span className="font-medium text-white">{f.q}</span>
-                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/10 text-white/60 transition group-open:rotate-45 group-open:bg-violet-500/20 group-open:text-violet-200">
-                    +
-                  </span>
-                </summary>
-                <p className="mt-3 text-sm leading-relaxed text-white/65">{f.a}</p>
-              </details>
-            ))}
+      {contactFaqs.length > 0 && (
+        <section className="section">
+          <div className="container-x">
+            <SectionHeader
+              eyebrow="Sık Sorulanlar"
+              title="İletişim ve görüşme süreci"
+              description="Sözleşme öncesi olası soruların hızlı cevapları. Daha fazlasını sormak için form yeterli."
+            />
+            <div className="mx-auto mt-10 max-w-3xl divide-y divide-white/[0.06] overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02]">
+              {contactFaqs.map((f) => (
+                <details
+                  key={f.id}
+                  className="group p-6 transition hover:bg-white/[0.02]"
+                >
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
+                    <span className="font-medium text-white">{f.question}</span>
+                    <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/10 text-white/60 transition group-open:rotate-45 group-open:bg-violet-500/20 group-open:text-violet-200">
+                      +
+                    </span>
+                  </summary>
+                  <p className="mt-3 text-sm leading-relaxed text-white/65">{f.answer}</p>
+                </details>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Ofis / Harita */}
       <section className="section pt-4">
