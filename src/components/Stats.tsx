@@ -1,14 +1,23 @@
 import { Counter } from "./Counter";
 import { Reveal } from "./Reveal";
 
-const stats = [
+export type StatItem = {
+  label: string;
+  to: number;
+  prefix?: string;
+  suffix?: string;
+  decimals?: number;
+};
+
+const DEFAULT_STATS: StatItem[] = [
   { label: "Yönetilen reklam bütçesi", to: 18, prefix: "₺", suffix: "M+", decimals: 0 },
   { label: "Tamamlanan kampanya", to: 320, suffix: "+", decimals: 0 },
   { label: "Ortalama ROAS", to: 4.6, suffix: "x", decimals: 1 },
   { label: "Mutlu müşteri", to: 64, suffix: "+", decimals: 0 },
 ];
 
-export function Stats() {
+export function Stats({ items }: { items?: StatItem[] | null }) {
+  const stats = items && items.length > 0 ? items : DEFAULT_STATS;
   return (
     <section className="section">
       <div className="container-x">

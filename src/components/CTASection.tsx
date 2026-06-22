@@ -1,9 +1,32 @@
 import Link from "next/link";
 import { ArrowUpRight, Mail } from "lucide-react";
 import { Reveal } from "./Reveal";
-import { brand } from "@/lib/theme";
+import { Highlighted } from "./Highlight";
+import { getBrand } from "@/lib/theme";
+import { getPageSection } from "@/lib/data";
 
-export function CTASection() {
+type CtaBody = {
+  highlight?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+};
+
+export async function CTASection() {
+  const [brand, section] = await Promise.all([
+    getBrand(),
+    getPageSection("global", "cta"),
+  ]);
+
+  const body = (section?.body as CtaBody | null) ?? {};
+  const eyebrow = section?.eyebrow || "İletişim";
+  const title = section?.title || "Bir sonraki büyüme dönemini birlikte planlayalım";
+  const highlight = body.highlight || "birlikte planlayalım";
+  const description =
+    section?.description ||
+    "Ücretsiz 30 dakikalık keşif görüşmesi. Hedeflerinizi konuşalım, mevcut kanallarınıza dair somut bir aksiyon planı çıkaralım.";
+  const primaryLabel = body.primaryLabel || "Görüşme Planla";
+  const primaryHref = body.primaryHref || "/iletisim";
+
   return (
     <section className="section">
       <div className="container-x">
@@ -19,19 +42,15 @@ export function CTASection() {
             />
             <div className="relative flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
               <div className="max-w-2xl">
-                <span className="eyebrow">İletişim</span>
+                <span className="eyebrow">{eyebrow}</span>
                 <h3 className="mt-5 h-display text-3xl font-semibold leading-[1.1] sm:text-4xl md:text-5xl">
-                  Bir sonraki büyüme dönemini{" "}
-                  <span className="gradient-text">birlikte planlayalım</span>
+                  <Highlighted text={title} highlight={highlight} />
                 </h3>
-                <p className="mt-5 text-white/65">
-                  Ücretsiz 30 dakikalık keşif görüşmesi. Hedeflerinizi konuşalım,
-                  mevcut kanallarınıza dair somut bir aksiyon planı çıkaralım.
-                </p>
+                <p className="mt-5 text-white/65">{description}</p>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-                <Link href="/iletisim" className="btn-primary">
-                  Görüşme Planla
+                <Link href={primaryHref} className="btn-primary">
+                  {primaryLabel}
                   <ArrowUpRight className="h-4 w-4" />
                 </Link>
                 <a href={`mailto:${brand.email}`} className="btn-ghost">

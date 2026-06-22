@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import {
   Mail,
-  Phone,
   MapPin,
   Clock,
   Instagram,
   Linkedin,
   Building2,
-  Coffee,
 } from "lucide-react";
 import { SectionHeader } from "@/components/SectionHeader";
 import { ContactForm } from "@/components/ContactForm";
@@ -15,7 +13,7 @@ import { Reveal, Stagger } from "@/components/Reveal";
 import { GradientBlobs } from "@/components/GradientBlob";
 import { DynamicIcon } from "@/components/DynamicIcon";
 import { getBrand } from "@/lib/theme";
-import { listServicesPublic, listFaqsPublic, getPageSection } from "@/lib/data";
+import { listServicesPublic, listFaqsPublic, listPageSectionsPublic } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "İletişim",
@@ -25,50 +23,85 @@ export const metadata: Metadata = {
 
 type ProcessItem = { icon?: string; title: string; desc: string; time: string };
 type GuaranteeItem = { icon?: string; title: string; desc: string };
+type ChannelItem = {
+  icon?: string;
+  label: string;
+  bind?: string;
+  value?: string;
+  href?: string | null;
+  hint?: string;
+};
+type OfficeLine = { icon?: string; text: string };
 
 export default async function ContactPage() {
-  const [brand, services, processSection, guaranteesSection, contactFaqs] =
-    await Promise.all([
-      getBrand(),
-      listServicesPublic(),
-      getPageSection("contact", "process"),
-      getPageSection("contact", "guarantees"),
-      listFaqsPublic("contact"),
-    ]);
+  const [brand, services, sections, contactFaqs] = await Promise.all([
+    getBrand(),
+    listServicesPublic(),
+    listPageSectionsPublic("contact"),
+    listFaqsPublic("contact"),
+  ]);
+
+  const sec = (key: string) => sections.find((s) => s.section_key === key) ?? null;
+
+  const heroSection = sec("hero");
+  const processSection = sec("process");
+  const guaranteesSection = sec("guarantees");
+  const faqHeader = sec("faq_header");
+  const channelsSection = sec("channels");
+  const officeSection = sec("office");
 
   const process = ((processSection?.body as { items?: ProcessItem[] } | null)?.items ?? []) as ProcessItem[];
   const guarantees = ((guaranteesSection?.body as { items?: GuaranteeItem[] } | null)?.items ?? []) as GuaranteeItem[];
 
-  const channels = [
-    {
-      icon: Mail,
-      label: "E-posta",
-      value: brand.email,
-      href: `mailto:${brand.email}`,
-      hint: "En hızlı yanıt",
-    },
-    {
-      icon: Phone,
-      label: "Telefon",
-      value: brand.phone,
-      href: brand.phone ? `tel:${brand.phone.replace(/\s/g, "")}` : null,
-      hint: "Mesai içinde",
-    },
-    {
-      icon: MapPin,
-      label: "Ofis",
-      value: brand.address,
-      href: "https://maps.google.com/?q=Istanbul",
-      hint: "Maslak / Levent çevresi",
-    },
-    {
-      icon: Clock,
-      label: "Çalışma Saatleri",
-      value: "Hafta içi 09:00 — 18:30",
-      href: null,
-      hint: "Acil için 7/24 nöbetçi",
-    },
-  ];
+  // Kanallar: DB'den, "bind" ile Site Ayarları'na bağlı (email/phone/address) veya düz değer.
+  const resolveChannel = (c: ChannelItem) => {
+    if (c.bind === "email")
+      return { icon: c.icon || "Mail", label: c.label, value: brand.email, href: `mailto:${brand.email}`, hint: c.hint };
+    if (c.bind === "phone")
+      return {
+        icon: c.icon || "Phone",
+        label: c.label,
+        value: brand.phone,
+        href: brand.phone ? `tel:${brand.phone.replace(/\s/g, "")}` : null,
+        hint: c.hint,
+      };
+    if (c.bind === "address")
+      return {
+        icon: c.icon || "MapPin",
+        label: c.label,
+        value: brand.address,
+        href: c.href || "https://maps.google.com/?q=Istanbul",
+        hint: c.hint,
+      };
+    return { icon: c.icon, label: c.label, value: c.value ?? "", href: c.href ?? null, hint: c.hint };
+  };
+
+  const channelItems = ((channelsSection?.body as { items?: ChannelItem[] } | null)?.items ?? []) as ChannelItem[];
+  const channels =
+    channelItems.length > 0
+      ? channelItems.map(resolveChannel)
+      : [
+          { icon: "Mail", label: "E-posta", value: brand.email, href: `mailto:${brand.email}`, hint: "En hızlı yanıt" },
+          {
+            icon: "Phone",
+            label: "Telefon",
+            value: brand.phone,
+            href: brand.phone ? `tel:${brand.phone.replace(/\s/g, "")}` : null,
+            hint: "Mesai içinde",
+          },
+          { icon: "MapPin", label: "Ofis", value: brand.address, href: "https://maps.google.com/?q=Istanbul", hint: "Maslak / Levent çevresi" },
+          { icon: "Clock", label: "Çalışma Saatleri", value: "Hafta içi 09:00 — 18:30", href: null, hint: "Acil için 7/24 nöbetçi" },
+        ];
+
+  const officeLines = ((officeSection?.body as { items?: OfficeLine[] } | null)?.items ?? []) as OfficeLine[];
+  const officeList: OfficeLine[] =
+    officeLines.length > 0
+      ? officeLines
+      : [
+          { icon: "MapPin", text: `${brand.address} — Maslak Plaza, Kat 7` },
+          { icon: "Clock", text: "Hafta içi 09:00 – 18:30 (Salı/Perşembe tam ofis)" },
+          { icon: "Coffee", text: "Buluşmadan önce kahve siparişinizi paylaşmayı unutmayın" },
+        ];
 
   return (
     <>
@@ -76,9 +109,12 @@ export default async function ContactPage() {
         <GradientBlobs />
         <div className="container-x">
           <SectionHeader
-            eyebrow="İletişim"
-            title="Bir sonraki büyüme dönemini konuşalım"
-            description="Aşağıdaki formu doldurun ya da bize doğrudan ulaşın. Tüm yeni başvurulara 48 saat içinde dönüş sağlıyoruz."
+            eyebrow={heroSection?.eyebrow || "İletişim"}
+            title={heroSection?.title || "Bir sonraki büyüme dönemini konuşalım"}
+            description={
+              heroSection?.description ||
+              "Aşağıdaki formu doldurun ya da bize doğrudan ulaşın. Tüm yeni başvurulara 48 saat içinde dönüş sağlıyoruz."
+            }
           />
         </div>
       </section>
@@ -98,11 +134,10 @@ export default async function ContactPage() {
           <Reveal delay={0.1}>
             <div className="space-y-4">
               {channels.map((c) => {
-                const Icon = c.icon;
                 const content = (
                   <div className="card flex items-center gap-4">
                     <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-violet-500 to-indigo-500">
-                      <Icon className="h-5 w-5 text-white" />
+                      <DynamicIcon name={c.icon} fallback={Mail} className="h-5 w-5 text-white" />
                     </div>
                     <div className="flex-1">
                       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/50">
@@ -221,9 +256,12 @@ export default async function ContactPage() {
         <section className="section">
           <div className="container-x">
             <SectionHeader
-              eyebrow="Sık Sorulanlar"
-              title="İletişim ve görüşme süreci"
-              description="Sözleşme öncesi olası soruların hızlı cevapları. Daha fazlasını sormak için form yeterli."
+              eyebrow={faqHeader?.eyebrow || "Sık Sorulanlar"}
+              title={faqHeader?.title || "İletişim ve görüşme süreci"}
+              description={
+                faqHeader?.description ||
+                "Sözleşme öncesi olası soruların hızlı cevapları. Daha fazlasını sormak için form yeterli."
+              }
             />
             <div className="mx-auto mt-10 max-w-3xl divide-y divide-white/[0.06] overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02]">
               {contactFaqs.map((f) => (
@@ -252,26 +290,20 @@ export default async function ContactPage() {
             <Reveal>
               <div className="card h-full">
                 <Building2 className="h-6 w-6 text-violet-300" />
-                <h3 className="mt-5 font-display text-2xl font-semibold">Ofisimiz</h3>
+                <h3 className="mt-5 font-display text-2xl font-semibold">
+                  {officeSection?.title || "Ofisimiz"}
+                </h3>
                 <p className="mt-3 text-sm text-white/65">
-                  Maslak'ta hibrit çalışan bir ekiple Salı ve Perşembe günleri tam dolu
-                  bir ofisimiz var. Buluşmak istediğinizde önceden randevulaşmak
-                  yeterli — kapımız her zaman açık ama kahvemiz biterse hep birlikte
-                  yenisini demlemek lazım.
+                  {officeSection?.description ||
+                    "Maslak'ta hibrit çalışan bir ekiple Salı ve Perşembe günleri tam dolu bir ofisimiz var. Buluşmak istediğinizde önceden randevulaşmak yeterli — kapımız her zaman açık ama kahvemiz biterse hep birlikte yenisini demlemek lazım."}
                 </p>
                 <ul className="mt-6 space-y-3 text-sm text-white/65">
-                  <li className="flex items-start gap-3">
-                    <MapPin className="mt-0.5 h-4 w-4 text-violet-300" />
-                    {brand.address} — Maslak Plaza, Kat 7
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Clock className="mt-0.5 h-4 w-4 text-violet-300" />
-                    Hafta içi 09:00 – 18:30 (Salı/Perşembe tam ofis)
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Coffee className="mt-0.5 h-4 w-4 text-violet-300" />
-                    Buluşmadan önce kahve siparişinizi paylaşmayı unutmayın
-                  </li>
+                  {officeList.map((line, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <DynamicIcon name={line.icon} fallback={MapPin} className="mt-0.5 h-4 w-4 text-violet-300" />
+                      {line.text}
+                    </li>
+                  ))}
                 </ul>
               </div>
             </Reveal>

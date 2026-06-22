@@ -7,7 +7,8 @@ import { CTASection } from "@/components/CTASection";
 import { GradientBlobs } from "@/components/GradientBlob";
 import { Reveal, Stagger } from "@/components/Reveal";
 import { Counter } from "@/components/Counter";
-import { listPortfolioProjectsPublic, getPageSection } from "@/lib/data";
+import { listPortfolioProjectsPublic, listPageSectionsPublic } from "@/lib/data";
+import { Highlighted } from "@/components/Highlight";
 
 export const metadata: Metadata = {
   title: "Portfolyo",
@@ -28,19 +29,23 @@ type FeaturedCaseBody = {
 type SummaryTestimonial = { quote: string; name: string; role: string };
 
 export default async function PortfolioPage() {
-  const [
-    projects,
-    statsSection,
-    featuredCaseSection,
-    sectorsSection,
-    summaryTestimonialsSection,
-  ] = await Promise.all([
+  const [projects, sections] = await Promise.all([
     listPortfolioProjectsPublic(),
-    getPageSection("portfolio", "stats"),
-    getPageSection("portfolio", "featured_case"),
-    getPageSection("portfolio", "sectors"),
-    getPageSection("portfolio", "testimonials_summary"),
+    listPageSectionsPublic("portfolio"),
   ]);
+
+  const sec = (key: string) => sections.find((s) => s.section_key === key) ?? null;
+
+  const heroSection = sec("hero");
+  const projectsHeader = sec("projects_header");
+  const inviteSection = sec("invite");
+  const inviteBody =
+    (inviteSection?.body as { highlight?: string; primaryLabel?: string; primaryHref?: string } | null) ?? {};
+
+  const statsSection = sec("stats");
+  const featuredCaseSection = sec("featured_case");
+  const sectorsSection = sec("sectors");
+  const summaryTestimonialsSection = sec("testimonials_summary");
 
   const stats = ((statsSection?.body as { items?: StatItem[] } | null)?.items ?? []) as StatItem[];
   const featuredCase = (featuredCaseSection?.body as FeaturedCaseBody | null) ?? {};
@@ -55,9 +60,12 @@ export default async function PortfolioPage() {
         <GradientBlobs />
         <div className="container-x">
           <SectionHeader
-            eyebrow="Çalışmalarımız"
-            title="Birlikte büyüttüğümüz markalar"
-            description="Her proje farklı bir hedefle yola çıktı; ama hepsinde ortak olan tek şey ölçülebilir sonuçlar. Aşağıda, paylaşma izni aldığımız çalışmalardan örnekler."
+            eyebrow={heroSection?.eyebrow || "Çalışmalarımız"}
+            title={heroSection?.title || "Birlikte büyüttüğümüz markalar"}
+            description={
+              heroSection?.description ||
+              "Her proje farklı bir hedefle yola çıktı; ama hepsinde ortak olan tek şey ölçülebilir sonuçlar. Aşağıda, paylaşma izni aldığımız çalışmalardan örnekler."
+            }
           />
         </div>
       </section>
@@ -179,9 +187,12 @@ export default async function PortfolioPage() {
       <section className="section">
         <div className="container-x">
           <SectionHeader
-            eyebrow="Tüm Projeler"
-            title="Kategorilere göre çalışmalarımız"
-            description="Filtrelerle ilgilendiğin kategoriye daralt. Her kartta projenin ölçüt aldığı temel KPI'yı paylaşıyoruz."
+            eyebrow={projectsHeader?.eyebrow || "Tüm Projeler"}
+            title={projectsHeader?.title || "Kategorilere göre çalışmalarımız"}
+            description={
+              projectsHeader?.description ||
+              "Filtrelerle ilgilendiğin kategoriye daralt. Her kartta projenin ölçüt aldığı temel KPI'yı paylaşıyoruz."
+            }
           />
           <div className="mt-10">
             <PortfolioGrid items={projects} />
@@ -251,14 +262,17 @@ export default async function PortfolioPage() {
             <div className="card flex flex-col items-center gap-6 p-10 text-center sm:p-14">
               <TrendingUp className="h-10 w-10 text-violet-300" />
               <h3 className="h-display text-3xl font-semibold sm:text-4xl">
-                Sıra <span className="gradient-text">sizin markanızda</span>
+                <Highlighted
+                  text={inviteSection?.title || "Sıra sizin markanızda"}
+                  highlight={inviteBody.highlight || "sizin markanızda"}
+                />
               </h3>
               <p className="max-w-2xl text-white/65">
-                Bu rakamlar, bizi seçen markaların başardıklarıdır. Bir sonraki vaka
-                çalışmasında sizin markanızı paylaşmak istiyoruz.
+                {inviteSection?.description ||
+                  "Bu rakamlar, bizi seçen markaların başardıklarıdır. Bir sonraki vaka çalışmasında sizin markanızı paylaşmak istiyoruz."}
               </p>
-              <Link href="/iletisim" className="btn-primary">
-                Görüşme Planla
+              <Link href={inviteBody.primaryHref || "/iletisim"} className="btn-primary">
+                {inviteBody.primaryLabel || "Görüşme Planla"}
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
             </div>

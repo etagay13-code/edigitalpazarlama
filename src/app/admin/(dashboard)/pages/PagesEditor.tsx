@@ -10,6 +10,7 @@ const pageOptions = [
   { value: "services", label: "Hizmetler" },
   { value: "portfolio", label: "Portfolyo" },
   { value: "contact", label: "İletişim" },
+  { value: "global", label: "Genel (tüm sayfalar)" },
 ];
 
 const fields: EditorField[] = [
@@ -58,6 +59,9 @@ export function PagesEditor({ items }: { items: EditorItem[] }) {
           return (
             <SectionBodyEditor
               name="body"
+              pageSlug={
+                typeof item.page_slug === "string" ? item.page_slug : null
+              }
               sectionKey={
                 typeof item.section_key === "string" ? item.section_key : null
               }

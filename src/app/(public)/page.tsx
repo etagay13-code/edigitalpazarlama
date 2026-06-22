@@ -3,8 +3,8 @@ import { ArrowUpRight } from "lucide-react";
 import { Hero } from "@/components/Hero";
 import { BrandStrip } from "@/components/BrandStrip";
 import { ServicesGrid } from "@/components/ServicesGrid";
-import { Stats } from "@/components/Stats";
-import { Process } from "@/components/Process";
+import { Stats, type StatItem } from "@/components/Stats";
+import { Process, type ProcessStep } from "@/components/Process";
 import { Testimonials } from "@/components/Testimonials";
 import { FAQ } from "@/components/FAQ";
 import { CTASection } from "@/components/CTASection";
@@ -14,14 +14,44 @@ import {
   listServicesPublic,
   listTestimonialsPublic,
   listFaqsPublic,
+  listPageSectionsPublic,
 } from "@/lib/data";
 
+type HeroBody = {
+  highlight?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+  note1?: string;
+  note2?: string;
+};
+
 export default async function HomePage() {
-  const [services, testimonials, faqs] = await Promise.all([
+  const [services, testimonials, faqs, sections] = await Promise.all([
     listServicesPublic(),
     listTestimonialsPublic(),
     listFaqsPublic("home"),
+    listPageSectionsPublic("home"),
   ]);
+
+  const sec = (key: string) => sections.find((s) => s.section_key === key) ?? null;
+
+  const heroSection = sec("hero");
+  const heroBody = (heroSection?.body as HeroBody | null) ?? {};
+
+  const brandSection = sec("brand_strip");
+  const brands = ((brandSection?.body as { items?: string[] } | null)?.items ?? []) as string[];
+
+  const servicesHeader = sec("services_header");
+  const servicesHeaderBody =
+    (servicesHeader?.body as { linkLabel?: string; linkHref?: string } | null) ?? {};
+
+  const statsSection = sec("stats");
+  const statItems = ((statsSection?.body as { items?: StatItem[] } | null)?.items ?? []) as StatItem[];
+
+  const workflowSection = sec("workflow");
+  const workflowSteps = ((workflowSection?.body as { items?: ProcessStep[] } | null)?.items ?? []) as ProcessStep[];
 
   const serviceItems = services.map((s) => ({
     slug: s.slug,
@@ -33,20 +63,34 @@ export default async function HomePage() {
 
   return (
     <>
-      <Hero />
-      <BrandStrip />
+      <Hero
+        eyebrow={heroSection?.eyebrow ?? undefined}
+        title={heroSection?.title ?? undefined}
+        description={heroSection?.description ?? undefined}
+        highlight={heroBody.highlight}
+        primaryLabel={heroBody.primaryLabel}
+        primaryHref={heroBody.primaryHref}
+        secondaryLabel={heroBody.secondaryLabel}
+        secondaryHref={heroBody.secondaryHref}
+        note1={heroBody.note1}
+        note2={heroBody.note2}
+      />
+      <BrandStrip label={brandSection?.title} brands={brands} />
 
       <section className="section">
         <div className="container-x">
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <SectionHeader
-              eyebrow="Hizmetler"
-              title="Markanızı büyütecek tüm uzmanlıklar"
-              description="Reklamdan SEO'ya, mobil uygulamadan SaaS geliştirmeye — markanız büyüdükçe ihtiyaç duyacağınız her hizmet kendi içinde uzmanlaşmış ekiplerle sunuluyor."
+              eyebrow={servicesHeader?.eyebrow || "Hizmetler"}
+              title={servicesHeader?.title || "Markanızı büyütecek tüm uzmanlıklar"}
+              description={
+                servicesHeader?.description ||
+                "Reklamdan SEO'ya, mobil uygulamadan SaaS geliştirmeye — markanız büyüdükçe ihtiyaç duyacağınız her hizmet kendi içinde uzmanlaşmış ekiplerle sunuluyor."
+              }
             />
             <Reveal delay={0.2}>
-              <Link href="/hizmetler" className="btn-ghost">
-                Tüm hizmetler
+              <Link href={servicesHeaderBody.linkHref || "/hizmetler"} className="btn-ghost">
+                {servicesHeaderBody.linkLabel || "Tüm hizmetler"}
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
             </Reveal>
@@ -57,8 +101,13 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <Stats />
-      <Process />
+      <Stats items={statItems} />
+      <Process
+        eyebrow={workflowSection?.eyebrow}
+        title={workflowSection?.title}
+        description={workflowSection?.description}
+        steps={workflowSteps}
+      />
       <Testimonials items={testimonials} />
       <FAQ items={faqs.map((f) => ({ question: f.question, answer: f.answer }))} />
       <CTASection />

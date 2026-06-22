@@ -4,31 +4,41 @@ import { useMemo, useState } from "react";
 import { Plus, Trash2, ChevronUp, ChevronDown } from "lucide-react";
 import { DynamicIcon } from "@/components/DynamicIcon";
 import {
-  COMPLEX_SECTIONS,
   ICON_NAMES,
-  STRING_LIST_SECTIONS,
   getSchema,
+  getObjectSchema,
+  isStringListSection,
+  isComplexSection,
   type ItemFieldDef,
+  type ObjectSchema,
 } from "@/lib/admin/section-schemas";
 
 type Body = unknown;
 
 type Props = {
   name: string; // hidden input name (e.g. "body")
+  pageSlug?: string | null;
   sectionKey: string | null | undefined;
   initialBody: Body;
 };
 
-// items array'i veya string array veya kompleks objeyi destekler.
-export function SectionBodyEditor({ name, sectionKey, initialBody }: Props) {
-  const schema = getSchema(sectionKey ?? undefined);
-  const isStringList = sectionKey ? STRING_LIST_SECTIONS.has(sectionKey) : false;
-  const isComplex = sectionKey ? COMPLEX_SECTIONS.has(sectionKey) : false;
+// Obje şeması / items array / string array / kompleks objeyi destekler.
+export function SectionBodyEditor({ name, pageSlug, sectionKey, initialBody }: Props) {
+  const page = pageSlug ?? undefined;
+  const key = sectionKey ?? undefined;
+
+  const objectSchema = getObjectSchema(page, key);
+  if (objectSchema) {
+    return <ObjectEditor name={name} schema={objectSchema} initialBody={initialBody} />;
+  }
+
+  const schema = getSchema(page, key);
+  const isStringList = isStringListSection(page, key);
 
   // Kompleks veya tanınmayan section_key → JSON textarea fallback
   if (!schema && !isStringList) {
     return (
-      <JsonFallback name={name} initialBody={initialBody} complex={isComplex} />
+      <JsonFallback name={name} initialBody={initialBody} complex={isComplexSection(key)} />
     );
   }
 
@@ -37,6 +47,55 @@ export function SectionBodyEditor({ name, sectionKey, initialBody }: Props) {
   }
 
   return <ItemsEditor name={name} schema={schema!} initialBody={initialBody} />;
+}
+
+// ----------------------------------------------------------------------------
+// Object editor (sabit alanlı section'lar — hero, cta, services_header)
+// ----------------------------------------------------------------------------
+function ObjectEditor({
+  name,
+  schema,
+  initialBody,
+}: {
+  name: string;
+  schema: ObjectSchema;
+  initialBody: Body;
+}) {
+  const initial = useMemo<Record<string, unknown>>(() => {
+    return initialBody && typeof initialBody === "object" && !Array.isArray(initialBody)
+      ? (initialBody as Record<string, unknown>)
+      : {};
+  }, [initialBody]);
+
+  const [values, setValues] = useState<Record<string, unknown>>(initial);
+
+  const setField = (k: string, v: unknown) =>
+    setValues((prev) => ({ ...prev, [k]: v }));
+
+  if (schema.fields.length === 0) {
+    return (
+      <p className="rounded-xl border border-dashed border-white/10 bg-white/[0.02] px-4 py-3 text-[11px] text-white/45">
+        {schema.note ?? "Bu bölüm sadece üstteki Başlık/Açıklama alanlarını kullanır."}
+      </p>
+    );
+  }
+
+  return (
+    <div className="space-y-3">
+      <input type="hidden" name={name} value={JSON.stringify(values)} readOnly />
+      <div className="grid gap-3 sm:grid-cols-2">
+        {schema.fields.map((f) => (
+          <ItemField
+            key={f.name}
+            field={f}
+            value={values[f.name]}
+            onChange={(v) => setField(f.name, v)}
+          />
+        ))}
+      </div>
+      {schema.note && <p className="text-[11px] text-white/40">{schema.note}</p>}
+    </div>
+  );
 }
 
 // ----------------------------------------------------------------------------

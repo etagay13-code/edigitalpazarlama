@@ -12,7 +12,7 @@ import {
   listIndustriesPublic,
   listTechPublic,
   listFaqsPublic,
-  getPageSection,
+  listPageSectionsPublic,
 } from "@/lib/data";
 import { getBrand } from "@/lib/theme";
 
@@ -26,24 +26,28 @@ type SynergyItem = { icon?: string; title: string; desc: string };
 type PricingItem = { title: string; range: string; desc: string; fits: string };
 
 export default async function ServicesPage() {
-  const [
-    services,
-    industries,
-    techStack,
-    brand,
-    synergySection,
-    pricingSection,
-    serviceFaqs,
-  ] = await Promise.all([
-    listServicesPublic(),
-    listIndustriesPublic(),
-    listTechPublic(),
-    getBrand(),
-    getPageSection("services", "synergy"),
-    getPageSection("services", "pricing"),
-    listFaqsPublic("services"),
-  ]);
+  const [services, industries, techStack, brand, sections, serviceFaqs] =
+    await Promise.all([
+      listServicesPublic(),
+      listIndustriesPublic(),
+      listTechPublic(),
+      getBrand(),
+      listPageSectionsPublic("services"),
+      listFaqsPublic("services"),
+    ]);
 
+  const sec = (key: string) => sections.find((s) => s.section_key === key) ?? null;
+
+  const heroSection = sec("hero");
+  const gridHeader = sec("grid_header");
+  const gridBody =
+    (gridHeader?.body as { intro?: string; linkLabel?: string; linkHref?: string } | null) ?? {};
+  const industriesHeader = sec("industries_header");
+  const techHeader = sec("tech_header");
+  const faqHeader = sec("faq_header");
+
+  const synergySection = sec("synergy");
+  const pricingSection = sec("pricing");
   const synergyBenefits = ((synergySection?.body as { items?: SynergyItem[] } | null)?.items ?? []) as SynergyItem[];
   const pricingModels = ((pricingSection?.body as { items?: PricingItem[] } | null)?.items ?? []) as PricingItem[];
   const serviceItems = services.map((s) => ({
@@ -59,9 +63,12 @@ export default async function ServicesPage() {
         <GradientBlobs />
         <div className="container-x">
           <SectionHeader
-            eyebrow="Hizmetler"
-            title="Markanız için bütünsel dijital büyüme"
-            description="Her hizmeti bağımsız bir ürün gibi düşünüyoruz; ama gücü bir araya geldiklerinde ortaya çıkıyor. Aşağıdaki hizmetlerin tümünü tek bir hesap planı, tek bir iletişim noktası altında alabilirsiniz."
+            eyebrow={heroSection?.eyebrow || "Hizmetler"}
+            title={heroSection?.title || "Markanız için bütünsel dijital büyüme"}
+            description={
+              heroSection?.description ||
+              "Her hizmeti bağımsız bir ürün gibi düşünüyoruz; ama gücü bir araya geldiklerinde ortaya çıkıyor. Aşağıdaki hizmetlerin tümünü tek bir hesap planı, tek bir iletişim noktası altında alabilirsiniz."
+            }
           />
         </div>
       </section>
@@ -71,13 +78,13 @@ export default async function ServicesPage() {
         <div className="container-x">
           <div className="mb-8 flex items-center justify-between">
             <p className="text-sm text-white/55">
-              Detayları görmek için bir hizmete tıkla
+              {gridBody.intro || "Detayları görmek için bir hizmete tıkla"}
             </p>
             <Link
-              href="/iletisim"
+              href={gridBody.linkHref || "/iletisim"}
               className="hidden text-sm font-medium text-white/70 transition hover:text-white sm:inline-flex sm:items-center sm:gap-1"
             >
-              Hangisi sana uygun?
+              {gridBody.linkLabel || "Hangisi sana uygun?"}
               <ArrowUpRight className="h-4 w-4" />
             </Link>
           </div>
@@ -117,9 +124,12 @@ export default async function ServicesPage() {
       <section className="section">
         <div className="container-x">
           <SectionHeader
-            eyebrow="Sektörler"
-            title="Çalıştığımız sektörler"
-            description="Her sektörün kendi dinamikleri, regülasyonları ve müşteri davranışları vardır. Geniş portföyümüz sayesinde sektörel öğrenmeleri yeni projelere hızlıca taşıyoruz."
+            eyebrow={industriesHeader?.eyebrow || "Sektörler"}
+            title={industriesHeader?.title || "Çalıştığımız sektörler"}
+            description={
+              industriesHeader?.description ||
+              "Her sektörün kendi dinamikleri, regülasyonları ve müşteri davranışları vardır. Geniş portföyümüz sayesinde sektörel öğrenmeleri yeni projelere hızlıca taşıyoruz."
+            }
           />
           <Stagger className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {industries.map((ind) => (
@@ -148,9 +158,12 @@ export default async function ServicesPage() {
       <section className="section">
         <div className="container-x">
           <SectionHeader
-            eyebrow="Teknoloji & Araçlar"
-            title="Birlikte çalıştığımız stack"
-            description="Sevilen bir araç değil, doğru araç kullanıyoruz. Aşağıdaki teknolojileri günlük olarak deneyimliyor, müşterilerimize ekstra eğitim gerektirmeden devir alıyoruz."
+            eyebrow={techHeader?.eyebrow || "Teknoloji & Araçlar"}
+            title={techHeader?.title || "Birlikte çalıştığımız stack"}
+            description={
+              techHeader?.description ||
+              "Sevilen bir araç değil, doğru araç kullanıyoruz. Aşağıdaki teknolojileri günlük olarak deneyimliyor, müşterilerimize ekstra eğitim gerektirmeden devir alıyoruz."
+            }
           />
           <Reveal>
             <div className="mt-12 flex flex-wrap gap-2">
@@ -214,9 +227,12 @@ export default async function ServicesPage() {
         <section className="section">
           <div className="container-x">
             <SectionHeader
-              eyebrow="Sık Sorulanlar"
-              title="Hizmetlere özel sorular"
-              description="Aklında olup da burada cevabını bulamadığın bir konu varsa, iletişim sayfasından bize doğrudan sorabilirsin."
+              eyebrow={faqHeader?.eyebrow || "Sık Sorulanlar"}
+              title={faqHeader?.title || "Hizmetlere özel sorular"}
+              description={
+                faqHeader?.description ||
+                "Aklında olup da burada cevabını bulamadığın bir konu varsa, iletişim sayfasından bize doğrudan sorabilirsin."
+              }
             />
             <div className="mx-auto mt-10 max-w-3xl divide-y divide-white/[0.06] overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02]">
               {serviceFaqs.map((f) => (
