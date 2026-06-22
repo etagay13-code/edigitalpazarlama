@@ -1,0 +1,2058 @@
+{
+  "services": [
+    {
+      "slug": "360-dijital-pazarlama",
+      "title": "360° Digital Marketing",
+      "short": "Strategy, production and performance under one roof.",
+      "description": "We manage your brand's digital presence end to end. From marketing planning to creative production, from media buying to data-driven optimization — one team, one account plan.",
+      "long_description": "Most brands switch agencies as they grow — they realize they need an extra layer while scaling. We close that gap from the start. From social media to SEO, from your website to ad management, every channel is part of a single strategy.",
+      "hero": "Grow with a single partner, not multiple agencies. 360° marketing unites your brand's entire digital presence under one vision; it breaks down silos and multiplies your speed.",
+      "approach": "Marketing is a holistic game: an improvement made in one channel affects the customer returning from another. We model your brand as a single 'nervous system'. The ad team, the SEO team and the social media team all work from the same strategy document, the same KPI set and the same creative library.",
+      "bullets": [
+        "Brand positioning and message architecture",
+        "Multi-channel marketing plan (paid + organic + CRM)",
+        "Monthly performance report and live dashboard",
+        "360° coordination with a single account manager",
+        "Channel-specific creative packages",
+        "Attribution model setup"
+      ],
+      "deliverables": [
+        "90-day strategy document",
+        "Channel-based KPI set",
+        "Monthly creative package",
+        "Looker Studio dashboard",
+        "Monthly performance presentation"
+      ],
+      "tools": [
+        "GA4",
+        "Meta Business Suite",
+        "Google Ads",
+        "Looker Studio",
+        "Notion",
+        "Figma",
+        "Slack"
+      ],
+      "outcomes": [
+        "Single account manager",
+        "Single strategy document",
+        "+30% average efficiency gain",
+        "Transparent monthly report"
+      ],
+      "ideal_for": [
+        "Monthly ad budget ₺150K+",
+        "Those who feel lost across multiple channels",
+        "Teams tired of juggling multiple agencies"
+      ]
+    },
+    {
+      "slug": "reklam-yonetimi",
+      "title": "Ad Management",
+      "short": "Performance-focused media buying on Google, Meta and TikTok.",
+      "description": "We build ad campaigns that deliver maximum return on your budget, continuously tested and optimized. We turn every click into a purchase and every impression into brand value.",
+      "long_description": "Advertising sits at the intersection of science and art. Finding the right audience is data; delivering the right message to them is creativity.",
+      "hero": "Ad management that doggedly brings your budget back rather than just spending it. Data-driven, creative-powered performance campaigns on Google, Meta and TikTok.",
+      "approach": "A great ad account is where three things meet: the right audience, the right creative, the right measurement. If we don't see a meaningful pattern within 14 days, we don't hesitate to change the strategy.",
+      "bullets": [
+        "Google Ads (Search, PMax, YouTube, Display)",
+        "Meta Ads (Facebook & Instagram funnel)",
+        "TikTok Ads and creator partnerships",
+        "Conversion tracking, GA4 and attribution setup",
+        "Weekly creative iteration",
+        "Server-side conversion API setup"
+      ],
+      "deliverables": [
+        "Ad funnel architecture",
+        "Weekly creative iteration",
+        "Server-side conversion API setup",
+        "Budget plan and forecasting models",
+        "Monthly performance report"
+      ],
+      "tools": [
+        "Google Ads",
+        "Meta Ads Manager",
+        "TikTok Ads Manager",
+        "Triple Whale",
+        "Hyros",
+        "GA4"
+      ],
+      "outcomes": [
+        "ROAS 4x+",
+        "CPA -35% average",
+        "3-5 new creatives weekly",
+        "Server-side tracking"
+      ],
+      "ideal_for": [
+        "E-commerce brands",
+        "Lead generation business models",
+        "Monthly ad budget ₺75K+"
+      ]
+    },
+    {
+      "slug": "seo",
+      "title": "SEO",
+      "short": "Sustainable traffic through technical SEO, content and link building.",
+      "description": "Long-term organic growth that reduces your dependence on ads. From site architecture to Core Web Vitals, from topic clusters to international SEO, we see the big picture.",
+      "long_description": "There's no shortcut in SEO, but there are plenty of wrong paths. We work with clear goals.",
+      "hero": "Traffic that keeps coming even when you turn off the ads. Sustainable organic growth through technical SEO, content architecture built around user intent and genuine authority links.",
+      "approach": "SEO is a marathon, not a sprint; but well-structured marathons advance at a predictable pace. We produce content that follows EEAT principles, is resilient against AI, and builds real authority.",
+      "bullets": [
+        "Technical audit and on-site optimization",
+        "Keyword research and content calendar",
+        "EEAT-focused content production (TR & EN)",
+        "Authority-building link building",
+        "Core Web Vitals optimization",
+        "Internal linking and cluster architecture"
+      ],
+      "deliverables": [
+        "120-page technical audit report",
+        "8-12 SEO content pieces per month",
+        "6-15 authority links per month",
+        "Monthly ranking report",
+        "Content cluster architecture"
+      ],
+      "tools": [
+        "Ahrefs",
+        "Semrush",
+        "Screaming Frog",
+        "Search Console",
+        "Surfer SEO",
+        "Sitebulb"
+      ],
+      "outcomes": [
+        "Organic traffic 3-5x",
+        "50+ keywords in top 3",
+        "100+ content pieces yearly",
+        "Sustainable growth"
+      ],
+      "ideal_for": [
+        "B2B SaaS",
+        "Content-dependent e-commerce",
+        "Local service brands",
+        "Health & finance (YMYL)"
+      ]
+    },
+    {
+      "slug": "mobil-uygulama-gelistirme",
+      "title": "Mobile App Development",
+      "short": "High-performance apps for iOS and Android.",
+      "description": "From idea to launch; we build scalable, store-ready mobile apps with React Native and native technologies. From design to analytics setup, all in one place.",
+      "long_description": null,
+      "hero": "Scalable mobile apps that get store approval and that users love. We turn your idea into a live product within 8-16 weeks.",
+      "approach": "'Building' a mobile app is easy; making it stick in the store is hard. We bake App Store approval processes, push notification strategy, onboarding optimization and ASO into the architecture from day one.",
+      "bullets": [
+        "UX research and prototyping",
+        "React Native, Swift, Kotlin",
+        "Push notifications & in-app analytics",
+        "App Store and Google Play release management",
+        "ASO and organic growth setup",
+        "Backend & API integrations"
+      ],
+      "deliverables": [
+        "High-fidelity prototype in Figma",
+        "iOS and Android binaries",
+        "Store listing creatives",
+        "Crash & analytics dashboard setup",
+        "30 days of post-launch maintenance"
+      ],
+      "tools": [
+        "React Native",
+        "Swift",
+        "Kotlin",
+        "Firebase",
+        "RevenueCat",
+        "Sentry",
+        "Mixpanel"
+      ],
+      "outcomes": [
+        "100% store approval",
+        "Typically 8-16 weeks",
+        "Crash-free rate 99.5%+",
+        "Analytics from day one"
+      ],
+      "ideal_for": [
+        "Startup MVPs",
+        "Existing brands expanding to mobile",
+        "Digital products in the service sector"
+      ]
+    },
+    {
+      "slug": "saas-proje-gelistirme",
+      "title": "SaaS Product Development",
+      "short": "We turn your idea into a scalable product.",
+      "description": "From MVP to enterprise architecture, from subscription infrastructure to AI integrations, we build modern SaaS products. Expertise in Next.js, Node, Postgres and cloud-based infrastructure.",
+      "long_description": null,
+      "hero": "Not just code, but a scalable business model. Modern SaaS products from MVP to enterprise, from subscription infrastructure to AI integrations.",
+      "approach": "For SaaS startups, 'how fast do you write code' is the wrong question. The right question is: 'how fast can we find product-market fit?'. Stripe integration from day one, multi-tenant architecture, OpenAI/Anthropic integrations and growth-ready infrastructure are all part of the standard package.",
+      "bullets": [
+        "Product strategy & PMF consulting",
+        "Next.js + Node.js + PostgreSQL stack",
+        "Subscriptions and billing with Stripe",
+        "OpenAI / Anthropic AI integrations",
+        "Multi-tenant architecture",
+        "Auth, role management and admin panel"
+      ],
+      "deliverables": [
+        "Product architecture document",
+        "Sprint-based releases",
+        "Stripe + analytics + auth setup",
+        "Handover package for the product team",
+        "Automated deploy pipeline"
+      ],
+      "tools": [
+        "Next.js",
+        "Node.js",
+        "PostgreSQL",
+        "Stripe",
+        "Vercel",
+        "Supabase",
+        "OpenAI",
+        "Anthropic"
+      ],
+      "outcomes": [
+        "MVP in 8-12 weeks",
+        "Stripe from day one",
+        "Multi-tenant ready",
+        "AI-ready infrastructure"
+      ],
+      "ideal_for": [
+        "Early-stage SaaS startups",
+        "Existing brands launching a SaaS product",
+        "Companies wanting a pilot experience"
+      ]
+    },
+    {
+      "slug": "sosyal-medya-yonetimi",
+      "title": "Social Media Management",
+      "short": "A consistent brand voice, measurable community growth.",
+      "description": "We don't just produce content; we build communities. We keep your brand alive in the digital world through trend tracking, format testing and active dialogue with your customers.",
+      "long_description": null,
+      "hero": "Not follower count, but depth of engagement. Trend-aware social media management with a consistent brand voice.",
+      "approach": "Social media is not a broadcast but a dialogue channel. The team producing the content and the team talking to the community are the same people — because the best content is born from the questions followers ask.",
+      "bullets": [
+        "Content strategy and monthly calendar",
+        "Reels, TikTok and YouTube Shorts production",
+        "Community management and DM follow-up",
+        "Influencer and UGC collaborations",
+        "Trend and format testing",
+        "Monthly performance dashboard"
+      ],
+      "deliverables": [
+        "18-24 video content pieces per month",
+        "Community management (business hours)",
+        "2-4 influencer collaborations per month",
+        "Monthly performance dashboard",
+        "Trend report newsletter"
+      ],
+      "tools": [
+        "Later",
+        "Notion",
+        "CapCut Pro",
+        "Premiere Pro",
+        "Brand24",
+        "Sprout Social"
+      ],
+      "outcomes": [
+        "18-24 videos per month",
+        "First response < 30 min",
+        "Influencer collaborations",
+        "Format A/B testing"
+      ],
+      "ideal_for": [
+        "D2C brands",
+        "Service sector",
+        "Education & wellness brands"
+      ]
+    },
+    {
+      "slug": "web-tasarim-gelistirme",
+      "title": "Web Design & Development",
+      "short": "Conversion-focused, fast and premium-looking websites.",
+      "description": "Not just aesthetics; corporate websites and landing pages designed for page speed, SEO and conversion rate.",
+      "long_description": null,
+      "hero": "Page speed 95+, high conversion rate, flawless on mobile. We rebuild your brand's digital office with Next.js.",
+      "approach": "A website is a company's digital office. We think of websites not as a 'design' problem but as a 'salesperson': every section must do a job of persuasion, every CTA must lead to an action.",
+      "bullets": [
+        "Custom UI/UX design in Figma",
+        "Next.js & headless CMS (Sanity/Strapi)",
+        "Lighthouse 95+ performance target",
+        "A/B testing infrastructure and CRO optimization",
+        "Multilingual setup",
+        "Analytics & heatmap setup"
+      ],
+      "deliverables": [
+        "Figma design system",
+        "Production-ready Next.js codebase",
+        "CMS training",
+        "Monthly CRO report",
+        "Analytics & heatmap setup"
+      ],
+      "tools": [
+        "Next.js",
+        "Figma",
+        "Sanity",
+        "Strapi",
+        "Vercel",
+        "Cloudflare",
+        "PostHog"
+      ],
+      "outcomes": [
+        "Lighthouse 95+",
+        "Typically 4-8 weeks",
+        "CMS-ready",
+        "Conversion-focused"
+      ],
+      "ideal_for": [
+        "Corporate redesign",
+        "Pre-launch",
+        "Those needing a landing page library"
+      ]
+    },
+    {
+      "slug": "icerik-marka-stratejisi",
+      "title": "Content & Brand Strategy",
+      "short": "A memorable brand identity and a consistent story.",
+      "description": "From logo to tone-of-voice guide, from launch campaign to annual content vision, we design your brand's digital DNA.",
+      "long_description": null,
+      "hero": "We design what your customers feel when they recognize you. Logo, tone, message, campaign — all the visual and verbal identity that makes a brand memorable.",
+      "approach": "A brand is everything the customer remembers before even hearing your brand name. We document this piece by piece and turn it into a scalable brand book.",
+      "bullets": [
+        "Brand identity & tone guide",
+        "Positioning and story architecture",
+        "Launch and PR campaigns",
+        "Annual content vision and calendar",
+        "Naming and manifesto",
+        "Campaign concept development"
+      ],
+      "deliverables": [
+        "70+ page brand book",
+        "Visual and verbal tone guide",
+        "Launch campaign plan",
+        "Annual content themes",
+        "Naming proposals"
+      ],
+      "tools": [
+        "Figma",
+        "Notion",
+        "Adobe Suite",
+        "Brandpad",
+        "Frontify"
+      ],
+      "outcomes": [
+        "Brand book",
+        "Launch campaign",
+        "Consistent tone of voice",
+        "Annual content vision"
+      ],
+      "ideal_for": [
+        "Repositioning brands",
+        "Newly founded startups",
+        "Those tired of brand inconsistency"
+      ]
+    }
+  ],
+  "service_process_steps": [
+    {
+      "slug": "360-dijital-pazarlama",
+      "step_number": 1,
+      "title": "Discovery & Audit",
+      "description": "We deeply analyze all your existing channels, accounts and data. First 2 weeks."
+    },
+    {
+      "slug": "360-dijital-pazarlama",
+      "step_number": 2,
+      "title": "Strategy",
+      "description": "The 90-day roadmap, channel mix and KPI targets are defined. Week 3."
+    },
+    {
+      "slug": "360-dijital-pazarlama",
+      "step_number": 3,
+      "title": "Production",
+      "description": "Creative, content and technical setups go live in parallel. Weeks 4-6."
+    },
+    {
+      "slug": "360-dijital-pazarlama",
+      "step_number": 4,
+      "title": "Optimization",
+      "description": "Weekly test-learn-apply cycle. Ongoing."
+    },
+    {
+      "slug": "360-dijital-pazarlama",
+      "step_number": 5,
+      "title": "Reporting",
+      "description": "Monthly detailed presentation + live dashboard. Transparent numbers."
+    },
+    {
+      "slug": "icerik-marka-stratejisi",
+      "step_number": 1,
+      "title": "Brand Inquiry",
+      "description": "Brand perception research from the inside and outside."
+    },
+    {
+      "slug": "icerik-marka-stratejisi",
+      "step_number": 2,
+      "title": "Positioning",
+      "description": "Your place in the market, your story and your manifesto."
+    },
+    {
+      "slug": "icerik-marka-stratejisi",
+      "step_number": 3,
+      "title": "Identity Design",
+      "description": "Logo, color, typography and visual system."
+    },
+    {
+      "slug": "icerik-marka-stratejisi",
+      "step_number": 4,
+      "title": "Brand Book",
+      "description": "A living 70+ page guide."
+    },
+    {
+      "slug": "icerik-marka-stratejisi",
+      "step_number": 5,
+      "title": "Launch",
+      "description": "Going to market with a content and campaign plan."
+    },
+    {
+      "slug": "mobil-uygulama-gelistirme",
+      "step_number": 1,
+      "title": "Discovery & UX",
+      "description": "Target user, jobs-to-be-done and flow mapping."
+    },
+    {
+      "slug": "mobil-uygulama-gelistirme",
+      "step_number": 2,
+      "title": "Prototype",
+      "description": "Interactive prototype in Figma, user testing."
+    },
+    {
+      "slug": "mobil-uygulama-gelistirme",
+      "step_number": 3,
+      "title": "Development",
+      "description": "A near-launch product through 2-week sprints."
+    },
+    {
+      "slug": "mobil-uygulama-gelistirme",
+      "step_number": 4,
+      "title": "Beta",
+      "description": "TestFlight and internal testing, final adjustments."
+    },
+    {
+      "slug": "mobil-uygulama-gelistirme",
+      "step_number": 5,
+      "title": "Launch & ASO",
+      "description": "Store approval, listing optimization and launch."
+    },
+    {
+      "slug": "reklam-yonetimi",
+      "step_number": 1,
+      "title": "Account Audit",
+      "description": "Audit of existing accounts, creatives and conversion tracking. Leak points are identified."
+    },
+    {
+      "slug": "reklam-yonetimi",
+      "step_number": 2,
+      "title": "Test Plan",
+      "description": "A 30-day test plan for hypotheses, audiences and creative concepts."
+    },
+    {
+      "slug": "reklam-yonetimi",
+      "step_number": 3,
+      "title": "Launch",
+      "description": "Funnels are built, creatives are produced, campaigns go live."
+    },
+    {
+      "slug": "reklam-yonetimi",
+      "step_number": 4,
+      "title": "Optimization",
+      "description": "Daily budget management, weekly creative refresh, scaling."
+    },
+    {
+      "slug": "reklam-yonetimi",
+      "step_number": 5,
+      "title": "Scale",
+      "description": "Winning combinations are scaled with budget increases."
+    },
+    {
+      "slug": "saas-proje-gelistirme",
+      "step_number": 1,
+      "title": "Discovery",
+      "description": "Business model, user segments and technical requirements."
+    },
+    {
+      "slug": "saas-proje-gelistirme",
+      "step_number": 2,
+      "title": "Architecture",
+      "description": "Data model, multi-tenancy, scalability and security baseline."
+    },
+    {
+      "slug": "saas-proje-gelistirme",
+      "step_number": 3,
+      "title": "Sprint Development",
+      "description": "Iterative releases through 2-week sprints."
+    },
+    {
+      "slug": "saas-proje-gelistirme",
+      "step_number": 4,
+      "title": "Beta & Iteration",
+      "description": "Early users, product analytics, rapid iteration."
+    },
+    {
+      "slug": "saas-proje-gelistirme",
+      "step_number": 5,
+      "title": "Launch & Handover",
+      "description": "Production launch and handover package for the product team."
+    },
+    {
+      "slug": "seo",
+      "step_number": 1,
+      "title": "Technical Audit",
+      "description": "Comprehensive audit of site architecture, indexing, speed and Core Web Vitals."
+    },
+    {
+      "slug": "seo",
+      "step_number": 2,
+      "title": "Keywords & Strategy",
+      "description": "Intent-focused clustering, competitor analysis and content calendar."
+    },
+    {
+      "slug": "seo",
+      "step_number": 3,
+      "title": "Technical Improvement",
+      "description": "On-page SEO, schema, internal linking and technical fixes."
+    },
+    {
+      "slug": "seo",
+      "step_number": 4,
+      "title": "Content & Links",
+      "description": "Monthly content + digital PR and authority link building."
+    },
+    {
+      "slug": "seo",
+      "step_number": 5,
+      "title": "Monitoring & Iteration",
+      "description": "Monthly rank tracking, content updates and expansion."
+    },
+    {
+      "slug": "sosyal-medya-yonetimi",
+      "step_number": 1,
+      "title": "Voice & Strategy",
+      "description": "Brand voice, format mix and monthly theme planning."
+    },
+    {
+      "slug": "sosyal-medya-yonetimi",
+      "step_number": 2,
+      "title": "Content Production",
+      "description": "Shooting, editing and publishing plan."
+    },
+    {
+      "slug": "sosyal-medya-yonetimi",
+      "step_number": 3,
+      "title": "Publishing & Engagement",
+      "description": "Optimal time scheduling, fast comment and DM management."
+    },
+    {
+      "slug": "sosyal-medya-yonetimi",
+      "step_number": 4,
+      "title": "Influencer Collaboration",
+      "description": "Brief, production and reporting with the right creators."
+    },
+    {
+      "slug": "sosyal-medya-yonetimi",
+      "step_number": 5,
+      "title": "Optimization",
+      "description": "Trend testing, scaling the winning formats."
+    },
+    {
+      "slug": "web-tasarim-gelistirme",
+      "step_number": 1,
+      "title": "Discovery & Wireframe",
+      "description": "Target audience, page architecture and wireframe."
+    },
+    {
+      "slug": "web-tasarim-gelistirme",
+      "step_number": 2,
+      "title": "Design",
+      "description": "High-fidelity UI in Figma, design system."
+    },
+    {
+      "slug": "web-tasarim-gelistirme",
+      "step_number": 3,
+      "title": "Development",
+      "description": "Next.js + CMS integration, performance optimization."
+    },
+    {
+      "slug": "web-tasarim-gelistirme",
+      "step_number": 4,
+      "title": "QA & Launch",
+      "description": "Cross-browser tests, accessibility and going live."
+    },
+    {
+      "slug": "web-tasarim-gelistirme",
+      "step_number": 5,
+      "title": "Iteration",
+      "description": "Heatmap, A/B testing and monthly CRO improvements."
+    }
+  ],
+  "service_faqs": [
+    {
+      "slug": "360-dijital-pazarlama",
+      "question": "What is the transition process from my current agency like?",
+      "answer": "First, a 2-3 week parallel handover process. We communicate with your current agency and seamlessly take over the accounts, data and ongoing campaigns. Zero disruption.",
+      "sort_order": 1
+    },
+    {
+      "slug": "360-dijital-pazarlama",
+      "question": "Can I still get this service if I have an in-house marketing team?",
+      "answer": "Of course. Most of our clients prefer the model where we work as an extension of their in-house marketing team.",
+      "sort_order": 2
+    },
+    {
+      "slug": "360-dijital-pazarlama",
+      "question": "How many people will work on my account?",
+      "answer": "Typically 1 account manager + 3-5 specialists (ads, SEO, creative, social media, etc.) actively work with your team.",
+      "sort_order": 3
+    },
+    {
+      "slug": "icerik-marka-stratejisi",
+      "question": "Is logo design included?",
+      "answer": "Yes. The logo and the entire color palette are included. Refreshing an existing logo is also possible.",
+      "sort_order": 1
+    },
+    {
+      "slug": "icerik-marka-stratejisi",
+      "question": "What does the brand book look like?",
+      "answer": "Between 70-120 pages, a guide that is both written and visual.",
+      "sort_order": 2
+    },
+    {
+      "slug": "icerik-marka-stratejisi",
+      "question": "How long does repositioning take?",
+      "answer": "Typically 8-12 weeks. The research phase can take longer; creation and implementation are faster.",
+      "sort_order": 3
+    },
+    {
+      "slug": "mobil-uygulama-gelistirme",
+      "question": "React Native or native?",
+      "answer": "In most cases React Native; development time is halved, and a single codebase ships to both platforms.",
+      "sort_order": 1
+    },
+    {
+      "slug": "mobil-uygulama-gelistirme",
+      "question": "Will the store reject it?",
+      "answer": "Every app we've managed so far has been approved. If a rejection comes, the fixes until approval are covered by the retainer.",
+      "sort_order": 2
+    },
+    {
+      "slug": "mobil-uygulama-gelistirme",
+      "question": "What about ongoing maintenance afterwards?",
+      "answer": "30 days of post-launch support is included. After that, a monthly maintenance/feature retainer is defined.",
+      "sort_order": 3
+    },
+    {
+      "slug": "reklam-yonetimi",
+      "question": "How will you take over my existing ad accounts?",
+      "answer": "We gain account access via Google and Meta Business Manager. Account ownership remains with you.",
+      "sort_order": 1
+    },
+    {
+      "slug": "reklam-yonetimi",
+      "question": "Can I expect results in the first month?",
+      "answer": "The first 30 days are a learning period. Meaningful performance improvement typically begins between 45-90 days.",
+      "sort_order": 2
+    },
+    {
+      "slug": "reklam-yonetimi",
+      "question": "Is creative production included?",
+      "answer": "Yes. A set number of static images and video creatives per month is included in the retainer.",
+      "sort_order": 3
+    },
+    {
+      "slug": "reklam-yonetimi",
+      "question": "How is the ad budget managed?",
+      "answer": "The ad budget is spent directly from your own ad accounts — we only manage it. Full transparency.",
+      "sort_order": 4
+    },
+    {
+      "slug": "saas-proje-gelistirme",
+      "question": "Who owns the source code?",
+      "answer": "Entirely you. We work through your GitHub organization, and intellectual property is yours from day one.",
+      "sort_order": 1
+    },
+    {
+      "slug": "saas-proje-gelistirme",
+      "question": "Can it be handed over to our own developer team?",
+      "answer": "Yes, this is the standard process. The handover package includes documentation, onboarding and 4 weeks of parallel support.",
+      "sort_order": 2
+    },
+    {
+      "slug": "saas-proje-gelistirme",
+      "question": "How are AI features integrated?",
+      "answer": "We embed LLMs into product flows, primarily the OpenAI and Anthropic APIs.",
+      "sort_order": 3
+    },
+    {
+      "slug": "seo",
+      "question": "When will I see the first results?",
+      "answer": "The impact of technical improvements starts to appear in Search Console within 4-8 weeks. Content rankings settle within 3-6 months, and authority keywords within 6-12 months.",
+      "sort_order": 1
+    },
+    {
+      "slug": "seo",
+      "question": "Do you write AI content?",
+      "answer": "Not entirely. We leverage AI, but every published piece is rewritten and verified by a human.",
+      "sort_order": 2
+    },
+    {
+      "slug": "seo",
+      "question": "Isn't link building risky?",
+      "answer": "We stay away from black-hat techniques. We only do digital PR, guest authorship and content amplification.",
+      "sort_order": 3
+    },
+    {
+      "slug": "seo",
+      "question": "Do you optimize my existing content?",
+      "answer": "Yes, this process called content refresh is one of the fastest ways to gain wins.",
+      "sort_order": 4
+    },
+    {
+      "slug": "sosyal-medya-yonetimi",
+      "question": "Who does the filming?",
+      "answer": "Depending on the nature of the content: shooting in our own studio, collaborating with UGC creators, or editing raw content filmed on the brand's side.",
+      "sort_order": 1
+    },
+    {
+      "slug": "sosyal-medya-yonetimi",
+      "question": "Which platforms do you work on?",
+      "answer": "Priority: Instagram, TikTok, YouTube Shorts. LinkedIn, X and Threads are added as needed.",
+      "sort_order": 2
+    },
+    {
+      "slug": "sosyal-medya-yonetimi",
+      "question": "What are the community management hours?",
+      "answer": "Active management weekdays 09:00-19:00. We have a 24/7 on-call system for emergencies.",
+      "sort_order": 3
+    },
+    {
+      "slug": "web-tasarim-gelistirme",
+      "question": "Can you redesign my existing site?",
+      "answer": "Yes. We redesign while preserving the existing site's SEO value — including 301 redirects and content migration.",
+      "sort_order": 1
+    },
+    {
+      "slug": "web-tasarim-gelistirme",
+      "question": "Which CMS do you recommend?",
+      "answer": "If content volume is high, Sanity; for a more classic admin panel, Strapi.",
+      "sort_order": 2
+    },
+    {
+      "slug": "web-tasarim-gelistirme",
+      "question": "Where is the hosting?",
+      "answer": "We recommend Vercel or Cloudflare — zero config, zero downtime, global edge network.",
+      "sort_order": 3
+    }
+  ],
+  "portfolio_projects": [
+    {
+      "slug": "lumen-cosmetics-roas",
+      "title": "Lumen Cosmetics — ROAS 4.8x",
+      "client": "Lumen Cosmetics",
+      "description": "With funnels restructured on Meta and Google and creative testing, we grew sales 3.4x in 6 months.",
+      "metric": "ROAS 4.8x",
+      "tags": [
+        "Meta Ads",
+        "Google Ads",
+        "CRO"
+      ]
+    },
+    {
+      "slug": "tessera-saas-mvp",
+      "title": "Tessera — MVP in 8 Weeks",
+      "client": "Tessera",
+      "description": "From idea stage to live; a ready SaaS product with Stripe subscriptions, AI summarization and team collaboration features.",
+      "metric": "8 weeks",
+      "tags": [
+        "Next.js",
+        "Stripe",
+        "OpenAI"
+      ]
+    },
+    {
+      "slug": "nordel-home-seo",
+      "title": "Nordel Home — 4.6x in Organic Traffic",
+      "client": "Nordel Home",
+      "description": "With technical SEO, topic clusters and link building, we grew organic traffic 4.6x in 9 months.",
+      "metric": "+460%",
+      "tags": [
+        "Technical SEO",
+        "Content",
+        "Linkbuilding"
+      ]
+    },
+    {
+      "slug": "voltra-mobility-app",
+      "title": "Voltra Mobility — Mobile App",
+      "client": "Voltra",
+      "description": "iOS & Android app for an electric scooter operator. 50K+ downloads in the first 90 days.",
+      "metric": "50K+ downloads",
+      "tags": [
+        "React Native",
+        "Maps SDK",
+        "Stripe"
+      ]
+    },
+    {
+      "slug": "vera-moda-tiktok",
+      "title": "Vera Moda — TikTok Growth",
+      "client": "Vera Moda",
+      "description": "With a TikTok strategy built from scratch and influencer collaborations, 180K organic followers in 3 months.",
+      "metric": "+180K followers",
+      "tags": [
+        "TikTok",
+        "UGC",
+        "Influencer"
+      ]
+    },
+    {
+      "slug": "greenly-foods-web",
+      "title": "Greenly Foods — E-commerce Redesign",
+      "client": "Greenly Foods",
+      "description": "With a new shopping experience built on Shopify Plus, the conversion rate increased by 42%.",
+      "metric": "Conversion +42%",
+      "tags": [
+        "Shopify Plus",
+        "CRO",
+        "UX"
+      ]
+    },
+    {
+      "slug": "kavros-fintech-app",
+      "title": "Kavros — Fintech Mobile App",
+      "client": "Kavros",
+      "description": "A portfolio tracking app for individual investors. Top 10 in the App Store Turkey finance category.",
+      "metric": "Top 10",
+      "tags": [
+        "Swift",
+        "Kotlin",
+        "GraphQL"
+      ]
+    },
+    {
+      "slug": "altan-clinic-ads",
+      "title": "Altan Clinic — Lead Generation",
+      "client": "Altan Clinic",
+      "description": "CPL reduced by 58% through multilingual campaigns focused on health tourism.",
+      "metric": "CPL -58%",
+      "tags": [
+        "Google Ads",
+        "Meta",
+        "Landing Page"
+      ]
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Selin Aksoy",
+      "role": "Marketing Director",
+      "company": "Lumen Cosmetics",
+      "quote": "In the 6 months we worked with True EDigital Marketing, our ROAS rose from 2.1 to 4.8. The most impressive thing wasn't the numbers but the team dynamic — they own our brand as much as we do.",
+      "sort_order": 1
+    },
+    {
+      "name": "Kerem Doğan",
+      "role": "Founder",
+      "company": "Tessera SaaS",
+      "quote": "They launched our MVP in 8 weeks. They didn't just write code; from product strategy to onboarding flow, they acted like a true technology partner.",
+      "sort_order": 2
+    },
+    {
+      "name": "Beyza Yılmaz",
+      "role": "E-commerce Manager",
+      "company": "Nordel Home",
+      "quote": "The SEO team truly made a difference. Within 9 months our organic traffic grew 4.6x, and we rank #1 for our brand keywords.",
+      "sort_order": 3
+    },
+    {
+      "name": "Mert Çelik",
+      "role": "CEO",
+      "company": "Voltra Mobility",
+      "quote": "The launch process for our mobile app could have been stressful, but True EDigital Marketing managed the entire process. From App Store approval to the first 50K downloads, they were by our side.",
+      "sort_order": 4
+    },
+    {
+      "name": "Asya Pamir",
+      "role": "Brand Manager",
+      "company": "Vera Moda",
+      "quote": "They built our TikTok and Reels strategy from scratch. We gained 180K organic followers in 3 months.",
+      "sort_order": 5
+    },
+    {
+      "name": "Onur Şahin",
+      "role": "Co-founder",
+      "company": "Greenly Foods",
+      "quote": "Transparent reporting, fast communication and proper expectation management. We found everything we were looking for when switching agencies in one place.",
+      "sort_order": 6
+    }
+  ],
+  "team_members": [
+    {
+      "name": "Emre Tagay",
+      "role": "Founder & Strategy Director",
+      "bio": "10+ years of digital marketing experience. He is directly involved in every new project and personally leads the first strategy meeting.",
+      "sort_order": 1
+    },
+    {
+      "name": "Deniz Aydın",
+      "role": "Performance Marketing Lead",
+      "bio": "Expertise in Google Ads and Meta Ads. Manages a monthly budget of 5M TL+. Certified Google Premier Partner.",
+      "sort_order": 2
+    },
+    {
+      "name": "Mehmet Kaya",
+      "role": "Technology Lead",
+      "bio": "10 years of full-stack development experience. Builds scalable products with Next.js and React Native.",
+      "sort_order": 3
+    },
+    {
+      "name": "Zeynep Şahin",
+      "role": "Creative Director",
+      "bio": "8 years in the agency world. Manages brands' visual identity, tone guide and campaign creative.",
+      "sort_order": 4
+    },
+    {
+      "name": "Burak Yıldız",
+      "role": "SEO and Content Lead",
+      "bio": "Technical SEO and link building specialist. Designs content strategies faithful to EEAT principles.",
+      "sort_order": 5
+    },
+    {
+      "name": "Asya Demir",
+      "role": "Client Relations Lead",
+      "bio": "Customer success (CS) focused. A separate success plan for each account, a weekly communication rhythm, transparent reporting.",
+      "sort_order": 6
+    }
+  ],
+  "timeline_events": [
+    {
+      "year": "2015",
+      "title": "First e-commerce experience",
+      "description": "Emre Tagay enters the digital marketing world with his own e-commerce brand.",
+      "sort_order": 1
+    },
+    {
+      "year": "2017",
+      "title": "Freelance era",
+      "description": "He realizes the results he achieved could benefit other brands too. As a freelancer, he provides marketing consulting to 12 brands.",
+      "sort_order": 2
+    },
+    {
+      "year": "2019",
+      "title": "True EDigital Marketing is founded",
+      "description": "An agency uniting performance marketing and technology development under one roof is founded. 8 clients in the first year.",
+      "sort_order": 3
+    },
+    {
+      "year": "2021",
+      "title": "The team grows, a SaaS department opens",
+      "description": "A software development department is added alongside the marketing team. We develop MVPs for our first SaaS clients.",
+      "sort_order": 4
+    },
+    {
+      "year": "2023",
+      "title": "Mobile app division",
+      "description": "A division opens with React Native and native mobile development capabilities.",
+      "sort_order": 5
+    },
+    {
+      "year": "2024",
+      "title": "AI integrations",
+      "description": "With OpenAI and Anthropic integrations, we add AI features to clients' SaaS products.",
+      "sort_order": 6
+    },
+    {
+      "year": "2026",
+      "title": "Today",
+      "description": "An Istanbul-based team of 14, 60+ active clients, and more than 320 completed projects.",
+      "sort_order": 7
+    }
+  ],
+  "industries": [
+    {
+      "name": "E-commerce & D2C",
+      "description": "We build sales-focused funnels for brands powered by Shopify, WooCommerce and custom store infrastructures.",
+      "highlights": [
+        "+50 D2C brands",
+        "ROAS-focused"
+      ],
+      "sort_order": 1
+    },
+    {
+      "name": "SaaS & Software",
+      "description": "Lifecycle email, product-led growth and an SEO + paid combination to grow MRR.",
+      "highlights": [
+        "ARR x3 cases",
+        "Self-serve onboarding"
+      ],
+      "sort_order": 2
+    },
+    {
+      "name": "Fintech",
+      "description": "Creative campaigns in a tightly regulated sector — from personal finance to digital wallets.",
+      "highlights": [
+        "KYC funnel",
+        "Trust-first creative"
+      ],
+      "sort_order": 3
+    },
+    {
+      "name": "Health & Health Tourism",
+      "description": "Multilingual lead generation campaigns from aesthetic clinics to hair transplants.",
+      "highlights": [
+        "Multilingual landing",
+        "Lead quality optimization"
+      ],
+      "sort_order": 4
+    },
+    {
+      "name": "Education & Career",
+      "description": "Sales funnels for online courses, bootcamps and B2B education platforms.",
+      "highlights": [
+        "Webinar funnel",
+        "Community building"
+      ],
+      "sort_order": 5
+    },
+    {
+      "name": "B2B & Industry",
+      "description": "LinkedIn, content marketing and ABM strategies for B2B brands with long sales cycles.",
+      "highlights": [
+        "ABM",
+        "LinkedIn organic"
+      ],
+      "sort_order": 6
+    }
+  ],
+  "tech_items": [
+    {
+      "name": "Next.js",
+      "category": "Frontend",
+      "sort_order": 1
+    },
+    {
+      "name": "React Native",
+      "category": "Mobile",
+      "sort_order": 2
+    },
+    {
+      "name": "Node.js",
+      "category": "Backend",
+      "sort_order": 3
+    },
+    {
+      "name": "PostgreSQL",
+      "category": "Database",
+      "sort_order": 4
+    },
+    {
+      "name": "Vercel",
+      "category": "Hosting",
+      "sort_order": 5
+    },
+    {
+      "name": "Cloudflare",
+      "category": "CDN/DNS",
+      "sort_order": 6
+    },
+    {
+      "name": "Stripe",
+      "category": "Payments",
+      "sort_order": 7
+    },
+    {
+      "name": "Supabase",
+      "category": "Backend-as-a-Service",
+      "sort_order": 8
+    },
+    {
+      "name": "Google Ads",
+      "category": "Advertising",
+      "sort_order": 9
+    },
+    {
+      "name": "Meta Ads",
+      "category": "Advertising",
+      "sort_order": 10
+    },
+    {
+      "name": "TikTok Ads",
+      "category": "Advertising",
+      "sort_order": 11
+    },
+    {
+      "name": "GA4",
+      "category": "Analytics",
+      "sort_order": 12
+    },
+    {
+      "name": "Looker Studio",
+      "category": "Reporting",
+      "sort_order": 13
+    },
+    {
+      "name": "Ahrefs",
+      "category": "SEO",
+      "sort_order": 14
+    },
+    {
+      "name": "Semrush",
+      "category": "SEO",
+      "sort_order": 15
+    },
+    {
+      "name": "Figma",
+      "category": "Design",
+      "sort_order": 16
+    },
+    {
+      "name": "Notion",
+      "category": "Collaboration",
+      "sort_order": 17
+    },
+    {
+      "name": "Linear",
+      "category": "Project Management",
+      "sort_order": 18
+    },
+    {
+      "name": "Slack",
+      "category": "Communication",
+      "sort_order": 19
+    },
+    {
+      "name": "OpenAI",
+      "category": "AI",
+      "sort_order": 20
+    },
+    {
+      "name": "Anthropic",
+      "category": "AI",
+      "sort_order": 21
+    }
+  ],
+  "faqs": [
+    {
+      "scope": "contact",
+      "question": "How long does a reply take?",
+      "answer": "We respond to form submissions received on weekdays within an average of 6-12 hours, and to submissions received on weekends by Monday noon.",
+      "sort_order": 1
+    },
+    {
+      "scope": "contact",
+      "question": "What should I prepare for the meeting?",
+      "answer": "Your current goals, the performance data of the last 3 months if any, viewing-only access to your web/app/social media analytics, and your reference brands if possible. Even if none of these are ready, the meeting will still be productive.",
+      "sort_order": 2
+    },
+    {
+      "scope": "contact",
+      "question": "Am I required to share my budget?",
+      "answer": "No, but it helps. If the budget range is unclear, we clarify it together during the meeting. We talk with you regardless of your budget model.",
+      "sort_order": 3
+    },
+    {
+      "scope": "contact",
+      "question": "Can I work with you from abroad?",
+      "answer": "Of course. 30% of our clients are based abroad (UK, US, AE). We can hold all our meetings in Turkish or English.",
+      "sort_order": 4
+    },
+    {
+      "scope": "home",
+      "question": "Which sectors do you work in?",
+      "answer": "We work across a wide range, primarily e-commerce, SaaS, health, fintech, education and B2B services.",
+      "sort_order": 1
+    },
+    {
+      "scope": "home",
+      "question": "What is the minimum contract duration?",
+      "answer": "For services requiring continuity such as ad management and SEO, we recommend a minimum of 3 months of engagement.",
+      "sort_order": 2
+    },
+    {
+      "scope": "home",
+      "question": "How do you handle reporting?",
+      "answer": "We set up a live Looker Studio dashboard for each of our clients.",
+      "sort_order": 3
+    },
+    {
+      "scope": "home",
+      "question": "Who produces the creatives?",
+      "answer": "We have in-house art directors, motion designers and copywriters for ad visuals, video edits and social media content.",
+      "sort_order": 4
+    },
+    {
+      "scope": "home",
+      "question": "How do you integrate with my existing team?",
+      "answer": "We work like an extension of your in-house marketing or technology team.",
+      "sort_order": 5
+    },
+    {
+      "scope": "home",
+      "question": "What is your pricing model?",
+      "answer": "For ad management, a percentage of your budget + a fixed management fee; for SEO and content, we work with monthly retainer models.",
+      "sort_order": 6
+    },
+    {
+      "scope": "services",
+      "question": "Can I get services individually, or is a package mandatory?",
+      "answer": "No, there's no package requirement. You can start with a single service and open up other areas as needed. Most of our clients start with ad management or SEO; within 6 months they expand to 2-3 services.",
+      "sort_order": 1
+    },
+    {
+      "scope": "services",
+      "question": "What should the minimum ad budget be?",
+      "answer": "It's hard to truly test below ₺50,000/month on Meta Ads and ₺75,000 on Google Ads. For budgets below these figures, we recommend starting with organic channels first (SEO + social media).",
+      "sort_order": 2
+    },
+    {
+      "scope": "services",
+      "question": "Is creative production included or an extra charge?",
+      "answer": "In our retainer model, a set number of creatives per month is included (ad visual, video, post). Additional creative needs are resolved with clear pricing — no surprise invoices.",
+      "sort_order": 3
+    },
+    {
+      "scope": "services",
+      "question": "What happens if I'm not satisfied?",
+      "answer": "Guaranteed measurable improvement in the first 90 days. If it doesn't happen, the contract ends and we don't charge for the last month. We put this in the contract.",
+      "sort_order": 4
+    }
+  ],
+  "page_sections": [
+    {
+      "page_slug": "about",
+      "section_key": "hero",
+      "eyebrow": "About Us",
+      "title": "A team built to grow brands",
+      "description": "True EDigital Marketing is positioned at the intersection of performance marketing and technology development. Since 2019, we have offered digital growth partnership to e-commerce, SaaS and service brands.",
+      "body": null,
+      "sort_order": 1
+    },
+    {
+      "page_slug": "about",
+      "section_key": "stats",
+      "eyebrow": null,
+      "title": null,
+      "description": null,
+      "body": {
+        "items": [
+          {
+            "to": 7,
+            "label": "Years in operation",
+            "suffix": "+",
+            "decimals": 0
+          },
+          {
+            "to": 60,
+            "label": "Active clients",
+            "suffix": "+",
+            "decimals": 0
+          },
+          {
+            "to": 320,
+            "label": "Completed projects",
+            "suffix": "+",
+            "decimals": 0
+          },
+          {
+            "to": 14,
+            "label": "Team members",
+            "suffix": "",
+            "decimals": 0
+          }
+        ]
+      },
+      "sort_order": 2
+    },
+    {
+      "page_slug": "about",
+      "section_key": "story",
+      "eyebrow": "Our Story",
+      "title": "The story of our founder Emre Tagay",
+      "description": "",
+      "body": {
+        "items": [
+          {
+            "text": "Emre Tagay entered the digital marketing world in 2015 as the founder of an e-commerce brand. To grow his own brand, he had to learn Google Ads, Meta Ads and SEO — and he realized that many brands in Turkey were struggling with the same problem: not being able to find the right agency."
+          },
+          {
+            "text": "Most agencies are full of large clients or only specialize in a single area. Finding a partner who thinks about strategy, produces creative and develops technology all at once was rare. After providing freelance consulting to 12+ brands between 2017-2019, he founded True EDigital Marketing with the question \"why don't I turn this into a team effort\"."
+          },
+          {
+            "text": "When founding True EDigital Marketing in 2019, his goal was clear: an agency that treats the client's business like a partner, never forgets the human behind the numbers, and masters both the creative and technical sides. Today our Istanbul-based team consists of 14 people; we serve a broad portfolio from e-commerce to fintech, from health tourism to SaaS startups."
+          },
+          {
+            "text": "I still personally lead the first strategy meeting as founder whenever a new project comes on board. Because trust is built only this way. Even as a fast-growing agency, we will preserve this principle."
+          }
+        ]
+      },
+      "sort_order": 3
+    },
+    {
+      "page_slug": "about",
+      "section_key": "mission_vision",
+      "eyebrow": null,
+      "title": null,
+      "description": null,
+      "body": {
+        "items": [
+          {
+            "desc": "To make brands' digital growth a measurable and sustainable science. To make every decision with data and interpret every piece of data with creativity.",
+            "icon": "Target",
+            "title": "Mission"
+          },
+          {
+            "desc": "To be Turkey's digital growth partner that understands technology best and manages performance best. To reach a structure that has partnered with 100 brands by 2027.",
+            "icon": "Eye",
+            "title": "Vision"
+          },
+          {
+            "desc": "Measurable improvement in the first 90 days. If it doesn't happen, the contract is not binding — our terms are shared clearly in the free discovery call. We put our word in the contract.",
+            "icon": "HeartHandshake",
+            "title": "Our Promise"
+          }
+        ]
+      },
+      "sort_order": 4
+    },
+    {
+      "page_slug": "about",
+      "section_key": "values",
+      "eyebrow": "Our Values",
+      "title": "The six disciplines that make us who we are",
+      "description": "A team culture is made not of words but of daily decisions. Here are the six disciplines we bring to the table every morning.",
+      "body": {
+        "items": [
+          {
+            "desc": "We approach our client's business as if it were our own. Responsibility doesn't stay in the footnotes; it's measured by results.",
+            "icon": "Sparkles",
+            "title": "Ownership"
+          },
+          {
+            "desc": "Budget, performance and processes are always open. Surprises happen in campaign optimizations, not in invoice line items.",
+            "icon": "ShieldCheck",
+            "title": "Transparency"
+          },
+          {
+            "desc": "We have the result of a test within a few days. The era of the slow agency is behind us; speed is a discipline for us.",
+            "icon": "Gauge",
+            "title": "Speed"
+          },
+          {
+            "desc": "Specialists, not generalists. Ads, SEO, development, content — each area is managed by teams that have mastered it.",
+            "icon": "Users",
+            "title": "Expertise"
+          },
+          {
+            "desc": "We don't build single-campaign partnerships. Whether 3 months or 3 years, our goal is the sustainable growth of your brand.",
+            "icon": "HeartHandshake",
+            "title": "Long Term"
+          },
+          {
+            "desc": "Data is beautiful, but it means nothing without creativity. When the two come together, brands make a difference.",
+            "icon": "Lightbulb",
+            "title": "Creativity"
+          }
+        ]
+      },
+      "sort_order": 10
+    },
+    {
+      "page_slug": "about",
+      "section_key": "culture",
+      "eyebrow": "An Inside Look",
+      "title": "How do we work in our office?",
+      "description": "We believe that employee experience directly affects customer experience. That's why we take our team's working conditions seriously.",
+      "body": {
+        "items": [
+          {
+            "desc": "We hold meetings for topics that genuinely require a meeting. The rest moves async via Notion and Slack.",
+            "icon": "Coffee",
+            "title": "Async-first work culture"
+          },
+          {
+            "desc": "Not 9-to-6; a goal-deadline model. Our team works hybrid, and coming to the office is a choice, not an obligation.",
+            "icon": "Trophy",
+            "title": "Results-focused, not hours-focused"
+          },
+          {
+            "desc": "We provide each team member with an annual course, conference and book budget. Knowledge ages, and we never tire of refreshing it.",
+            "icon": "Award",
+            "title": "Continuous learning budget"
+          },
+          {
+            "desc": "We measure client NPS scores quarterly. Declining scores have a direct impact on the team's OKRs.",
+            "icon": "Briefcase",
+            "title": "Anonymous client feedback"
+          }
+        ]
+      },
+      "sort_order": 20
+    },
+    {
+      "page_slug": "about",
+      "section_key": "timeline_header",
+      "eyebrow": "Roadmap",
+      "title": "Our journey from 2015 to today",
+      "description": "Not just where an agency is today, but how it got there matters. Here are our steps.",
+      "body": null,
+      "sort_order": 25
+    },
+    {
+      "page_slug": "about",
+      "section_key": "team_header",
+      "eyebrow": "Team",
+      "title": "The names who will work directly with your brand",
+      "description": "There's no account plan handed off to junior assistants. The names below are the people who meet with you regularly every week and own the project.",
+      "body": null,
+      "sort_order": 26
+    },
+    {
+      "page_slug": "about",
+      "section_key": "recognitions",
+      "eyebrow": "Certifications",
+      "title": "Industry approvals and recognition",
+      "description": "Awards aren't the center of the work, but we value external validation. Here's how the platforms managing our accounts and the industry recognize us.",
+      "body": {
+        "items": [
+          {
+            "year": "2023, 2024, 2025, 2026",
+            "title": "Google Premier Partner"
+          },
+          {
+            "year": "2022 – ongoing",
+            "title": "Meta Business Partner"
+          },
+          {
+            "year": "Turkey 2024, 2025",
+            "title": "Clutch Top B2B"
+          },
+          {
+            "year": "2 web projects (2024)",
+            "title": "Awwwards Honorable Mention"
+          },
+          {
+            "year": "100% success (mobile apps)",
+            "title": "Store approval"
+          },
+          {
+            "year": "9.2 / 10",
+            "title": "Average client NPS"
+          }
+        ]
+      },
+      "sort_order": 30
+    },
+    {
+      "page_slug": "about",
+      "section_key": "why",
+      "eyebrow": "Why Us?",
+      "title": "The four things that set us apart",
+      "description": "The marketing industry is crowded. We prefer to explain why brands choose us not through our clients' words, but through our way of working.",
+      "body": {
+        "items": [
+          {
+            "desc": "Instead of dealing with separate agencies for ads, SEO, social media, web and mobile development, we coordinate everything in a single place. Zero communication friction, maximum speed.",
+            "title": "360° from a single team"
+          },
+          {
+            "desc": "Monthly reports align with the brand's real goals. Not likes and impressions; real metrics like sales, leads and ROAS.",
+            "title": "Performance-tied reporting"
+          },
+          {
+            "desc": "A working model not handed off to juniors, where founder Emre Tagay takes a direct role in strategic decisions.",
+            "title": "Direct founder involvement"
+          },
+          {
+            "desc": "Because we can develop SaaS and mobile apps, our marketing campaigns also consider the technical infrastructure. This combination doesn't exist at the vast majority of agencies.",
+            "title": "Technology + Marketing hybrid DNA"
+          }
+        ]
+      },
+      "sort_order": 40
+    },
+    {
+      "page_slug": "contact",
+      "section_key": "hero",
+      "eyebrow": "Contact",
+      "title": "Let's talk about your next growth period",
+      "description": "Fill out the form below or reach us directly. We respond to all new inquiries within 48 hours.",
+      "body": null,
+      "sort_order": 1
+    },
+    {
+      "page_slug": "contact",
+      "section_key": "channels",
+      "eyebrow": null,
+      "title": null,
+      "description": null,
+      "body": {
+        "items": [
+          {
+            "bind": "email",
+            "hint": "Fastest response",
+            "icon": "Mail",
+            "label": "Email"
+          },
+          {
+            "bind": "phone",
+            "hint": "During business hours",
+            "icon": "Phone",
+            "label": "Phone"
+          },
+          {
+            "bind": "address",
+            "hint": "Maslak / Levent area",
+            "icon": "MapPin",
+            "label": "Office"
+          },
+          {
+            "hint": "24/7 on-call for emergencies",
+            "icon": "Clock",
+            "label": "Working Hours",
+            "value": "Weekdays 09:00 — 18:30"
+          }
+        ]
+      },
+      "sort_order": 5
+    },
+    {
+      "page_slug": "contact",
+      "section_key": "process",
+      "eyebrow": "Process",
+      "title": "What happens after you submit the form?",
+      "description": "You don't want to send an application into a black box. Here it is step by step: from the moment you submit the form to signing the contract.",
+      "body": {
+        "items": [
+          {
+            "desc": "Fill out the form below. A short summary of your goal, current situation and expectations is enough.",
+            "icon": "ClipboardList",
+            "time": "0 min",
+            "title": "Form submission"
+          },
+          {
+            "desc": "We get back to you within 48 hours. We schedule a discovery call for two or three time slots you're available for.",
+            "icon": "Compass",
+            "time": "0 – 48 hours",
+            "title": "Quick preliminary review"
+          },
+          {
+            "desc": "A 30-minute video call. We discuss goals, budget and existing channels. At the end of the call, we draft a concrete action plan.",
+            "icon": "CalendarClock",
+            "time": "Week 1",
+            "title": "Discovery call"
+          },
+          {
+            "desc": "We send the free proposal document. After approval, we start the project within 5 business days.",
+            "icon": "Rocket",
+            "time": "Week 1 – 2",
+            "title": "Proposal and start"
+          }
+        ]
+      },
+      "sort_order": 10
+    },
+    {
+      "page_slug": "contact",
+      "section_key": "guarantees",
+      "eyebrow": "Terms of Working Together",
+      "title": "What can you expect from us?",
+      "description": "Not verbal promises, but written commitments. Here are the four core terms we can guarantee before the partnership begins.",
+      "body": {
+        "items": [
+          {
+            "desc": "If there's no improvement in the KPIs we defined, the contract is not binding. The terms are in writing.",
+            "icon": "ShieldCheck",
+            "title": "Measurable improvement in the first 90 days"
+          },
+          {
+            "desc": "Looker Studio live dashboard. Everything is open, from ad creatives to expense line items.",
+            "icon": "Globe",
+            "title": "Transparent reporting"
+          },
+          {
+            "desc": "An average first response within 28 minutes via Slack or WhatsApp. Silence isn't in our vocabulary.",
+            "icon": "MessageCircle",
+            "title": "Fast response during business hours"
+          },
+          {
+            "desc": "The discovery call is completely free. You don't have to become a partner afterwards.",
+            "icon": "Coffee",
+            "title": "First call is free"
+          }
+        ]
+      },
+      "sort_order": 20
+    },
+    {
+      "page_slug": "contact",
+      "section_key": "faq_header",
+      "eyebrow": "FAQ",
+      "title": "Contact and meeting process",
+      "description": "Quick answers to possible pre-contract questions. To ask more, the form is enough.",
+      "body": null,
+      "sort_order": 25
+    },
+    {
+      "page_slug": "contact",
+      "section_key": "office",
+      "eyebrow": "Our Office",
+      "title": null,
+      "description": "In Maslak we have an office with a hybrid team that's fully packed on Tuesdays and Thursdays. When you'd like to meet, scheduling in advance is enough — our door is always open, but if our coffee runs out, we have to brew a new pot together.",
+      "body": {
+        "items": [
+          {
+            "icon": "MapPin",
+            "text": "Istanbul — Maslak Plaza, Floor 7"
+          },
+          {
+            "icon": "Clock",
+            "text": "Weekdays 09:00 – 18:30 (full office on Tuesday/Thursday)"
+          },
+          {
+            "icon": "Coffee",
+            "text": "Don't forget to share your coffee order before meeting"
+          }
+        ]
+      },
+      "sort_order": 40
+    },
+    {
+      "page_slug": "global",
+      "section_key": "cta",
+      "eyebrow": "Contact",
+      "title": "Let's plan your next growth period together",
+      "description": "A free 30-minute discovery call. Let's discuss your goals and draft a concrete action plan for your existing channels.",
+      "body": {
+        "highlight": "next growth period",
+        "primaryHref": "/iletisim",
+        "primaryLabel": "Schedule a Call"
+      },
+      "sort_order": 10
+    },
+    {
+      "page_slug": "home",
+      "section_key": "hero",
+      "eyebrow": "Next-generation 360° digital agency",
+      "title": "Your A-to-Z digital growth partner",
+      "description": "Ads, SEO, social media, mobile apps and SaaS development — everything you need to grow your brand in one team. We build the strategy, produce the creative, measure the performance and continuously optimize.",
+      "body": {
+        "note1": "We're currently accepting 6 new projects",
+        "note2": "Proposal within an average of 48 hours",
+        "highlight": "digital growth",
+        "primaryHref": "/iletisim",
+        "primaryLabel": "Get a Free Proposal",
+        "secondaryHref": "/hizmetler",
+        "secondaryLabel": "Explore Services"
+      },
+      "sort_order": 10
+    },
+    {
+      "page_slug": "home",
+      "section_key": "brand_strip",
+      "eyebrow": "Brands we've grown with",
+      "title": null,
+      "description": null,
+      "body": {
+        "items": [
+          "LUMEN",
+          "TESSERA",
+          "NORDEL",
+          "VOLTRA",
+          "VERA MODA",
+          "GREENLY",
+          "KAVROS",
+          "ALTAN CLINIC"
+        ]
+      },
+      "sort_order": 20
+    },
+    {
+      "page_slug": "home",
+      "section_key": "services_header",
+      "eyebrow": "Services",
+      "title": "All the expertise to grow your brand",
+      "description": "From ads to SEO, from mobile apps to SaaS development — every service you'll need as your brand grows is delivered by teams that have specialized in their own field.",
+      "body": {
+        "linkHref": "/hizmetler",
+        "linkLabel": "All services"
+      },
+      "sort_order": 30
+    },
+    {
+      "page_slug": "home",
+      "section_key": "stats",
+      "eyebrow": null,
+      "title": null,
+      "description": null,
+      "body": {
+        "items": [
+          {
+            "to": 18,
+            "label": "Ad budget managed",
+            "prefix": "₺",
+            "suffix": "M+",
+            "decimals": 0
+          },
+          {
+            "to": 320,
+            "label": "Completed campaigns",
+            "suffix": "+",
+            "decimals": 0
+          },
+          {
+            "to": 4.6,
+            "label": "Average ROAS",
+            "suffix": "x",
+            "decimals": 1
+          },
+          {
+            "to": 64,
+            "label": "Happy clients",
+            "suffix": "+",
+            "decimals": 0
+          }
+        ]
+      },
+      "sort_order": 40
+    },
+    {
+      "page_slug": "home",
+      "section_key": "workflow",
+      "eyebrow": "Working Process",
+      "title": "Clear steps, measurable results",
+      "description": "We've clarified every stage from the first conversation with our clients to the first report. Surprises happen in growing campaigns, not in the process.",
+      "body": {
+        "items": [
+          {
+            "desc": "We deeply understand your brand, your competitors and your target audience. We analyze your existing data.",
+            "icon": "Compass",
+            "title": "Discovery"
+          },
+          {
+            "desc": "We create a 90-day roadmap that defines the channels, messages and KPIs suited to your goals.",
+            "icon": "Map",
+            "title": "Strategy"
+          },
+          {
+            "desc": "From creative production to technical setup, we bring everything live under one roof.",
+            "icon": "Rocket",
+            "title": "Implementation"
+          },
+          {
+            "desc": "We continuously improve performance through A/B tests, budget reallocation and weekly iterations.",
+            "icon": "LineChart",
+            "title": "Optimization"
+          },
+          {
+            "desc": "We show the results simply with a transparent live dashboard and monthly presentations.",
+            "icon": "FileText",
+            "title": "Reporting"
+          }
+        ]
+      },
+      "sort_order": 50
+    },
+    {
+      "page_slug": "portfolio",
+      "section_key": "hero",
+      "eyebrow": "Our Work",
+      "title": "Brands we've grown together",
+      "description": "Every project set off with a different goal; but the one thing they all share is measurable results. Below are examples of work we have permission to share.",
+      "body": null,
+      "sort_order": 1
+    },
+    {
+      "page_slug": "portfolio",
+      "section_key": "stats",
+      "eyebrow": null,
+      "title": null,
+      "description": null,
+      "body": {
+        "items": [
+          {
+            "to": 320,
+            "label": "Completed campaigns",
+            "suffix": "+",
+            "decimals": 0
+          },
+          {
+            "to": 18,
+            "label": "Total ad budget managed",
+            "prefix": "₺",
+            "suffix": "M+",
+            "decimals": 0
+          },
+          {
+            "to": 4.6,
+            "label": "Average ROAS",
+            "suffix": "x",
+            "decimals": 1
+          },
+          {
+            "to": 92,
+            "label": "Client NPS",
+            "suffix": "/100",
+            "decimals": 0
+          }
+        ]
+      },
+      "sort_order": 10
+    },
+    {
+      "page_slug": "portfolio",
+      "section_key": "featured_case",
+      "eyebrow": "Featured Case",
+      "title": "Lumen Cosmetics — ROAS 2.1x → 4.8x",
+      "description": "A worn-out ad account, a stale creative approach and a fragmented analytics infrastructure. Through a three-month restructuring, we show how the numbers multiplied.",
+      "body": {
+        "quote": {
+          "name": "Selin Aksoy",
+          "role": "Marketing Director · Lumen Cosmetics",
+          "text": "In the 6 months we worked with True EDigital Marketing, our ROAS rose from 2.1 to 4.8. The most impressive thing wasn't the numbers but the team dynamic — they own our brand as much as we do.",
+          "initials": "SA"
+        },
+        "steps": [
+          {
+            "desc": "We deeply analyzed the existing accounts, data and customer behavior. We identified 3 hypotheses: wrong targeting, creative fatigue and landing page leakage.",
+            "title": "Audit & Strategy (Week 1-2)"
+          },
+          {
+            "desc": "We restructured the account around ASC + Advantage+. A/B tests began with 18 new creative concepts and 4 different landing pages.",
+            "title": "Restructuring (Week 3-6)"
+          },
+          {
+            "desc": "We scaled the winning creatives to different segments, merged the Meta + Google attribution model and strengthened the email flows.",
+            "title": "Scale (Week 7-12)"
+          },
+          {
+            "desc": "ROAS 4.8x, customer count 6.4K, average basket value up 22%. The gains are maintained with a monthly iteration rhythm.",
+            "title": "Sustainable growth (Week 13+)"
+          }
+        ],
+        "metrics": [
+          {
+            "to": "4.8x",
+            "from": "2.1x",
+            "color": "from-violet-500 to-indigo-500",
+            "label": "ROAS"
+          },
+          {
+            "to": "₺1.1M",
+            "from": "₺320K",
+            "color": "from-cyan-500 to-blue-500",
+            "label": "Monthly Revenue"
+          },
+          {
+            "to": "₺178",
+            "from": "₺412",
+            "color": "from-emerald-500 to-cyan-500",
+            "label": "CPA"
+          },
+          {
+            "to": "6.4K",
+            "from": "1.8K",
+            "color": "from-pink-500 to-rose-500",
+            "label": "Customer Count"
+          }
+        ],
+        "durationLabel": "A 6-month engagement across 4 phases"
+      },
+      "sort_order": 20
+    },
+    {
+      "page_slug": "portfolio",
+      "section_key": "projects_header",
+      "eyebrow": "All Projects",
+      "title": "Our work by category",
+      "description": "Narrow down to the category you're interested in with the filters. On each card we share the core KPI the project was measured against.",
+      "body": null,
+      "sort_order": 25
+    },
+    {
+      "page_slug": "portfolio",
+      "section_key": "sectors",
+      "eyebrow": "Sector Diversity",
+      "title": "The sectors we work in",
+      "description": "Sector diversity is a strong advantage for us: we can carry a learning that works in one sector over to others.",
+      "body": {
+        "items": [
+          "E-commerce",
+          "SaaS",
+          "Fintech",
+          "Health Tourism",
+          "Education",
+          "Fashion",
+          "Mobility",
+          "Cosmetics",
+          "Food",
+          "B2B Software",
+          "Real Estate Tech",
+          "Sports & Wellness"
+        ]
+      },
+      "sort_order": 30
+    },
+    {
+      "page_slug": "portfolio",
+      "section_key": "testimonials_summary",
+      "eyebrow": "What Our Clients Say",
+      "title": "We're built on feedback",
+      "description": "We measure client NPS scores quarterly; these scores have a direct impact on the team's OKRs.",
+      "body": {
+        "items": [
+          {
+            "name": "Onur Şahin",
+            "role": "Co-founder · Greenly Foods",
+            "quote": "Transparent reporting, fast communication and proper expectation management. We found everything we were looking for when switching agencies in one place."
+          },
+          {
+            "name": "Kerem Doğan",
+            "role": "Founder · Tessera SaaS",
+            "quote": "They launched our MVP in 8 weeks. They didn't just write code; from product strategy to onboarding flow, they acted like a true technology partner."
+          },
+          {
+            "name": "Beyza Yılmaz",
+            "role": "E-commerce Manager · Nordel Home",
+            "quote": "The SEO team showed the difference clearly. Within 9 months our organic traffic grew 4.6x, we rank #1 for our brand keywords, and this traffic now converts into sales."
+          }
+        ]
+      },
+      "sort_order": 40
+    },
+    {
+      "page_slug": "portfolio",
+      "section_key": "invite",
+      "eyebrow": null,
+      "title": "Next up, your brand",
+      "description": "These figures are what the brands who chose us achieved. We'd like to feature your brand in the next case study.",
+      "body": {
+        "highlight": "your brand",
+        "primaryHref": "/iletisim",
+        "primaryLabel": "Schedule a Call"
+      },
+      "sort_order": 50
+    },
+    {
+      "page_slug": "services",
+      "section_key": "hero",
+      "eyebrow": "Services",
+      "title": "Holistic digital growth for your brand",
+      "description": "We think of each service as an independent product; but their power emerges when they come together. You can get all of the services below under a single account plan and a single point of contact.",
+      "body": null,
+      "sort_order": 1
+    },
+    {
+      "page_slug": "services",
+      "section_key": "grid_header",
+      "eyebrow": null,
+      "title": null,
+      "description": null,
+      "body": {
+        "intro": "Click a service to see the details",
+        "linkHref": "/iletisim",
+        "linkLabel": "Which one is right for you?"
+      },
+      "sort_order": 2
+    },
+    {
+      "page_slug": "services",
+      "section_key": "synergy",
+      "eyebrow": "Synthesis of Services",
+      "title": "A single nervous system instead of separate agencies",
+      "description": "One agency for ads, another for SEO, another for social media — in the typical setup each agency looks only at its own performance, not the others' work. Because we are a single team, the loss between channels drops to zero.",
+      "body": {
+        "items": [
+          {
+            "desc": "The ad team, SEO team and social media team work from the same strategy document. No brief memorization.",
+            "icon": "Layers",
+            "title": "One brief, all channels"
+          },
+          {
+            "desc": "An insight we learn in one channel is carried to the others within 48 hours. No information silos.",
+            "icon": "Zap",
+            "title": "Fast iteration"
+          },
+          {
+            "desc": "We see at the customer level, not the channel level. It's clear which channel won which touchpoint.",
+            "icon": "Crosshair",
+            "title": "Attribution clarity"
+          },
+          {
+            "desc": "The tone of voice in ads is exactly the same as the language in SEO content and the narrative on social media.",
+            "icon": "Lock",
+            "title": "Brand consistency"
+          }
+        ]
+      },
+      "sort_order": 10
+    },
+    {
+      "page_slug": "services",
+      "section_key": "industries_header",
+      "eyebrow": "Industries",
+      "title": "The sectors we work in",
+      "description": "Every sector has its own dynamics, regulations and customer behaviors. Thanks to our broad portfolio, we quickly carry sector learnings to new projects.",
+      "body": null,
+      "sort_order": 15
+    },
+    {
+      "page_slug": "services",
+      "section_key": "pricing",
+      "eyebrow": "Pricing",
+      "title": "Transparent, with three different models",
+      "description": "The pricing model varies depending on which service you get. Below we share typical ranges; a precise proposal is drawn up after the discovery call.",
+      "body": {
+        "items": [
+          {
+            "desc": "Services requiring continuity (ad management, SEO, social media). Minimum 3 months.",
+            "fits": "E-commerce, SaaS, service brands",
+            "range": "₺45.000 — ₺120.000 / month",
+            "title": "Retainer Model"
+          },
+          {
+            "desc": "Fixed scope, fixed price. Website, mobile app, MVP development.",
+            "fits": "Startups, corporate launches",
+            "range": "₺80.000 — ₺850.000",
+            "title": "Project-Based"
+          },
+          {
+            "desc": "Popular in ad management. As your budget grows, the scale advantage works in your favor.",
+            "fits": "Monthly ad budget ₺250K+",
+            "range": "8-12% of budget + fixed management",
+            "title": "Performance + Fixed"
+          }
+        ]
+      },
+      "sort_order": 20
+    },
+    {
+      "page_slug": "services",
+      "section_key": "tech_header",
+      "eyebrow": "Technology & Tools",
+      "title": "The stack we work with",
+      "description": "We use the right tool, not a beloved tool. We work with the technologies below daily and take over from clients without requiring extra training.",
+      "body": null,
+      "sort_order": 25
+    },
+    {
+      "page_slug": "services",
+      "section_key": "faq_header",
+      "eyebrow": "FAQ",
+      "title": "Service-specific questions",
+      "description": "If there's a topic on your mind that you couldn't find an answer to here, you can ask us directly from the contact page.",
+      "body": null,
+      "sort_order": 35
+    }
+  ],
+  "site_settings": {
+    "tagline": "Your A-to-Z Digital Growth Partner",
+    "description": "A 360° digital marketing agency that scales your brand, from ads to SEO and from mobile apps to SaaS development.",
+    "address": "Istanbul, Turkey"
+  }
+}

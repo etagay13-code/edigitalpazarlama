@@ -1,0 +1,2058 @@
+{
+  "services": [
+    {
+      "slug": "360-dijital-pazarlama",
+      "title": "360° Digitales Marketing",
+      "short": "Strategie, Produktion und Performance unter einem Dach.",
+      "description": "Wir managen die digitale Präsenz Ihrer Marke von Anfang bis Ende. Von der Marketingplanung über die kreative Produktion und den Media-Einkauf bis hin zur datengetriebenen Optimierung: ein Team, ein Account-Plan.",
+      "long_description": "Die meisten Marken wechseln die Agentur, während sie wachsen – sie merken im Wachstum, dass sie eine zusätzliche Ebene brauchen. Wir schließen diese Lücke von Anfang an. Von Social Media über SEO und Website bis zum Anzeigenmanagement sind alle Kanäle Teil einer einzigen Strategie.",
+      "hero": "Wachsen Sie nicht mit mehreren Agenturen, sondern mit einem einzigen Partner. 360°-Marketing vereint die gesamte digitale Präsenz Ihrer Marke unter einer Vision; es reißt Silos ein und vervielfacht die Geschwindigkeit.",
+      "approach": "Marketing ist ein ganzheitliches Spiel: Eine Verbesserung in einem Kanal beeinflusst den Kunden, der aus einem anderen Kanal zurückkehrt. Wir modellieren Ihre Marke als ein einziges 'Nervensystem'. Das Ads-Team, das SEO-Team und das Social-Media-Team arbeiten aus demselben Strategiedokument, demselben KPI-Set und derselben Kreativbibliothek.",
+      "bullets": [
+        "Markenpositionierung und Botschaftsarchitektur",
+        "Mehrkanal-Marketingplan (Paid + Organic + CRM)",
+        "Monatlicher Performance-Report und Live-Dashboard",
+        "360°-Koordination mit nur einem Ansprechpartner",
+        "Kanalspezifische Kreativpakete",
+        "Einrichtung eines Attributionsmodells"
+      ],
+      "deliverables": [
+        "90-Tage-Strategiedokument",
+        "Kanalbasiertes KPI-Set",
+        "Monatliches Kreativpaket",
+        "Looker-Studio-Dashboard",
+        "Monatliche Performance-Präsentation"
+      ],
+      "tools": [
+        "GA4",
+        "Meta Business Suite",
+        "Google Ads",
+        "Looker Studio",
+        "Notion",
+        "Figma",
+        "Slack"
+      ],
+      "outcomes": [
+        "Ein einziger Ansprechpartner",
+        "Ein einziges Strategiedokument",
+        "+30 % durchschnittliche Effizienzsteigerung",
+        "Monatlich transparenter Report"
+      ],
+      "ideal_for": [
+        "Monatliches Werbebudget ab ₺150K",
+        "Wer das Gefühl hat, sich in mehreren Kanälen zu verlieren",
+        "Teams, die das Jonglieren mit mehreren Agenturen leid sind"
+      ]
+    },
+    {
+      "slug": "reklam-yonetimi",
+      "title": "Anzeigenmanagement",
+      "short": "Performanceorientierter Media-Einkauf auf Google, Meta und TikTok.",
+      "description": "Wir gestalten Werbekampagnen, die das Maximum aus Ihrem Budget herausholen, kontinuierlich getestet und optimiert werden. Wir verwandeln jeden Klick in einen Kauf und jede Impression in Markenwert.",
+      "long_description": "Werbung ist der Punkt, an dem Wissenschaft und Kunst sich treffen. Die richtige Zielgruppe zu finden ist Daten; ihr die richtige Botschaft zu vermitteln ist Kreativität.",
+      "hero": "Anzeigenmanagement, das Ihr Budget nicht hartnäckig ausgibt, sondern hartnäckig zurückbringt. Datengesteuerte, durch Kreativität verstärkte Performance-Kampagnen auf Google, Meta und TikTok.",
+      "approach": "Ein gutes Werbekonto ist der Schnittpunkt von drei Dingen: richtige Zielgruppe, richtiges Kreativ, richtige Messung. Sehen wir innerhalb von 14 Tagen kein aussagekräftiges Muster, scheuen wir uns nicht, die Strategie zu ändern.",
+      "bullets": [
+        "Google Ads (Suche, PMax, YouTube, Display)",
+        "Meta Ads (Facebook- & Instagram-Funnel)",
+        "TikTok Ads und Creator Partnerships",
+        "Conversion-Tracking, GA4- und Attributions-Setup",
+        "Wöchentliche Kreativ-Iteration",
+        "Einrichtung der serverseitigen Conversion API"
+      ],
+      "deliverables": [
+        "Werbe-Funnel-Architektur",
+        "Wöchentliche Kreativ-Iteration",
+        "Einrichtung der serverseitigen Conversion API",
+        "Budgetplan und Prognosemodelle",
+        "Monatlicher Performance-Report"
+      ],
+      "tools": [
+        "Google Ads",
+        "Meta Ads Manager",
+        "TikTok Ads Manager",
+        "Triple Whale",
+        "Hyros",
+        "GA4"
+      ],
+      "outcomes": [
+        "ROAS 4x+",
+        "CPA -35 % im Schnitt",
+        "Wöchentlich 3-5 neue Kreatives",
+        "Server-side Tracking"
+      ],
+      "ideal_for": [
+        "E-Commerce-Marken",
+        "Lead-Generation-Geschäftsmodelle",
+        "Monatliches Werbebudget ab ₺75K"
+      ]
+    },
+    {
+      "slug": "seo",
+      "title": "SEO",
+      "short": "Nachhaltiger Traffic durch technisches SEO, Content und Linkaufbau.",
+      "description": "Langfristiges organisches Wachstum, das die Abhängigkeit von Werbung reduziert. Von der Seitenarchitektur über Core Web Vitals und Themencluster bis hin zu internationalem SEO sehen wir das große Ganze.",
+      "long_description": "Für SEO gibt es keine Abkürzung, aber viele falsche Wege. Wir arbeiten mit klaren Zielen.",
+      "hero": "Traffic, der weiter kommt, auch wenn Sie die Werbung abschalten. Nachhaltiges organisches Wachstum durch technisches SEO, eine an der Nutzerintention ausgerichtete Content-Architektur und echte Autoritätslinks.",
+      "approach": "SEO ist kein Sprint, sondern ein Marathon; aber richtig aufgesetzte Marathons schreiten mit vorhersehbarer Geschwindigkeit voran. Wir produzieren Content nach den EEAT-Prinzipien, widerstandsfähig gegenüber KI und mit echtem Autoritätsaufbau.",
+      "bullets": [
+        "Technisches Audit und Onpage-Optimierung",
+        "Keyword-Recherche und Content-Kalender",
+        "EEAT-fokussierte Content-Produktion (TR & EN)",
+        "Autoritätsaufbauender Linkaufbau",
+        "Core-Web-Vitals-Optimierung",
+        "Interne Verlinkung und Cluster-Architektur"
+      ],
+      "deliverables": [
+        "120-seitiger technischer Audit-Report",
+        "Monatlich 8-12 SEO-Inhalte",
+        "Monatlich 6-15 Autoritätslinks",
+        "Monatlicher Ranking-Report",
+        "Content-Cluster-Architektur"
+      ],
+      "tools": [
+        "Ahrefs",
+        "Semrush",
+        "Screaming Frog",
+        "Search Console",
+        "Surfer SEO",
+        "Sitebulb"
+      ],
+      "outcomes": [
+        "Organischer Traffic 3-5x",
+        "50+ Keywords in den Top 3",
+        "100+ Inhalte pro Jahr",
+        "Nachhaltiges Wachstum"
+      ],
+      "ideal_for": [
+        "B2B SaaS",
+        "Contentabhängiger E-Commerce",
+        "Lokale Dienstleistungsmarken",
+        "Gesundheit & Finanzen (YMYL)"
+      ]
+    },
+    {
+      "slug": "mobil-uygulama-gelistirme",
+      "title": "Mobile App-Entwicklung",
+      "short": "Hochleistungsfähige Apps für iOS und Android.",
+      "description": "Von der Idee bis zur Veröffentlichung: Wir entwickeln mit React Native und nativen Technologien skalierbare, store-freigabefertige Mobile Apps. Vom Design bis zum Analytics-Setup alles aus einer Hand.",
+      "long_description": null,
+      "hero": "Skalierbare Mobile Apps, die im Store zugelassen werden und die Nutzer lieben. Wir verwandeln Ihre Idee in 8-16 Wochen in ein veröffentlichtes Produkt.",
+      "approach": "Eine Mobile App zu 'bauen' ist leicht; dafür zu sorgen, dass sie sich im Store hält, ist schwer. Wir integrieren die App-Store-Freigabeprozesse, die Push-Notification-Strategie, die Onboarding-Optimierung und ASO vom ersten Tag an in die Architektur.",
+      "bullets": [
+        "UX-Recherche und Prototyping",
+        "React Native, Swift, Kotlin",
+        "Push Notifications & In-App-Analytics",
+        "App-Store- und Google-Play-Veröffentlichungsmanagement",
+        "ASO- und Organic-Growth-Setup",
+        "Backend- & API-Integrationen"
+      ],
+      "deliverables": [
+        "Hochdetaillierter Prototyp in Figma",
+        "iOS- und Android-Binaries",
+        "Store-Listing-Kreatives",
+        "Einrichtung von Crash- & Analytics-Dashboard",
+        "30 Tage Wartung nach Veröffentlichung"
+      ],
+      "tools": [
+        "React Native",
+        "Swift",
+        "Kotlin",
+        "Firebase",
+        "RevenueCat",
+        "Sentry",
+        "Mixpanel"
+      ],
+      "outcomes": [
+        "100 % Store-Freigabe",
+        "Typisch 8-16 Wochen",
+        "Crash-free Rate 99.5%+",
+        "Analytics vom ersten Tag an"
+      ],
+      "ideal_for": [
+        "Startup-MVPs",
+        "Mobile Expansion bestehender Marken",
+        "Digitale Produkte im Dienstleistungssektor"
+      ]
+    },
+    {
+      "slug": "saas-proje-gelistirme",
+      "title": "SaaS-Projektentwicklung",
+      "short": "Wir verwandeln Ihre Idee in ein skalierbares Produkt.",
+      "description": "Vom MVP bis zur Enterprise-Architektur, von der Abo-Infrastruktur bis zu KI-Integrationen bauen wir moderne SaaS-Produkte. Expertise in Next.js, Node, Postgres und cloudbasierter Infrastruktur.",
+      "long_description": null,
+      "hero": "Nicht nur Code, sondern ein skalierbares Geschäftsmodell. Moderne SaaS-Produkte vom MVP bis Enterprise, von der Abo-Infrastruktur bis zu KI-Integrationen.",
+      "approach": "Für SaaS-Startups ist 'Wie schnell schreibt ihr Code?' die falsche Frage. Die richtige Frage lautet: 'Wie schnell finden wir den Product-Market-Fit?'. Stripe-Integration vom ersten Tag, Multi-Tenant-Architektur, OpenAI-/Anthropic-Integrationen und Growth-ready-Infrastruktur sind Teil des Standardpakets.",
+      "bullets": [
+        "Produktstrategie- & PMF-Beratung",
+        "Next.js + Node.js + PostgreSQL Stack",
+        "Abonnement und Abrechnung mit Stripe",
+        "OpenAI- / Anthropic-KI-Integrationen",
+        "Multi-Tenant-Architektur",
+        "Auth, Rollenverwaltung und Admin-Panel"
+      ],
+      "deliverables": [
+        "Produktarchitektur-Dokument",
+        "Sprint-basierte Releases",
+        "Stripe- + Analytics- + Auth-Setup",
+        "Übergabepaket an das Produktteam",
+        "Automatische Deploy-Pipeline"
+      ],
+      "tools": [
+        "Next.js",
+        "Node.js",
+        "PostgreSQL",
+        "Stripe",
+        "Vercel",
+        "Supabase",
+        "OpenAI",
+        "Anthropic"
+      ],
+      "outcomes": [
+        "MVP 8-12 Wochen",
+        "Stripe vom ersten Tag an",
+        "Multi-Tenant-ready",
+        "KI-ready-Infrastruktur"
+      ],
+      "ideal_for": [
+        "Neu startende SaaS-Gründungen",
+        "SaaS-Produkt-Launch bestehender Marken",
+        "Unternehmen, die eine Pilot-Erfahrung wünschen"
+      ]
+    },
+    {
+      "slug": "sosyal-medya-yonetimi",
+      "title": "Social-Media-Management",
+      "short": "Eine konsistente Markenstimme, messbares Community-Wachstum.",
+      "description": "Wir produzieren nicht nur Content; wir bauen Communities auf. Mit Trendbeobachtung, Format-Tests und aktivem Dialog mit Kunden halten wir Ihre Marke im Digitalen lebendig.",
+      "long_description": null,
+      "hero": "Nicht die Followerzahl, sondern die Interaktionstiefe. Ein trendsensibles Social-Media-Management mit konsistenter Markenstimme.",
+      "approach": "Social Media ist kein Sendekanal, sondern ein Dialogkanal. Das Team, das den Content produziert, ist dasselbe, das mit der Community spricht – denn der beste Content entsteht aus den Fragen der Follower.",
+      "bullets": [
+        "Content-Strategie und Monatskalender",
+        "Produktion von Reels, TikTok und YouTube Shorts",
+        "Community-Management und DM-Betreuung",
+        "Influencer- und UGC-Kooperationen",
+        "Trend- und Format-Tests",
+        "Monatliches Performance-Dashboard"
+      ],
+      "deliverables": [
+        "Monatlich 18-24 Video-Inhalte",
+        "Community-Management (während der Arbeitszeit)",
+        "Monatlich 2-4 Influencer-Kooperationen",
+        "Monatliches Performance-Dashboard",
+        "Trend-Report-Newsletter"
+      ],
+      "tools": [
+        "Later",
+        "Notion",
+        "CapCut Pro",
+        "Premiere Pro",
+        "Brand24",
+        "Sprout Social"
+      ],
+      "outcomes": [
+        "Monatlich 18-24 Videos",
+        "Erste Antwort < 30 Min.",
+        "Influencer-Kooperation",
+        "Format-A/B-Tests"
+      ],
+      "ideal_for": [
+        "D2C-Marken",
+        "Dienstleistungssektor",
+        "Bildungs- & Wellness-Marken"
+      ]
+    },
+    {
+      "slug": "web-tasarim-gelistirme",
+      "title": "Webdesign & -entwicklung",
+      "short": "Conversion-fokussierte, schnelle und premium wirkende Websites.",
+      "description": "Nicht nur Ästhetik; Unternehmenswebsites und Landingpages, die auf Seitengeschwindigkeit, SEO und Conversion-Rate ausgelegt sind.",
+      "long_description": null,
+      "hero": "Seitengeschwindigkeit 95+, hohe Conversion-Rate, perfekt auf Mobilgeräten. Wir bauen das digitale Büro Ihrer Marke mit Next.js neu auf.",
+      "approach": "Eine Website ist das digitale Büro eines Unternehmens. Wir denken Websites nicht wie ein 'Design'-Problem, sondern wie einen 'Vertriebsmitarbeiter': Jeder Abschnitt muss eine Überzeugungsaufgabe erfüllen, jeder CTA zu einer Aktion führen.",
+      "bullets": [
+        "Individuelles UI/UX-Design in Figma",
+        "Next.js & Headless CMS (Sanity/Strapi)",
+        "Lighthouse-95+-Performance-Ziel",
+        "A/B-Test-Infrastruktur und CRO-Optimierung",
+        "Mehrsprachige Struktur",
+        "Analytics- & Heatmap-Setup"
+      ],
+      "deliverables": [
+        "Figma-Designsystem",
+        "Production-ready Next.js-Codebase",
+        "CMS-Schulung",
+        "Monatlicher CRO-Report",
+        "Analytics- & Heatmap-Setup"
+      ],
+      "tools": [
+        "Next.js",
+        "Figma",
+        "Sanity",
+        "Strapi",
+        "Vercel",
+        "Cloudflare",
+        "PostHog"
+      ],
+      "outcomes": [
+        "Lighthouse 95+",
+        "Typisch 4-8 Wochen",
+        "CMS-ready",
+        "Conversion-fokussiert"
+      ],
+      "ideal_for": [
+        "Unternehmens-Relaunch",
+        "Vor dem Launch",
+        "Wer eine Landingpage-Bibliothek benötigt"
+      ]
+    },
+    {
+      "slug": "icerik-marka-stratejisi",
+      "title": "Content- & Markenstrategie",
+      "short": "Eine einprägsame Markenidentität und eine konsistente Geschichte.",
+      "description": "Vom Logo über den Tonalitätsleitfaden bis zur Launch-Kampagne und der jährlichen Content-Vision gestalten wir die digitale DNA Ihrer Marke.",
+      "long_description": null,
+      "hero": "Wir gestalten, was Kunden fühlen, wenn sie Sie kennenlernen. Logo, Ton, Botschaft, Kampagne – die gesamte visuelle und verbale Identität, die eine Marke einprägsam macht.",
+      "approach": "Eine Marke ist alles, woran sich der Kunde erinnert, ohne Ihren Markennamen zu hören. Wir dokumentieren das Stück für Stück und machen daraus ein skalierbares Markenbuch.",
+      "bullets": [
+        "Markenidentität & Tonalitätsleitfaden",
+        "Positionierung und Story-Architektur",
+        "Launch- und PR-Kampagnen",
+        "Jährliche Content-Vision und -Kalender",
+        "Naming und Manifest",
+        "Kampagnen-Konzeptentwicklung"
+      ],
+      "deliverables": [
+        "70+ Seiten umfassendes Markenbuch",
+        "Visueller und verbaler Tonalitätsleitfaden",
+        "Launch-Kampagnen-Plan",
+        "Jährliche Content-Themen",
+        "Naming-Vorschläge"
+      ],
+      "tools": [
+        "Figma",
+        "Notion",
+        "Adobe Suite",
+        "Brandpad",
+        "Frontify"
+      ],
+      "outcomes": [
+        "Markenbuch",
+        "Launch-Kampagne",
+        "Konsistente Tonalität",
+        "Jährliche Content-Vision"
+      ],
+      "ideal_for": [
+        "Marken im Repositioning",
+        "Neu gegründete Start-ups",
+        "Wer von Markeninkonsistenz ermüdet ist"
+      ]
+    }
+  ],
+  "service_process_steps": [
+    {
+      "slug": "360-dijital-pazarlama",
+      "step_number": 1,
+      "title": "Entdeckung & Audit",
+      "description": "Wir analysieren alle Ihre bestehenden Kanäle, Konten und Daten in der Tiefe. Erste 2 Wochen."
+    },
+    {
+      "slug": "360-dijital-pazarlama",
+      "step_number": 2,
+      "title": "Strategie",
+      "description": "90-Tage-Roadmap, Kanal-Mix und KPI-Ziele werden festgelegt. 3. Woche."
+    },
+    {
+      "slug": "360-dijital-pazarlama",
+      "step_number": 3,
+      "title": "Produktion",
+      "description": "Kreatives, Content und technische Setups gehen parallel an den Start. 4.-6. Woche."
+    },
+    {
+      "slug": "360-dijital-pazarlama",
+      "step_number": 4,
+      "title": "Optimierung",
+      "description": "Wöchentlicher Test-Lern-Umsetz-Zyklus. Fortlaufend."
+    },
+    {
+      "slug": "360-dijital-pazarlama",
+      "step_number": 5,
+      "title": "Reporting",
+      "description": "Monatliche Detailpräsentation + Live-Dashboard. Transparente Zahlen."
+    },
+    {
+      "slug": "icerik-marka-stratejisi",
+      "step_number": 1,
+      "title": "Marken-Befragung",
+      "description": "Markenwahrnehmungsforschung von innen und außen."
+    },
+    {
+      "slug": "icerik-marka-stratejisi",
+      "step_number": 2,
+      "title": "Positionierung",
+      "description": "Ihr Platz im Markt, Ihre Geschichte und das Manifest."
+    },
+    {
+      "slug": "icerik-marka-stratejisi",
+      "step_number": 3,
+      "title": "Identitätsdesign",
+      "description": "Logo, Farbe, Typografie und visuelles System."
+    },
+    {
+      "slug": "icerik-marka-stratejisi",
+      "step_number": 4,
+      "title": "Markenbuch",
+      "description": "70+ Seiten umfassender, lebendiger Leitfaden."
+    },
+    {
+      "slug": "icerik-marka-stratejisi",
+      "step_number": 5,
+      "title": "Launch",
+      "description": "Markteintritt mit Content- und Kampagnenplan."
+    },
+    {
+      "slug": "mobil-uygulama-gelistirme",
+      "step_number": 1,
+      "title": "Entdeckung & UX",
+      "description": "Zielnutzer, Jobs-to-be-done und Flow-Mapping."
+    },
+    {
+      "slug": "mobil-uygulama-gelistirme",
+      "step_number": 2,
+      "title": "Prototyp",
+      "description": "Interaktiver Prototyp in Figma, Nutzertests."
+    },
+    {
+      "slug": "mobil-uygulama-gelistirme",
+      "step_number": 3,
+      "title": "Entwicklung",
+      "description": "Ein release-nahes Produkt in 2-wöchigen Sprints."
+    },
+    {
+      "slug": "mobil-uygulama-gelistirme",
+      "step_number": 4,
+      "title": "Beta",
+      "description": "TestFlight und Internal Testing, letzte Anpassungen."
+    },
+    {
+      "slug": "mobil-uygulama-gelistirme",
+      "step_number": 5,
+      "title": "Launch & ASO",
+      "description": "Store-Freigabe, Listing-Optimierung und Launch."
+    },
+    {
+      "slug": "reklam-yonetimi",
+      "step_number": 1,
+      "title": "Konto-Audit",
+      "description": "Prüfung bestehender Konten, Kreatives und Conversion-Tracking. Leckstellen werden identifiziert."
+    },
+    {
+      "slug": "reklam-yonetimi",
+      "step_number": 2,
+      "title": "Testplan",
+      "description": "30-Tage-Testplan für Hypothesen, Zielgruppen und Kreativkonzepte."
+    },
+    {
+      "slug": "reklam-yonetimi",
+      "step_number": 3,
+      "title": "Launch",
+      "description": "Funnels werden aufgebaut, Kreatives produziert, Kampagnen live geschaltet."
+    },
+    {
+      "slug": "reklam-yonetimi",
+      "step_number": 4,
+      "title": "Optimierung",
+      "description": "Tägliches Budgetmanagement, wöchentliche Kreativ-Erneuerung, Skalierung."
+    },
+    {
+      "slug": "reklam-yonetimi",
+      "step_number": 5,
+      "title": "Skalierung",
+      "description": "Gewinnende Kombinationen werden mit Budgeterhöhung skaliert."
+    },
+    {
+      "slug": "saas-proje-gelistirme",
+      "step_number": 1,
+      "title": "Discovery",
+      "description": "Geschäftsmodell, Nutzersegmente und technische Anforderungen."
+    },
+    {
+      "slug": "saas-proje-gelistirme",
+      "step_number": 2,
+      "title": "Architektur",
+      "description": "Datenmodell, Multi-Tenancy, Scalability und Security-Baseline."
+    },
+    {
+      "slug": "saas-proje-gelistirme",
+      "step_number": 3,
+      "title": "Sprint-Entwicklung",
+      "description": "Iterative Releases in 2-wöchigen Sprints."
+    },
+    {
+      "slug": "saas-proje-gelistirme",
+      "step_number": 4,
+      "title": "Beta & Iteration",
+      "description": "Erste Nutzer, Produktanalytik, schnelle Iteration."
+    },
+    {
+      "slug": "saas-proje-gelistirme",
+      "step_number": 5,
+      "title": "Launch & Übergabe",
+      "description": "Production-Launch und Übergabepaket an das Produktteam."
+    },
+    {
+      "slug": "seo",
+      "step_number": 1,
+      "title": "Technisches Audit",
+      "description": "Umfassende Prüfung von Seitenarchitektur, Indexierung, Geschwindigkeit und Core Web Vitals."
+    },
+    {
+      "slug": "seo",
+      "step_number": 2,
+      "title": "Keyword & Strategie",
+      "description": "Intentionsorientiertes Clustering, Wettbewerbsanalyse und Content-Kalender."
+    },
+    {
+      "slug": "seo",
+      "step_number": 3,
+      "title": "Technische Verbesserung",
+      "description": "Onpage-SEO, Schema, internes Linking und technische Korrekturen."
+    },
+    {
+      "slug": "seo",
+      "step_number": 4,
+      "title": "Content & Links",
+      "description": "Monatlicher Content + digitale PR und Aufbau von Autoritätslinks."
+    },
+    {
+      "slug": "seo",
+      "step_number": 5,
+      "title": "Monitoring & Iteration",
+      "description": "Monatliches Ranking-Tracking, Content-Updates und Expansion."
+    },
+    {
+      "slug": "sosyal-medya-yonetimi",
+      "step_number": 1,
+      "title": "Stimme & Strategie",
+      "description": "Markenstimme, Format-Mix und monatliche Themenplanung."
+    },
+    {
+      "slug": "sosyal-medya-yonetimi",
+      "step_number": 2,
+      "title": "Content-Produktion",
+      "description": "Aufnahme, Schnitt und Veröffentlichungsplan."
+    },
+    {
+      "slug": "sosyal-medya-yonetimi",
+      "step_number": 3,
+      "title": "Veröffentlichung & Interaktion",
+      "description": "Optimale Zeitplanung, schnelles Kommentar- und DM-Management."
+    },
+    {
+      "slug": "sosyal-medya-yonetimi",
+      "step_number": 4,
+      "title": "Influencer-Kooperation",
+      "description": "Briefing, Produktion und Reporting mit den richtigen Creatorn."
+    },
+    {
+      "slug": "sosyal-medya-yonetimi",
+      "step_number": 5,
+      "title": "Optimierung",
+      "description": "Trend-Tests, Skalierung der gewinnenden Formate."
+    },
+    {
+      "slug": "web-tasarim-gelistirme",
+      "step_number": 1,
+      "title": "Discovery & Wireframe",
+      "description": "Zielgruppe, Seitenarchitektur und Wireframe."
+    },
+    {
+      "slug": "web-tasarim-gelistirme",
+      "step_number": 2,
+      "title": "Design",
+      "description": "Hochdetailliertes UI in Figma, Designsystem."
+    },
+    {
+      "slug": "web-tasarim-gelistirme",
+      "step_number": 3,
+      "title": "Entwicklung",
+      "description": "Next.js- + CMS-Integration, Performance-Optimierung."
+    },
+    {
+      "slug": "web-tasarim-gelistirme",
+      "step_number": 4,
+      "title": "QA & Launch",
+      "description": "Cross-Browser-Tests, Accessibility und Go-live."
+    },
+    {
+      "slug": "web-tasarim-gelistirme",
+      "step_number": 5,
+      "title": "Iteration",
+      "description": "Heatmap, A/B-Test und monatliche CRO-Verbesserungen."
+    }
+  ],
+  "service_faqs": [
+    {
+      "slug": "360-dijital-pazarlama",
+      "question": "Wie läuft der Wechsel von meiner aktuellen Agentur?",
+      "answer": "Zunächst ein 2-3-wöchiger paralleler Übergabeprozess. Wir kommunizieren mit Ihrer aktuellen Agentur und übernehmen Konten, Daten und laufende Kampagnen reibungslos. Null Unterbrechung.",
+      "sort_order": 1
+    },
+    {
+      "slug": "360-dijital-pazarlama",
+      "question": "Kann ich diesen Service auch nutzen, wenn ich ein internes Marketingteam habe?",
+      "answer": "Natürlich. Die meisten unserer Kunden bevorzugen das Modell, bei dem wir als Erweiterung des internen Marketingteams arbeiten.",
+      "sort_order": 2
+    },
+    {
+      "slug": "360-dijital-pazarlama",
+      "question": "Wie groß ist das Team, das sich um mein Konto kümmert?",
+      "answer": "Typischerweise arbeitet 1 Account Manager + 3-5 Spezialisten (Ads, SEO, Kreatives, Social Media usw.) aktiv mit Ihrem Team.",
+      "sort_order": 3
+    },
+    {
+      "slug": "icerik-marka-stratejisi",
+      "question": "Ist Logo-Design inbegriffen?",
+      "answer": "Ja. Logo und die gesamte Farbpalette sind inbegriffen. Auch das Überarbeiten eines bestehenden Logos ist möglich.",
+      "sort_order": 1
+    },
+    {
+      "slug": "icerik-marka-stratejisi",
+      "question": "Wie sieht das Markenbuch aus?",
+      "answer": "Zwischen 70 und 120 Seiten, ein sowohl schriftlicher als auch visueller Leitfaden.",
+      "sort_order": 2
+    },
+    {
+      "slug": "icerik-marka-stratejisi",
+      "question": "Dauer der Repositionierung?",
+      "answer": "Typisch 8-12 Wochen. Die Recherchephase kann lange dauern; Kreation und Umsetzung gehen schneller.",
+      "sort_order": 3
+    },
+    {
+      "slug": "mobil-uygulama-gelistirme",
+      "question": "React Native oder Native?",
+      "answer": "In den meisten Fällen React Native; die Entwicklungszeit halbiert sich, eine Codebase wird auf zwei Plattformen veröffentlicht.",
+      "sort_order": 1
+    },
+    {
+      "slug": "mobil-uygulama-gelistirme",
+      "question": "Wird sie im Store abgelehnt?",
+      "answer": "Bisher wurden alle von uns verwalteten Apps zugelassen. Kommt es zu einer Ablehnung, sind die Korrekturen bis zur Freigabe im Retainer enthalten.",
+      "sort_order": 2
+    },
+    {
+      "slug": "mobil-uygulama-gelistirme",
+      "question": "Wie ist es mit Pflege/Wartung danach?",
+      "answer": "30 Tage Support nach der Veröffentlichung sind inbegriffen. Danach wird ein monatlicher Wartungs-/Feature-Retainer definiert.",
+      "sort_order": 3
+    },
+    {
+      "slug": "reklam-yonetimi",
+      "question": "Wie übernehmen Sie meine bestehenden Werbekonten?",
+      "answer": "Wir erhalten Kontozugriff über den Google- und Meta Business Manager. Die Kontoinhaberschaft bleibt bei Ihnen.",
+      "sort_order": 1
+    },
+    {
+      "slug": "reklam-yonetimi",
+      "question": "Kann ich im ersten Monat Ergebnisse erwarten?",
+      "answer": "Die ersten 30 Tage sind eine Lernphase. Eine spürbare Performance-Verbesserung beginnt typischerweise zwischen 45 und 90 Tagen.",
+      "sort_order": 2
+    },
+    {
+      "slug": "reklam-yonetimi",
+      "question": "Ist die Kreativ-Produktion inbegriffen?",
+      "answer": "Ja. Eine bestimmte Anzahl statischer Bild- und Video-Kreatives pro Monat ist im Retainer enthalten.",
+      "sort_order": 3
+    },
+    {
+      "slug": "reklam-yonetimi",
+      "question": "Wie wird das Werbebudget verwaltet?",
+      "answer": "Das Werbebudget wird direkt von Ihren eigenen Werbekonten ausgegeben – wir verwalten es nur. Volle Transparenz.",
+      "sort_order": 4
+    },
+    {
+      "slug": "saas-proje-gelistirme",
+      "question": "Wem gehört der Quellcode?",
+      "answer": "Vollständig Ihnen. Wir arbeiten über Ihre GitHub-Organisation, das geistige Eigentum liegt vom ersten Tag an bei Ihnen.",
+      "sort_order": 1
+    },
+    {
+      "slug": "saas-proje-gelistirme",
+      "question": "Kann es an unser eigenes Entwicklerteam übergeben werden?",
+      "answer": "Ja, das ist der Standardprozess. Das Übergabepaket umfasst Dokumentation, Onboarding und 4 Wochen parallelen Support.",
+      "sort_order": 2
+    },
+    {
+      "slug": "saas-proje-gelistirme",
+      "question": "Wie werden KI-Funktionen integriert?",
+      "answer": "Wir betten LLMs in die Produkt-Flows ein, allen voran die APIs von OpenAI und Anthropic.",
+      "sort_order": 3
+    },
+    {
+      "slug": "seo",
+      "question": "Wann sehe ich die ersten Ergebnisse?",
+      "answer": "Die Wirkung technischer Verbesserungen zeigt sich innerhalb von 4-8 Wochen in der Search Console. Content-Rankings setzen sich in 3-6 Monaten, bei Autoritätskeywords in 6-12 Monaten.",
+      "sort_order": 1
+    },
+    {
+      "slug": "seo",
+      "question": "Schreiben Sie KI-Content?",
+      "answer": "Nicht vollständig. Wir nutzen KI, aber jede Veröffentlichung wird von Menschen neu geschrieben und verifiziert.",
+      "sort_order": 2
+    },
+    {
+      "slug": "seo",
+      "question": "Ist Linkaufbau nicht riskant?",
+      "answer": "Wir halten uns von Black-Hat-Techniken fern. Wir machen ausschließlich digitale PR, Gastbeiträge und Content-Amplifikation.",
+      "sort_order": 3
+    },
+    {
+      "slug": "seo",
+      "question": "Optimieren Sie auch meine bestehenden Inhalte?",
+      "answer": "Ja, dieser als Content-Refresh bezeichnete Prozess ist einer der schnellsten Wege zu Ergebnissen.",
+      "sort_order": 4
+    },
+    {
+      "slug": "sosyal-medya-yonetimi",
+      "question": "Wer macht die Aufnahmen?",
+      "answer": "Je nach Art des Inhalts: Aufnahme in unserem eigenen Studio, Zusammenarbeit mit UGC-Creatorn oder Schnitt von Rohmaterial, das auf Markenseite gedreht wurde.",
+      "sort_order": 1
+    },
+    {
+      "slug": "sosyal-medya-yonetimi",
+      "question": "Auf welchen Plattformen arbeiten Sie?",
+      "answer": "Priorität: Instagram, TikTok, YouTube Shorts. LinkedIn, X und Threads werden nach Bedarf ergänzt.",
+      "sort_order": 2
+    },
+    {
+      "slug": "sosyal-medya-yonetimi",
+      "question": "Zeiten des Community-Managements?",
+      "answer": "Wochentags von 09:00 bis 19:00 Uhr aktives Management. Für Notfälle haben wir ein 24/7-Bereitschaftssystem.",
+      "sort_order": 3
+    },
+    {
+      "slug": "web-tasarim-gelistirme",
+      "question": "Können Sie meine bestehende Website erneuern?",
+      "answer": "Ja. Wir erneuern unter Erhalt des SEO-Werts der bestehenden Website – inklusive 301-Weiterleitungen und Content-Migration.",
+      "sort_order": 1
+    },
+    {
+      "slug": "web-tasarim-gelistirme",
+      "question": "Welches CMS empfehlen Sie?",
+      "answer": "Bei hoher Content-Dichte Sanity, für ein klassischeres Admin-Panel Strapi.",
+      "sort_order": 2
+    },
+    {
+      "slug": "web-tasarim-gelistirme",
+      "question": "Woher kommt das Hosting?",
+      "answer": "Wir empfehlen Vercel oder Cloudflare – Zero Config, Zero Downtime, globales Edge-Netzwerk.",
+      "sort_order": 3
+    }
+  ],
+  "portfolio_projects": [
+    {
+      "slug": "lumen-cosmetics-roas",
+      "title": "Lumen Cosmetics — ROAS 4.8x",
+      "client": "Lumen Cosmetics",
+      "description": "Mit auf Meta und Google neu strukturiertem Funnel und Creative Testing haben wir den Umsatz in 6 Monaten auf das 3,4-Fache gesteigert.",
+      "metric": "ROAS 4.8x",
+      "tags": [
+        "Meta Ads",
+        "Google Ads",
+        "CRO"
+      ]
+    },
+    {
+      "slug": "tessera-saas-mvp",
+      "title": "Tessera — MVP in 8 Wochen",
+      "client": "Tessera",
+      "description": "Von der Ideenphase bis live; ein fertiges SaaS-Produkt mit Stripe-Abonnement, KI-Zusammenfassung und Team-Kollaborationsfunktionen.",
+      "metric": "8 Wochen",
+      "tags": [
+        "Next.js",
+        "Stripe",
+        "OpenAI"
+      ]
+    },
+    {
+      "slug": "nordel-home-seo",
+      "title": "Nordel Home — 4,6x beim organischen Traffic",
+      "client": "Nordel Home",
+      "description": "Mit technischem SEO, Themenclustern und Linkaufbau haben wir den organischen Traffic in 9 Monaten auf das 4,6-Fache gesteigert.",
+      "metric": "+460%",
+      "tags": [
+        "Technical SEO",
+        "Content",
+        "Linkbuilding"
+      ]
+    },
+    {
+      "slug": "voltra-mobility-app",
+      "title": "Voltra Mobility — Mobile App",
+      "client": "Voltra",
+      "description": "iOS- & Android-App für einen E-Scooter-Betreiber. 50K+ Downloads in den ersten 90 Tagen.",
+      "metric": "50K+ Downloads",
+      "tags": [
+        "React Native",
+        "Maps SDK",
+        "Stripe"
+      ]
+    },
+    {
+      "slug": "vera-moda-tiktok",
+      "title": "Vera Moda — TikTok-Wachstum",
+      "client": "Vera Moda",
+      "description": "Mit einer von Grund auf entwickelten TikTok-Strategie und Influencer-Kooperationen 180K organische Follower in 3 Monaten.",
+      "metric": "+180K Follower",
+      "tags": [
+        "TikTok",
+        "UGC",
+        "Influencer"
+      ]
+    },
+    {
+      "slug": "greenly-foods-web",
+      "title": "Greenly Foods — E-Commerce-Redesign",
+      "client": "Greenly Foods",
+      "description": "Mit dem neuen, auf Shopify Plus aufgebauten Einkaufserlebnis stieg die Conversion-Rate um 42 %.",
+      "metric": "Conversion +42 %",
+      "tags": [
+        "Shopify Plus",
+        "CRO",
+        "UX"
+      ]
+    },
+    {
+      "slug": "kavros-fintech-app",
+      "title": "Kavros — Fintech-Mobile-App",
+      "client": "Kavros",
+      "description": "Portfolio-Tracking-App für Privatanleger. Top 10 in der Finanzkategorie des App Store Türkei.",
+      "metric": "Top 10",
+      "tags": [
+        "Swift",
+        "Kotlin",
+        "GraphQL"
+      ]
+    },
+    {
+      "slug": "altan-clinic-ads",
+      "title": "Altan Clinic — Lead Generation",
+      "client": "Altan Clinic",
+      "description": "Mit mehrsprachigen, auf Gesundheitstourismus ausgerichteten Kampagnen wurde der CPL um 58 % gesenkt.",
+      "metric": "CPL -58 %",
+      "tags": [
+        "Google Ads",
+        "Meta",
+        "Landing Page"
+      ]
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Selin Aksoy",
+      "role": "Marketingdirektorin",
+      "company": "Lumen Cosmetics",
+      "quote": "In den 6 Monaten der Zusammenarbeit mit True EDigital Marketing stieg unser ROAS von 2,1 auf 4,8. Das Beeindruckendste sind nicht die Zahlen, sondern die Teamdynamik – sie identifizieren sich mit unserer Marke wie wir selbst.",
+      "sort_order": 1
+    },
+    {
+      "name": "Kerem Doğan",
+      "role": "Gründer",
+      "company": "Tessera SaaS",
+      "quote": "Sie haben unser MVP in 8 Wochen veröffentlicht. Sie haben nicht nur Code geschrieben; von der Produktstrategie bis zum Onboarding-Flow haben sie sich wie ein echter Technologiepartner verhalten.",
+      "sort_order": 2
+    },
+    {
+      "name": "Beyza Yılmaz",
+      "role": "E-Commerce-Managerin",
+      "company": "Nordel Home",
+      "quote": "Das SEO-Team hat den Unterschied wirklich gezeigt. Innerhalb von 9 Monaten hat sich unser organischer Traffic auf das 4,6-Fache erhöht, bei unseren Marken-Keywords stehen wir auf Platz 1.",
+      "sort_order": 3
+    },
+    {
+      "name": "Mert Çelik",
+      "role": "CEO",
+      "company": "Voltra Mobility",
+      "quote": "Der Veröffentlichungsprozess unserer Mobile App hätte stressig sein können, aber True EDigital Marketing hat den gesamten Prozess gemanagt. Von der App-Store-Freigabe bis zu den ersten 50K Downloads waren sie an unserer Seite.",
+      "sort_order": 4
+    },
+    {
+      "name": "Asya Pamir",
+      "role": "Markenmanagerin",
+      "company": "Vera Moda",
+      "quote": "Sie haben unsere TikTok- und Reels-Strategie von Grund auf entwickelt. In 3 Monaten haben wir 180K organische Follower gewonnen.",
+      "sort_order": 5
+    },
+    {
+      "name": "Onur Şahin",
+      "role": "Mitgründer",
+      "company": "Greenly Foods",
+      "quote": "Transparentes Reporting, schnelle Kommunikation und richtiges Erwartungsmanagement. Beim Agenturwechsel haben wir alles, was wir gesucht haben, an einem einzigen Ort gefunden.",
+      "sort_order": 6
+    }
+  ],
+  "team_members": [
+    {
+      "name": "Emre Tagay",
+      "role": "Gründer & Strategiedirektor",
+      "bio": "10+ Jahre Erfahrung im digitalen Marketing. Er ist an jedem neuen Projekt direkt beteiligt und führt das erste Strategiegespräch persönlich.",
+      "sort_order": 1
+    },
+    {
+      "name": "Deniz Aydın",
+      "role": "Performance-Marketing-Lead",
+      "bio": "Expertise in Google Ads und Meta Ads. Verwaltet ein Budget von monatlich 5M TL+. Zertifizierter Google Premier Partner.",
+      "sort_order": 2
+    },
+    {
+      "name": "Mehmet Kaya",
+      "role": "Technology Lead",
+      "bio": "10 Jahre Erfahrung in der Full-Stack-Entwicklung. Baut skalierbare Produkte mit Next.js und React Native.",
+      "sort_order": 3
+    },
+    {
+      "name": "Zeynep Şahin",
+      "role": "Creative Director",
+      "bio": "Zuvor 8 Jahre in der Agenturwelt. Verantwortet die visuelle Identität, den Tonalitätsleitfaden und das Kampagnen-Kreativ von Marken.",
+      "sort_order": 4
+    },
+    {
+      "name": "Burak Yıldız",
+      "role": "SEO- und Content-Lead",
+      "bio": "Experte für technisches SEO und Linkaufbau. Entwickelt Content-Strategien, die den EEAT-Prinzipien treu bleiben.",
+      "sort_order": 5
+    },
+    {
+      "name": "Asya Demir",
+      "role": "Customer-Relations-Lead",
+      "bio": "Fokussiert auf Customer Success (CS). Für jedes Konto ein eigener Erfolgsplan, ein wöchentlicher Kommunikationsrhythmus, transparentes Reporting.",
+      "sort_order": 6
+    }
+  ],
+  "timeline_events": [
+    {
+      "year": "2015",
+      "title": "Erste E-Commerce-Erfahrung",
+      "description": "Emre Tagay tritt mit der von ihm gegründeten E-Commerce-Marke in die Welt des digitalen Marketings ein.",
+      "sort_order": 1
+    },
+    {
+      "year": "2017",
+      "title": "Freelance-Phase",
+      "description": "Er erkennt, dass die von ihm erzielten Ergebnisse auch anderen Marken nützen könnten. Als Freelancer berät er 12 Marken im Marketing.",
+      "sort_order": 2
+    },
+    {
+      "year": "2019",
+      "title": "True EDigital Marketing wird gegründet",
+      "description": "Es wird eine Agentur gegründet, die Performance-Marketing und Technologieentwicklung unter einem Dach vereint. 8 Kunden im ersten Jahr.",
+      "sort_order": 3
+    },
+    {
+      "year": "2021",
+      "title": "Das Team wächst, eine SaaS-Abteilung entsteht",
+      "description": "Neben dem Marketingteam wird eine Softwareentwicklungsabteilung hinzugefügt. Wir entwickeln MVPs für unsere ersten SaaS-Kunden.",
+      "sort_order": 4
+    },
+    {
+      "year": "2023",
+      "title": "Mobile-App-Bereich",
+      "description": "Mit React-Native- und nativen Mobile-Entwicklungskompetenzen wird der Bereich eröffnet.",
+      "sort_order": 5
+    },
+    {
+      "year": "2024",
+      "title": "KI-Integrationen",
+      "description": "Mit OpenAI- und Anthropic-Integrationen fügen wir KI-Funktionen zu den SaaS-Produkten unserer Kunden hinzu.",
+      "sort_order": 6
+    },
+    {
+      "year": "2026",
+      "title": "Heute",
+      "description": "Ein 14-köpfiges Team mit Sitz in Istanbul, 60+ aktive Kunden, über 320 abgeschlossene Projekte.",
+      "sort_order": 7
+    }
+  ],
+  "industries": [
+    {
+      "name": "E-Commerce & D2C",
+      "description": "Für Marken, die von Shopify, WooCommerce und individuellen Shop-Infrastrukturen leben, bauen wir verkaufsorientierte Funnels.",
+      "highlights": [
+        "+50 D2C-Marken",
+        "ROAS-fokussiert"
+      ],
+      "sort_order": 1
+    },
+    {
+      "name": "SaaS & Software",
+      "description": "Für das MRR-Wachstum eine Kombination aus Lifecycle-E-Mail, Product-led-Growth und SEO + Paid.",
+      "highlights": [
+        "ARR-x3-Cases",
+        "Self-serve-Onboarding"
+      ],
+      "sort_order": 2
+    },
+    {
+      "name": "Fintech",
+      "description": "Kreative Kampagnen in einer stark regulierten Branche – von Privatfinanzen bis zur digitalen Wallet.",
+      "highlights": [
+        "KYC-Funnel",
+        "Trust-first-Kreatives"
+      ],
+      "sort_order": 3
+    },
+    {
+      "name": "Gesundheit & Gesundheitstourismus",
+      "description": "Mehrsprachige Lead-Generation-Kampagnen von ästhetischen Kliniken bis zur Haartransplantation.",
+      "highlights": [
+        "Mehrsprachige Landingpages",
+        "Optimierung der Lead-Qualität"
+      ],
+      "sort_order": 4
+    },
+    {
+      "name": "Bildung & Karriere",
+      "description": "Verkaufs-Funnels für Online-Kurse, Bootcamps und B2B-Bildungsplattformen.",
+      "highlights": [
+        "Webinar-Funnel",
+        "Community-Aufbau"
+      ],
+      "sort_order": 5
+    },
+    {
+      "name": "B2B & Industrie",
+      "description": "LinkedIn, Content-Marketing und ABM-Strategien für B2B-Marken mit langen Verkaufszyklen.",
+      "highlights": [
+        "ABM",
+        "LinkedIn Organic"
+      ],
+      "sort_order": 6
+    }
+  ],
+  "tech_items": [
+    {
+      "name": "Next.js",
+      "category": "Frontend",
+      "sort_order": 1
+    },
+    {
+      "name": "React Native",
+      "category": "Mobile",
+      "sort_order": 2
+    },
+    {
+      "name": "Node.js",
+      "category": "Backend",
+      "sort_order": 3
+    },
+    {
+      "name": "PostgreSQL",
+      "category": "Datenbank",
+      "sort_order": 4
+    },
+    {
+      "name": "Vercel",
+      "category": "Hosting",
+      "sort_order": 5
+    },
+    {
+      "name": "Cloudflare",
+      "category": "CDN/DNS",
+      "sort_order": 6
+    },
+    {
+      "name": "Stripe",
+      "category": "Zahlung",
+      "sort_order": 7
+    },
+    {
+      "name": "Supabase",
+      "category": "Backend-as-a-Service",
+      "sort_order": 8
+    },
+    {
+      "name": "Google Ads",
+      "category": "Werbung",
+      "sort_order": 9
+    },
+    {
+      "name": "Meta Ads",
+      "category": "Werbung",
+      "sort_order": 10
+    },
+    {
+      "name": "TikTok Ads",
+      "category": "Werbung",
+      "sort_order": 11
+    },
+    {
+      "name": "GA4",
+      "category": "Analytics",
+      "sort_order": 12
+    },
+    {
+      "name": "Looker Studio",
+      "category": "Reporting",
+      "sort_order": 13
+    },
+    {
+      "name": "Ahrefs",
+      "category": "SEO",
+      "sort_order": 14
+    },
+    {
+      "name": "Semrush",
+      "category": "SEO",
+      "sort_order": 15
+    },
+    {
+      "name": "Figma",
+      "category": "Design",
+      "sort_order": 16
+    },
+    {
+      "name": "Notion",
+      "category": "Kollaboration",
+      "sort_order": 17
+    },
+    {
+      "name": "Linear",
+      "category": "Projektmanagement",
+      "sort_order": 18
+    },
+    {
+      "name": "Slack",
+      "category": "Kommunikation",
+      "sort_order": 19
+    },
+    {
+      "name": "OpenAI",
+      "category": "KI",
+      "sort_order": 20
+    },
+    {
+      "name": "Anthropic",
+      "category": "KI",
+      "sort_order": 21
+    }
+  ],
+  "faqs": [
+    {
+      "scope": "contact",
+      "question": "Wie lange dauert eine Antwort?",
+      "answer": "Auf Formularanfragen, die unter der Woche eingehen, antworten wir im Schnitt innerhalb von 6-12 Stunden, auf Anfragen am Wochenende bis Montagmittag.",
+      "sort_order": 1
+    },
+    {
+      "scope": "contact",
+      "question": "Was sollte ich für das Gespräch vorbereiten?",
+      "answer": "Ihre aktuellen Ziele, falls vorhanden die Performance-Daten der letzten 3 Monate, Analytics-Zugänge zu Web/App/Social Media (nur lesend) und nach Möglichkeit Ihre Referenzmarken. Auch wenn nichts davon bereitliegt, verläuft das Gespräch dennoch produktiv.",
+      "sort_order": 2
+    },
+    {
+      "scope": "contact",
+      "question": "Muss ich mein Budget teilen?",
+      "answer": "Nein, aber es hilft. Wenn der Budgetrahmen unklar ist, klären wir das im Gespräch gemeinsam. Wir sprechen mit Ihnen unabhängig von Ihrem Budgetmodell.",
+      "sort_order": 3
+    },
+    {
+      "scope": "contact",
+      "question": "Kann ich aus dem Ausland mit Ihnen arbeiten?",
+      "answer": "Selbstverständlich. 30 % unserer Kunden haben ihren Sitz im Ausland (UK, US, AE). Wir können alle Gespräche auf Türkisch oder Englisch führen.",
+      "sort_order": 4
+    },
+    {
+      "scope": "home",
+      "question": "In welchen Branchen arbeiten Sie?",
+      "answer": "Wir arbeiten in einem breiten Spektrum, allen voran E-Commerce, SaaS, Gesundheit, Fintech, Bildung und B2B-Dienstleistungen.",
+      "sort_order": 1
+    },
+    {
+      "scope": "home",
+      "question": "Wie lang ist die minimale Vertragslaufzeit?",
+      "answer": "Bei kontinuierlichen Services wie Anzeigenmanagement und SEO empfehlen wir eine Mindestzusammenarbeit von 3 Monaten.",
+      "sort_order": 2
+    },
+    {
+      "scope": "home",
+      "question": "Wie machen Sie das Reporting?",
+      "answer": "Für jeden unserer Kunden richten wir ein Live-Looker-Studio-Dashboard ein.",
+      "sort_order": 3
+    },
+    {
+      "scope": "home",
+      "question": "Wer produziert die Kreatives?",
+      "answer": "Für Werbebilder, Videoschnitte und Social-Media-Inhalte haben wir hauseigene Art Directors, Motion Designer und Copywriter.",
+      "sort_order": 4
+    },
+    {
+      "scope": "home",
+      "question": "Wie integrieren Sie sich in mein bestehendes Team?",
+      "answer": "Wir arbeiten wie eine Erweiterung Ihres internen Marketing- oder Technologieteams.",
+      "sort_order": 5
+    },
+    {
+      "scope": "home",
+      "question": "Wie ist Ihr Preismodell?",
+      "answer": "Im Anzeigenmanagement arbeiten wir mit einem Prozentsatz Ihres Budgets + fester Managementgebühr, bei SEO und Content mit monatlichen Retainer-Modellen.",
+      "sort_order": 6
+    },
+    {
+      "scope": "services",
+      "question": "Kann ich die Services einzeln buchen, oder ist ein Paket Pflicht?",
+      "answer": "Nein, es gibt keine Paketpflicht. Sie können mit einem einzigen Service starten und bei Bedarf weitere Bereiche öffnen. Die meisten unserer Kunden starten mit Anzeigenmanagement oder SEO; innerhalb von 6 Monaten erweitern sie auf 2-3 Services.",
+      "sort_order": 1
+    },
+    {
+      "scope": "services",
+      "question": "Wie hoch sollte das Werbebudget mindestens sein?",
+      "answer": "Unter monatlich ₺50.000 bei Meta Ads und ₺75.000 bei Google Ads ist echtes Testen schwer. Bei Budgets unter diesen Beträgen empfehlen wir, zunächst mit organischen Kanälen (SEO + Social Media) zu starten.",
+      "sort_order": 2
+    },
+    {
+      "scope": "services",
+      "question": "Ist die Kreativ-Produktion inbegriffen oder kostet sie extra?",
+      "answer": "In unserem Retainer-Modell ist eine bestimmte Anzahl an Kreatives pro Monat inbegriffen (Werbebild, Video, Post). Zusätzlicher Kreativbedarf wird mit klarer Preisgestaltung gelöst – keine Überraschungsrechnung.",
+      "sort_order": 3
+    },
+    {
+      "scope": "services",
+      "question": "Was passiert, wenn es mir nicht gefällt?",
+      "answer": "Garantie auf messbare Verbesserung in den ersten 90 Tagen. Bleibt sie aus, endet der Vertrag und wir berechnen den letzten Monat nicht. Das halten wir im Vertrag fest.",
+      "sort_order": 4
+    }
+  ],
+  "page_sections": [
+    {
+      "page_slug": "about",
+      "section_key": "hero",
+      "eyebrow": "Über uns",
+      "title": "Ein Team, das gegründet wurde, um Marken zu vergrößern",
+      "description": "True EDigital Marketing positioniert sich am Schnittpunkt von Performance-Marketing und Technologieentwicklung. Seit 2019 bieten wir E-Commerce-, SaaS- und Dienstleistungsmarken eine digitale Wachstumspartnerschaft.",
+      "body": null,
+      "sort_order": 1
+    },
+    {
+      "page_slug": "about",
+      "section_key": "stats",
+      "eyebrow": null,
+      "title": null,
+      "description": null,
+      "body": {
+        "items": [
+          {
+            "to": 7,
+            "label": "Jahre aktiv",
+            "suffix": "+",
+            "decimals": 0
+          },
+          {
+            "to": 60,
+            "label": "Aktive Kunden",
+            "suffix": "+",
+            "decimals": 0
+          },
+          {
+            "to": 320,
+            "label": "Abgeschlossene Projekte",
+            "suffix": "+",
+            "decimals": 0
+          },
+          {
+            "to": 14,
+            "label": "Teamkollegen",
+            "suffix": "",
+            "decimals": 0
+          }
+        ]
+      },
+      "sort_order": 2
+    },
+    {
+      "page_slug": "about",
+      "section_key": "story",
+      "eyebrow": "Unsere Geschichte",
+      "title": "Die Geschichte unseres Gründers Emre Tagay",
+      "description": "",
+      "body": {
+        "items": [
+          {
+            "text": "Emre Tagay trat 2015 als Gründer einer E-Commerce-Marke in die Welt des digitalen Marketings ein. Um seine eigene Marke zu vergrößern, musste er Google Ads, Meta Ads und SEO lernen – und er erkannte, dass viele türkische Marken mit demselben Problem kämpften: keine passende Agentur zu finden."
+          },
+          {
+            "text": "Die meisten Agenturen sind mit großen Kunden ausgelastet oder nur in einem Bereich spezialisiert. Einen Partner zu finden, der gleichzeitig die Strategie durchdenkt, das Kreativ produziert und die Technologie entwickelt, war selten. Nachdem er zwischen 2017 und 2019 mehr als 12 Marken als Freelancer beraten hatte, gründete er mit der Frage „Warum mache ich daraus nicht eine Teamleistung?“ True EDigital Marketing."
+          },
+          {
+            "text": "Als er 2019 True EDigital Marketing gründete, war sein Ziel klar: eine Agentur, die das Geschäft des Kunden wie ein Partner behandelt, den Menschen hinter den Zahlen nicht vergisst und sowohl die kreative als auch die technische Seite beherrscht. Heute besteht unser Team mit Sitz in Istanbul aus 14 Personen; wir bedienen ein breites Portfolio vom E-Commerce über Fintech und Gesundheitstourismus bis zu SaaS-Start-ups."
+          },
+          {
+            "text": "Noch immer führe ich als Gründer das erste Strategiegespräch persönlich, wenn ein neues Projekt aufgenommen wird. Denn nur so wird Vertrauen aufgebaut. Auch wenn wir eine schnell wachsende Agentur sind, werden wir dieses Prinzip bewahren."
+          }
+        ]
+      },
+      "sort_order": 3
+    },
+    {
+      "page_slug": "about",
+      "section_key": "mission_vision",
+      "eyebrow": null,
+      "title": null,
+      "description": null,
+      "body": {
+        "items": [
+          {
+            "desc": "Das digitale Wachstum von Marken zu einer messbaren und nachhaltigen Wissenschaft zu machen. Jede Entscheidung mit Daten zu treffen und jede Zahl mit Kreativität zu interpretieren.",
+            "icon": "Target",
+            "title": "Mission"
+          },
+          {
+            "desc": "Der digitale Wachstumspartner der Türkei zu sein, der Technologie am besten versteht und Performance am besten managt. Bis 2027 eine Struktur zu erreichen, die mit 100 Marken partnerschaftlich verbunden ist.",
+            "icon": "Eye",
+            "title": "Vision"
+          },
+          {
+            "desc": "Messbare Verbesserung in den ersten 90 Tagen. Andernfalls ist der Vertrag nicht bindend – unsere Bedingungen werden im kostenlosen Erstgespräch klar geteilt. Wir halten unser Wort im Vertrag fest.",
+            "icon": "HeartHandshake",
+            "title": "Unser Versprechen"
+          }
+        ]
+      },
+      "sort_order": 4
+    },
+    {
+      "page_slug": "about",
+      "section_key": "values",
+      "eyebrow": "Unsere Werte",
+      "title": "Sechs Disziplinen, die uns zu uns machen",
+      "description": "Eine Teamkultur besteht nicht aus Worten, sondern aus täglichen Entscheidungen. Hier sind die sechs Disziplinen, die wir jeden Morgen auf den Tisch bringen.",
+      "body": {
+        "items": [
+          {
+            "desc": "Wir gehen das Geschäft unseres Kunden wie unser eigenes an. Verantwortung steht nicht in Klammern; sie wird an Ergebnissen gemessen.",
+            "icon": "Sparkles",
+            "title": "Ownership"
+          },
+          {
+            "desc": "Budget, Performance und Prozesse sind stets offen. Überraschungen gibt es bei Kampagnenoptimierungen, nicht bei Rechnungsposten.",
+            "icon": "ShieldCheck",
+            "title": "Transparenz"
+          },
+          {
+            "desc": "Das Ergebnis eines Tests liegt innerhalb weniger Tage bei uns vor. Die Ära der langsamen Agentur ist vorbei; Geschwindigkeit ist für uns eine Disziplin.",
+            "icon": "Gauge",
+            "title": "Geschwindigkeit"
+          },
+          {
+            "desc": "Keine Generalisten, sondern Spezialisten. Ads, SEO, Entwicklung, Content – jeder Bereich wird von in sich gemeisterten Teams geführt.",
+            "icon": "Users",
+            "title": "Expertise"
+          },
+          {
+            "desc": "Wir gehen keine Partnerschaft für eine einzige Kampagne ein. Ob 3 Monate oder 3 Jahre, unser Ziel ist das nachhaltige Wachstum Ihrer Marke.",
+            "icon": "HeartHandshake",
+            "title": "Langfristigkeit"
+          },
+          {
+            "desc": "Daten sind schön, aber ohne Kreativität bedeuten sie nichts. Wenn beides zusammenkommt, machen Marken den Unterschied.",
+            "icon": "Lightbulb",
+            "title": "Kreativität"
+          }
+        ]
+      },
+      "sort_order": 10
+    },
+    {
+      "page_slug": "about",
+      "section_key": "culture",
+      "eyebrow": "Ein Blick von innen",
+      "title": "Wie arbeiten wir in unserem Büro?",
+      "description": "Wir glauben, dass die Mitarbeitererfahrung die Kundenerfahrung direkt beeinflusst. Deshalb nehmen wir die Arbeitsbedingungen unseres Teams ernst.",
+      "body": {
+        "items": [
+          {
+            "desc": "Wir halten Meetings nur für Themen ab, die wirklich ein Meeting erfordern. Der Rest läuft async über Notion und Slack.",
+            "icon": "Coffee",
+            "title": "Async-first-Arbeitskultur"
+          },
+          {
+            "desc": "Nicht 9-to-5, sondern ein Ziel-Deadline-Modell. Unser Team arbeitet hybrid, ins Büro zu kommen ist Wahl, keine Pflicht.",
+            "icon": "Trophy",
+            "title": "Ergebnisorientiert, nicht anwesenheitsorientiert"
+          },
+          {
+            "desc": "Jedem Teamkollegen stellen wir ein jährliches Budget für Kurse, Konferenzen und Bücher zur Verfügung. Wissen altert, wir werden des Auffrischens nicht müde.",
+            "icon": "Award",
+            "title": "Budget für kontinuierliches Lernen"
+          },
+          {
+            "desc": "Wir messen die Kunden-NPS-Scores vierteljährlich. Sinkende Scores wirken sich direkt auf die OKRs des Teams aus.",
+            "icon": "Briefcase",
+            "title": "Anonymes Kundenfeedback"
+          }
+        ]
+      },
+      "sort_order": 20
+    },
+    {
+      "page_slug": "about",
+      "section_key": "timeline_header",
+      "eyebrow": "Roadmap",
+      "title": "Unsere Reise von 2015 bis heute",
+      "description": "Bei einer Agentur ist nicht nur der heutige Stand wichtig, sondern auch, wie sie dorthin gelangt ist. Hier sind unsere Schritte.",
+      "body": null,
+      "sort_order": 25
+    },
+    {
+      "page_slug": "about",
+      "section_key": "team_header",
+      "eyebrow": "Team",
+      "title": "Die Köpfe, die direkt mit Ihrer Marke arbeiten",
+      "description": "Kein Account-Plan, der an Junior-Assistenten weitergereicht wird. Die folgenden Personen sprechen jede Woche regelmäßig mit Ihnen und übernehmen Verantwortung für das Projekt.",
+      "body": null,
+      "sort_order": 26
+    },
+    {
+      "page_slug": "about",
+      "section_key": "recognitions",
+      "eyebrow": "Zertifikate",
+      "title": "Branchenanerkennungen und Bekanntheit",
+      "description": "Auszeichnungen stehen nicht im Mittelpunkt der Arbeit, aber wir schätzen externe Bestätigung. Hier ist, wie die Plattformen, über die wir unsere Konten verwalten, und die Branche uns wahrnehmen.",
+      "body": {
+        "items": [
+          {
+            "year": "2023, 2024, 2025, 2026",
+            "title": "Google Premier Partner"
+          },
+          {
+            "year": "2022 – fortlaufend",
+            "title": "Meta Business Partner"
+          },
+          {
+            "year": "Türkei 2024, 2025",
+            "title": "Clutch Top B2B"
+          },
+          {
+            "year": "2 Webprojekte (2024)",
+            "title": "Awwwards Honorable Mention"
+          },
+          {
+            "year": "100 % Erfolg (Mobile App)",
+            "title": "Store-Freigabe"
+          },
+          {
+            "year": "9.2 / 10",
+            "title": "Durchschnittlicher Kunden-NPS"
+          }
+        ]
+      },
+      "sort_order": 30
+    },
+    {
+      "page_slug": "about",
+      "section_key": "why",
+      "eyebrow": "Warum wir?",
+      "title": "Die vier Dinge, die uns von anderen unterscheiden",
+      "description": "Die Marketingbranche ist überfüllt. Warum Marken sich für uns entscheiden, erzählen wir lieber anhand unseres Arbeitsmodells als anhand der Worte unserer Kunden.",
+      "body": {
+        "items": [
+          {
+            "desc": "Statt sich mit separaten Agenturen für Ads, SEO, Social Media, Web und Mobile-Entwicklung herumzuschlagen, koordinieren wir alles an einem einzigen Punkt. Kommunikationsreibung null, Geschwindigkeit maximal.",
+            "title": "360° aus einem einzigen Team"
+          },
+          {
+            "desc": "Monatliche Reports stimmen mit den echten Zielen der Marke überein. Keine Likes und Impressionen, sondern echte Metriken wie Umsatz, Leads und ROAS.",
+            "title": "Performancegebundenes Reporting"
+          },
+          {
+            "desc": "Ein Arbeitsmodell, das nicht an Juniors weitergereicht wird und bei dem Gründer Emre Tagay direkt an strategischen Entscheidungen mitwirkt.",
+            "title": "Direkte Beteiligung des Gründers"
+          },
+          {
+            "desc": "Weil wir SaaS und Mobile Apps entwickeln können, denken Marketingkampagnen auch die technische Infrastruktur mit. Diese Kombination fehlt der überwiegenden Mehrheit der Agenturen.",
+            "title": "Hybrid-DNA aus Technologie + Marketing"
+          }
+        ]
+      },
+      "sort_order": 40
+    },
+    {
+      "page_slug": "contact",
+      "section_key": "hero",
+      "eyebrow": "Kontakt",
+      "title": "Lassen Sie uns über die nächste Wachstumsphase sprechen",
+      "description": "Füllen Sie das untenstehende Formular aus oder kontaktieren Sie uns direkt. Auf alle neuen Anfragen antworten wir innerhalb von 48 Stunden.",
+      "body": null,
+      "sort_order": 1
+    },
+    {
+      "page_slug": "contact",
+      "section_key": "channels",
+      "eyebrow": null,
+      "title": null,
+      "description": null,
+      "body": {
+        "items": [
+          {
+            "bind": "email",
+            "hint": "Schnellste Antwort",
+            "icon": "Mail",
+            "label": "E-Mail"
+          },
+          {
+            "bind": "phone",
+            "hint": "Während der Arbeitszeit",
+            "icon": "Phone",
+            "label": "Telefon"
+          },
+          {
+            "bind": "address",
+            "hint": "Umgebung Maslak / Levent",
+            "icon": "MapPin",
+            "label": "Büro"
+          },
+          {
+            "hint": "Für Notfälle 24/7-Bereitschaft",
+            "icon": "Clock",
+            "label": "Arbeitszeiten",
+            "value": "Wochentags 09:00 — 18:30"
+          }
+        ]
+      },
+      "sort_order": 5
+    },
+    {
+      "page_slug": "contact",
+      "section_key": "process",
+      "eyebrow": "Prozess",
+      "title": "Was passiert, nachdem Sie das Formular gesendet haben?",
+      "description": "Sie möchten keine Anfrage in eine Blackbox senden. Hier Schritt für Schritt: vom Moment des Absendens bis zur Vertragsunterschrift.",
+      "body": {
+        "items": [
+          {
+            "desc": "Füllen Sie das untenstehende Formular aus. Eine kurze Zusammenfassung Ihres Ziels, Ihrer aktuellen Situation und Ihrer Erwartungen genügt.",
+            "icon": "ClipboardList",
+            "time": "0 Min.",
+            "title": "Formularversand"
+          },
+          {
+            "desc": "Wir melden uns innerhalb von 48 Stunden bei Ihnen. Wir terminieren ein Erstgespräch für zwei bis drei für Sie passende Zeitfenster.",
+            "icon": "Compass",
+            "time": "0 – 48 Stunden",
+            "title": "Schnelle Vorprüfung"
+          },
+          {
+            "desc": "30-minütiges Videogespräch. Ziele, Budget und bestehende Kanäle werden besprochen. Am Ende erstellen wir einen Entwurf für einen konkreten Aktionsplan.",
+            "icon": "CalendarClock",
+            "time": "Woche 1",
+            "title": "Erstgespräch"
+          },
+          {
+            "desc": "Wir übermitteln Ihnen das kostenlose Angebotsdokument. Nach Zusage starten wir innerhalb von 5 Werktagen mit dem Projekt.",
+            "icon": "Rocket",
+            "time": "Woche 1 – 2",
+            "title": "Angebot und Start"
+          }
+        ]
+      },
+      "sort_order": 10
+    },
+    {
+      "page_slug": "contact",
+      "section_key": "guarantees",
+      "eyebrow": "Bedingungen der Zusammenarbeit",
+      "title": "Was können Sie von uns erwarten?",
+      "description": "Kein mündliches Versprechen, sondern eine schriftliche Zusage. Hier sind die vier grundlegenden Bedingungen, die wir Ihnen vor Beginn der Partnerschaft garantieren können.",
+      "body": {
+        "items": [
+          {
+            "desc": "Bleibt die Verbesserung bei den von uns definierten KPIs aus, ist der Vertrag nicht bindend. Die Bedingungen sind schriftlich.",
+            "icon": "ShieldCheck",
+            "title": "Messbare Verbesserung in den ersten 90 Tagen"
+          },
+          {
+            "desc": "Looker-Studio-Live-Dashboard. Von Werbe-Kreatives bis zu Ausgabenposten ist alles offen.",
+            "icon": "Globe",
+            "title": "Transparentes Reporting"
+          },
+          {
+            "desc": "Erste Antwort im Schnitt in 28 Minuten über Slack oder WhatsApp. Schweigen gibt es in unserem Wortschatz nicht.",
+            "icon": "MessageCircle",
+            "title": "Schnelle Antwort während der Arbeitszeit"
+          },
+          {
+            "desc": "Das Erstgespräch ist völlig kostenlos. Sie müssen danach keine Partnerschaft eingehen.",
+            "icon": "Coffee",
+            "title": "Erstgespräch kostenlos"
+          }
+        ]
+      },
+      "sort_order": 20
+    },
+    {
+      "page_slug": "contact",
+      "section_key": "faq_header",
+      "eyebrow": "Häufige Fragen",
+      "title": "Kontakt und Gesprächsprozess",
+      "description": "Schnelle Antworten auf mögliche Fragen vor dem Vertrag. Für mehr genügt das Formular.",
+      "body": null,
+      "sort_order": 25
+    },
+    {
+      "page_slug": "contact",
+      "section_key": "office",
+      "eyebrow": "Unser Büro",
+      "title": null,
+      "description": "In Maslak haben wir mit einem hybrid arbeitenden Team dienstags und donnerstags ein voll besetztes Büro. Wenn Sie sich treffen möchten, genügt eine vorherige Terminvereinbarung – unsere Tür steht immer offen, aber wenn unser Kaffee ausgeht, müssen wir gemeinsam neuen aufbrühen.",
+      "body": {
+        "items": [
+          {
+            "icon": "MapPin",
+            "text": "Istanbul — Maslak Plaza, 7. Stock"
+          },
+          {
+            "icon": "Clock",
+            "text": "Wochentags 09:00 – 18:30 (Di./Do. volles Büro)"
+          },
+          {
+            "icon": "Coffee",
+            "text": "Vergessen Sie nicht, vor dem Treffen Ihre Kaffeebestellung zu teilen"
+          }
+        ]
+      },
+      "sort_order": 40
+    },
+    {
+      "page_slug": "global",
+      "section_key": "cta",
+      "eyebrow": "Kontakt",
+      "title": "Lassen Sie uns die nächste Wachstumsphase gemeinsam planen",
+      "description": "Kostenloses 30-minütiges Erstgespräch. Lassen Sie uns über Ihre Ziele sprechen und einen konkreten Aktionsplan für Ihre bestehenden Kanäle erstellen.",
+      "body": {
+        "highlight": "gemeinsam planen",
+        "primaryHref": "/iletisim",
+        "primaryLabel": "Gespräch planen"
+      },
+      "sort_order": 10
+    },
+    {
+      "page_slug": "home",
+      "section_key": "hero",
+      "eyebrow": "Digitalagentur der neuen Generation, 360°",
+      "title": "Ihr Partner für digitales Wachstum von A bis Z",
+      "description": "Ads, SEO, Social Media, Mobile App und SaaS-Entwicklung – alles, was Sie zum Wachstum Ihrer Marke brauchen, in einem einzigen Team. Wir bauen die Strategie auf, produzieren das Kreativ, messen die Performance und optimieren kontinuierlich.",
+      "body": {
+        "note1": "Wir nehmen derzeit 6 neue Projekte an",
+        "note2": "Angebot im Schnitt innerhalb von 48 Stunden",
+        "highlight": "digitales Wachstum",
+        "primaryHref": "/iletisim",
+        "primaryLabel": "Kostenloses Angebot",
+        "secondaryHref": "/hizmetler",
+        "secondaryLabel": "Services ansehen"
+      },
+      "sort_order": 10
+    },
+    {
+      "page_slug": "home",
+      "section_key": "brand_strip",
+      "eyebrow": "Marken, mit denen wir gemeinsam gewachsen sind",
+      "title": null,
+      "description": null,
+      "body": {
+        "items": [
+          "LUMEN",
+          "TESSERA",
+          "NORDEL",
+          "VOLTRA",
+          "VERA MODA",
+          "GREENLY",
+          "KAVROS",
+          "ALTAN CLINIC"
+        ]
+      },
+      "sort_order": 20
+    },
+    {
+      "page_slug": "home",
+      "section_key": "services_header",
+      "eyebrow": "Services",
+      "title": "Alle Expertisen, die Ihre Marke wachsen lassen",
+      "description": "Von Ads über SEO bis zu Mobile App und SaaS-Entwicklung – jeder Service, den Sie mit dem Wachstum Ihrer Marke brauchen, wird von in sich spezialisierten Teams angeboten.",
+      "body": {
+        "linkHref": "/hizmetler",
+        "linkLabel": "Alle Services"
+      },
+      "sort_order": 30
+    },
+    {
+      "page_slug": "home",
+      "section_key": "stats",
+      "eyebrow": null,
+      "title": null,
+      "description": null,
+      "body": {
+        "items": [
+          {
+            "to": 18,
+            "label": "Verwaltetes Werbebudget",
+            "prefix": "₺",
+            "suffix": "M+",
+            "decimals": 0
+          },
+          {
+            "to": 320,
+            "label": "Abgeschlossene Kampagnen",
+            "suffix": "+",
+            "decimals": 0
+          },
+          {
+            "to": 4.6,
+            "label": "Durchschnittlicher ROAS",
+            "suffix": "x",
+            "decimals": 1
+          },
+          {
+            "to": 64,
+            "label": "Zufriedene Kunden",
+            "suffix": "+",
+            "decimals": 0
+          }
+        ]
+      },
+      "sort_order": 40
+    },
+    {
+      "page_slug": "home",
+      "section_key": "workflow",
+      "eyebrow": "Arbeitsprozess",
+      "title": "Klare Schritte, messbare Ergebnisse",
+      "description": "Vom ersten Gespräch mit unseren Kunden bis zum ersten Reporting haben wir jede Phase klar definiert. Überraschungen gibt es bei wachsenden Kampagnen, nicht im Prozess.",
+      "body": {
+        "items": [
+          {
+            "desc": "Wir verstehen Ihre Marke, Ihre Wettbewerber und Ihre Zielgruppe in der Tiefe. Wir analysieren Ihre bestehenden Daten.",
+            "icon": "Compass",
+            "title": "Entdeckung"
+          },
+          {
+            "desc": "Wir erstellen die 90-Tage-Roadmap, die die zu Ihren Zielen passenden Kanäle, Botschaften und KPIs festlegt.",
+            "icon": "Map",
+            "title": "Strategie"
+          },
+          {
+            "desc": "Von der Kreativ-Produktion bis zum technischen Setup nehmen wir alles unter einem Dach in Betrieb.",
+            "icon": "Rocket",
+            "title": "Umsetzung"
+          },
+          {
+            "desc": "Mit A/B-Tests, Budgetumverteilung und wöchentlichen Iterationen verbessern wir die Performance kontinuierlich.",
+            "icon": "LineChart",
+            "title": "Optimierung"
+          },
+          {
+            "desc": "Mit transparentem Live-Dashboard und monatlichen Präsentationen zeigen wir die Ergebnisse übersichtlich.",
+            "icon": "FileText",
+            "title": "Reporting"
+          }
+        ]
+      },
+      "sort_order": 50
+    },
+    {
+      "page_slug": "portfolio",
+      "section_key": "hero",
+      "eyebrow": "Unsere Arbeiten",
+      "title": "Marken, die wir gemeinsam vergrößert haben",
+      "description": "Jedes Projekt startete mit einem anderen Ziel; doch allen gemeinsam ist eines: messbare Ergebnisse. Unten finden Sie Beispiele aus den Arbeiten, für deren Veröffentlichung wir die Erlaubnis erhalten haben.",
+      "body": null,
+      "sort_order": 1
+    },
+    {
+      "page_slug": "portfolio",
+      "section_key": "stats",
+      "eyebrow": null,
+      "title": null,
+      "description": null,
+      "body": {
+        "items": [
+          {
+            "to": 320,
+            "label": "Abgeschlossene Kampagnen",
+            "suffix": "+",
+            "decimals": 0
+          },
+          {
+            "to": 18,
+            "label": "Insgesamt verwaltetes Werbebudget",
+            "prefix": "₺",
+            "suffix": "M+",
+            "decimals": 0
+          },
+          {
+            "to": 4.6,
+            "label": "Durchschnittlicher ROAS",
+            "suffix": "x",
+            "decimals": 1
+          },
+          {
+            "to": 92,
+            "label": "Kunden-NPS",
+            "suffix": "/100",
+            "decimals": 0
+          }
+        ]
+      },
+      "sort_order": 10
+    },
+    {
+      "page_slug": "portfolio",
+      "section_key": "featured_case",
+      "eyebrow": "Hervorgehobener Case",
+      "title": "Lumen Cosmetics — ROAS 2.1x → 4.8x",
+      "description": "Ein ermüdetes Werbekonto, ein abgenutzter Kreativansatz und eine fragmentierte Analytics-Infrastruktur. Mit einer dreimonatigen Restrukturierung zeigen wir, wie sich die Zahlen vervielfacht haben.",
+      "body": {
+        "quote": {
+          "name": "Selin Aksoy",
+          "role": "Marketingdirektorin · Lumen Cosmetics",
+          "text": "In den 6 Monaten der Zusammenarbeit mit True EDigital Marketing stieg unser ROAS von 2,1 auf 4,8. Das Beeindruckendste sind nicht die Zahlen, sondern die Teamdynamik – sie identifizieren sich mit unserer Marke wie wir selbst.",
+          "initials": "SA"
+        },
+        "steps": [
+          {
+            "desc": "Wir haben die bestehenden Konten, Daten und das Kundenverhalten in der Tiefe analysiert. Wir definierten 3 Hypothesen: falsches Targeting, Kreativ-Müdigkeit und Landingpage-Leck.",
+            "title": "Audit & Strategie (Woche 1-2)"
+          },
+          {
+            "desc": "Wir haben die Kontostruktur überwiegend ASC- + Advantage+-lastig neu aufgebaut. Mit 18 neuen Kreativkonzepten und 4 verschiedenen Landingpages starteten A/B-Tests.",
+            "title": "Restrukturierung (Woche 3-6)"
+          },
+          {
+            "desc": "Wir haben die gewinnenden Kreatives auf verschiedene Segmente skaliert, das Meta- + Google-Attributionsmodell vereint und die E-Mail-Flows gestärkt.",
+            "title": "Skalierung (Woche 7-12)"
+          },
+          {
+            "desc": "ROAS 4.8x, Kundenzahl 6.4K, durchschnittlicher Warenkorbwert um 22 % gestiegen. Mit dem monatlichen Iterationsrhythmus werden die Gewinne gehalten.",
+            "title": "Nachhaltiges Wachstum (Woche 13+)"
+          }
+        ],
+        "metrics": [
+          {
+            "to": "4.8x",
+            "from": "2.1x",
+            "color": "from-violet-500 to-indigo-500",
+            "label": "ROAS"
+          },
+          {
+            "to": "₺1.1M",
+            "from": "₺320K",
+            "color": "from-cyan-500 to-blue-500",
+            "label": "Monatlicher Umsatz"
+          },
+          {
+            "to": "₺178",
+            "from": "₺412",
+            "color": "from-emerald-500 to-cyan-500",
+            "label": "CPA"
+          },
+          {
+            "to": "6.4K",
+            "from": "1.8K",
+            "color": "from-pink-500 to-rose-500",
+            "label": "Kundenzahl"
+          }
+        ],
+        "durationLabel": "6-monatige Arbeit in 4 Phasen"
+      },
+      "sort_order": 20
+    },
+    {
+      "page_slug": "portfolio",
+      "section_key": "projects_header",
+      "eyebrow": "Alle Projekte",
+      "title": "Unsere Arbeiten nach Kategorien",
+      "description": "Grenze mit den Filtern auf die Kategorie ein, die dich interessiert. Auf jeder Karte teilen wir die zentrale KPI, an der das Projekt gemessen wurde.",
+      "body": null,
+      "sort_order": 25
+    },
+    {
+      "page_slug": "portfolio",
+      "section_key": "sectors",
+      "eyebrow": "Branchenvielfalt",
+      "title": "Branchen, in denen wir gearbeitet haben",
+      "description": "Branchenvielfalt ist für uns ein starker Vorteil: Eine Erkenntnis, die in einer Branche funktioniert, können wir auf andere übertragen.",
+      "body": {
+        "items": [
+          "E-Commerce",
+          "SaaS",
+          "Fintech",
+          "Gesundheitstourismus",
+          "Bildung",
+          "Mode",
+          "Mobilität",
+          "Kosmetik",
+          "Lebensmittel",
+          "B2B-Software",
+          "Real Estate Tech",
+          "Sport & Wellness"
+        ]
+      },
+      "sort_order": 30
+    },
+    {
+      "page_slug": "portfolio",
+      "section_key": "testimonials_summary",
+      "eyebrow": "Stimmen unserer Kunden",
+      "title": "Wir bauen auf Feedback",
+      "description": "Wir messen die Kunden-NPS-Scores vierteljährlich; diese Scores wirken sich direkt auf die OKRs des Teams aus.",
+      "body": {
+        "items": [
+          {
+            "name": "Onur Şahin",
+            "role": "Mitgründer · Greenly Foods",
+            "quote": "Transparentes Reporting, schnelle Kommunikation und richtiges Erwartungsmanagement. Beim Agenturwechsel haben wir alles, was wir gesucht haben, an einem einzigen Ort gefunden."
+          },
+          {
+            "name": "Kerem Doğan",
+            "role": "Gründer · Tessera SaaS",
+            "quote": "Sie haben unser MVP in 8 Wochen veröffentlicht. Sie haben nicht nur Code geschrieben; von der Produktstrategie bis zum Onboarding-Flow haben sie sich wie ein echter Technologiepartner verhalten."
+          },
+          {
+            "name": "Beyza Yılmaz",
+            "role": "E-Commerce-Managerin · Nordel Home",
+            "quote": "Das SEO-Team hat den Unterschied klar gezeigt. Innerhalb von 9 Monaten hat sich unser organischer Traffic auf das 4,6-Fache erhöht, bei unseren Marken-Keywords stehen wir auf Platz 1 und dieser Traffic wird inzwischen zu Umsatz."
+          }
+        ]
+      },
+      "sort_order": 40
+    },
+    {
+      "page_slug": "portfolio",
+      "section_key": "invite",
+      "eyebrow": null,
+      "title": "Jetzt ist Ihre Marke an der Reihe",
+      "description": "Diese Zahlen sind das, was die Marken erreicht haben, die sich für uns entschieden haben. In der nächsten Case Study möchten wir Ihre Marke vorstellen.",
+      "body": {
+        "highlight": "Ihre Marke",
+        "primaryHref": "/iletisim",
+        "primaryLabel": "Gespräch planen"
+      },
+      "sort_order": 50
+    },
+    {
+      "page_slug": "services",
+      "section_key": "hero",
+      "eyebrow": "Services",
+      "title": "Ganzheitliches digitales Wachstum für Ihre Marke",
+      "description": "Wir denken jeden Service wie ein eigenständiges Produkt; doch seine Stärke entfaltet sich, wenn sie zusammenkommen. Alle untenstehenden Services können Sie unter einem einzigen Account-Plan und einem einzigen Ansprechpunkt erhalten.",
+      "body": null,
+      "sort_order": 1
+    },
+    {
+      "page_slug": "services",
+      "section_key": "grid_header",
+      "eyebrow": null,
+      "title": null,
+      "description": null,
+      "body": {
+        "intro": "Klicke auf einen Service, um die Details zu sehen",
+        "linkHref": "/iletisim",
+        "linkLabel": "Welcher passt zu dir?"
+      },
+      "sort_order": 2
+    },
+    {
+      "page_slug": "services",
+      "section_key": "synergy",
+      "eyebrow": "Die Synthese der Services",
+      "title": "Statt separater Agenturen ein einziges Nervensystem",
+      "description": "Eine Agentur für Ads, eine andere für SEO, wieder eine andere für Social Media – im typischen Aufbau schaut jede Agentur nur auf ihre eigene Performance, nicht auf die Arbeit der anderen. Weil wir ein einziges Team sind, sinkt der Verlust zwischen den Kanälen auf null.",
+      "body": {
+        "items": [
+          {
+            "desc": "Das Ads-Team, das SEO-Team und das Social-Media-Team arbeiten aus demselben Strategiedokument. Kein Brief-Auswendiglernen.",
+            "icon": "Layers",
+            "title": "Ein Brief, alle Kanäle"
+          },
+          {
+            "desc": "Ein Insight, den wir in einem Kanal gewinnen, wird innerhalb von 48 Stunden auf die anderen Kanäle übertragen. Kein Wissens-Silo.",
+            "icon": "Zap",
+            "title": "Schnelle Iteration"
+          },
+          {
+            "desc": "Wir sehen nicht auf Channel-Level, sondern auf Customer-Level. Welcher Kanal welchen Touchpoint gewonnen hat, ist klar.",
+            "icon": "Crosshair",
+            "title": "Attributions-Klarheit"
+          },
+          {
+            "desc": "Die Tonalität in der Werbung ist exakt dieselbe wie die Sprache im SEO-Content und die Erzählung in Social Media.",
+            "icon": "Lock",
+            "title": "Markenkonsistenz"
+          }
+        ]
+      },
+      "sort_order": 10
+    },
+    {
+      "page_slug": "services",
+      "section_key": "industries_header",
+      "eyebrow": "Branchen",
+      "title": "Branchen, in denen wir gearbeitet haben",
+      "description": "Jede Branche hat ihre eigene Dynamik, Regulierungen und Kundenverhalten. Dank unseres breiten Portfolios übertragen wir branchenspezifische Erkenntnisse schnell auf neue Projekte.",
+      "body": null,
+      "sort_order": 15
+    },
+    {
+      "page_slug": "services",
+      "section_key": "pricing",
+      "eyebrow": "Preisgestaltung",
+      "title": "Transparent, mit drei verschiedenen Modellen",
+      "description": "Je nachdem, welchen Service Sie buchen, unterscheidet sich das Preismodell. Unten teilen wir die typischen Bandbreiten; ein konkretes Angebot wird nach dem Erstgespräch erstellt.",
+      "body": {
+        "items": [
+          {
+            "desc": "Services, die Kontinuität erfordern (Anzeigenmanagement, SEO, Social Media). Mindestens 3 Monate.",
+            "fits": "E-Commerce, SaaS, Dienstleistungsmarken",
+            "range": "₺45.000 — ₺120.000 / Monat",
+            "title": "Retainer-Modell"
+          },
+          {
+            "desc": "Fester Umfang, fester Preis. Website, Mobile App, MVP-Entwicklung.",
+            "fits": "Start-ups, Unternehmens-Launches",
+            "range": "₺80.000 — ₺850.000",
+            "title": "Projektbasiert"
+          },
+          {
+            "desc": "Beliebt im Anzeigenmanagement. Je größer Ihr Budget wächst, desto mehr Skalenvorteil zu Ihren Gunsten.",
+            "fits": "Monatliches Werbebudget ab ₺250K",
+            "range": "8-12 % des Budgets + festes Management",
+            "title": "Performance + Fix"
+          }
+        ]
+      },
+      "sort_order": 20
+    },
+    {
+      "page_slug": "services",
+      "section_key": "tech_header",
+      "eyebrow": "Technologie & Tools",
+      "title": "Der Stack, mit dem wir arbeiten",
+      "description": "Wir nutzen nicht ein beliebtes Tool, sondern das richtige Tool. Die folgenden Technologien erleben wir täglich und übernehmen sie von unseren Kunden, ohne dass eine zusätzliche Schulung nötig ist.",
+      "body": null,
+      "sort_order": 25
+    },
+    {
+      "page_slug": "services",
+      "section_key": "faq_header",
+      "eyebrow": "Häufige Fragen",
+      "title": "Servicespezifische Fragen",
+      "description": "Falls dich ein Thema beschäftigt, dessen Antwort du hier nicht findest, kannst du es uns über die Kontaktseite direkt fragen.",
+      "body": null,
+      "sort_order": 35
+    }
+  ],
+  "site_settings": {
+    "tagline": "Ihr Partner für digitales Wachstum von A bis Z",
+    "description": "360°-Digitalmarketing-Agentur, die Ihre Marke von Ads über SEO bis hin zu Mobile App und SaaS-Entwicklung skaliert.",
+    "address": "Istanbul, Türkei"
+  }
+}
