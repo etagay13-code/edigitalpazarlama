@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import type { EditorItem } from "@/components/admin/InlineEditor";
-import { PagesEditor, pageOptions } from "./PagesEditor";
+import { PagesEditor } from "./PagesEditor";
+import { pageOptions } from "./config";
 
 export const metadata = { title: "Sayfa İçerikleri" };
 
