@@ -1,5 +1,5 @@
 -- ============================================================================
--- E-Digital Marketing — Initial Schema
+-- True EDigital Marketing — Initial Schema
 -- ============================================================================
 -- Supabase SQL Editor'de çalıştır.
 -- ============================================================================
@@ -43,13 +43,13 @@ create trigger on_auth_user_created
 create table if not exists site_settings (
   id                          smallint primary key default 1 check (id = 1),
   -- Marka
-  brand_name                  text not null default 'E - Digital Marketing',
-  brand_short_name            text default 'E-Digital',
+  brand_name                  text not null default 'True EDigital Marketing',
+  brand_short_name            text default 'True EDigital Marketing',
   founder                     text default 'Emre Tagay',
   tagline                     text default 'A''dan Z''ye Dijital Büyüme Ortağınız',
   description                 text default 'Reklamdan SEO''ya, mobil uygulamadan SaaS geliştirmeye kadar markanızı ölçeklendiren 360° dijital pazarlama ajansı.',
-  url                         text default 'https://edigitalmarketing.com',
-  email                       text not null default 'info@edigitalmarketing.com',
+  url                         text default 'https://etruemarketing.com',
+  email                       text not null default 'info@etruemarketing.com',
   phone                       text default '+90 555 000 00 00',
   address                     text default 'İstanbul, Türkiye',
   -- Sosyal medya

@@ -26,7 +26,7 @@ export async function saveSettings(formData: FormData): Promise<{
 
   const update: SettingsUpdate = {
     // Marka
-    brand_name: (trimOrNull(formData.get("brand_name")) ?? "E - Digital Marketing"),
+    brand_name: (trimOrNull(formData.get("brand_name")) ?? "True EDigital Marketing"),
     brand_short_name: trimOrNull(formData.get("brand_short_name")),
     founder: trimOrNull(formData.get("founder")),
     tagline: trimOrNull(formData.get("tagline")),
@@ -34,7 +34,7 @@ export async function saveSettings(formData: FormData): Promise<{
     // URL / iletişim
     url: trimOrNull(formData.get("url")),
     email:
-      trimOrNull(formData.get("email")) ?? "info@edigitalmarketing.com",
+      trimOrNull(formData.get("email")) ?? "info@etruemarketing.com",
     phone: trimOrNull(formData.get("phone")),
     address: trimOrNull(formData.get("address")),
     // Sosyal medya

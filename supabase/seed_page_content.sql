@@ -69,7 +69,7 @@ insert into page_sections (page_slug, section_key, eyebrow, title, description, 
 -- --------------------------------------------------------------- ABOUT ------
 (
   'about','hero','Hakkımızda','Markaları büyütmek için kurulmuş bir ekip',
-  'E - Digital Marketing, performans pazarlaması ile teknoloji geliştirmenin kesiştiği noktada konumlanır. 2019''dan bu yana e-ticaret, SaaS ve hizmet markalarına dijital büyüme ortaklığı sunuyoruz.',
+  'True EDigital Marketing, performans pazarlaması ile teknoloji geliştirmenin kesiştiği noktada konumlanır. 2019''dan bu yana e-ticaret, SaaS ve hizmet markalarına dijital büyüme ortaklığı sunuyoruz.',
   null, 1
 ),
 (
@@ -86,8 +86,8 @@ insert into page_sections (page_slug, section_key, eyebrow, title, description, 
   'about','story','Hikayemiz','Kurucumuz Emre Tagay''ın hikayesi',null,
   jsonb_build_object('items', jsonb_build_array(
     jsonb_build_object('text','Emre Tagay, dijital pazarlama dünyasına 2015''te bir e-ticaret markasının kurucusu olarak girdi. Kendi markasını büyütmek için Google Ads, Meta Ads ve SEO öğrenmek zorunda kaldı — ve aslında pek çok Türkiye markasının da aynı sorunla boğuştuğunu fark etti: doğru ajansı bulamamak.'),
-    jsonb_build_object('text','Çoğu ajans büyük müşterilerle dolu ya da sadece tek alanda uzman. Hem stratejiyi düşünen, hem kreatifi üreten, hem teknolojiyi geliştiren bir partneri bulmak nadirdi. 2017-2019 arasında 12+ markaya freelance danışmanlık verdikten sonra "neden bunu bir ekip işine dönüştürmüyorum" sorusuyla E - Digital Marketing''i kurdu.'),
-    jsonb_build_object('text','2019''da E - Digital Marketing''i kurarken hedefi netti: müşterinin işine ortak gibi davranan, sayıların arkasındaki insanı unutmayan, hem kreatif hem teknik tarafa hakim bir ajans. Bugün İstanbul merkezli ekibimiz 14 kişiden oluşuyor; e-ticaretten fintech''e, sağlık turizminden SaaS girişimlerine kadar geniş bir portföye hizmet veriyoruz.'),
+    jsonb_build_object('text','Çoğu ajans büyük müşterilerle dolu ya da sadece tek alanda uzman. Hem stratejiyi düşünen, hem kreatifi üreten, hem teknolojiyi geliştiren bir partneri bulmak nadirdi. 2017-2019 arasında 12+ markaya freelance danışmanlık verdikten sonra "neden bunu bir ekip işine dönüştürmüyorum" sorusuyla True EDigital Marketing''i kurdu.'),
+    jsonb_build_object('text','2019''da True EDigital Marketing''i kurarken hedefi netti: müşterinin işine ortak gibi davranan, sayıların arkasındaki insanı unutmayan, hem kreatif hem teknik tarafa hakim bir ajans. Bugün İstanbul merkezli ekibimiz 14 kişiden oluşuyor; e-ticaretten fintech''e, sağlık turizminden SaaS girişimlerine kadar geniş bir portföye hizmet veriyoruz.'),
     jsonb_build_object('text','Hâlâ her yeni proje kapsama alındığında ilk strateji görüşmesini kurucu olarak ben yapıyorum. Çünkü güven bir tek bu şekilde inşa edilir. Hızlı büyüyen bir ajans olsak da bu prensibimizi koruyacağız.')
   )),
   3

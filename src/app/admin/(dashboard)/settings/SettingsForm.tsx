@@ -132,7 +132,7 @@ export function SettingsForm({ settings }: { settings: SiteSettings }) {
           label="Kısa ad"
           name="brand_short_name"
           defaultValue={settings.brand_short_name ?? ""}
-          placeholder="E-Digital"
+          placeholder="True EDigital Marketing"
         />
         <Field
           label="Kurucu"
@@ -167,7 +167,7 @@ export function SettingsForm({ settings }: { settings: SiteSettings }) {
           label="Site URL"
           name="url"
           defaultValue={settings.url ?? ""}
-          placeholder="https://edigitalmarketing.com"
+          placeholder="https://etruemarketing.com"
           type="url"
         />
         <Field

@@ -18,7 +18,7 @@ export function Logo({
   size = "md",
   className = "",
   src = "/logo.jpg",
-  alt = "E - Digital Marketing",
+  alt = "True EDigital Marketing",
 }: Props) {
   return (
     <Link

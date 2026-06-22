@@ -306,10 +306,10 @@ on conflict (slug) do nothing;
 
 -- ---------- TESTIMONIALS ----------
 insert into testimonials (name, role, company, quote, initials, sort_order) values
-('Selin Aksoy','Pazarlama Direktörü','Lumen Cosmetics','E-Digital ile çalıştığımız 6 ayda ROAS''ımız 2.1''den 4.8''e çıktı. En etkileyici olan şey rakamlar değil, ekip dinamiği — markamızı bizim kadar sahipleniyorlar.','SA',1),
+('Selin Aksoy','Pazarlama Direktörü','Lumen Cosmetics','True EDigital Marketing ile çalıştığımız 6 ayda ROAS''ımız 2.1''den 4.8''e çıktı. En etkileyici olan şey rakamlar değil, ekip dinamiği — markamızı bizim kadar sahipleniyorlar.','SA',1),
 ('Kerem Doğan','Kurucu','Tessera SaaS','MVP''mizi 8 haftada yayınladılar. Sadece kod yazmadılar; ürün stratejisinden onboarding flow''una kadar gerçek bir teknoloji ortağı gibi davrandılar.','KD',2),
 ('Beyza Yılmaz','E-ticaret Müdürü','Nordel Home','SEO ekibi gerçek anlamda farkı gösterdi. 9 ay içinde organik trafiğimiz 4.6 katına çıktı, marka kelimelerimizde 1. sıradayız.','BY',3),
-('Mert Çelik','CEO','Voltra Mobility','Mobil uygulamamızın yayın süreci stresli olabilirdi ama E-Digital tüm süreci yönetti. App Store onayından ilk 50K indirmeye kadar yanımızdaydılar.','MÇ',4),
+('Mert Çelik','CEO','Voltra Mobility','Mobil uygulamamızın yayın süreci stresli olabilirdi ama True EDigital Marketing tüm süreci yönetti. App Store onayından ilk 50K indirmeye kadar yanımızdaydılar.','MÇ',4),
 ('Asya Pamir','Marka Müdürü','Vera Moda','TikTok ve Reels stratejimizi sıfırdan kurguladılar. 3 ayda 180K organik takipçi kazandık.','AP',5),
 ('Onur Şahin','Kurucu Ortak','Greenly Foods','Şeffaf raporlama, hızlı iletişim ve doğru beklenti yönetimi. Ajans değişimi yaparken aradığımız her şeyi tek bir yerde bulduk.','OŞ',6)
 on conflict do nothing;
@@ -328,7 +328,7 @@ on conflict do nothing;
 insert into timeline_events (year, title, description, sort_order) values
 ('2015','İlk e-ticaret deneyimi','Emre Tagay, kendi kurduğu e-ticaret markasıyla dijital pazarlama dünyasına girer.',1),
 ('2017','Freelance dönemi','Aldığı sonuçların başka markaların da işine yarayabileceğini fark eder. Freelance olarak 12 markaya pazarlama danışmanlığı verir.',2),
-('2019','E - Digital Marketing kuruluyor','Performans pazarlaması ile teknoloji geliştirmeyi tek çatı altında birleştiren ajans kurulur. İlk yılda 8 müşteri.',3),
+('2019','True EDigital Marketing kuruluyor','Performans pazarlaması ile teknoloji geliştirmeyi tek çatı altında birleştiren ajans kurulur. İlk yılda 8 müşteri.',3),
 ('2021','Ekip büyür, SaaS departmanı açılır','Pazarlama ekibinin yanına yazılım geliştirme departmanı eklenir. İlk SaaS müşterilerimize MVP geliştiriyoruz.',4),
 ('2023','Mobil uygulama bölümü','React Native ve native mobil geliştirme yetenekleri ile bölüm açılır.',5),
 ('2024','AI entegrasyonları','OpenAI ve Anthropic entegrasyonları ile müşteri SaaS ürünlerine AI özellikleri ekleriz.',6),
@@ -524,7 +524,7 @@ insert into page_sections (page_slug, section_key, eyebrow, title, description, 
       jsonb_build_object('label','Müşteri Sayısı','from','1.8K','to','6.4K','color','from-pink-500 to-rose-500')
     ),
     'quote', jsonb_build_object(
-      'text','E-Digital ile çalıştığımız 6 ayda ROAS''ımız 2.1''den 4.8''e çıktı. En etkileyici olan şey rakamlar değil, ekip dinamiği — markamızı bizim kadar sahipleniyorlar.',
+      'text','True EDigital Marketing ile çalıştığımız 6 ayda ROAS''ımız 2.1''den 4.8''e çıktı. En etkileyici olan şey rakamlar değil, ekip dinamiği — markamızı bizim kadar sahipleniyorlar.',
       'name','Selin Aksoy',
       'role','Pazarlama Direktörü · Lumen Cosmetics',
       'initials','SA'

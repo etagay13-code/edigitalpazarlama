@@ -257,7 +257,7 @@ export function IntegrationsForm({
           label="Mesajlar nereye gelsin?"
           name="contact_form_to_email"
           defaultValue={secrets.contact_form_to_email ?? ""}
-          placeholder="info@edigitalpazarlama.com"
+          placeholder="info@etruemarketing.com"
           type="email"
           hint="Boşsa yine de DB'ye kaydedilir (Mesajlar inbox)."
         />

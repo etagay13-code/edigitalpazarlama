@@ -12,7 +12,7 @@ export const testimonials: Testimonial[] = [
     role: "Pazarlama Direktörü",
     company: "Lumen Cosmetics",
     quote:
-      "E-Digital ile çalıştığımız 6 ayda ROAS'ımız 2.1'den 4.8'e çıktı. En etkileyici olan şey rakamlar değil, ekip dinamiği — markamızı bizim kadar sahipleniyorlar.",
+      "True EDigital Marketing ile çalıştığımız 6 ayda ROAS'ımız 2.1'den 4.8'e çıktı. En etkileyici olan şey rakamlar değil, ekip dinamiği — markamızı bizim kadar sahipleniyorlar.",
     initials: "SA",
   },
   {
@@ -36,7 +36,7 @@ export const testimonials: Testimonial[] = [
     role: "CEO",
     company: "Voltra Mobility",
     quote:
-      "Mobil uygulamamızın yayın süreci stresli olabilirdi ama E-Digital tüm süreci yönetti. App Store onayından ilk 50K indirmeye kadar yanımızdaydılar.",
+      "Mobil uygulamamızın yayın süreci stresli olabilirdi ama True EDigital Marketing tüm süreci yönetti. App Store onayından ilk 50K indirmeye kadar yanımızdaydılar.",
     initials: "MÇ",
   },
   {

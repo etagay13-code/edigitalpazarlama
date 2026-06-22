@@ -19,7 +19,7 @@ export const timeline: TimelineEvent[] = [
   },
   {
     year: "2019",
-    title: "E - Digital Marketing kuruluyor",
+    title: "True EDigital Marketing kuruluyor",
     description:
       "Performans pazarlaması ile teknoloji geliştirmeyi tek çatı altında birleştiren ajans kurulur. İlk yılda 8 müşteri.",
   },

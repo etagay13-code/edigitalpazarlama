@@ -3,21 +3,21 @@
 import { getSiteSettingsPublic } from "@/lib/data";
 
 export const brand = {
-  name: "E - Digital Marketing",
-  shortName: "E-Digital",
+  name: "True EDigital Marketing",
+  shortName: "True EDigital Marketing",
   founder: "Emre Tagay",
   tagline: "A'dan Z'ye Dijital Büyüme Ortağınız",
   description:
     "Reklamdan SEO'ya, mobil uygulamadan SaaS geliştirmeye kadar markanızı ölçeklendiren 360° dijital pazarlama ajansı.",
-  url: "https://edigitalmarketing.com",
-  email: "info@edigitalmarketing.com",
+  url: "https://etruemarketing.com",
+  email: "info@etruemarketing.com",
   phone: "+90 555 000 00 00",
   address: "İstanbul, Türkiye",
   socials: {
-    instagram: "https://instagram.com/edigitalmarketing",
-    linkedin: "https://linkedin.com/company/edigitalmarketing",
-    twitter: "https://twitter.com/edigitalmkt",
-    youtube: "https://youtube.com/@edigitalmarketing",
+    instagram: "https://instagram.com/etruemarketing",
+    linkedin: "https://linkedin.com/company/etruemarketing",
+    twitter: "https://twitter.com/etruemarketing",
+    youtube: "https://youtube.com/@etruemarketing",
   },
   colors: {
     bg: "#0A0A0B",
