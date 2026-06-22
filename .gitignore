@@ -7,3 +7,8 @@ out
 *.log
 .vercel
 *.tsbuildinfo
+
+# playwright
+test-results
+playwright-report
+/blob-report

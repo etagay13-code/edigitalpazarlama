@@ -15,6 +15,25 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Erişilebilirlik: klavye kullanıcıları için belirgin focus halkası */
+:focus-visible {
+  outline: 2px solid #8b6dff;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Hareket azaltma tercihi: animasyon/geçişleri kapat */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 body {
   background: var(--bg);
   color: #e7e7ea;

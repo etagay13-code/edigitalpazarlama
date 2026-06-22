@@ -39,22 +39,29 @@ export function Process({
             "Müşterilerimizle ilk konuşmadan ilk raporlamaya kadar her aşamayı netleştirdik. Sürprizler büyüyen kampanyalarda olur, süreçte değil."
           }
         />
-        <Stagger className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
-          {list.map((s, i) => (
-            <motion.div key={`${s.title}-${i}`} variants={fadeUp} className="card">
-              <div className="flex items-center justify-between">
-                <span className="font-display text-xs font-semibold tracking-[0.2em] text-white/40">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <DynamicIcon name={s.icon} fallback={Compass} className="h-5 w-5 text-violet-300" />
-              </div>
-              <h3 className="mt-6 font-display text-lg font-semibold text-white">
-                {s.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/60">{s.desc}</p>
-            </motion.div>
-          ))}
-        </Stagger>
+        <div className="relative mt-12">
+          {/* adımları birbirine bağlayan ince çizgi (masaüstü) */}
+          <div
+            aria-hidden
+            className="absolute inset-x-[10%] top-7 hidden h-px bg-gradient-to-r from-transparent via-white/12 to-transparent lg:block"
+          />
+          <Stagger className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+            {list.map((s, i) => (
+              <motion.div key={`${s.title}-${i}`} variants={fadeUp} className="card">
+                <div className="flex items-center justify-between">
+                  <span className="grid h-7 w-7 place-items-center rounded-full border border-white/10 bg-ink-950 font-display text-xs font-semibold text-violet-200">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <DynamicIcon name={s.icon} fallback={Compass} className="h-5 w-5 text-violet-300" />
+                </div>
+                <h3 className="mt-6 font-display text-lg font-semibold text-white">
+                  {s.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-white/60">{s.desc}</p>
+              </motion.div>
+            ))}
+          </Stagger>
+        </div>
       </div>
     </section>
   );

@@ -111,6 +111,7 @@ const tr = {
       { them: "Yavaş iterasyon, aylık değişim", us: "48 saatte test, haftalık optimizasyon" },
     ],
   },
+  trust: { label: "Onaylar & ortaklıklar" },
 };
 
 export type Dict = typeof tr;
@@ -224,6 +225,7 @@ const en: Dict = {
       { them: "Slow iteration, monthly changes", us: "Tests in 48h, weekly optimization" },
     ],
   },
+  trust: { label: "Certifications & partnerships" },
 };
 
 const de: Dict = {
@@ -335,6 +337,7 @@ const de: Dict = {
       { them: "Langsame Iteration, monatliche Änderungen", us: "Tests in 48 Std., wöchentliche Optimierung" },
     ],
   },
+  trust: { label: "Zertifizierungen & Partnerschaften" },
 };
 
 const DICTS: Record<Locale, Dict> = { tr, en, de };

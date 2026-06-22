@@ -12,6 +12,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { Reveal } from "@/components/Reveal";
 import { DashboardMockup } from "@/components/DashboardMockup";
 import { Comparison } from "@/components/Comparison";
+import { TrustBadges } from "@/components/TrustBadges";
 import { getDict } from "@/i18n/dictionaries";
 import {
   listServicesPublic,
@@ -105,6 +106,7 @@ export default async function HomePage({
       </section>
 
       <BrandStrip label={brandSection?.title} brands={brands} />
+      <TrustBadges dict={t.trust} />
 
       <section className="section">
         <div className="container-x">

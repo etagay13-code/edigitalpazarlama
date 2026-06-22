@@ -117,6 +117,28 @@ export const brand = {
 - **A11y:** Skip link, ARIA labels, semantic HTML, focus-visible stilleri.
 - **SEO:** Page metadata, Open Graph, Twitter Card, sitemap.xml, robots.txt, Turkish lang attribute.
 
+## Çok dilli (i18n)
+
+- Diller: **tr** (varsayılan, öneksiz), **en** (`/en/...`), **de** (`/de/...`).
+- URL'ler yerelleştirilmiş: `/hizmetler` · `/en/services` · `/de/leistungen`.
+- Coğrafi varsayılan (middleware): Türkiye → tr, diğer ülkeler → en. Seçim `NEXT_LOCALE` çerezinde tutulur.
+- İçerik dil başına `locale` kolonuyla DB'de; admin'de üst bardaki bayraklı seçiciyle düzenlenir.
+- Çeviri seed pipeline: `scripts/i18n/` (dump → `{en,de}.json` → `gen.mjs` ile DB'ye yazar).
+
+## Test
+
+```bash
+npm run test:e2e      # Playwright smoke testleri (i18n routing, geo, form, admin koruması)
+```
+
+## Canlıya alma (etruemarketing.com)
+
+1. **Vercel → Settings → Domains:** `etruemarketing.com` + `www.etruemarketing.com` ekle.
+2. **Registrar DNS:** `A @ → 76.76.21.21`, `CNAME www → cname.vercel-dns.com` (Vercel'in gösterdiği değerler).
+3. **Vercel → Environment Variables (Production):** Supabase anahtarları (`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `DATABASE_URL`). `NEXT_PUBLIC_SITE_URL` artık zorunlu değil (kod origin'i istekten türetiyor).
+4. **Supabase → Authentication → URL Configuration:** Site URL + Redirect URLs'e `https://etruemarketing.com` ekle.
+5. Domain doğrulanınca Vercel otomatik SSL verir.
+
 ## Lisans
 
-© Emre Tagay / E - Digital Marketing. Tüm hakları saklıdır.
+© Emre Tagay / True EDigital Marketing. Tüm hakları saklıdır.

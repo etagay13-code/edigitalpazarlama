@@ -328,39 +328,29 @@ export default async function ContactPage({
               </div>
             </Reveal>
             <Reveal delay={0.1}>
-              <div className="relative h-full overflow-hidden rounded-3xl border border-white/[0.06]">
-                <div className="relative h-72 bg-gradient-to-br from-ink-800 via-ink-900 to-ink-950 sm:h-full sm:min-h-[360px]">
-                  <div className="absolute inset-0 bg-grid-faint bg-grid opacity-40" />
-                  <div
-                    aria-hidden
-                    className="absolute -left-32 -top-20 h-72 w-72 rounded-full bg-violet-600/30 blur-[120px]"
-                  />
-                  <div
-                    aria-hidden
-                    className="absolute -bottom-32 right-0 h-72 w-72 rounded-full bg-cyan-500/30 blur-[120px]"
-                  />
-                  <div className="relative grid h-full place-items-center text-center">
-                    <div className="px-6">
-                      <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-white/[0.06] backdrop-blur">
-                        <MapPin className="h-6 w-6 text-white" />
-                      </div>
-                      <p className="mt-4 font-display text-xl font-semibold">
-                        {brand.address}
-                      </p>
-                      <p className="mt-1 text-sm text-white/55">
-                        Detaylı yol tarifi için yukarıdaki ofis kartına tıklayın.
-                      </p>
-                      <a
-                        href="https://maps.google.com/?q=Maslak,Istanbul"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm font-medium text-white/80 transition hover:bg-white/[0.1] hover:text-white"
-                      >
-                        {t.contactPage.mapsOpen}
-                      </a>
-                    </div>
-                  </div>
-                </div>
+              <div className="group relative h-full min-h-[360px] overflow-hidden rounded-3xl border border-white/[0.08]">
+                <iframe
+                  title={officeSection?.title || "Ofis konumu"}
+                  src={`https://www.google.com/maps?q=${encodeURIComponent(brand.address || "Maslak, İstanbul")}&output=embed`}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="absolute inset-0 h-full w-full grayscale invert-[0.92] hue-rotate-180 contrast-90"
+                  style={{ border: 0 }}
+                />
+                {/* harita üstüne ince marka tonu + tıklanabilir adres rozeti */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 bg-violet-900/10 mix-blend-multiply"
+                />
+                <a
+                  href={`https://maps.google.com/?q=${encodeURIComponent(brand.address || "Maslak, İstanbul")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-ink-900/80 px-4 py-2 text-sm font-medium text-white/90 backdrop-blur transition hover:bg-ink-800"
+                >
+                  <MapPin className="h-4 w-4 text-violet-300" />
+                  {t.contactPage.mapsOpen}
+                </a>
               </div>
             </Reveal>
           </div>
