@@ -12,6 +12,7 @@ import { getIcon } from "@/lib/admin/icons-list";
 import { localizeHref } from "@/i18n/routes";
 import type { Locale } from "@/i18n/config";
 import type { Dict } from "@/i18n/dictionaries";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 type NavService = {
   slug: string;
@@ -224,6 +225,7 @@ export function Navbar({
           </ul>
 
           <div className="flex items-center gap-2">
+            <LanguageSwitcher locale={locale} />
             <Link href={contactHref} className="btn-primary hidden sm:inline-flex">
               {dict.getQuote}
               <ArrowUpRight className="h-4 w-4" />
@@ -341,6 +343,7 @@ export function Navbar({
                 {dict.getQuote}
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
+              <LanguageSwitcher locale={locale} variant="menu" />
             </div>
           </motion.div>
         )}

@@ -24,6 +24,15 @@ export function internalToExternal(locale: Locale, internal: string): string {
   return seg ? seg[locale] : internal;
 }
 
+// Mevcut public pathname'i (örn. "/en/services/seo") kanonik iç yola çevirir
+// ("/hizmetler/seo"). Dil değiştirici bunu kullanıp hedef dile localize eder.
+export function toInternalPath(currentLocale: Locale, pathname: string): string {
+  let segs = pathname.split("/").filter(Boolean);
+  if (segs[0] === "en" || segs[0] === "de") segs = segs.slice(1);
+  if (segs.length > 0) segs[0] = externalToInternal(currentLocale, segs[0]);
+  return "/" + segs.join("/");
+}
+
 // Kanonik iç yoldan (örn. "/hizmetler/seo") dile uygun public href üretir.
 // tr → öneksiz; en/de → önekli + ilk segment yerelleştirilmiş.
 export function localizeHref(locale: Locale, internalPath: string): string {
