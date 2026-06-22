@@ -86,6 +86,31 @@ const tr = {
     dmNote: "DM kanallarımız da aktif — ama detaylı projeler için e-posta önerilir.",
     mapsOpen: "Google Maps'te Aç",
   },
+  dashboard: {
+    label: "Canlı",
+    title: "Kampanya Paneli",
+    revenue: "Gelir",
+    roas: "ROAS",
+    conversions: "Dönüşüm",
+    cpa: "Edinme Maliyeti",
+    traffic: "Performans · son 90 gün",
+    channels: "Kanal dağılımı",
+  },
+  compare: {
+    eyebrow: "Farkımız",
+    title: "Ayrı ajanslar yerine tek sinir sistemi",
+    description:
+      "Tipik kurguda her ajans yalnızca kendi performansına bakar. Biz tek takım olduğumuz için kanallar arası kayıp sıfıra iner.",
+    them: "Tipik ajans kurgusu",
+    us: "True EDigital",
+    rows: [
+      { them: "Reklam, SEO, sosyal için ayrı ajanslar", us: "Tüm kanallar tek ekipte" },
+      { them: "Kanallar arası kopukluk, bilgi silosu", us: "Tek brief, kanallar arası sıfır kayıp" },
+      { them: "Gösterim ve beğeni raporları", us: "Satış, lead ve ROAS odaklı raporlama" },
+      { them: "Junior'a devredilen hesaplar", us: "Kurucunun stratejik kararlara dahli" },
+      { them: "Yavaş iterasyon, aylık değişim", us: "48 saatte test, haftalık optimizasyon" },
+    ],
+  },
 };
 
 export type Dict = typeof tr;
@@ -174,6 +199,31 @@ const en: Dict = {
     dmNote: "Our DM channels are active too — but email is recommended for detailed projects.",
     mapsOpen: "Open in Google Maps",
   },
+  dashboard: {
+    label: "Live",
+    title: "Campaign Dashboard",
+    revenue: "Revenue",
+    roas: "ROAS",
+    conversions: "Conversions",
+    cpa: "CPA",
+    traffic: "Performance · last 90 days",
+    channels: "Channel split",
+  },
+  compare: {
+    eyebrow: "The difference",
+    title: "One nervous system instead of separate agencies",
+    description:
+      "In the typical setup each agency only watches its own performance. Because we're a single team, cross-channel loss drops to zero.",
+    them: "Typical agency setup",
+    us: "True EDigital",
+    rows: [
+      { them: "Separate agencies for ads, SEO, social", us: "All channels in one team" },
+      { them: "Disconnected channels, knowledge silos", us: "One brief, zero cross-channel loss" },
+      { them: "Impression and like reports", us: "Sales, lead and ROAS-focused reporting" },
+      { them: "Accounts handed to juniors", us: "Founder involved in strategic decisions" },
+      { them: "Slow iteration, monthly changes", us: "Tests in 48h, weekly optimization" },
+    ],
+  },
 };
 
 const de: Dict = {
@@ -259,6 +309,31 @@ const de: Dict = {
     socialMedia: "Soziale Medien",
     dmNote: "Unsere DM-Kanäle sind ebenfalls aktiv — für detaillierte Projekte empfehlen wir E-Mail.",
     mapsOpen: "In Google Maps öffnen",
+  },
+  dashboard: {
+    label: "Live",
+    title: "Kampagnen-Dashboard",
+    revenue: "Umsatz",
+    roas: "ROAS",
+    conversions: "Conversions",
+    cpa: "CPA",
+    traffic: "Leistung · letzte 90 Tage",
+    channels: "Kanalverteilung",
+  },
+  compare: {
+    eyebrow: "Der Unterschied",
+    title: "Ein Nervensystem statt getrennter Agenturen",
+    description:
+      "Im typischen Setup achtet jede Agentur nur auf ihre eigene Leistung. Weil wir ein einziges Team sind, sinkt der kanalübergreifende Verlust auf null.",
+    them: "Typisches Agentur-Setup",
+    us: "True EDigital",
+    rows: [
+      { them: "Getrennte Agenturen für Ads, SEO, Social", us: "Alle Kanäle in einem Team" },
+      { them: "Getrennte Kanäle, Wissenssilos", us: "Ein Briefing, null kanalübergreifender Verlust" },
+      { them: "Impressions- und Like-Reports", us: "Auf Umsatz, Leads und ROAS fokussiertes Reporting" },
+      { them: "Accounts an Junioren übergeben", us: "Gründer in strategische Entscheidungen eingebunden" },
+      { them: "Langsame Iteration, monatliche Änderungen", us: "Tests in 48 Std., wöchentliche Optimierung" },
+    ],
   },
 };
 

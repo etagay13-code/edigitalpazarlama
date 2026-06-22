@@ -10,6 +10,9 @@ import { FAQ } from "@/components/FAQ";
 import { CTASection } from "@/components/CTASection";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Reveal } from "@/components/Reveal";
+import { DashboardMockup } from "@/components/DashboardMockup";
+import { Comparison } from "@/components/Comparison";
+import { getDict } from "@/i18n/dictionaries";
 import {
   listServicesPublic,
   listTestimonialsPublic,
@@ -35,6 +38,7 @@ export default async function HomePage({
   params: { locale: string };
 }) {
   const locale = asLocale(params.locale);
+  const t = getDict(locale);
   const [services, testimonials, faqs, sections] = await Promise.all([
     listServicesPublic(locale),
     listTestimonialsPublic(locale),
@@ -82,6 +86,14 @@ export default async function HomePage({
         note1={heroBody.note1}
         note2={heroBody.note2}
       />
+      <section className="relative pb-4 pt-2 sm:pb-8">
+        <div className="container-x">
+          <Reveal>
+            <DashboardMockup dict={t.dashboard} />
+          </Reveal>
+        </div>
+      </section>
+
       <BrandStrip label={brandSection?.title} brands={brands} />
 
       <section className="section">
@@ -115,6 +127,7 @@ export default async function HomePage({
         description={workflowSection?.description}
         steps={workflowSteps}
       />
+      <Comparison dict={t.compare} />
       <Testimonials items={testimonials} />
       <FAQ items={faqs.map((f) => ({ question: f.question, answer: f.answer }))} />
       <CTASection locale={locale} />
