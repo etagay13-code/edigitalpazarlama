@@ -1,8 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import Script from "next/script";
+import { headers } from "next/headers";
 import "./globals.css";
 import { getBrand } from "@/lib/theme";
+import { asLocale, OG_LOCALE } from "@/i18n/config";
+
+async function currentLocale() {
+  const h = await headers();
+  return asLocale(h.get("x-locale"));
+}
 
 const inter = Inter({
   subsets: ["latin", "latin-ext"],
@@ -16,7 +23,8 @@ const display = Space_Grotesk({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const b = await getBrand();
+  const locale = await currentLocale();
+  const b = await getBrand(locale);
   return {
     metadataBase: new URL(b.url),
     title: {
@@ -39,7 +47,7 @@ export async function generateMetadata(): Promise<Metadata> {
     creator: b.founder,
     openGraph: {
       type: "website",
-      locale: "tr_TR",
+      locale: OG_LOCALE[locale],
       url: b.url,
       title: `${b.name} — ${b.tagline}`,
       description: b.description,
@@ -74,9 +82,10 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const b = await getBrand();
+  const locale = await currentLocale();
+  const b = await getBrand(locale);
   return (
-    <html lang="tr" className={`${inter.variable} ${display.variable}`}>
+    <html lang={locale} className={`${inter.variable} ${display.variable}`}>
       <body className="font-sans antialiased">
         {children}
 

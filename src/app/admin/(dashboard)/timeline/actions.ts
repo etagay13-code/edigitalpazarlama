@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
+import { getAdminLocale } from "@/lib/admin/locale";
 import { getBool, getInt, getStr } from "@/lib/admin/crud-helpers";
 
 async function authedClient() {
@@ -29,7 +30,7 @@ export async function create(fd: FormData) {
     const data = parse(fd);
     if (!data.year || !data.title || !data.description)
       return { ok: false, error: "Yıl, başlık ve açıklama zorunlu." };
-    const { error } = await supabase.from("timeline_events").insert(data);
+    const { error } = await supabase.from("timeline_events").insert({ ...data, locale: await getAdminLocale() });
     if (error) return { ok: false, error: error.message };
     revalidatePath("/", "layout");
     revalidatePath("/admin/timeline");

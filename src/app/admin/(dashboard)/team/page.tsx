@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { getAdminLocale } from "@/lib/admin/locale";
 import { InlineEditor, type EditorField } from "@/components/admin/InlineEditor";
 import { gradientOptions } from "@/lib/admin/icons-list";
 import { create, update, remove } from "./actions";
@@ -23,9 +24,11 @@ const fields: EditorField[] = [
 
 export default async function TeamPage() {
   const supabase = await createClient();
+  const locale = await getAdminLocale();
   const { data: items = [] } = await supabase
     .from("team_members")
     .select("*")
+    .eq("locale", locale)
     .order("sort_order");
 
   return (

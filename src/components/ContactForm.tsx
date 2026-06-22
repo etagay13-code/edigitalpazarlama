@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, Send } from "lucide-react";
+import type { Locale } from "@/i18n/config";
+import type { Dict } from "@/i18n/dictionaries";
 
 type FormState = {
   name: string;
@@ -21,25 +23,27 @@ const initial: FormState = {
 };
 
 type Errors = Partial<Record<keyof FormState, string>>;
+type CF = Dict["contactForm"];
 
-function validate(s: FormState): Errors {
+function validate(s: FormState, dict: CF): Errors {
   const errors: Errors = {};
-  if (!s.name.trim() || s.name.trim().length < 2)
-    errors.name = "Lütfen adınızı girin (en az 2 karakter).";
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.email))
-    errors.email = "Geçerli bir e-posta adresi girin.";
-  if (s.phone && !/^[0-9+\s()-]{7,20}$/.test(s.phone))
-    errors.phone = "Geçerli bir telefon numarası girin.";
-  if (!s.service) errors.service = "Bir hizmet seçin.";
+  if (!s.name.trim() || s.name.trim().length < 2) errors.name = dict.errName;
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.email)) errors.email = dict.errEmail;
+  if (s.phone && !/^[0-9+\s()-]{7,20}$/.test(s.phone)) errors.phone = dict.errPhone;
+  if (!s.service) errors.service = dict.errService;
   if (!s.message.trim() || s.message.trim().length < 20)
-    errors.message = "Lütfen daha detaylı bir mesaj yazın (en az 20 karakter).";
+    errors.message = dict.errMessage;
   return errors;
 }
 
 export function ContactForm({
   services,
+  locale,
+  dict,
 }: {
   services: { slug: string; title: string }[];
+  locale: Locale;
+  dict: CF;
 }) {
   const [form, setForm] = useState<FormState>(initial);
   const [errors, setErrors] = useState<Errors>({});
@@ -61,7 +65,7 @@ export function ContactForm({
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    const v = validate(form);
+    const v = validate(form, dict);
     setErrors(v);
     if (Object.keys(v).length > 0) return;
 
@@ -70,16 +74,16 @@ export function ContactForm({
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, locale }),
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        throw new Error(data.error ?? "Gönderim başarısız");
+        throw new Error(data.error ?? dict.errSubmit);
       }
       setSuccess(true);
       setForm(initial);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Bilinmeyen hata");
+      setError(err instanceof Error ? err.message : dict.errSubmit);
     } finally {
       setSubmitting(false);
     }
@@ -100,17 +104,15 @@ export function ContactForm({
               <CheckCircle2 className="h-8 w-8" />
             </div>
             <h3 className="mt-6 h-display text-2xl font-semibold">
-              Mesajınız bize ulaştı!
+              {dict.successTitle}
             </h3>
-            <p className="mt-3 max-w-md text-white/60">
-              En geç 48 saat içinde size dönüş yapacağız.
-            </p>
+            <p className="mt-3 max-w-md text-white/60">{dict.successDesc}</p>
             <button
               type="button"
               onClick={() => setSuccess(false)}
               className="btn-ghost mt-8"
             >
-              Yeni mesaj gönder
+              {dict.successAgain}
             </button>
           </motion.div>
         ) : (
@@ -131,28 +133,28 @@ export function ContactForm({
 
             <div className="grid gap-5 sm:grid-cols-2">
               <Field
-                label="Ad Soyad"
+                label={dict.name}
                 error={errors.name}
                 input={
                   <input
                     type="text"
                     value={form.name}
                     onChange={onChange("name")}
-                    placeholder="Adınız Soyadınız"
+                    placeholder={dict.namePlaceholder}
                     className="input"
                     required
                   />
                 }
               />
               <Field
-                label="E-posta"
+                label={dict.email}
                 error={errors.email}
                 input={
                   <input
                     type="email"
                     value={form.email}
                     onChange={onChange("email")}
-                    placeholder="ornek@sirket.com"
+                    placeholder={dict.emailPlaceholder}
                     className="input"
                     required
                   />
@@ -162,20 +164,20 @@ export function ContactForm({
 
             <div className="grid gap-5 sm:grid-cols-2">
               <Field
-                label="Telefon (opsiyonel)"
+                label={dict.phone}
                 error={errors.phone}
                 input={
                   <input
                     type="tel"
                     value={form.phone}
                     onChange={onChange("phone")}
-                    placeholder="+90 5XX XXX XX XX"
+                    placeholder={dict.phonePlaceholder}
                     className="input"
                   />
                 }
               />
               <Field
-                label="İlgilendiğiniz Hizmet"
+                label={dict.service}
                 error={errors.service}
                 input={
                   <select
@@ -184,27 +186,27 @@ export function ContactForm({
                     className="input"
                     required
                   >
-                    <option value="">Seçiniz...</option>
+                    <option value="">{dict.serviceSelect}</option>
                     {services.map((s) => (
                       <option key={s.slug} value={s.title}>
                         {s.title}
                       </option>
                     ))}
-                    <option value="Diğer">Diğer / Emin değilim</option>
+                    <option value="Diğer">{dict.serviceOther}</option>
                   </select>
                 }
               />
             </div>
 
             <Field
-              label="Mesajınız"
+              label={dict.message}
               error={errors.message}
               input={
                 <textarea
                   value={form.message}
                   onChange={onChange("message")}
                   rows={5}
-                  placeholder="Projeniz, hedefleriniz ve mevcut durumunuz hakkında kısa bir özet yazın..."
+                  placeholder={dict.messagePlaceholder}
                   className="input resize-none"
                   required
                 />
@@ -212,15 +214,13 @@ export function ContactForm({
             />
 
             <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <p className="text-xs text-white/45">
-                Gönder'e tıklayarak gizlilik politikamızı kabul etmiş olursunuz.
-              </p>
+              <p className="text-xs text-white/45">{dict.privacy}</p>
               <button
                 type="submit"
                 disabled={submitting}
                 className="btn-primary disabled:cursor-not-allowed disabled:opacity-70"
               >
-                {submitting ? "Gönderiliyor..." : "Mesajı Gönder"}
+                {submitting ? dict.submitting : dict.submit}
                 <Send className="h-4 w-4" />
               </button>
             </div>

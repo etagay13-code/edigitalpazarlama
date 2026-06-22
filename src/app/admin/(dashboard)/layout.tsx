@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { AdminSidebar } from "@/components/admin/AdminSidebar";
 import { AdminTopBar } from "@/components/admin/AdminTopBar";
+import { getAdminLocale } from "@/lib/admin/locale";
 
 export default async function DashboardLayout({
   children,
@@ -29,6 +30,7 @@ export default async function DashboardLayout({
         <AdminTopBar
           email={profile?.email ?? data.user.email ?? ""}
           fullName={profile?.full_name ?? null}
+          locale={await getAdminLocale()}
         />
         <main className="px-5 py-8 sm:px-8 lg:px-10">{children}</main>
       </div>

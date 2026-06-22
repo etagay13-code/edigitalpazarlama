@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
+import { getAdminLocale } from "@/lib/admin/locale";
 import { getBool, getInt, getStr } from "@/lib/admin/crud-helpers";
 
 async function authedClient() {
@@ -36,7 +37,7 @@ export async function create(fd: FormData) {
     const data = parse(fd);
     if (!data.question || !data.answer)
       return { ok: false, error: "Soru ve cevap zorunlu." };
-    const { error } = await supabase.from("faqs").insert(data);
+    const { error } = await supabase.from("faqs").insert({ ...data, locale: await getAdminLocale() });
     if (error) return { ok: false, error: error.message };
     revalidatePath("/", "layout");
     revalidatePath("/admin/faqs");

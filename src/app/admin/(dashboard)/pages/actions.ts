@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
+import { getAdminLocale } from "@/lib/admin/locale";
 import { getInt, getStr, trimOrNull } from "@/lib/admin/crud-helpers";
 import type { Json } from "@/lib/db/types";
 
@@ -43,7 +44,7 @@ export async function create(fd: FormData) {
     const data = parse(fd);
     if (!data.section_key)
       return { ok: false, error: "Section key zorunlu." };
-    const { error } = await supabase.from("page_sections").insert(data);
+    const { error } = await supabase.from("page_sections").insert({ ...data, locale: await getAdminLocale() });
     if (error) return { ok: false, error: error.message };
     revalidatePath("/", "layout");
     revalidatePath("/admin/pages");

@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { getAdminLocale } from "@/lib/admin/locale";
 import { InlineEditor, type EditorField } from "@/components/admin/InlineEditor";
 import { create, update, remove } from "./actions";
 
@@ -22,9 +23,11 @@ const fields: EditorField[] = [
 
 export default async function FaqsPage() {
   const supabase = await createClient();
+  const locale = await getAdminLocale();
   const { data: items = [] } = await supabase
     .from("faqs")
     .select("*")
+    .eq("locale", locale)
     .order("scope")
     .order("sort_order");
 

@@ -6,6 +6,8 @@ import { ArrowUpRight, Sparkles } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Stagger, fadeUp } from "./Reveal";
 import { getIcon } from "@/lib/admin/icons-list";
+import { localizeHref } from "@/i18n/routes";
+import type { Locale } from "@/i18n/config";
 
 type ServiceItem = {
   slug: string;
@@ -18,9 +20,11 @@ type ServiceItem = {
 export function ServicesGrid({
   items,
   limit,
+  locale,
 }: {
   items: ServiceItem[];
   limit?: number;
+  locale: Locale;
 }) {
   const displayed = limit ? items.slice(0, limit) : items;
   return (
@@ -30,7 +34,7 @@ export function ServicesGrid({
         return (
           <motion.div key={s.slug} variants={fadeUp}>
             <Link
-              href={`/hizmetler/${s.slug}`}
+              href={localizeHref(locale, `/hizmetler/${s.slug}`)}
               className="card group relative block h-full"
             >
               <div

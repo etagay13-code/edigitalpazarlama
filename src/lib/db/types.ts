@@ -71,6 +71,7 @@ export type Database = {
 
       services: {
         Row: {
+          locale: "tr" | "en" | "de";
           id: string;
           slug: string;
           title: string;
@@ -104,6 +105,7 @@ export type Database = {
 
       service_process_steps: {
         Row: {
+          locale: "tr" | "en" | "de";
           id: string;
           service_id: string;
           step_number: number;
@@ -122,6 +124,7 @@ export type Database = {
 
       service_faqs: {
         Row: {
+          locale: "tr" | "en" | "de";
           id: string;
           service_id: string;
           question: string;
@@ -140,6 +143,7 @@ export type Database = {
 
       portfolio_projects: {
         Row: {
+          locale: "tr" | "en" | "de";
           id: string;
           slug: string;
           title: string;
@@ -166,6 +170,7 @@ export type Database = {
 
       testimonials: {
         Row: {
+          locale: "tr" | "en" | "de";
           id: string;
           name: string;
           role: string | null;
@@ -189,6 +194,7 @@ export type Database = {
 
       team_members: {
         Row: {
+          locale: "tr" | "en" | "de";
           id: string;
           name: string;
           role: string | null;
@@ -212,6 +218,7 @@ export type Database = {
 
       timeline_events: {
         Row: {
+          locale: "tr" | "en" | "de";
           id: string;
           year: string;
           title: string;
@@ -231,6 +238,7 @@ export type Database = {
 
       industries: {
         Row: {
+          locale: "tr" | "en" | "de";
           id: string;
           name: string;
           description: string | null;
@@ -250,6 +258,7 @@ export type Database = {
 
       tech_items: {
         Row: {
+          locale: "tr" | "en" | "de";
           id: string;
           name: string;
           category: string | null;
@@ -267,6 +276,7 @@ export type Database = {
 
       faqs: {
         Row: {
+          locale: "tr" | "en" | "de";
           id: string;
           scope: "home" | "services" | "contact" | "about" | "portfolio";
           question: string;
@@ -284,6 +294,7 @@ export type Database = {
 
       page_sections: {
         Row: {
+          locale: "tr" | "en" | "de";
           id: string;
           page_slug: string;
           section_key: string;
@@ -316,6 +327,23 @@ export type Database = {
           id?: 1;
         };
         Update: Partial<Database["public"]["Tables"]["site_secrets"]["Row"]>;
+        Relationships: [];
+      };
+
+      site_settings_i18n: {
+        Row: {
+          locale: "tr" | "en" | "de";
+          tagline: string | null;
+          description: string | null;
+          address: string | null;
+          updated_at: string;
+        };
+        Insert: Partial<
+          Database["public"]["Tables"]["site_settings_i18n"]["Row"]
+        > & { locale: "tr" | "en" | "de" };
+        Update: Partial<
+          Database["public"]["Tables"]["site_settings_i18n"]["Row"]
+        >;
         Relationships: [];
       };
 

@@ -4,6 +4,8 @@ import { Reveal } from "./Reveal";
 import { Highlighted } from "./Highlight";
 import { getBrand } from "@/lib/theme";
 import { getPageSection } from "@/lib/data";
+import { localizeHref } from "@/i18n/routes";
+import type { Locale } from "@/i18n/config";
 
 type CtaBody = {
   highlight?: string;
@@ -11,10 +13,10 @@ type CtaBody = {
   primaryHref?: string;
 };
 
-export async function CTASection() {
+export async function CTASection({ locale }: { locale: Locale }) {
   const [brand, section] = await Promise.all([
-    getBrand(),
-    getPageSection("global", "cta"),
+    getBrand(locale),
+    getPageSection("global", "cta", locale),
   ]);
 
   const body = (section?.body as CtaBody | null) ?? {};
@@ -25,7 +27,7 @@ export async function CTASection() {
     section?.description ||
     "Ücretsiz 30 dakikalık keşif görüşmesi. Hedeflerinizi konuşalım, mevcut kanallarınıza dair somut bir aksiyon planı çıkaralım.";
   const primaryLabel = body.primaryLabel || "Görüşme Planla";
-  const primaryHref = body.primaryHref || "/iletisim";
+  const primaryHref = localizeHref(locale, body.primaryHref || "/iletisim");
 
   return (
     <section className="section">

@@ -21,21 +21,24 @@ import {
 } from "@/lib/data";
 import { getBrand } from "@/lib/theme";
 import { getIcon } from "@/lib/admin/icons-list";
+import { asLocale } from "@/i18n/config";
+import { localizeHref } from "@/i18n/routes";
+import { getDict } from "@/i18n/dictionaries";
 
 export async function generateStaticParams() {
-  const services = await listServicesPublic();
+  const services = await listServicesPublic("tr");
   return services.map((s) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: { locale: string; slug: string };
 }): Promise<Metadata> {
-  const { slug } = await params;
+  const locale = asLocale(params.locale);
   const [service, brand] = await Promise.all([
-    getServiceBySlugPublic(slug),
-    getBrand(),
+    getServiceBySlugPublic(params.slug, locale),
+    getBrand(locale),
   ]);
   if (!service) return { title: "Hizmet Bulunamadı" };
   return {
@@ -51,12 +54,13 @@ export async function generateMetadata({
 export default async function ServiceDetailPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: { locale: string; slug: string };
 }) {
-  const { slug } = await params;
+  const locale = asLocale(params.locale);
+  const t = getDict(locale).serviceDetail;
   const [service, allServices] = await Promise.all([
-    getServiceBySlugPublic(slug),
-    listServicesPublic(),
+    getServiceBySlugPublic(params.slug, locale),
+    listServicesPublic(locale),
   ]);
   if (!service) notFound();
 
@@ -75,12 +79,12 @@ export default async function ServiceDetailPage({
             aria-label="Yol"
             className="mb-10 flex items-center gap-2 text-sm text-white/45"
           >
-            <Link href="/" className="hover:text-white">
-              Anasayfa
+            <Link href={localizeHref(locale, "/")} className="hover:text-white">
+              {t.crumbHome}
             </Link>
             <ChevronRight className="h-3.5 w-3.5" />
-            <Link href="/hizmetler" className="hover:text-white">
-              Hizmetler
+            <Link href={localizeHref(locale, "/hizmetler")} className="hover:text-white">
+              {t.crumbServices}
             </Link>
             <ChevronRight className="h-3.5 w-3.5" />
             <span className="text-white">{service.title}</span>
@@ -95,7 +99,7 @@ export default async function ServiceDetailPage({
                   >
                     <Icon className="h-7 w-7 text-white" />
                   </div>
-                  <span className="eyebrow">Hizmet</span>
+                  <span className="eyebrow">{t.eyebrow}</span>
                 </div>
                 <h1 className="mt-8 h-display text-4xl font-semibold leading-[1.05] sm:text-5xl md:text-6xl">
                   {service.title}
@@ -104,12 +108,12 @@ export default async function ServiceDetailPage({
                   {service.hero ?? service.description}
                 </p>
                 <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                  <Link href="/iletisim" className="btn-primary">
-                    Bu Hizmet İçin Teklif Al
+                  <Link href={localizeHref(locale, "/iletisim")} className="btn-primary">
+                    {t.getQuote}
                     <ArrowUpRight className="h-4 w-4" />
                   </Link>
-                  <Link href="/portfolyo" className="btn-ghost">
-                    Bu Alandaki Örnekler
+                  <Link href={localizeHref(locale, "/portfolyo")} className="btn-ghost">
+                    {t.examples}
                   </Link>
                 </div>
               </div>
@@ -119,7 +123,7 @@ export default async function ServiceDetailPage({
               <Reveal delay={0.15}>
                 <aside className="card w-full max-w-sm lg:w-80">
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/45">
-                    Kimler için ideal?
+                    {t.idealFor}
                   </p>
                   <ul className="mt-4 space-y-3">
                     {service.ideal_for.map((i) => (
@@ -146,10 +150,9 @@ export default async function ServiceDetailPage({
         <section className="section">
           <div className="container-x grid items-start gap-12 lg:grid-cols-[1fr_1.4fr]">
             <Reveal>
-              <span className="eyebrow">Yaklaşımımız</span>
+              <span className="eyebrow">{t.approachEyebrow}</span>
               <h2 className="mt-5 h-display text-3xl font-semibold leading-tight sm:text-4xl">
-                Bu hizmeti{" "}
-                <span className="gradient-text">nasıl ele alıyoruz</span>
+                <span className="gradient-text">{t.approachTitle}</span>
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
@@ -169,16 +172,16 @@ export default async function ServiceDetailPage({
         <section className="section">
           <div className="container-x">
             <SectionHeader
-              eyebrow="Kapsam"
-              title="Bu hizmet neleri içerir?"
-              description="Sözleşmede yer almayan vaatler vermiyoruz."
+              eyebrow={t.scopeEyebrow}
+              title={t.scopeTitle}
+              description={t.scopeDesc}
             />
             <div className="mt-12 grid gap-8 lg:grid-cols-[1.4fr_1fr]">
               {service.bullets.length > 0 && (
                 <Reveal>
                   <div className="card">
                     <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-white/45">
-                      Hizmet kapsamı
+                      {t.serviceScope}
                     </p>
                     <ul className="grid gap-3 sm:grid-cols-2">
                       {service.bullets.map((b) => (
@@ -202,7 +205,7 @@ export default async function ServiceDetailPage({
                   {service.deliverables.length > 0 && (
                     <>
                       <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-white/45">
-                        Çıktılar
+                        {t.outcomes}
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {service.deliverables.map((d) => (
@@ -221,7 +224,7 @@ export default async function ServiceDetailPage({
                   {service.outcomes.length > 0 && (
                     <>
                       <p className="mt-8 mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-white/45">
-                        Beklenebilir sonuçlar
+                        {t.expectedResults}
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {service.outcomes.map((o) => (
@@ -248,8 +251,8 @@ export default async function ServiceDetailPage({
         <section className="section">
           <div className="container-x">
             <SectionHeader
-              eyebrow="Süreç"
-              title="İş başı yapışımızdan ilk sonuca"
+              eyebrow={t.processEyebrow}
+              title={t.processTitle}
               description="Birlikte çalışmaya başladığımız andan teslim/yayın anına kadar geçtiğimiz adımlar."
             />
             <Stagger className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
@@ -276,8 +279,8 @@ export default async function ServiceDetailPage({
         <section className="section">
           <div className="container-x">
             <SectionHeader
-              eyebrow="Araçlar"
-              title="Kullandığımız stack"
+              eyebrow={t.toolsEyebrow}
+              title={t.toolsTitle}
               description="Bu hizmet için günlük olarak kullandığımız platformlar."
             />
             <Reveal>
@@ -302,8 +305,8 @@ export default async function ServiceDetailPage({
         <section className="section">
           <div className="container-x">
             <SectionHeader
-              eyebrow="Sık Sorulanlar"
-              title={`${service.title} ile ilgili sorular`}
+              eyebrow={t.faqEyebrow}
+              title={`${service.title} · ${t.faqEyebrow}`}
             />
             <div className="mx-auto mt-10 max-w-3xl divide-y divide-white/[0.06] overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02]">
               {service.faqs.map((f) => (
@@ -332,7 +335,7 @@ export default async function ServiceDetailPage({
         <section className="section">
           <div className="container-x">
             <SectionHeader
-              eyebrow="İlgili Hizmetler"
+              eyebrow={t.relatedEyebrow}
               title="Bu hizmetle birlikte tercih edilenler"
               description="Tek başına alabilirsiniz, ama birlikte sinerji çok daha güçlü."
             />
@@ -342,7 +345,7 @@ export default async function ServiceDetailPage({
                 return (
                   <Reveal key={r.slug}>
                     <Link
-                      href={`/hizmetler/${r.slug}`}
+                      href={localizeHref(locale, `/hizmetler/${r.slug}`)}
                       className="card group block h-full"
                     >
                       <div className="flex items-start justify-between">
@@ -370,17 +373,17 @@ export default async function ServiceDetailPage({
         <div className="container-x">
           <Reveal>
             <Link
-              href="/hizmetler"
+              href={localizeHref(locale, "/hizmetler")}
               className="inline-flex items-center gap-2 text-sm text-white/60 transition hover:text-white"
             >
               <ArrowLeft className="h-4 w-4" />
-              Tüm hizmetlere dön
+              {t.backToAll}
             </Link>
           </Reveal>
         </div>
       </section>
 
-      <CTASection />
+      <CTASection locale={locale} />
     </>
   );
 }

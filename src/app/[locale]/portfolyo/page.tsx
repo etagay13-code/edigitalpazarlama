@@ -9,6 +9,8 @@ import { Reveal, Stagger } from "@/components/Reveal";
 import { Counter } from "@/components/Counter";
 import { listPortfolioProjectsPublic, listPageSectionsPublic } from "@/lib/data";
 import { Highlighted } from "@/components/Highlight";
+import { asLocale } from "@/i18n/config";
+import { localizeHref } from "@/i18n/routes";
 
 export const metadata: Metadata = {
   title: "Portfolyo",
@@ -28,10 +30,15 @@ type FeaturedCaseBody = {
 };
 type SummaryTestimonial = { quote: string; name: string; role: string };
 
-export default async function PortfolioPage() {
+export default async function PortfolioPage({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  const locale = asLocale(params.locale);
   const [projects, sections] = await Promise.all([
-    listPortfolioProjectsPublic(),
-    listPageSectionsPublic("portfolio"),
+    listPortfolioProjectsPublic(locale),
+    listPageSectionsPublic("portfolio", locale),
   ]);
 
   const sec = (key: string) => sections.find((s) => s.section_key === key) ?? null;
@@ -271,7 +278,7 @@ export default async function PortfolioPage() {
                 {inviteSection?.description ||
                   "Bu rakamlar, bizi seçen markaların başardıklarıdır. Bir sonraki vaka çalışmasında sizin markanızı paylaşmak istiyoruz."}
               </p>
-              <Link href={inviteBody.primaryHref || "/iletisim"} className="btn-primary">
+              <Link href={localizeHref(locale, inviteBody.primaryHref || "/iletisim")} className="btn-primary">
                 {inviteBody.primaryLabel || "Görüşme Planla"}
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
@@ -280,7 +287,7 @@ export default async function PortfolioPage() {
         </div>
       </section>
 
-      <CTASection />
+      <CTASection locale={locale} />
     </>
   );
 }

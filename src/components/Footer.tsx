@@ -4,12 +4,17 @@ import { Logo } from "./Logo";
 import { getBrand } from "@/lib/theme";
 import { listServicesPublic } from "@/lib/data";
 import { navLinks } from "@/lib/navigation";
+import { localizeHref } from "@/i18n/routes";
+import { getDict } from "@/i18n/dictionaries";
+import type { Locale } from "@/i18n/config";
 
-export async function Footer() {
+export async function Footer({ locale }: { locale: Locale }) {
   const [brand, services] = await Promise.all([
-    getBrand(),
-    listServicesPublic(),
+    getBrand(locale),
+    listServicesPublic(locale),
   ]);
+  const t = getDict(locale);
+  const href = (internal: string) => localizeHref(locale, internal);
 
   return (
     <footer className="relative mt-24 border-t border-white/[0.06] bg-ink-950/80">
@@ -61,13 +66,13 @@ export async function Footer() {
 
           <div>
             <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-white/50">
-              Hızlı Linkler
+              {t.footer.quickLinks}
             </h4>
             <ul className="space-y-2 text-sm">
               {navLinks.map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href} className="text-white/70 transition hover:text-white">
-                    {l.label}
+                <li key={l.key}>
+                  <Link href={href(l.internal)} className="text-white/70 transition hover:text-white">
+                    {t.nav[l.key]}
                   </Link>
                 </li>
               ))}
@@ -76,13 +81,13 @@ export async function Footer() {
 
           <div>
             <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-white/50">
-              Hizmetler
+              {t.footer.services}
             </h4>
             <ul className="space-y-2 text-sm">
               {services.slice(0, 6).map((s) => (
                 <li key={s.slug}>
                   <Link
-                    href={`/hizmetler/${s.slug}`}
+                    href={href(`/hizmetler/${s.slug}`)}
                     className="text-white/70 transition hover:text-white"
                   >
                     {s.title}
@@ -94,7 +99,7 @@ export async function Footer() {
 
           <div>
             <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-white/50">
-              İletişim
+              {t.footer.contact}
             </h4>
             <ul className="space-y-3 text-sm text-white/70">
               <li className="flex items-center gap-2">
@@ -123,10 +128,10 @@ export async function Footer() {
 
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-white/[0.06] pt-6 text-xs text-white/40 sm:flex-row sm:items-center">
           <p>
-            © {new Date().getFullYear()} {brand.name}. Tüm hakları saklıdır.
+            © {new Date().getFullYear()} {brand.name}. {t.footer.rights}
           </p>
           <p>
-            Kurucu: <span className="text-white/70">{brand.founder}</span> · İstanbul
+            {t.footer.founder}: <span className="text-white/70">{brand.founder}</span> · İstanbul
           </p>
         </div>
       </div>

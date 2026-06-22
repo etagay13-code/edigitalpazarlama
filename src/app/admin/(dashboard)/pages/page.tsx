@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { getAdminLocale } from "@/lib/admin/locale";
 import type { EditorItem } from "@/components/admin/InlineEditor";
 import { PagesEditor } from "./PagesEditor";
 import { pageOptions } from "./config";
@@ -7,9 +8,11 @@ export const metadata = { title: "Sayfa İçerikleri" };
 
 export default async function PagesContentPage() {
   const supabase = await createClient();
+  const locale = await getAdminLocale();
   const { data: items } = await supabase
     .from("page_sections")
     .select("*")
+    .eq("locale", locale)
     .order("page_slug")
     .order("sort_order");
 

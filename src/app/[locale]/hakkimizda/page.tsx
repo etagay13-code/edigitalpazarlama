@@ -9,25 +9,36 @@ import { DynamicIcon } from "@/components/DynamicIcon";
 import { getBrand } from "@/lib/theme";
 import { listTimelinePublic, listTeamPublic, listPageSectionsPublic } from "@/lib/data";
 import type { StatItem } from "@/components/Stats";
+import { asLocale } from "@/i18n/config";
 
 type IconItem = { icon?: string; title: string; desc: string };
 type TextItem = { title: string; desc: string };
 type RecognitionItem = { title: string; year: string };
 
-export async function generateMetadata(): Promise<Metadata> {
-  const brand = await getBrand();
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const locale = asLocale(params.locale);
+  const brand = await getBrand(locale);
   return {
     title: "Hakkımızda",
     description: `${brand.name} ve kurucu ${brand.founder} hakkında bilgi alın. Vizyonumuz, misyonumuz ve markaları büyütmek için izlediğimiz yol.`,
   };
 }
 
-export default async function AboutPage() {
+export default async function AboutPage({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  const locale = asLocale(params.locale);
   const [brand, timeline, team, sections] = await Promise.all([
-    getBrand(),
-    listTimelinePublic(),
-    listTeamPublic(),
-    listPageSectionsPublic("about"),
+    getBrand(locale),
+    listTimelinePublic(locale),
+    listTeamPublic(locale),
+    listPageSectionsPublic("about", locale),
   ]);
 
   const sec = (key: string) => sections.find((s) => s.section_key === key) ?? null;
@@ -347,7 +358,7 @@ export default async function AboutPage() {
         </section>
       )}
 
-      <CTASection />
+      <CTASection locale={locale} />
     </>
   );
 }

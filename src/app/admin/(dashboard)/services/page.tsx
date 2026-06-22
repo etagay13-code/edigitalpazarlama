@@ -2,11 +2,13 @@ import Link from "next/link";
 import { Plus, ArrowUpRight, EyeOff } from "lucide-react";
 import { listServices } from "@/lib/data/services";
 import { getIcon } from "@/lib/admin/icons-list";
+import { getAdminLocale } from "@/lib/admin/locale";
 
 export const metadata = { title: "Hizmetler" };
 
 export default async function ServicesListPage() {
-  const services = await listServices();
+  const locale = await getAdminLocale();
+  const services = (await listServices()).filter((s) => s.locale === locale);
 
   return (
     <div className="space-y-6">

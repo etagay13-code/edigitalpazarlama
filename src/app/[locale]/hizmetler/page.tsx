@@ -15,6 +15,8 @@ import {
   listPageSectionsPublic,
 } from "@/lib/data";
 import { getBrand } from "@/lib/theme";
+import { asLocale } from "@/i18n/config";
+import { localizeHref } from "@/i18n/routes";
 
 export const metadata: Metadata = {
   title: "Hizmetler",
@@ -25,15 +27,20 @@ export const metadata: Metadata = {
 type SynergyItem = { icon?: string; title: string; desc: string };
 type PricingItem = { title: string; range: string; desc: string; fits: string };
 
-export default async function ServicesPage() {
+export default async function ServicesPage({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  const locale = asLocale(params.locale);
   const [services, industries, techStack, brand, sections, serviceFaqs] =
     await Promise.all([
-      listServicesPublic(),
-      listIndustriesPublic(),
-      listTechPublic(),
-      getBrand(),
-      listPageSectionsPublic("services"),
-      listFaqsPublic("services"),
+      listServicesPublic(locale),
+      listIndustriesPublic(locale),
+      listTechPublic(locale),
+      getBrand(locale),
+      listPageSectionsPublic("services", locale),
+      listFaqsPublic("services", locale),
     ]);
 
   const sec = (key: string) => sections.find((s) => s.section_key === key) ?? null;
@@ -81,14 +88,14 @@ export default async function ServicesPage() {
               {gridBody.intro || "Detayları görmek için bir hizmete tıkla"}
             </p>
             <Link
-              href={gridBody.linkHref || "/iletisim"}
+              href={localizeHref(locale, gridBody.linkHref || "/iletisim")}
               className="hidden text-sm font-medium text-white/70 transition hover:text-white sm:inline-flex sm:items-center sm:gap-1"
             >
               {gridBody.linkLabel || "Hangisi sana uygun?"}
               <ArrowUpRight className="h-4 w-4" />
             </Link>
           </div>
-          <ServicesGrid items={serviceItems} />
+          <ServicesGrid items={serviceItems} locale={locale} />
         </div>
       </section>
 
@@ -265,7 +272,7 @@ export default async function ServicesPage() {
         </section>
       )}
 
-      <CTASection />
+      <CTASection locale={locale} />
     </>
   );
 }

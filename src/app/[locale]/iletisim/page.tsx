@@ -14,6 +14,8 @@ import { GradientBlobs } from "@/components/GradientBlob";
 import { DynamicIcon } from "@/components/DynamicIcon";
 import { getBrand } from "@/lib/theme";
 import { listServicesPublic, listFaqsPublic, listPageSectionsPublic } from "@/lib/data";
+import { asLocale } from "@/i18n/config";
+import { getDict } from "@/i18n/dictionaries";
 
 export const metadata: Metadata = {
   title: "İletişim",
@@ -33,12 +35,18 @@ type ChannelItem = {
 };
 type OfficeLine = { icon?: string; text: string };
 
-export default async function ContactPage() {
+export default async function ContactPage({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  const locale = asLocale(params.locale);
+  const t = getDict(locale);
   const [brand, services, sections, contactFaqs] = await Promise.all([
-    getBrand(),
-    listServicesPublic(),
-    listPageSectionsPublic("contact"),
-    listFaqsPublic("contact"),
+    getBrand(locale),
+    listServicesPublic(locale),
+    listPageSectionsPublic("contact", locale),
+    listFaqsPublic("contact", locale),
   ]);
 
   const sec = (key: string) => sections.find((s) => s.section_key === key) ?? null;
@@ -128,6 +136,8 @@ export default async function ContactPage() {
                 slug: s.slug,
                 title: s.title,
               }))}
+              locale={locale}
+              dict={t.contactForm}
             />
           </Reveal>
 
@@ -167,7 +177,7 @@ export default async function ContactPage() {
 
               <div className="card">
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/50">
-                  Sosyal Medya
+                  {t.contactPage.socialMedia}
                 </p>
                 <div className="mt-3 flex gap-2">
                   <a
@@ -184,7 +194,7 @@ export default async function ContactPage() {
                   </a>
                 </div>
                 <p className="mt-4 text-xs text-white/40">
-                  DM kanallarımız da aktif — ama detaylı projeler için e-posta önerilir.
+                  {t.contactPage.dmNote}
                 </p>
               </div>
             </div>
@@ -336,7 +346,7 @@ export default async function ContactPage() {
                         rel="noopener noreferrer"
                         className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm font-medium text-white/80 transition hover:bg-white/[0.1] hover:text-white"
                       >
-                        Google Maps'te Aç
+                        {t.contactPage.mapsOpen}
                       </a>
                     </div>
                   </div>

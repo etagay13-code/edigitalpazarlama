@@ -1,16 +1,29 @@
+import { notFound } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { getBrand } from "@/lib/theme";
 import { listServicesPublic } from "@/lib/data";
+import { LOCALES, isLocale, type Locale } from "@/i18n/config";
+import { getDict } from "@/i18n/dictionaries";
+
+export function generateStaticParams() {
+  return LOCALES.map((locale) => ({ locale }));
+}
 
 export default async function PublicLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: { locale: string };
 }) {
+  if (!isLocale(params.locale)) notFound();
+  const locale = params.locale as Locale;
+  const t = getDict(locale);
+
   const [brand, services] = await Promise.all([
-    getBrand(),
-    listServicesPublic(),
+    getBrand(locale),
+    listServicesPublic(locale),
   ]);
 
   return (
@@ -19,7 +32,7 @@ export default async function PublicLayout({
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:text-black"
       >
-        İçeriğe geç
+        {t.common.skipToContent}
       </a>
       <Navbar
         services={services.map((s) => ({
@@ -31,11 +44,13 @@ export default async function PublicLayout({
         }))}
         logoUrl={brand.logoUrl}
         brandName={brand.name}
+        locale={locale}
+        dict={t.nav}
       />
       <main id="main" className="relative pt-20">
         {children}
       </main>
-      <Footer />
+      <Footer locale={locale} />
     </>
   );
 }

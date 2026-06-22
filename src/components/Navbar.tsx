@@ -9,6 +9,9 @@ import type { LucideIcon } from "lucide-react";
 import { Logo } from "./Logo";
 import { navLinks } from "@/lib/navigation";
 import { getIcon } from "@/lib/admin/icons-list";
+import { localizeHref } from "@/i18n/routes";
+import type { Locale } from "@/i18n/config";
+import type { Dict } from "@/i18n/dictionaries";
 
 type NavService = {
   slug: string;
@@ -22,10 +25,14 @@ export function Navbar({
   services,
   logoUrl,
   brandName,
+  locale,
+  dict,
 }: {
   services: NavService[];
   logoUrl: string | null;
   brandName: string;
+  locale: Locale;
+  dict: Dict["nav"];
 }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -33,6 +40,10 @@ export function Navbar({
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const href = (internal: string) => localizeHref(locale, internal);
+  const servicesHref = href("/hizmetler");
+  const contactHref = href("/iletisim");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -68,7 +79,7 @@ export function Navbar({
   };
 
   const isOnServices =
-    pathname === "/hizmetler" || pathname.startsWith("/hizmetler/");
+    pathname === servicesHref || pathname.startsWith(servicesHref + "/");
 
   return (
     <header
@@ -84,23 +95,27 @@ export function Navbar({
               : "border-transparent px-4 py-3"
           }`}
         >
-          <Logo src={logoUrl} alt={brandName} />
+          <Link href={href("/")} aria-label={brandName}>
+            <Logo src={logoUrl} alt={brandName} />
+          </Link>
 
           <ul className="hidden items-center gap-1 lg:flex">
             {navLinks.map((link) => {
-              const isServices = link.href === "/hizmetler";
-              const active = isServices ? isOnServices : pathname === link.href;
+              const linkHref = href(link.internal);
+              const isServices = link.key === "services";
+              const active = isServices ? isOnServices : pathname === linkHref;
+              const label = dict[link.key];
 
               if (isServices) {
                 return (
                   <li
-                    key={link.href}
+                    key={link.key}
                     className="relative"
                     onMouseEnter={openServicesDelayed}
                     onMouseLeave={closeServicesDelayed}
                   >
                     <Link
-                      href={link.href}
+                      href={linkHref}
                       aria-haspopup="true"
                       aria-expanded={servicesOpen}
                       className={`relative inline-flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium transition ${
@@ -111,14 +126,10 @@ export function Navbar({
                         <motion.span
                           layoutId="navactive"
                           className="absolute inset-0 -z-10 rounded-full bg-white/10"
-                          transition={{
-                            type: "spring",
-                            stiffness: 380,
-                            damping: 30,
-                          }}
+                          transition={{ type: "spring", stiffness: 380, damping: 30 }}
                         />
                       )}
-                      {link.label}
+                      {label}
                       <ChevronDown
                         className={`h-3.5 w-3.5 transition-transform ${
                           servicesOpen ? "rotate-180" : ""
@@ -138,12 +149,11 @@ export function Navbar({
                           <div className="w-[720px] overflow-hidden rounded-2xl border border-white/10 bg-ink-900/95 shadow-card backdrop-blur-2xl">
                             <div className="grid grid-cols-2 gap-1 p-3">
                               {services.map((s) => {
-                                const Icon: LucideIcon =
-                                  getIcon(s.icon) ?? Sparkles;
+                                const Icon: LucideIcon = getIcon(s.icon) ?? Sparkles;
                                 return (
                                   <Link
                                     key={s.slug}
-                                    href={`/hizmetler/${s.slug}`}
+                                    href={href(`/hizmetler/${s.slug}`)}
                                     onClick={() => setServicesOpen(false)}
                                     className="group flex items-start gap-3 rounded-xl p-3 transition hover:bg-white/[0.05]"
                                   >
@@ -167,22 +177,22 @@ export function Navbar({
                             </div>
                             <div className="flex items-center justify-between gap-4 border-t border-white/[0.06] bg-white/[0.02] px-5 py-3.5">
                               <span className="text-xs text-white/55">
-                                Tek bir hizmet mi, paket mi? Birlikte karar verelim.
+                                {dict.servicesHint}
                               </span>
                               <div className="flex gap-2">
                                 <Link
-                                  href="/hizmetler"
+                                  href={servicesHref}
                                   className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-medium text-white/80 transition hover:bg-white/[0.08] hover:text-white"
                                   onClick={() => setServicesOpen(false)}
                                 >
-                                  Tüm hizmetler
+                                  {dict.allServices}
                                 </Link>
                                 <Link
-                                  href="/iletisim"
+                                  href={contactHref}
                                   className="inline-flex items-center gap-1.5 rounded-full bg-violet-500/90 px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-violet-500"
                                   onClick={() => setServicesOpen(false)}
                                 >
-                                  Teklif Al
+                                  {dict.getQuote}
                                   <ArrowUpRight className="h-3 w-3" />
                                 </Link>
                               </div>
@@ -196,9 +206,9 @@ export function Navbar({
               }
 
               return (
-                <li key={link.href}>
+                <li key={link.key}>
                   <Link
-                    href={link.href}
+                    href={linkHref}
                     className={`relative rounded-full px-4 py-2 text-sm font-medium transition ${
                       active ? "text-white" : "text-white/70 hover:text-white"
                     }`}
@@ -207,14 +217,10 @@ export function Navbar({
                       <motion.span
                         layoutId="navactive"
                         className="absolute inset-0 -z-10 rounded-full bg-white/10"
-                        transition={{
-                          type: "spring",
-                          stiffness: 380,
-                          damping: 30,
-                        }}
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}
-                    {link.label}
+                    {label}
                   </Link>
                 </li>
               );
@@ -222,13 +228,13 @@ export function Navbar({
           </ul>
 
           <div className="flex items-center gap-2">
-            <Link href="/iletisim" className="btn-primary hidden sm:inline-flex">
-              Teklif Al
+            <Link href={contactHref} className="btn-primary hidden sm:inline-flex">
+              {dict.getQuote}
               <ArrowUpRight className="h-4 w-4" />
             </Link>
             <button
               type="button"
-              aria-label={open ? "Menüyü kapat" : "Menüyü aç"}
+              aria-label={open ? dict.menuClose : dict.menuOpen}
               onClick={() => setOpen((v) => !v)}
               className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-white/90 lg:hidden"
             >
@@ -250,14 +256,14 @@ export function Navbar({
             <div className="mt-2 rounded-2xl border border-white/10 bg-ink-900/95 p-3 shadow-card backdrop-blur-2xl">
               <ul className="flex flex-col">
                 {navLinks.map((link) => {
-                  const isServices = link.href === "/hizmetler";
-                  const active = isServices
-                    ? isOnServices
-                    : pathname === link.href;
+                  const linkHref = href(link.internal);
+                  const isServices = link.key === "services";
+                  const active = isServices ? isOnServices : pathname === linkHref;
+                  const label = dict[link.key];
 
                   if (isServices) {
                     return (
-                      <li key={link.href}>
+                      <li key={link.key}>
                         <button
                           type="button"
                           onClick={() => setMobileServicesOpen((v) => !v)}
@@ -268,7 +274,7 @@ export function Navbar({
                               : "text-white/75 hover:bg-white/[0.05] hover:text-white"
                           }`}
                         >
-                          {link.label}
+                          {label}
                           <ChevronDown
                             className={`h-4 w-4 transition-transform ${
                               mobileServicesOpen ? "rotate-180" : ""
@@ -281,20 +287,16 @@ export function Navbar({
                               initial={{ height: 0, opacity: 0 }}
                               animate={{ height: "auto", opacity: 1 }}
                               exit={{ height: 0, opacity: 0 }}
-                              transition={{
-                                duration: 0.22,
-                                ease: [0.16, 1, 0.3, 1],
-                              }}
+                              transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
                               className="overflow-hidden"
                             >
                               <ul className="mt-1 space-y-1 border-l border-white/[0.08] pl-3">
                                 {services.map((s) => {
-                                  const Icon: LucideIcon =
-                                    getIcon(s.icon) ?? Sparkles;
+                                  const Icon: LucideIcon = getIcon(s.icon) ?? Sparkles;
                                   return (
                                     <li key={s.slug}>
                                       <Link
-                                        href={`/hizmetler/${s.slug}`}
+                                        href={href(`/hizmetler/${s.slug}`)}
                                         className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-white/75 transition hover:bg-white/[0.05] hover:text-white"
                                       >
                                         <span
@@ -309,10 +311,10 @@ export function Navbar({
                                 })}
                                 <li>
                                   <Link
-                                    href="/hizmetler"
+                                    href={servicesHref}
                                     className="flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-violet-200 transition hover:bg-white/[0.05]"
                                   >
-                                    Tüm hizmetler
+                                    {dict.allServices}
                                     <ArrowUpRight className="h-4 w-4" />
                                   </Link>
                                 </li>
@@ -325,27 +327,24 @@ export function Navbar({
                   }
 
                   return (
-                    <li key={link.href}>
+                    <li key={link.key}>
                       <Link
-                        href={link.href}
+                        href={linkHref}
                         className={`flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium transition ${
                           active
                             ? "bg-white/10 text-white"
                             : "text-white/75 hover:bg-white/[0.05] hover:text-white"
                         }`}
                       >
-                        {link.label}
+                        {label}
                         <ArrowUpRight className="h-4 w-4 opacity-50" />
                       </Link>
                     </li>
                   );
                 })}
               </ul>
-              <Link
-                href="/iletisim"
-                className="btn-primary mt-2 w-full justify-center"
-              >
-                Teklif Al
+              <Link href={contactHref} className="btn-primary mt-2 w-full justify-center">
+                {dict.getQuote}
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
             </div>

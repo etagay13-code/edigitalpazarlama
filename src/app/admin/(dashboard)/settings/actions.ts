@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
+import { getAdminLocale } from "@/lib/admin/locale";
 import type { Database } from "@/lib/db/types";
 
 type SettingsUpdate = Database["public"]["Tables"]["site_settings"]["Update"];
@@ -62,7 +63,20 @@ export async function saveSettings(formData: FormData): Promise<{
 
   if (error) return { ok: false, error: error.message };
 
-  // Public sayfaların cache'ini geçersiz kıl (Faz 4'te public DB'den okuyacak)
+  // Çevrilebilir marka alanlarını aktif admin diline yaz (site_settings_i18n).
+  const locale = await getAdminLocale();
+  const { error: i18nError } = await supabase.from("site_settings_i18n").upsert(
+    {
+      locale,
+      tagline: update.tagline ?? null,
+      description: update.description ?? null,
+      address: update.address ?? null,
+    },
+    { onConflict: "locale" },
+  );
+  if (i18nError) return { ok: false, error: i18nError.message };
+
+  // Public sayfaların cache'ini geçersiz kıl
   revalidatePath("/", "layout");
   revalidatePath("/admin/settings");
 

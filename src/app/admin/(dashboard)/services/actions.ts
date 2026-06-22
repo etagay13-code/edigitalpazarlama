@@ -3,6 +3,8 @@
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
+import { getAdminLocale } from "@/lib/admin/locale";
+import type { Locale } from "@/i18n/config";
 
 type StepInput = { title: string; description: string };
 type FaqInput = { question: string; answer: string };
@@ -78,6 +80,7 @@ async function syncChildren(
   serviceId: string,
   process: StepInput[],
   faqs: FaqInput[],
+  locale: Locale,
 ) {
   const supabase = await createClient();
   // En basit: delete-then-insert (atomic değil ama tek admin senaryosunda yeterli)
@@ -92,6 +95,7 @@ async function syncChildren(
         step_number: i + 1,
         title: s.title.trim(),
         description: s.description.trim(),
+        locale,
       })),
     );
   }
@@ -104,6 +108,7 @@ async function syncChildren(
         sort_order: i,
         question: f.question.trim(),
         answer: f.answer.trim(),
+        locale,
       })),
     );
   }
@@ -121,15 +126,16 @@ export async function createService(formData: FormData): Promise<void> {
     throw new Error("Slug ve başlık zorunlu.");
   }
 
+  const locale = await getAdminLocale();
   const { process, faqs, ...service } = input;
   const { data: inserted, error } = await supabase
     .from("services")
-    .insert(service)
+    .insert({ ...service, locale })
     .select("id")
     .single();
   if (error) throw new Error(error.message);
 
-  await syncChildren(inserted.id, process, faqs);
+  await syncChildren(inserted.id, process, faqs, locale);
 
   revalidatePath("/", "layout");
   revalidatePath("/admin/services");
@@ -155,7 +161,12 @@ export async function updateService(
     .eq("id", id);
   if (error) return { ok: false, error: error.message };
 
-  await syncChildren(id, process, faqs);
+  const { data: existing } = await supabase
+    .from("services")
+    .select("locale")
+    .eq("id", id)
+    .single();
+  await syncChildren(id, process, faqs, existing?.locale ?? "tr");
 
   revalidatePath("/", "layout");
   revalidatePath("/admin/services");

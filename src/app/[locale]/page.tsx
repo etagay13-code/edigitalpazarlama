@@ -16,6 +16,8 @@ import {
   listFaqsPublic,
   listPageSectionsPublic,
 } from "@/lib/data";
+import { asLocale } from "@/i18n/config";
+import { localizeHref } from "@/i18n/routes";
 
 type HeroBody = {
   highlight?: string;
@@ -27,12 +29,17 @@ type HeroBody = {
   note2?: string;
 };
 
-export default async function HomePage() {
+export default async function HomePage({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  const locale = asLocale(params.locale);
   const [services, testimonials, faqs, sections] = await Promise.all([
-    listServicesPublic(),
-    listTestimonialsPublic(),
-    listFaqsPublic("home"),
-    listPageSectionsPublic("home"),
+    listServicesPublic(locale),
+    listTestimonialsPublic(locale),
+    listFaqsPublic("home", locale),
+    listPageSectionsPublic("home", locale),
   ]);
 
   const sec = (key: string) => sections.find((s) => s.section_key === key) ?? null;
@@ -69,9 +76,9 @@ export default async function HomePage() {
         description={heroSection?.description ?? undefined}
         highlight={heroBody.highlight}
         primaryLabel={heroBody.primaryLabel}
-        primaryHref={heroBody.primaryHref}
+        primaryHref={localizeHref(locale, heroBody.primaryHref || "/iletisim")}
         secondaryLabel={heroBody.secondaryLabel}
-        secondaryHref={heroBody.secondaryHref}
+        secondaryHref={localizeHref(locale, heroBody.secondaryHref || "/hizmetler")}
         note1={heroBody.note1}
         note2={heroBody.note2}
       />
@@ -89,14 +96,14 @@ export default async function HomePage() {
               }
             />
             <Reveal delay={0.2}>
-              <Link href={servicesHeaderBody.linkHref || "/hizmetler"} className="btn-ghost">
+              <Link href={localizeHref(locale, servicesHeaderBody.linkHref || "/hizmetler")} className="btn-ghost">
                 {servicesHeaderBody.linkLabel || "Tüm hizmetler"}
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
             </Reveal>
           </div>
           <div className="mt-12">
-            <ServicesGrid items={serviceItems} limit={6} />
+            <ServicesGrid items={serviceItems} limit={6} locale={locale} />
           </div>
         </div>
       </section>
@@ -110,7 +117,7 @@ export default async function HomePage() {
       />
       <Testimonials items={testimonials} />
       <FAQ items={faqs.map((f) => ({ question: f.question, answer: f.answer }))} />
-      <CTASection />
+      <CTASection locale={locale} />
     </>
   );
 }

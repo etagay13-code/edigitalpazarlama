@@ -1,6 +1,7 @@
 // Marka bilgileri için fallback (statik). Public site DB'den okuyan helper'lar kullanır.
 // DB'de bir değer yoksa veya henüz seçilmediyse buraki değerler default olur.
-import { getSiteSettingsPublic } from "@/lib/data";
+import { getSiteSettingsPublic, getSiteSettingsI18n } from "@/lib/data";
+import { DEFAULT_LOCALE, type Locale } from "@/i18n/config";
 
 export const brand = {
   name: "True EDigital Marketing",
@@ -29,20 +30,23 @@ export const brand = {
 export type Brand = typeof brand;
 
 // Server component'ler için: DB'den brand info çeker, eksik field'ları hardcoded ile doldurur.
-export async function getBrand() {
+export async function getBrand(locale: Locale = DEFAULT_LOCALE) {
   try {
-    const s = await getSiteSettingsPublic();
+    const [s, i18n] = await Promise.all([
+      getSiteSettingsPublic(),
+      getSiteSettingsI18n(locale),
+    ]);
     if (!s) throw new Error("settings yok");
     return {
       name: s.brand_name || brand.name,
       shortName: s.brand_short_name || brand.shortName,
       founder: s.founder || brand.founder,
-      tagline: s.tagline || brand.tagline,
-      description: s.description || brand.description,
+      tagline: i18n?.tagline || s.tagline || brand.tagline,
+      description: i18n?.description || s.description || brand.description,
       url: s.url || brand.url,
       email: s.email || brand.email,
       phone: s.phone || brand.phone,
-      address: s.address || brand.address,
+      address: i18n?.address || s.address || brand.address,
       logoUrl: s.logo_url || null,
       faviconUrl: s.favicon_url || null,
       ogImageUrl: s.og_image_url || null,

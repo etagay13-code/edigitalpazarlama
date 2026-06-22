@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
+import { getAdminLocale } from "@/lib/admin/locale";
 import { getArr, getBool, getInt, getStr, trimOrNull } from "@/lib/admin/crud-helpers";
 
 async function authedClient() {
@@ -35,7 +36,7 @@ export async function create(fd: FormData) {
     const data = parse(fd);
     if (!data.slug || !data.title || !data.client)
       return { ok: false, error: "Slug, başlık ve müşteri zorunlu." };
-    const { error } = await supabase.from("portfolio_projects").insert(data);
+    const { error } = await supabase.from("portfolio_projects").insert({ ...data, locale: await getAdminLocale() });
     if (error) return { ok: false, error: error.message };
     revalidatePath("/", "layout");
     revalidatePath("/admin/portfolio");

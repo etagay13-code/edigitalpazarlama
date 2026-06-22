@@ -1,11 +1,15 @@
 import { LogOut, User } from "lucide-react";
+import { AdminLangSwitcher } from "./AdminLangSwitcher";
+import type { Locale } from "@/i18n/config";
 
 export function AdminTopBar({
   email,
   fullName,
+  locale,
 }: {
   email: string;
   fullName: string | null;
+  locale: Locale;
 }) {
   const initials = (fullName || email)
     .split(" ")
@@ -29,15 +33,18 @@ export function AdminTopBar({
           </div>
         </div>
 
-        <form action="/admin/logout" method="POST">
-          <button
-            type="submit"
-            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-xs font-medium text-white/75 transition hover:bg-rose-500/15 hover:text-rose-200"
-          >
-            <LogOut className="h-3.5 w-3.5" />
-            Çıkış
-          </button>
-        </form>
+        <div className="flex items-center gap-3">
+          <AdminLangSwitcher current={locale} />
+          <form action="/admin/logout" method="POST">
+            <button
+              type="submit"
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-xs font-medium text-white/75 transition hover:bg-rose-500/15 hover:text-rose-200"
+            >
+              <LogOut className="h-3.5 w-3.5" />
+              Çıkış
+            </button>
+          </form>
+        </div>
       </div>
     </header>
   );
