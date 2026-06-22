@@ -18,6 +18,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { saveIntegrations } from "./actions";
+import { useToast } from "@/components/admin/Toast";
 import type { SiteSettings } from "@/lib/data/settings";
 import type { SiteSecrets } from "@/lib/data/secrets";
 
@@ -37,6 +38,7 @@ export function IntegrationsForm({
   const [status, setStatus] = useState<Status>({ kind: "idle" });
   const [showResendKey, setShowResendKey] = useState(false);
   const [clearResendKey, setClearResendKey] = useState(false);
+  const { success, error } = useToast();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -48,9 +50,11 @@ export function IntegrationsForm({
     if (result.ok) {
       setStatus({ kind: "saved" });
       setClearResendKey(false);
+      success("Değişiklikler kaydedildi");
       setTimeout(() => setStatus({ kind: "idle" }), 2500);
     } else {
       setStatus({ kind: "error", message: result.error ?? "Bilinmeyen hata" });
+      error(result.error ?? "Kaydedilemedi");
     }
   };
 

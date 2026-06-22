@@ -11,6 +11,7 @@ import {
   Pencil,
   X,
 } from "lucide-react";
+import { useToast } from "./Toast";
 
 export type EditorField = {
   name: string;
@@ -145,6 +146,7 @@ function ItemRow({
 }) {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
   const [deleting, setDeleting] = useState(false);
+  const { success, error } = useToast();
 
   if (mode === "view") {
     const title = item._title ?? "—";
@@ -189,6 +191,7 @@ function ItemRow({
 
     if (result?.ok) {
       setStatus({ kind: "saved" });
+      success(mode === "create" ? "Eklendi" : "Değişiklikler kaydedildi");
       if (mode === "edit") setTimeout(() => onCancel?.(), 600);
       if (mode === "create") {
         onCancel?.();
@@ -198,6 +201,7 @@ function ItemRow({
         kind: "error",
         message: result?.error ?? "Bilinmeyen hata",
       });
+      error(result?.error ?? "Kaydedilemedi");
     }
   };
 
@@ -205,8 +209,10 @@ function ItemRow({
     if (!confirm("Bu öğe silinsin mi?")) return;
     setDeleting(true);
     const result = await onDelete?.(item.id);
-    if (!result?.ok) {
-      alert(result?.error ?? "Silinemedi");
+    if (result?.ok) {
+      success("Silindi");
+    } else {
+      error(result?.error ?? "Silinemedi");
       setDeleting(false);
     }
   };

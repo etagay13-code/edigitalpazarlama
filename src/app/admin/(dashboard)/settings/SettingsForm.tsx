@@ -21,6 +21,7 @@ import {
 import Image from "next/image";
 import { createClient } from "@/lib/supabase/client";
 import { saveSettings } from "./actions";
+import { useToast } from "@/components/admin/Toast";
 import type { SiteSettings } from "@/lib/data/settings";
 
 type Status =
@@ -34,6 +35,7 @@ export function SettingsForm({ settings }: { settings: SiteSettings }) {
   const [faviconUrl, setFaviconUrl] = useState(settings.favicon_url ?? "");
   const [ogImageUrl, setOgImageUrl] = useState(settings.og_image_url ?? "");
   const [status, setStatus] = useState<Status>({ kind: "idle" });
+  const { success, error } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
 
   const uploadImage = async (
@@ -79,9 +81,11 @@ export function SettingsForm({ settings }: { settings: SiteSettings }) {
     const result = await saveSettings(fd);
     if (result.ok) {
       setStatus({ kind: "saved" });
+      success("Değişiklikler kaydedildi");
       setTimeout(() => setStatus({ kind: "idle" }), 2500);
     } else {
       setStatus({ kind: "error", message: result.error ?? "Bilinmeyen hata" });
+      error(result.error ?? "Kaydedilemedi");
     }
   };
 

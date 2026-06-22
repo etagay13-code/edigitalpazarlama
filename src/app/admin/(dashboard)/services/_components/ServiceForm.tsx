@@ -22,6 +22,7 @@ import {
   getIcon,
 } from "@/lib/admin/icons-list";
 import { createService, updateService, deleteService } from "../actions";
+import { useToast } from "@/components/admin/Toast";
 import type { ServiceWithChildren } from "@/lib/data/services";
 
 type Step = { title: string; description: string };
@@ -59,6 +60,7 @@ export function ServiceForm({
   );
   const [status, setStatus] = useState<Status>({ kind: "idle" });
   const [deleting, setDeleting] = useState(false);
+  const { success, error } = useToast();
 
   const IconPreview = getIcon(icon);
 
@@ -77,12 +79,14 @@ export function ServiceForm({
       const result = await updateService(service.id, fd);
       if (result.ok) {
         setStatus({ kind: "saved" });
+        success("Değişiklikler kaydedildi");
         setTimeout(() => setStatus({ kind: "idle" }), 2500);
       } else {
         setStatus({
           kind: "error",
           message: result.error ?? "Bilinmeyen hata",
         });
+        error(result.error ?? "Kaydedilemedi");
       }
     } else {
       try {
