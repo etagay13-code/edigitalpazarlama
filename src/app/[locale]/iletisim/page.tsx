@@ -146,8 +146,8 @@ export default async function ContactPage({
               {channels.map((c) => {
                 const content = (
                   <div className="card flex items-center gap-4">
-                    <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-violet-500 to-indigo-500">
-                      <DynamicIcon name={c.icon} fallback={Mail} className="h-5 w-5 text-white" />
+                    <div className="icon-chip h-11 w-11 shrink-0">
+                      <DynamicIcon name={c.icon} fallback={Mail} className="h-5 w-5 text-violet-300" />
                     </div>
                     <div className="flex-1">
                       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/50">

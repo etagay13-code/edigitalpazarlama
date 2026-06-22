@@ -94,10 +94,8 @@ export default async function ServiceDetailPage({
             <Reveal>
               <div className="max-w-3xl">
                 <div className="flex items-center gap-3">
-                  <div
-                    className={`grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br ${service.accent} shadow-glow`}
-                  >
-                    <Icon className="h-7 w-7 text-white" />
+                  <div className="icon-chip h-14 w-14">
+                    <Icon className="h-7 w-7 text-violet-300" />
                   </div>
                   <span className="eyebrow">{t.eyebrow}</span>
                 </div>
@@ -349,10 +347,8 @@ export default async function ServiceDetailPage({
                       className="card group block h-full"
                     >
                       <div className="flex items-start justify-between">
-                        <div
-                          className={`inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${r.accent} shadow-glow`}
-                        >
-                          <RIcon className="h-5 w-5 text-white" />
+                        <div className="icon-chip h-11 w-11">
+                          <RIcon className="h-5 w-5 text-violet-300" />
                         </div>
                         <ArrowUpRight className="h-5 w-5 text-white/30 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white" />
                       </div>

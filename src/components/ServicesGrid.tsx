@@ -42,10 +42,8 @@ export function ServicesGrid({
                 className={`absolute inset-x-0 -top-px h-px bg-gradient-to-r ${s.accent} opacity-0 transition group-hover:opacity-100`}
               />
               <div className="flex items-start justify-between">
-                <div
-                  className={`inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${s.accent} shadow-glow`}
-                >
-                  <Icon className="h-5 w-5 text-white" />
+                <div className="icon-chip h-11 w-11">
+                  <Icon className="h-5 w-5 text-violet-300" />
                 </div>
                 <ArrowUpRight className="h-5 w-5 text-white/30 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white" />
               </div>

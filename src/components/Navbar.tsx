@@ -155,10 +155,8 @@ export function Navbar({
                                     onClick={() => setServicesOpen(false)}
                                     className="group flex items-start gap-3 rounded-xl p-3 transition hover:bg-white/[0.05]"
                                   >
-                                    <span
-                                      className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-gradient-to-br ${s.accent}`}
-                                    >
-                                      <Icon className="h-5 w-5 text-white" />
+                                    <span className="icon-chip h-10 w-10 shrink-0">
+                                      <Icon className="h-5 w-5 text-violet-300" />
                                     </span>
                                     <span className="flex-1">
                                       <span className="block font-medium text-white">
@@ -297,10 +295,8 @@ export function Navbar({
                                         href={href(`/hizmetler/${s.slug}`)}
                                         className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-white/75 transition hover:bg-white/[0.05] hover:text-white"
                                       >
-                                        <span
-                                          className={`grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-gradient-to-br ${s.accent}`}
-                                        >
-                                          <Icon className="h-4 w-4 text-white" />
+                                        <span className="icon-chip h-8 w-8 shrink-0">
+                                          <Icon className="h-4 w-4 text-violet-300" />
                                         </span>
                                         {s.title}
                                       </Link>

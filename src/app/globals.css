@@ -5,6 +5,10 @@
 :root {
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
   --font-display: "Space Grotesk", system-ui, sans-serif;
+  --bg: #08080a;
+  --surface: rgba(255, 255, 255, 0.025);
+  --border: rgba(255, 255, 255, 0.08);
+  --accent: #7c5cff;
 }
 
 html {
@@ -12,84 +16,122 @@ html {
 }
 
 body {
-  background: #0a0a0b;
-  color: #ededed;
+  background: var(--bg);
+  color: #e7e7ea;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: "cv11", "ss01";
 }
 
-/* Hafif film grain dokusu */
+/* Çok hafif film grain — premium doku */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.07 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  opacity: 0.35;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity: 0.5;
   mix-blend-mode: overlay;
 }
 
 @layer components {
   .container-x {
-    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
   }
 
   .glass {
-    @apply border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl;
+    @apply border border-white/[0.07] bg-white/[0.025] backdrop-blur-xl;
   }
 
   .glass-strong {
-    @apply border border-white/[0.08] bg-white/[0.05] backdrop-blur-2xl;
+    @apply border border-white/[0.09] bg-white/[0.04] backdrop-blur-2xl;
   }
 
+  /* Statik, sakin gradient (animasyon yok — premium his) */
   .gradient-text {
-    background: linear-gradient(120deg, #c4b5fd 0%, #7c5cff 35%, #22d3ee 75%, #c4b5fd 100%);
-    background-size: 200% 200%;
+    background: linear-gradient(100deg, #b9a8ff 0%, #7c5cff 45%, #38bdf8 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    animation: gradientPan 8s ease infinite;
   }
 
   .btn-base {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition will-change-transform;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold tracking-tight transition-all duration-200;
   }
 
   .btn-primary {
-    @apply btn-base text-white shadow-glow;
-    background: linear-gradient(120deg, #7c5cff, #6366f1 50%, #22d3ee);
-    background-size: 200% 200%;
-    animation: gradientPan 6s ease infinite;
+    @apply btn-base text-white;
+    background: linear-gradient(180deg, #8b6dff, #6d4df2);
+    box-shadow:
+      0 1px 0 0 rgba(255, 255, 255, 0.18) inset,
+      0 8px 24px -8px rgba(124, 92, 255, 0.55);
   }
   .btn-primary:hover {
-    transform: translateY(-1px) scale(1.02);
-    filter: brightness(1.1);
+    filter: brightness(1.07);
+    box-shadow:
+      0 1px 0 0 rgba(255, 255, 255, 0.22) inset,
+      0 10px 30px -8px rgba(124, 92, 255, 0.7);
   }
 
   .btn-ghost {
-    @apply btn-base border border-white/10 bg-white/[0.03] text-white/90 hover:bg-white/[0.07];
+    @apply btn-base border border-white/10 bg-white/[0.03] text-white/85 hover:border-white/20 hover:bg-white/[0.06] hover:text-white;
   }
 
+  /* Premium kart: ince kenar, çok hafif iç parlama, sakin hover */
   .card {
-    @apply glass relative overflow-hidden rounded-2xl p-6 transition;
+    @apply relative overflow-hidden rounded-2xl border border-white/[0.07] p-6 transition-all duration-300;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
   }
   .card:hover {
-    @apply border-white/15 bg-white/[0.05];
-    transform: translateY(-4px);
+    @apply border-white/[0.14];
+    transform: translateY(-2px);
+    box-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.8);
+  }
+  /* Üstte ince ışık çizgisi */
+  .card::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.12),
+      transparent
+    );
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .card:hover::after {
+    opacity: 1;
+  }
+
+  /* Doğal, tutarlı Lucide ikon kabı (rengârenk gradient kareler yerine) */
+  .icon-chip {
+    @apply grid place-items-center rounded-xl border border-white/10 bg-white/[0.04] text-violet-300;
+  }
+  .icon-chip-lg {
+    @apply icon-chip h-12 w-12;
   }
 
   .section {
-    @apply relative py-20 sm:py-28;
+    @apply relative py-16 sm:py-24;
   }
 
   .h-display {
     @apply font-display tracking-tight;
   }
 
+  /* İnce, kurumsal üst-etiket */
   .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-white/70;
+    @apply inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.2em] text-white/55;
+  }
+
+  /* Bölüm ayıracı */
+  .hairline {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent;
   }
 }
 
@@ -99,17 +141,18 @@ body::before {
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0a0b;
+  background: #08080a;
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #2a2a33, #17171b);
+  background: #1c1c22;
   border-radius: 8px;
+  border: 2px solid #08080a;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #7c5cff;
+  background: #2a2a33;
 }
 
 ::selection {
-  background: rgba(124, 92, 255, 0.45);
+  background: rgba(124, 92, 255, 0.4);
   color: #fff;
 }

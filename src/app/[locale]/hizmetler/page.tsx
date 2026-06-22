@@ -112,8 +112,8 @@ export default async function ServicesPage({
               {synergyBenefits.map((b) => (
                 <Reveal key={b.title}>
                   <div className="card h-full">
-                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-indigo-500 shadow-glow">
-                      <DynamicIcon name={b.icon} className="h-5 w-5 text-white" />
+                    <div className="icon-chip h-11 w-11">
+                      <DynamicIcon name={b.icon} className="h-5 w-5 text-violet-300" />
                     </div>
                     <h4 className="mt-5 font-display text-lg font-semibold">
                       {b.title}
