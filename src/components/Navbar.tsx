@@ -95,9 +95,7 @@ export function Navbar({
               : "border-transparent px-4 py-3"
           }`}
         >
-          <Link href={href("/")} aria-label={brandName}>
-            <Logo src={logoUrl} alt={brandName} />
-          </Link>
+          <Logo src={logoUrl} alt={brandName} href={href("/")} />
 
           <ul className="hidden items-center gap-1 lg:flex">
             {navLinks.map((link) => {

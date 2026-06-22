@@ -32,7 +32,7 @@ export const listServicesPublic = unstable_cache(
     };
     return localeList(run, locale);
   },
-  ["services-list"],
+  ["services-list", "i18n-v2"],
   { tags: ["services"], revalidate: 3600 },
 );
 
@@ -67,7 +67,7 @@ export const getServiceBySlugPublic = unstable_cache(
     ]);
     return { ...service, process: process ?? [], faqs: faqs ?? [] };
   },
-  ["service-detail"],
+  ["service-detail", "i18n-v2"],
   { tags: ["services"], revalidate: 3600 },
 );
 
@@ -85,7 +85,7 @@ export const listPortfolioProjectsPublic = unstable_cache(
     };
     return localeList(run, locale);
   },
-  ["portfolio-list"],
+  ["portfolio-list", "i18n-v2"],
   { tags: ["portfolio"], revalidate: 3600 },
 );
 
@@ -103,7 +103,7 @@ export const listTestimonialsPublic = unstable_cache(
     };
     return localeList(run, locale);
   },
-  ["testimonials-list"],
+  ["testimonials-list", "i18n-v2"],
   { tags: ["testimonials"], revalidate: 3600 },
 );
 
@@ -121,7 +121,7 @@ export const listTeamPublic = unstable_cache(
     };
     return localeList(run, locale);
   },
-  ["team-list"],
+  ["team-list", "i18n-v2"],
   { tags: ["team"], revalidate: 3600 },
 );
 
@@ -139,7 +139,7 @@ export const listTimelinePublic = unstable_cache(
     };
     return localeList(run, locale);
   },
-  ["timeline-list"],
+  ["timeline-list", "i18n-v2"],
   { tags: ["timeline"], revalidate: 3600 },
 );
 
@@ -157,7 +157,7 @@ export const listIndustriesPublic = unstable_cache(
     };
     return localeList(run, locale);
   },
-  ["industries-list"],
+  ["industries-list", "i18n-v2"],
   { tags: ["industries"], revalidate: 3600 },
 );
 
@@ -174,7 +174,7 @@ export const listTechPublic = unstable_cache(
     };
     return localeList(run, locale);
   },
-  ["tech-list"],
+  ["tech-list", "i18n-v2"],
   { tags: ["tech"], revalidate: 3600 },
 );
 
@@ -193,7 +193,7 @@ export const listFaqsPublic = unstable_cache(
     };
     return localeList(run, locale);
   },
-  ["faqs-list"],
+  ["faqs-list", "i18n-v2"],
   { tags: ["faqs"], revalidate: 3600 },
 );
 
@@ -211,7 +211,7 @@ export const listPageSectionsPublic = unstable_cache(
     };
     return localeList(run, locale);
   },
-  ["page-sections"],
+  ["page-sections", "i18n-v2"],
   { tags: ["page_sections"], revalidate: 3600 },
 );
 
@@ -241,7 +241,7 @@ export const getSiteSettingsPublic = unstable_cache(
       .single();
     return data;
   },
-  ["site-settings"],
+  ["site-settings", "i18n-v2"],
   { tags: ["site_settings"], revalidate: 3600 },
 );
 
@@ -259,6 +259,6 @@ export const getSiteSettingsI18n = unstable_cache(
     };
     return (await pick(locale)) ?? (await pick(DEFAULT_LOCALE));
   },
-  ["site-settings-i18n"],
+  ["site-settings-i18n", "i18n-v2"],
   { tags: ["site_settings"], revalidate: 3600 },
 );

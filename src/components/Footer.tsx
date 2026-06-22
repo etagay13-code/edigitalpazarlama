@@ -22,7 +22,7 @@ export async function Footer({ locale }: { locale: Locale }) {
       <div className="container-x relative py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-5">
-            <Logo size="lg" src={brand.logoUrl} alt={brand.name} />
+            <Logo size="lg" src={brand.logoUrl} alt={brand.name} href={href("/")} />
             <p className="max-w-xs text-sm text-white/60">{brand.description}</p>
             <div className="flex items-center gap-2">
               {brand.socials.instagram && (
