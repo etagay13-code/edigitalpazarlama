@@ -7,9 +7,10 @@ import { GradientBlobs } from "@/components/GradientBlob";
 import { Counter } from "@/components/Counter";
 import { DynamicIcon } from "@/components/DynamicIcon";
 import { getBrand } from "@/lib/theme";
-import { listTimelinePublic, listTeamPublic, listPageSectionsPublic } from "@/lib/data";
+import { listTimelinePublic, listTeamPublic, listPageSectionsPublic, getPageSection } from "@/lib/data";
 import type { StatItem } from "@/components/Stats";
 import { asLocale } from "@/i18n/config";
+import { pageMeta } from "@/i18n/metadata";
 
 type IconItem = { icon?: string; title: string; desc: string };
 type TextItem = { title: string; desc: string };
@@ -21,11 +22,13 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   const locale = asLocale(params.locale);
-  const brand = await getBrand(locale);
-  return {
-    title: "Hakkımızda",
-    description: `${brand.name} ve kurucu ${brand.founder} hakkında bilgi alın. Vizyonumuz, misyonumuz ve markaları büyütmek için izlediğimiz yol.`,
-  };
+  const hero = await getPageSection("about", "hero", locale);
+  return pageMeta({
+    locale,
+    internalPath: "/hakkimizda",
+    title: hero?.title,
+    description: hero?.description,
+  });
 }
 
 export default async function AboutPage({

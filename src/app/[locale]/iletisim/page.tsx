@@ -13,15 +13,25 @@ import { Reveal, Stagger } from "@/components/Reveal";
 import { GradientBlobs } from "@/components/GradientBlob";
 import { DynamicIcon } from "@/components/DynamicIcon";
 import { getBrand } from "@/lib/theme";
-import { listServicesPublic, listFaqsPublic, listPageSectionsPublic } from "@/lib/data";
+import { listServicesPublic, listFaqsPublic, listPageSectionsPublic, getPageSection } from "@/lib/data";
 import { asLocale } from "@/i18n/config";
 import { getDict } from "@/i18n/dictionaries";
+import { pageMeta } from "@/i18n/metadata";
 
-export const metadata: Metadata = {
-  title: "İletişim",
-  description:
-    "Bizimle bağlantıya geçin. Ücretsiz 30 dakikalık keşif görüşmesi ve 48 saat içinde geri dönüş garantisi.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const locale = asLocale(params.locale);
+  const hero = await getPageSection("contact", "hero", locale);
+  return pageMeta({
+    locale,
+    internalPath: "/iletisim",
+    title: hero?.title,
+    description: hero?.description,
+  });
+}
 
 type ProcessItem = { icon?: string; title: string; desc: string; time: string };
 type GuaranteeItem = { icon?: string; title: string; desc: string };

@@ -23,7 +23,9 @@ import { getBrand } from "@/lib/theme";
 import { getIcon } from "@/lib/admin/icons-list";
 import { asLocale } from "@/i18n/config";
 import { localizeHref } from "@/i18n/routes";
+import { pageMeta } from "@/i18n/metadata";
 import { getDict } from "@/i18n/dictionaries";
+import { JsonLd } from "@/components/JsonLd";
 
 export async function generateStaticParams() {
   const services = await listServicesPublic("tr");
@@ -40,14 +42,16 @@ export async function generateMetadata({
     getServiceBySlugPublic(params.slug, locale),
     getBrand(locale),
   ]);
-  if (!service) return { title: "Hizmet Bulunamadı" };
-  return {
+  if (!service) return { title: "404" };
+  const base = pageMeta({
+    locale,
+    internalPath: `/hizmetler/${params.slug}`,
     title: service.title,
     description: service.description,
-    openGraph: {
-      title: `${service.title} · ${brand.name}`,
-      description: service.description,
-    },
+  });
+  return {
+    ...base,
+    openGraph: { ...base.openGraph, title: `${service.title} · ${brand.name}` },
   };
 }
 
@@ -58,11 +62,34 @@ export default async function ServiceDetailPage({
 }) {
   const locale = asLocale(params.locale);
   const t = getDict(locale).serviceDetail;
-  const [service, allServices] = await Promise.all([
+  const [service, allServices, brand] = await Promise.all([
     getServiceBySlugPublic(params.slug, locale),
     listServicesPublic(locale),
+    getBrand(locale),
   ]);
   if (!service) notFound();
+
+  const siteBase = brand.url.replace(/\/$/, "");
+  const detailUrl = siteBase + localizeHref(locale, `/hizmetler/${service.slug}`);
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: service.title,
+      description: service.description,
+      provider: { "@type": "Organization", name: brand.name, url: brand.url },
+      url: detailUrl,
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: t.crumbHome, item: siteBase + localizeHref(locale, "/") },
+        { "@type": "ListItem", position: 2, name: t.crumbServices, item: siteBase + localizeHref(locale, "/hizmetler") },
+        { "@type": "ListItem", position: 3, name: service.title, item: detailUrl },
+      ],
+    },
+  ];
 
   const Icon = getIcon(service.icon) ?? Sparkles;
   const related = (service.related_slugs ?? [])
@@ -71,6 +98,7 @@ export default async function ServiceDetailPage({
 
   return (
     <>
+      <JsonLd data={jsonLd} />
       {/* Hero */}
       <section className="relative overflow-hidden pb-12 pt-8 sm:pt-16">
         <GradientBlobs />

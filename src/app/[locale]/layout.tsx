@@ -5,6 +5,7 @@ import { getBrand } from "@/lib/theme";
 import { listServicesPublic } from "@/lib/data";
 import { LOCALES, isLocale, type Locale } from "@/i18n/config";
 import { getDict } from "@/i18n/dictionaries";
+import { OrganizationJsonLd } from "@/components/JsonLd";
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
@@ -28,6 +29,7 @@ export default async function PublicLayout({
 
   return (
     <>
+      <OrganizationJsonLd brand={brand} />
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:text-black"

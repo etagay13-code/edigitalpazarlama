@@ -7,16 +7,26 @@ import { CTASection } from "@/components/CTASection";
 import { GradientBlobs } from "@/components/GradientBlob";
 import { Reveal, Stagger } from "@/components/Reveal";
 import { Counter } from "@/components/Counter";
-import { listPortfolioProjectsPublic, listPageSectionsPublic } from "@/lib/data";
+import { listPortfolioProjectsPublic, listPageSectionsPublic, getPageSection } from "@/lib/data";
 import { Highlighted } from "@/components/Highlight";
 import { asLocale } from "@/i18n/config";
 import { localizeHref } from "@/i18n/routes";
+import { pageMeta } from "@/i18n/metadata";
 
-export const metadata: Metadata = {
-  title: "Portfolyo",
-  description:
-    "Birlikte çalıştığımız markalar için ürettiğimiz başarı hikayeleri. Reklam, SEO, mobil ve SaaS projelerinden seçkiler.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const locale = asLocale(params.locale);
+  const hero = await getPageSection("portfolio", "hero", locale);
+  return pageMeta({
+    locale,
+    internalPath: "/portfolyo",
+    title: hero?.title,
+    description: hero?.description,
+  });
+}
 
 type StatItem = { label: string; to: number; prefix?: string; suffix?: string; decimals?: number };
 type MetricItem = { label: string; from: string; to: string; color: string };

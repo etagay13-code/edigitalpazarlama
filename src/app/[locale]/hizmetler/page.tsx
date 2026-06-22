@@ -13,16 +13,27 @@ import {
   listTechPublic,
   listFaqsPublic,
   listPageSectionsPublic,
+  getPageSection,
 } from "@/lib/data";
 import { getBrand } from "@/lib/theme";
 import { asLocale } from "@/i18n/config";
 import { localizeHref } from "@/i18n/routes";
+import { pageMeta } from "@/i18n/metadata";
 
-export const metadata: Metadata = {
-  title: "Hizmetler",
-  description:
-    "Reklam yönetimi, SEO, sosyal medya, mobil uygulama, SaaS geliştirme, web tasarım ve içerik stratejisi — markanızı büyütecek tüm hizmetler.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const locale = asLocale(params.locale);
+  const hero = await getPageSection("services", "hero", locale);
+  return pageMeta({
+    locale,
+    internalPath: "/hizmetler",
+    title: hero?.title,
+    description: hero?.description,
+  });
+}
 
 type SynergyItem = { icon?: string; title: string; desc: string };
 type PricingItem = { title: string; range: string; desc: string; fits: string };

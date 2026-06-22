@@ -19,8 +19,18 @@ import {
   listFaqsPublic,
   listPageSectionsPublic,
 } from "@/lib/data";
+import type { Metadata } from "next";
 import { asLocale } from "@/i18n/config";
 import { localizeHref } from "@/i18n/routes";
+import { pageMeta } from "@/i18n/metadata";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  return pageMeta({ locale: asLocale(params.locale), internalPath: "/" });
+}
 
 type HeroBody = {
   highlight?: string;
