@@ -1,6 +1,7 @@
 import React from "react";
-import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
+import { interpolate, useCurrentFrame } from "remotion";
 import { COLORS, GRADIENT, DISPLAY, SANS } from "../brand";
+import { EASE } from "./kinetic";
 
 export const gradientText: React.CSSProperties = {
   backgroundImage: GRADIENT,
@@ -9,51 +10,37 @@ export const gradientText: React.CSSProperties = {
   color: "transparent",
 };
 
-// spring tabanlı giriş — delay (frame) ve yön ile
-export function useReveal(delay = 0, distance = 40) {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const p = spring({
-    frame: frame - delay,
-    fps,
-    config: { damping: 200, mass: 0.7, stiffness: 120 },
-  });
-  return {
-    opacity: p,
-    transform: `translateY(${interpolate(p, [0, 1], [distance, 0])}px)`,
-  };
-}
-
-// Belirli bir aralıkta opaklık (giriş + çıkış)
-export function useFadeWindow(inAt: number, holdFrom: number, outAt: number, end: number) {
-  const frame = useCurrentFrame();
-  return interpolate(frame, [inAt, holdFrom, outAt, end], [0, 1, 1, 0], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-}
+export const fontDisplay = DISPLAY;
+export const fontSans = SANS;
 
 export const Eyebrow: React.FC<{ children: React.ReactNode; delay?: number }> = ({
   children,
   delay = 0,
 }) => {
-  const r = useReveal(delay, 24);
+  const frame = useCurrentFrame();
+  const p = interpolate(frame, [delay, delay + 24], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+    easing: EASE,
+  });
+  const pulse = 0.6 + (Math.sin(frame / 12) * 0.5 + 0.5) * 0.4;
   return (
     <div
       style={{
-        ...r,
+        opacity: p,
+        transform: `translateY(${(1 - p) * 22}px)`,
         display: "inline-flex",
         alignItems: "center",
         gap: 14,
-        padding: "14px 28px",
+        padding: "15px 30px",
         borderRadius: 999,
-        border: "1px solid rgba(255,255,255,0.12)",
-        background: "rgba(255,255,255,0.04)",
+        border: "1px solid rgba(255,255,255,0.14)",
+        background: "rgba(255,255,255,0.05)",
         fontFamily: SANS,
-        fontSize: 30,
+        fontSize: 29,
         letterSpacing: 1,
         color: COLORS.muted,
-        backdropFilter: "blur(6px)",
+        backdropFilter: "blur(8px)",
       }}
     >
       <span
@@ -62,13 +49,11 @@ export const Eyebrow: React.FC<{ children: React.ReactNode; delay?: number }> = 
           height: 12,
           borderRadius: "50%",
           background: GRADIENT,
-          boxShadow: `0 0 18px ${COLORS.violet}`,
+          opacity: pulse,
+          boxShadow: `0 0 ${10 + pulse * 16}px ${COLORS.violet}`,
         }}
       />
       {children}
     </div>
   );
 };
-
-export const fontDisplay = DISPLAY;
-export const fontSans = SANS;
