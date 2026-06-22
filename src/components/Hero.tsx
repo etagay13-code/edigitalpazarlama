@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { Sparkles, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { GradientBlobs } from "./GradientBlob";
@@ -33,6 +30,7 @@ const DEFAULTS: Required<Omit<HeroProps, "highlight">> & { highlight: string } =
   note2: "Ortalama 48 saat içinde teklif",
 };
 
+// Server component + CSS animasyon: framer yok, içerik ilk boyamada görünür (mobil için hızlı).
 export function Hero(props: HeroProps) {
   const c = { ...DEFAULTS, ...clean(props) };
 
@@ -40,40 +38,29 @@ export function Hero(props: HeroProps) {
     <section className="relative overflow-hidden pb-24 pt-20 sm:pt-28">
       <GradientBlobs />
       <div className="container-x relative">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="mx-auto flex flex-col items-center text-center"
-        >
-          <span className="eyebrow">
+        <div className="mx-auto flex flex-col items-center text-center">
+          <span className="eyebrow fade-up">
             <Sparkles className="h-3.5 w-3.5 text-violet-300" />
             {c.eyebrow}
           </span>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-6 max-w-4xl h-display text-4xl font-semibold leading-[1.05] sm:text-6xl md:text-7xl"
+          <h1
+            className="fade-up mt-6 max-w-4xl h-display text-4xl font-semibold leading-[1.05] sm:text-6xl md:text-7xl"
+            style={{ animationDelay: "0.06s" }}
           >
             <Highlighted text={c.title} highlight={c.highlight} />
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-6 max-w-2xl text-base text-white/65 sm:text-lg"
+          <p
+            className="fade-up mt-6 max-w-2xl text-base text-white/65 sm:text-lg"
+            style={{ animationDelay: "0.14s" }}
           >
             {c.description}
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-9 flex flex-col items-center gap-3 sm:flex-row"
+          <div
+            className="fade-up mt-9 flex flex-col items-center gap-3 sm:flex-row"
+            style={{ animationDelay: "0.22s" }}
           >
             <Link href={c.primaryHref} className="btn-primary">
               {c.primaryLabel}
@@ -84,14 +71,12 @@ export function Hero(props: HeroProps) {
                 {c.secondaryLabel}
               </Link>
             )}
-          </motion.div>
+          </div>
 
           {(c.note1 || c.note2) && (
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs text-white/45"
+            <div
+              className="fade-up mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs text-white/45"
+              style={{ animationDelay: "0.3s" }}
             >
               {c.note1 && (
                 <span className="inline-flex items-center gap-2">
@@ -105,15 +90,14 @@ export function Hero(props: HeroProps) {
                   {c.note2}
                 </span>
               )}
-            </motion.div>
+            </div>
           )}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 }
 
-// undefined/boş string'leri ele — fallback DEFAULTS devreye girsin
 function clean(props: HeroProps): HeroProps {
   const out: HeroProps = {};
   (Object.keys(props) as (keyof HeroProps)[]).forEach((k) => {

@@ -92,7 +92,7 @@ export function Navbar({
         <nav
           className={`flex items-center justify-between rounded-2xl border transition-all duration-500 ${
             scrolled
-              ? "border-white/10 bg-ink-900/70 px-4 py-2 shadow-card backdrop-blur-2xl"
+              ? "border-white/10 bg-ink-900/90 px-4 py-2 shadow-card backdrop-blur-md"
               : "border-transparent px-4 py-3"
           }`}
         >

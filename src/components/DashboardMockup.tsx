@@ -19,12 +19,12 @@ export function DashboardMockup({ dict }: { dict: Dict["dashboard"] }) {
 
   return (
     <div className="relative mx-auto max-w-4xl">
-      {/* arkada yumuşak parlama */}
+      {/* arkada yumuşak parlama (mobilde kapalı — GPU) */}
       <div
         aria-hidden
-        className="absolute -inset-x-10 -top-10 bottom-0 -z-10 rounded-[2rem] bg-violet-600/10 blur-3xl"
+        className="absolute -inset-x-10 -top-10 bottom-0 -z-10 hidden rounded-[2rem] bg-violet-600/10 blur-2xl sm:block"
       />
-      <div className="overflow-hidden rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.05] to-white/[0.015] shadow-[0_40px_120px_-40px_rgba(0,0,0,0.9)] backdrop-blur-xl">
+      <div className="overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0c0c11] shadow-[0_40px_120px_-40px_rgba(0,0,0,0.9)]">
         {/* pencere çubuğu */}
         <div className="flex items-center justify-between border-b border-white/[0.06] bg-white/[0.02] px-5 py-3">
           <div className="flex items-center gap-2">

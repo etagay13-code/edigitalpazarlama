@@ -54,6 +54,28 @@ body::before {
   mix-blend-mode: overlay;
 }
 
+/* Mobilde film grain'i kapat — tüm ekranı kaplayan blend overlay pahalı */
+@media (max-width: 768px) {
+  body::before {
+    display: none;
+  }
+}
+
+/* JS'siz (CSS) giriş animasyonu — içerik ilk boyamada görünür, hidrasyon beklemez */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 @layer components {
   .container-x {
     @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
