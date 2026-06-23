@@ -347,6 +347,24 @@ export type Database = {
         Relationships: [];
       };
 
+      chat_rules: {
+        Row: {
+          id: string;
+          locale: "tr" | "en" | "de";
+          question: string;
+          keywords: string[];
+          answer: string;
+          sort_order: number;
+          active: boolean;
+        };
+        Insert: Omit<
+          Database["public"]["Tables"]["chat_rules"]["Row"],
+          "id"
+        > & { id?: string };
+        Update: Partial<Database["public"]["Tables"]["chat_rules"]["Insert"]>;
+        Relationships: [];
+      };
+
       messages: {
         Row: {
           id: string;

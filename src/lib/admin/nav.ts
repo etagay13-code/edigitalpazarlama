@@ -13,6 +13,7 @@ import {
   HelpCircle,
   Mail,
   Plug,
+  Bot,
 } from "lucide-react";
 
 export type AdminNavItem = {
@@ -48,6 +49,7 @@ export const adminNav: AdminNavGroup[] = [
       { href: "/admin/industries", label: "Sektörler", icon: Building2, description: "Çalıştığımız sektörler", ready: true },
       { href: "/admin/tech", label: "Tech Stack", icon: Wrench, description: "Kullanılan araçlar", ready: true },
       { href: "/admin/faqs", label: "SSS", icon: HelpCircle, description: "Sık sorulan sorular", ready: true },
+      { href: "/admin/chat", label: "Chatbot", icon: Bot, description: "Sohbet botu soru-cevap kuralları", ready: true },
     ],
   },
   {

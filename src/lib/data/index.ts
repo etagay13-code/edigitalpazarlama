@@ -231,6 +231,24 @@ export const getPageSection = async (
   return null;
 };
 
+export const listChatRulesPublic = unstable_cache(
+  async (locale: Locale) => {
+    const supabase = createServiceClient();
+    const run = async (loc: Locale) => {
+      const { data } = await supabase
+        .from("chat_rules")
+        .select("*")
+        .eq("active", true)
+        .eq("locale", loc)
+        .order("sort_order");
+      return data ?? [];
+    };
+    return localeList(run, locale);
+  },
+  ["chat-rules", "i18n-v2"],
+  { tags: ["chat_rules"], revalidate: 3600 },
+);
+
 export const getSiteSettingsPublic = unstable_cache(
   async () => {
     const supabase = createServiceClient();

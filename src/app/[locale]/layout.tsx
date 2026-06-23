@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { getBrand } from "@/lib/theme";
-import { listServicesPublic } from "@/lib/data";
+import { listServicesPublic, listChatRulesPublic } from "@/lib/data";
 import { LOCALES, isLocale, type Locale } from "@/i18n/config";
 import { getDict } from "@/i18n/dictionaries";
 import { OrganizationJsonLd } from "@/components/JsonLd";
@@ -23,9 +23,10 @@ export default async function PublicLayout({
   const locale = params.locale as Locale;
   const t = getDict(locale);
 
-  const [brand, services] = await Promise.all([
+  const [brand, services, chatRules] = await Promise.all([
     getBrand(locale),
     listServicesPublic(locale),
+    listChatRulesPublic(locale),
   ]);
 
   return (
@@ -54,7 +55,15 @@ export default async function PublicLayout({
         {children}
       </main>
       <Footer locale={locale} />
-      <ChatWidget locale={locale} dict={t.chat} />
+      <ChatWidget
+        locale={locale}
+        dict={t.chat}
+        rules={chatRules.map((r) => ({
+          question: r.question,
+          keywords: r.keywords,
+          answer: r.answer,
+        }))}
+      />
     </>
   );
 }

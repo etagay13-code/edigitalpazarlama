@@ -124,6 +124,7 @@ const tr = {
       "Nasıl görüşme ayarlayabilirim?",
       "Fiyatlandırma nasıl işliyor?",
     ],
+    fallback: "Bunu tam bilemedim 🤔 Ekibimiz yardımcı olabilir — İletişim sayfasından bize yazabilir ya da info@etruemarketing.com adresine e-posta gönderebilirsin.",
   },
 };
 
@@ -251,6 +252,7 @@ const en: Dict = {
       "How can I book a consultation?",
       "How does pricing work?",
     ],
+    fallback: "I'm not sure about that 🤔 Our team can help — write to us via the Contact page or email info@etruemarketing.com.",
   },
 };
 
@@ -376,6 +378,7 @@ const de: Dict = {
       "Wie kann ich ein Gespräch buchen?",
       "Wie funktioniert die Preisgestaltung?",
     ],
+    fallback: "Das weiß ich nicht genau 🤔 Unser Team hilft Ihnen gern — schreiben Sie uns über die Kontakt-Seite oder per E-Mail an info@etruemarketing.com.",
   },
 };
 
