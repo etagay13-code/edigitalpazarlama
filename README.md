@@ -125,6 +125,13 @@ export const brand = {
 - İçerik dil başına `locale` kolonuyla DB'de; admin'de üst bardaki bayraklı seçiciyle düzenlenir.
 - Çeviri seed pipeline: `scripts/i18n/` (dump → `{en,de}.json` → `gen.mjs` ile DB'ye yazar).
 
+## Chatbot (Claude)
+
+- Sağ altta yüzen, sitenin içeriğiyle (hizmetler, SSS, sayfa bölümleri, ekip, marka) eğitilmiş AI asistan; 3 dilde, streaming yanıt.
+- Bilgi tabanı `src/lib/chat/knowledge.ts` (DB'den, dile göre, cache'li) → `src/app/api/chat/route.ts` (Anthropic SDK, prompt-cache) → `src/components/ChatWidget.tsx`.
+- **Gerekli env:** `ANTHROPIC_API_KEY` (lokalde `.env.local`, prod'da Vercel). Yoksa widget görünür ama yanıt vermez.
+- Maliyet: varsayılan `claude-opus-4-8`. Ucuzlatmak için `CHAT_MODEL=claude-haiku-4-5`.
+
 ## Test
 
 ```bash

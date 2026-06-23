@@ -112,6 +112,19 @@ const tr = {
     ],
   },
   trust: { label: "Onaylar & ortaklıklar" },
+  chat: {
+    title: "EDigital Asistan",
+    online: "Çevrimiçi",
+    greeting: "Merhaba! 👋 Bugün sana nasıl yardımcı olabilirim?",
+    subtitleAsk: "Hizmetlerimiz hakkında her şeyi sorabilirsin.",
+    placeholder: "Mesajını yaz...",
+    error: "Bir sorun oluştu. Lütfen tekrar dene.",
+    suggested: [
+      "Hangi hizmetleri sunuyorsunuz?",
+      "Nasıl görüşme ayarlayabilirim?",
+      "Fiyatlandırma nasıl işliyor?",
+    ],
+  },
 };
 
 export type Dict = typeof tr;
@@ -226,6 +239,19 @@ const en: Dict = {
     ],
   },
   trust: { label: "Certifications & partnerships" },
+  chat: {
+    title: "EDigital Assistant",
+    online: "Online",
+    greeting: "Hi there! 👋 How can I help you today?",
+    subtitleAsk: "Ask anything about our services.",
+    placeholder: "Type your message...",
+    error: "Something went wrong. Please try again.",
+    suggested: [
+      "What services do you offer?",
+      "How can I book a consultation?",
+      "How does pricing work?",
+    ],
+  },
 };
 
 const de: Dict = {
@@ -338,6 +364,19 @@ const de: Dict = {
     ],
   },
   trust: { label: "Zertifizierungen & Partnerschaften" },
+  chat: {
+    title: "EDigital Assistent",
+    online: "Online",
+    greeting: "Hallo! 👋 Wie kann ich Ihnen heute helfen?",
+    subtitleAsk: "Fragen Sie alles über unsere Leistungen.",
+    placeholder: "Ihre Nachricht...",
+    error: "Etwas ist schiefgelaufen. Bitte erneut versuchen.",
+    suggested: [
+      "Welche Leistungen bieten Sie an?",
+      "Wie kann ich ein Gespräch buchen?",
+      "Wie funktioniert die Preisgestaltung?",
+    ],
+  },
 };
 
 const DICTS: Record<Locale, Dict> = { tr, en, de };

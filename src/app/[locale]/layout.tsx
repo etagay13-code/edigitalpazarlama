@@ -6,6 +6,7 @@ import { listServicesPublic } from "@/lib/data";
 import { LOCALES, isLocale, type Locale } from "@/i18n/config";
 import { getDict } from "@/i18n/dictionaries";
 import { OrganizationJsonLd } from "@/components/JsonLd";
+import { ChatWidget } from "@/components/ChatWidget";
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
@@ -53,6 +54,7 @@ export default async function PublicLayout({
         {children}
       </main>
       <Footer locale={locale} />
+      <ChatWidget locale={locale} dict={t.chat} />
     </>
   );
 }
