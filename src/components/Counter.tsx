@@ -13,13 +13,14 @@ type Props = {
 
 export function Counter({
   to,
-  duration = 1.8,
+  duration = 1.2,
   prefix = "",
   suffix = "",
   decimals = 0,
 }: Props) {
   const ref = useRef<HTMLSpanElement | null>(null);
-  const inView = useInView(ref, { once: true, amount: 0.5 });
+  // Erken tetikle: rakam ekrana girer girmez saymaya başlasın (0'da takılı kalmasın).
+  const inView = useInView(ref, { once: true, amount: 0, margin: "0px 0px 10% 0px" });
   const value = useMotionValue(0);
   const display = useTransform(value, (v) =>
     `${prefix}${v.toFixed(decimals)}${suffix}`,

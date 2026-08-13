@@ -11,14 +11,21 @@ type Props = {
   once?: boolean;
 };
 
+// Giriş animasyonu tetikleme ayarı: element görüş alanına GİRMEDEN önce başlar
+// (rootMargin alt kenarı büyütülür) ve "amount: 0" ile ilk pikselde tetiklenir.
+// Böylece uzun bölümlerde ekran boş kalmıyor — özellikle mobilde.
+const VIEWPORT = { amount: 0, margin: "0px 0px 25% 0px" } as const;
+
 const variants: Variants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 16 },
   visible: (custom: { delay: number; y: number }) => ({
     opacity: 1,
     y: 0,
     transition: {
-      delay: custom.delay,
-      duration: 0.6,
+      // Çağrı yerlerindeki kademeli gecikmeler yarıya indiriliyor — sıralama
+      // korunuyor ama içerik belirgin şekilde daha erken görünüyor.
+      delay: custom.delay * 0.5,
+      duration: 0.42,
       ease: [0.16, 1, 0.3, 1],
     },
   }),
@@ -27,7 +34,7 @@ const variants: Variants = {
 export function Reveal({
   children,
   delay = 0,
-  y = 24,
+  y = 16,
   className,
   once = true,
 }: Props) {
@@ -36,7 +43,7 @@ export function Reveal({
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once, amount: 0.2 }}
+      viewport={{ once, ...VIEWPORT }}
       custom={{ delay, y }}
       variants={variants}
     >
@@ -49,7 +56,7 @@ export function Stagger({
   children,
   className,
   delayChildren = 0,
-  stagger = 0.08,
+  stagger = 0.05,
 }: {
   children: ReactNode;
   className?: string;
@@ -61,7 +68,7 @@ export function Stagger({
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.15 }}
+      viewport={{ once: true, ...VIEWPORT }}
       variants={{
         hidden: {},
         visible: {
@@ -75,6 +82,6 @@ export function Stagger({
 }
 
 export const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } },
+  hidden: { opacity: 0, y: 14 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } },
 };
