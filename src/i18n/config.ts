@@ -13,10 +13,16 @@ export function asLocale(x: string | undefined | null): Locale {
   return isLocale(x) ? x : DEFAULT_LOCALE;
 }
 
-// IP ülke kodundan varsayılan dil: Türkiye → tr, diğer her yer → en.
+// IP ülke kodundan varsayılan dil: Türkiye → tr, Almanca konuşulan ülkeler → de,
+// diğer her yer → en. (Önceden Almanya da en'e düşüyordu.)
+const DE_COUNTRIES = new Set(["DE", "AT", "CH", "LI", "LU"]);
+
 export function localeFromCountry(country: string | null | undefined): Locale {
   if (!country) return DEFAULT_LOCALE;
-  return country.toUpperCase() === "TR" ? "tr" : "en";
+  const c = country.toUpperCase();
+  if (c === "TR") return "tr";
+  if (DE_COUNTRIES.has(c)) return "de";
+  return "en";
 }
 
 export const LOCALE_LABELS: Record<Locale, { label: string; flag: string }> = {

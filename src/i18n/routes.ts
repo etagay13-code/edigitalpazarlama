@@ -9,6 +9,64 @@ export const SEGMENTS = {
   iletisim: { tr: "iletisim", en: "contact", de: "kontakt" },
 } as const;
 
+// Hizmet slug'ları da dile göre yerelleştirilir. Kanonik (iç) slug DB'deki
+// Türkçe slug'tır; DB'ye dokunulmaz, çeviri sadece URL katmanında yapılır —
+// ilk segmentteki (hizmetler/services/leistungen) yaklaşımın aynısı.
+// Haritada olmayan slug (admin'den eklenen yeni hizmet) olduğu gibi geçer.
+export const SERVICE_SLUGS = {
+  "360-dijital-pazarlama": {
+    tr: "360-dijital-pazarlama",
+    en: "360-digital-marketing",
+    de: "360-digitales-marketing",
+  },
+  "reklam-yonetimi": {
+    tr: "reklam-yonetimi",
+    en: "ad-management",
+    de: "anzeigenmanagement",
+  },
+  seo: { tr: "seo", en: "seo", de: "seo" },
+  "mobil-uygulama-gelistirme": {
+    tr: "mobil-uygulama-gelistirme",
+    en: "mobile-app-development",
+    de: "app-entwicklung",
+  },
+  "saas-proje-gelistirme": {
+    tr: "saas-proje-gelistirme",
+    en: "saas-development",
+    de: "saas-entwicklung",
+  },
+  "sosyal-medya-yonetimi": {
+    tr: "sosyal-medya-yonetimi",
+    en: "social-media-management",
+    de: "social-media-management",
+  },
+  "web-tasarim-gelistirme": {
+    tr: "web-tasarim-gelistirme",
+    en: "web-design-development",
+    de: "webdesign-entwicklung",
+  },
+  "icerik-marka-stratejisi": {
+    tr: "icerik-marka-stratejisi",
+    en: "content-brand-strategy",
+    de: "content-markenstrategie",
+  },
+} as const;
+
+type ServiceKey = keyof typeof SERVICE_SLUGS;
+const SERVICE_KEYS = Object.keys(SERVICE_SLUGS) as ServiceKey[];
+
+// Dış hizmet slug'ı → kanonik (DB) slug.
+export function serviceSlugToInternal(locale: Locale, ext: string): string {
+  const hit = SERVICE_KEYS.find((k) => SERVICE_SLUGS[k][locale] === ext);
+  return hit ?? ext;
+}
+
+// Kanonik slug → dile uygun dış slug.
+export function serviceSlugToExternal(locale: Locale, internal: string): string {
+  const seg = SERVICE_SLUGS[internal as ServiceKey];
+  return seg ? seg[locale] : internal;
+}
+
 export type InternalSegment = keyof typeof SEGMENTS;
 const INTERNAL_KEYS = Object.keys(SEGMENTS) as InternalSegment[];
 
@@ -30,6 +88,9 @@ export function toInternalPath(currentLocale: Locale, pathname: string): string 
   let segs = pathname.split("/").filter(Boolean);
   if (segs[0] === "en" || segs[0] === "de") segs = segs.slice(1);
   if (segs.length > 0) segs[0] = externalToInternal(currentLocale, segs[0]);
+  if (segs[0] === "hizmetler" && segs[1]) {
+    segs[1] = serviceSlugToInternal(currentLocale, segs[1]);
+  }
   return "/" + segs.join("/");
 }
 
@@ -37,6 +98,9 @@ export function toInternalPath(currentLocale: Locale, pathname: string): string 
 // tr → öneksiz; en/de → önekli + ilk segment yerelleştirilmiş.
 export function localizeHref(locale: Locale, internalPath: string): string {
   const segs = internalPath.split("/").filter(Boolean);
+  if (segs[0] === "hizmetler" && segs[1]) {
+    segs[1] = serviceSlugToExternal(locale, segs[1]);
+  }
   if (segs.length > 0) {
     segs[0] = internalToExternal(locale, segs[0]);
   }

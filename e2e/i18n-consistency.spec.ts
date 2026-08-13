@@ -3,21 +3,44 @@ import { test, expect, type Page } from "@playwright/test";
 // Dil tutarlılığı testi: her sayfada, seçilen dil dışında bir dilden metin
 // kalmadığını doğrular. Özel isimler (kişi/marka adları) hariç tutulur.
 
-const SLUGS = [
-  "360-dijital-pazarlama",
-  "reklam-yonetimi",
-  "seo",
-  "mobil-uygulama-gelistirme",
-  "saas-proje-gelistirme",
-  "sosyal-medya-yonetimi",
-  "web-tasarim-gelistirme",
-  "icerik-marka-stratejisi",
-];
+// Hizmet slug'ları dile göre yerelleştirilmiş (bkz. i18n/routes.ts SERVICE_SLUGS)
+const SLUGS = {
+  tr: [
+    "360-dijital-pazarlama",
+    "reklam-yonetimi",
+    "seo",
+    "mobil-uygulama-gelistirme",
+    "saas-proje-gelistirme",
+    "sosyal-medya-yonetimi",
+    "web-tasarim-gelistirme",
+    "icerik-marka-stratejisi",
+  ],
+  en: [
+    "360-digital-marketing",
+    "ad-management",
+    "seo",
+    "mobile-app-development",
+    "saas-development",
+    "social-media-management",
+    "web-design-development",
+    "content-brand-strategy",
+  ],
+  de: [
+    "360-digitales-marketing",
+    "anzeigenmanagement",
+    "seo",
+    "app-entwicklung",
+    "saas-entwicklung",
+    "social-media-management",
+    "webdesign-entwicklung",
+    "content-markenstrategie",
+  ],
+} as const;
 
 const PATHS = {
-  tr: ["/", "/hizmetler", "/hakkimizda", "/portfolyo", "/iletisim", ...SLUGS.map((s) => `/hizmetler/${s}`)],
-  en: ["/en", "/en/services", "/en/about", "/en/portfolio", "/en/contact", ...SLUGS.map((s) => `/en/services/${s}`)],
-  de: ["/de", "/de/leistungen", "/de/ueber-uns", "/de/portfolio", "/de/kontakt", ...SLUGS.map((s) => `/de/leistungen/${s}`)],
+  tr: ["/", "/hizmetler", "/hakkimizda", "/portfolyo", "/iletisim", ...SLUGS.tr.map((s) => `/hizmetler/${s}`)],
+  en: ["/en", "/en/services", "/en/about", "/en/portfolio", "/en/contact", ...SLUGS.en.map((s) => `/en/services/${s}`)],
+  de: ["/de", "/de/leistungen", "/de/ueber-uns", "/de/portfolio", "/de/kontakt", ...SLUGS.de.map((s) => `/de/leistungen/${s}`)],
 } as const;
 
 // Kişi/marka adlarında geçen Türkçe karakterler yanlış alarm üretmesin diye
@@ -51,7 +74,7 @@ for (const locale of ["en", "de"] as const) {
 
 test.describe("dil değiştirici", () => {
   const cases = [
-    { from: "/hizmetler/seo", to: /\/en\/services\/seo$/, target: "en", expect: "Get a Quote for This Service" },
+    { from: "/hizmetler/mobil-uygulama-gelistirme", to: /\/en\/services\/mobile-app-development$/, target: "en", expect: "Get a Quote for This Service" },
     { from: "/portfolyo", to: /\/de\/portfolio$/, target: "de", expect: "Alle" },
     { from: "/en/contact", to: /\/iletisim$/, target: "tr", expect: "Mesajı Gönder" },
   ];
@@ -90,4 +113,47 @@ test.describe("404 sayfası", () => {
       await expect(page.getByText(marker).first()).toBeVisible();
     });
   }
+});
+
+test.describe("çok dilli URL yapısı", () => {
+  test("EN/DE hizmet adresleri yerelleştirilmiş slug kullanır", async ({ page }) => {
+    await page.goto("/de/leistungen/app-entwicklung");
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+      "href",
+      /\/de\/leistungen\/app-entwicklung$/,
+    );
+    const tr = page.locator('link[rel="alternate"][hreflang="tr"]');
+    await expect(tr).toHaveAttribute("href", /\/hizmetler\/mobil-uygulama-gelistirme$/);
+  });
+
+  test("eski Türkçe slug'lı EN adresi 301 ile yenisine gider", async ({ page }) => {
+    const res = await page.goto("/en/services/mobil-uygulama-gelistirme");
+    expect(res?.status()).toBe(200);
+    await expect(page).toHaveURL(/\/en\/services\/mobile-app-development$/);
+  });
+});
+
+test.describe("coğrafi yönlendirme", () => {
+  test("Googlebot yönlendirilmez, Türkçe sayfa taranabilir", async ({ browser }) => {
+    const ctx = await browser.newContext({
+      userAgent:
+        "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+      extraHTTPHeaders: { "x-vercel-ip-country": "US" },
+    });
+    const page = await ctx.newPage();
+    await page.goto("/hizmetler");
+    await expect(page).toHaveURL(/\/hizmetler$/);
+    await expect(page.locator("html")).toHaveAttribute("lang", "tr");
+    await ctx.close();
+  });
+
+  test("Almanya'dan gelen kullanıcı Almanca sayfaya yönlenir", async ({ browser }) => {
+    const ctx = await browser.newContext({
+      extraHTTPHeaders: { "x-vercel-ip-country": "DE" },
+    });
+    const page = await ctx.newPage();
+    await page.goto("/");
+    await expect(page).toHaveURL(/\/de$/);
+    await ctx.close();
+  });
 });
