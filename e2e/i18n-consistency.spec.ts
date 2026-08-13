@@ -133,7 +133,14 @@ test.describe("çok dilli URL yapısı", () => {
   });
 });
 
+// Vercel, x-vercel-ip-country'yi kenarda kendisi set eder; dışarıdan gönderilen
+// değeri yok sayar. Bu yüzden coğrafi testler sadece yerel sunucuda anlamlı.
 test.describe("coğrafi yönlendirme", () => {
+  test.skip(
+    !!process.env.E2E_BASE_URL,
+    "Uzak ortamda ülke başlığı taklit edilemez (Vercel kenarda üzerine yazar)",
+  );
+
   test("Googlebot yönlendirilmez, Türkçe sayfa taranabilir", async ({ browser }) => {
     const ctx = await browser.newContext({
       userAgent:
