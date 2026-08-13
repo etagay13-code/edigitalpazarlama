@@ -1,9 +1,14 @@
 import type { MetadataRoute } from "next";
-import { brand } from "@/lib/theme";
+import { getBrand } from "@/lib/theme";
 
-export default function robots(): MetadataRoute.Robots {
+// Site adresi DB'den (site_settings.url) okunur — sabit değerden değil, yoksa
+// canonical host değişince robots.txt eski adresi göstermeye devam ediyor.
+export default async function robots(): Promise<MetadataRoute.Robots> {
+  const b = await getBrand();
+  const base = b.url.replace(/\/$/, "");
   return {
     rules: { userAgent: "*", allow: "/" },
-    sitemap: `${brand.url}/sitemap.xml`,
+    sitemap: `${base}/sitemap.xml`,
+    host: base,
   };
 }
