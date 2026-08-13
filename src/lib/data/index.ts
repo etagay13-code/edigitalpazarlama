@@ -259,7 +259,9 @@ export const getSiteSettingsPublic = unstable_cache(
       .single();
     return data;
   },
-  ["site-settings", "i18n-v2"],
+  // Not: canonical host değişikliği (apex -> www) sonrası anahtar bump edildi;
+  // keyParts değişince eski cache girdisi kullanılmaz, DB'den taze okunur.
+  ["site-settings", "i18n-v3"],
   { tags: ["site_settings"], revalidate: 3600 },
 );
 
