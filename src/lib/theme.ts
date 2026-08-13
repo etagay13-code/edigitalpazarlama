@@ -29,6 +29,15 @@ export const brand = {
 
 export type Brand = typeof brand;
 
+// Search Console doğrulama kodunu temizler: admin'e DNS TXT formatı
+// ("google-site-verification=TOKEN") yapıştırıldığında meta etiketinde sadece
+// TOKEN olmalı, yoksa Google doğrulayamaz.
+export function cleanVerification(v: string | null | undefined): string | null {
+  if (!v) return null;
+  const t = v.trim().replace(/^["']|["']$/g, "").replace(/^google-site-verification=/i, "").trim();
+  return t || null;
+}
+
 // Server component'ler için: DB'den brand info çeker, eksik field'ları hardcoded ile doldurur.
 export async function getBrand(locale: Locale = DEFAULT_LOCALE) {
   try {
@@ -64,7 +73,7 @@ export async function getBrand(locale: Locale = DEFAULT_LOCALE) {
       integrations: {
         ga4: s.ga4_measurement_id,
         gtm: s.gtm_container_id,
-        searchConsole: s.search_console_verification,
+        searchConsole: cleanVerification(s.search_console_verification),
         hotjar: s.hotjar_site_id,
         clarity: s.microsoft_clarity_id,
       },

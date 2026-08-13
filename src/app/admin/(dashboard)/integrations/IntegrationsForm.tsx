@@ -146,7 +146,7 @@ export function IntegrationsForm({
           defaultValue={settings.search_console_verification ?? ""}
           placeholder="abc123def456..."
           hint={
-            'Search Console <meta name="google-site-verification" content="..."> içeriğindeki content değeri.'
+            'Sadece token yapıştır (örn. abc123...). "google-site-verification=" öneki veya DNS TXT değeri yapıştırırsan otomatik temizlenir. Domain (DNS) doğrulaması bu alandan yapılamaz — TXT kaydı DNS sağlayıcısına eklenmeli.'
           }
           monospace
         />

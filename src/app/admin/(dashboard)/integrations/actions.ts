@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
+import { cleanVerification } from "@/lib/theme";
 import type { Database } from "@/lib/db/types";
 
 type SettingsUpdate = Database["public"]["Tables"]["site_settings"]["Update"];
@@ -27,8 +28,10 @@ export async function saveIntegrations(formData: FormData): Promise<{
   const settingsUpdate: SettingsUpdate = {
     ga4_measurement_id: trimOrNull(formData.get("ga4_measurement_id")),
     gtm_container_id: trimOrNull(formData.get("gtm_container_id")),
-    search_console_verification: trimOrNull(
-      formData.get("search_console_verification"),
+    // "google-site-verification=..." öneki yapıştırılırsa temizlenir; meta
+    // etiketinde sadece token olmalı, aksi halde Google doğrulayamıyor.
+    search_console_verification: cleanVerification(
+      trimOrNull(formData.get("search_console_verification")),
     ),
     hotjar_site_id: trimOrNull(formData.get("hotjar_site_id")),
     microsoft_clarity_id: trimOrNull(formData.get("microsoft_clarity_id")),
