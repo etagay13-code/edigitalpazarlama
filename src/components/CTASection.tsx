@@ -6,6 +6,7 @@ import { getBrand } from "@/lib/theme";
 import { getPageSection } from "@/lib/data";
 import { localizeHref } from "@/i18n/routes";
 import type { Locale } from "@/i18n/config";
+import { getDict } from "@/i18n/dictionaries";
 
 type CtaBody = {
   highlight?: string;
@@ -19,14 +20,14 @@ export async function CTASection({ locale }: { locale: Locale }) {
     getPageSection("global", "cta", locale),
   ]);
 
+  const t = getDict(locale);
   const body = (section?.body as CtaBody | null) ?? {};
-  const eyebrow = section?.eyebrow || "İletişim";
-  const title = section?.title || "Bir sonraki büyüme dönemini birlikte planlayalım";
-  const highlight = body.highlight || "birlikte planlayalım";
-  const description =
-    section?.description ||
-    "Ücretsiz 30 dakikalık keşif görüşmesi. Hedeflerinizi konuşalım, mevcut kanallarınıza dair somut bir aksiyon planı çıkaralım.";
-  const primaryLabel = body.primaryLabel || "Görüşme Planla";
+  // Metinler dile göre DB'den (page_sections: global/cta); sabit etiketler sözlükten.
+  const eyebrow = section?.eyebrow || t.nav.contact;
+  const title = section?.title || "";
+  const highlight = body.highlight || "";
+  const description = section?.description || "";
+  const primaryLabel = body.primaryLabel || t.common.planCall;
   const primaryHref = localizeHref(locale, body.primaryHref || "/iletisim");
 
   return (
@@ -45,10 +46,12 @@ export async function CTASection({ locale }: { locale: Locale }) {
             <div className="relative flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
               <div className="max-w-2xl">
                 <span className="eyebrow">{eyebrow}</span>
-                <h3 className="mt-5 h-display text-3xl font-semibold leading-[1.1] sm:text-4xl md:text-5xl">
-                  <Highlighted text={title} highlight={highlight} />
-                </h3>
-                <p className="mt-5 text-white/65">{description}</p>
+                {title && (
+                  <h3 className="mt-5 h-display text-3xl font-semibold leading-[1.1] sm:text-4xl md:text-5xl">
+                    <Highlighted text={title} highlight={highlight} />
+                  </h3>
+                )}
+                {description && <p className="mt-5 text-white/65">{description}</p>}
               </div>
               <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
                 <Link href={primaryHref} className="btn-primary">

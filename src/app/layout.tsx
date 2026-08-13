@@ -5,6 +5,8 @@ import { headers } from "next/headers";
 import "./globals.css";
 import { getBrand } from "@/lib/theme";
 import { asLocale, OG_LOCALE } from "@/i18n/config";
+import { getDict } from "@/i18n/dictionaries";
+import { Particles } from "@/components/Particles";
 
 async function currentLocale() {
   const h = await headers();
@@ -32,17 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
       template: `%s · ${b.name}`,
     },
     description: b.description,
-    keywords: [
-      "dijital pazarlama ajansı",
-      "Google Ads",
-      "Meta Ads",
-      "SEO",
-      "mobil uygulama geliştirme",
-      "SaaS geliştirme",
-      "sosyal medya yönetimi",
-      "performans pazarlama",
-      b.founder,
-    ],
+    keywords: [...getDict(locale).meta.keywords, b.founder],
     authors: [{ name: b.founder }],
     creator: b.founder,
     openGraph: {
@@ -87,6 +79,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} className={`${inter.variable} ${display.variable}`}>
       <body className="font-sans antialiased">
+        <Particles />
         {children}
 
         {/* Google Tag Manager */}

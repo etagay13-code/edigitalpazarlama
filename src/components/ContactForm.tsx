@@ -77,8 +77,13 @@ export function ContactForm({
         body: JSON.stringify({ ...form, locale }),
       });
       if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error(data.error ?? dict.errSubmit);
+        const data = (await res.json().catch(() => ({}))) as { code?: string };
+        const byCode: Record<string, string> = {
+          name: dict.errName,
+          email: dict.errEmail,
+          message: dict.errMessage,
+        };
+        throw new Error((data.code && byCode[data.code]) || dict.errSubmit);
       }
       setSuccess(true);
       setForm(initial);

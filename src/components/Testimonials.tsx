@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { SectionHeader } from "./SectionHeader";
+import type { Dict } from "@/i18n/dictionaries";
 
 type Testimonial = {
   name: string;
@@ -13,7 +14,13 @@ type Testimonial = {
   initials: string | null;
 };
 
-export function Testimonials({ items }: { items: Testimonial[] }) {
+export function Testimonials({
+  items,
+  dict,
+}: {
+  items: Testimonial[];
+  dict: Dict["testimonials"];
+}) {
   const [i, setI] = useState(0);
   if (items.length === 0) return null;
   const t = items[i];
@@ -24,9 +31,9 @@ export function Testimonials({ items }: { items: Testimonial[] }) {
     <section className="section">
       <div className="container-x">
         <SectionHeader
-          eyebrow="Referanslar"
-          title="Markalar bizimle ne anlatıyor?"
-          description="Sayılar etkileyici olabilir; ama bir ajansla çalışmanın asıl değeri, müşterinin sabah uyandığında içinin rahat olmasıdır."
+          eyebrow={dict.eyebrow}
+          title={dict.title}
+          description={dict.description}
         />
 
         <div className="mt-12 grid items-center gap-8 lg:grid-cols-[1fr_auto]">
@@ -61,14 +68,14 @@ export function Testimonials({ items }: { items: Testimonial[] }) {
           <div className="flex gap-2 lg:flex-col">
             <button
               onClick={prev}
-              aria-label="Önceki referans"
+              aria-label={dict.prev}
               className="grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-white/[0.03] text-white/70 transition hover:bg-white/[0.08] hover:text-white"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
             <button
               onClick={next}
-              aria-label="Sonraki referans"
+              aria-label={dict.next}
               className="grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-white/[0.03] text-white/70 transition hover:bg-white/[0.08] hover:text-white"
             >
               <ChevronRight className="h-5 w-5" />
@@ -81,7 +88,7 @@ export function Testimonials({ items }: { items: Testimonial[] }) {
             <button
               key={idx}
               onClick={() => setI(idx)}
-              aria-label={`${idx + 1}. referans`}
+              aria-label={dict.goTo.replace("{n}", String(idx + 1))}
               className={`h-1.5 rounded-full transition-all ${
                 idx === i ? "w-8 bg-white" : "w-1.5 bg-white/25 hover:bg-white/40"
               }`}

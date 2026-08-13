@@ -7,6 +7,7 @@ import { LOCALES, isLocale, type Locale } from "@/i18n/config";
 import { getDict } from "@/i18n/dictionaries";
 import { OrganizationJsonLd } from "@/components/JsonLd";
 import { ChatWidget } from "@/components/ChatWidget";
+import { HtmlLangSync } from "@/components/HtmlLangSync";
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
@@ -31,6 +32,7 @@ export default async function PublicLayout({
 
   return (
     <>
+      <HtmlLangSync locale={locale} />
       <OrganizationJsonLd brand={brand} />
       <a
         href="#main"

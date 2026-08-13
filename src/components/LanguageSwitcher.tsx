@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { Globe, Check } from "lucide-react";
 import { LOCALES, LOCALE_LABELS, type Locale } from "@/i18n/config";
 import { toInternalPath, localizeHref } from "@/i18n/routes";
@@ -13,7 +13,6 @@ export function LanguageSwitcher({
   locale: Locale;
   variant?: "bar" | "menu";
 }) {
-  const router = useRouter();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -28,9 +27,12 @@ export function LanguageSwitcher({
 
   const choose = (loc: Locale) => {
     setOpen(false);
+    if (loc === locale) return;
     document.cookie = `NEXT_LOCALE=${loc}; path=/; max-age=${60 * 60 * 24 * 365}`;
     const internal = toInternalPath(locale, pathname);
-    router.push(localizeHref(loc, internal));
+    // router.push yerine tam sayfa yükleme: kök layout (ve <html lang>) yeniden
+    // render edilsin, router cache'inden eski dildeki parçalar gelmesin.
+    window.location.assign(localizeHref(loc, internal));
   };
 
   // Mobil menü içinde: yatay bayrak satırı

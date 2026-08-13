@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import type { Dict } from "@/i18n/dictionaries";
 
 type Project = {
   slug: string;
@@ -14,20 +15,25 @@ type Project = {
   tags: string[];
 };
 
-const ALL = "Tümü";
-
-export function PortfolioGrid({ items }: { items: Project[] }) {
+export function PortfolioGrid({
+  items,
+  dict,
+}: {
+  items: Project[];
+  dict: Dict["portfolio"];
+}) {
+  const ALL = dict.all;
   const categories = useMemo(() => {
     const set = new Set<string>();
     items.forEach((p) => set.add(p.category));
     return [ALL, ...Array.from(set).sort()];
-  }, [items]);
+  }, [items, ALL]);
 
   const [filter, setFilter] = useState<string>(ALL);
 
   const filtered = useMemo(
     () => (filter === ALL ? items : items.filter((p) => p.category === filter)),
-    [filter, items],
+    [filter, items, ALL],
   );
 
   return (
@@ -103,7 +109,7 @@ export function PortfolioGrid({ items }: { items: Project[] }) {
 
       {filtered.length === 0 && (
         <p className="mt-12 text-center text-white/50">
-          Bu kategoride henüz paylaşılacak bir proje yok.
+          {dict.empty}
         </p>
       )}
     </div>

@@ -10,6 +10,7 @@ import { getBrand } from "@/lib/theme";
 import { listTimelinePublic, listTeamPublic, listPageSectionsPublic, getPageSection } from "@/lib/data";
 import type { StatItem } from "@/components/Stats";
 import { asLocale } from "@/i18n/config";
+import { getDict } from "@/i18n/dictionaries";
 import { pageMeta } from "@/i18n/metadata";
 
 type IconItem = { icon?: string; title: string; desc: string };
@@ -37,6 +38,7 @@ export default async function AboutPage({
   params: { locale: string };
 }) {
   const locale = asLocale(params.locale);
+  const t = getDict(locale);
   const [brand, timeline, team, sections] = await Promise.all([
     getBrand(locale),
     listTimelinePublic(locale),
@@ -50,38 +52,12 @@ export default async function AboutPage({
 
   const heroSection = sec("hero");
 
-  const statItems = itemsOf<StatItem>("stats");
-  const stats: StatItem[] =
-    statItems.length > 0
-      ? statItems
-      : [
-          { label: "Yıldır faaliyetteyiz", to: 7, suffix: "+" },
-          { label: "Aktif müşteri", to: 60, suffix: "+" },
-          { label: "Tamamlanan proje", to: 320, suffix: "+" },
-          { label: "Ekip arkadaşımız", to: 14, suffix: "" },
-        ];
+  // Not: içerik dile göre DB'den gelir; hardcoded TR fallback yok (yanlış dil riski).
+  const stats = itemsOf<StatItem>("stats");
 
   const storySection = sec("story");
-  const storyParagraphs = itemsOf<{ text: string }>("story").map((p) => p.text);
-  const story =
-    storyParagraphs.length > 0
-      ? storyParagraphs
-      : [
-          `${brand.founder}, dijital pazarlama dünyasına 2015'te bir e-ticaret markasının kurucusu olarak girdi. Kendi markasını büyütmek için Google Ads, Meta Ads ve SEO öğrenmek zorunda kaldı — ve aslında pek çok Türkiye markasının da aynı sorunla boğuştuğunu fark etti: doğru ajansı bulamamak.`,
-          `Çoğu ajans büyük müşterilerle dolu ya da sadece tek alanda uzman. Hem stratejiyi düşünen, hem kreatifi üreten, hem teknolojiyi geliştiren bir partneri bulmak nadirdi. 2017-2019 arasında 12+ markaya freelance danışmanlık verdikten sonra "neden bunu bir ekip işine dönüştürmüyorum" sorusuyla ${brand.name}'i kurdu.`,
-          `2019'da ${brand.name}'i kurarken hedefi netti: müşterinin işine ortak gibi davranan, sayıların arkasındaki insanı unutmayan, hem kreatif hem teknik tarafa hakim bir ajans. Bugün İstanbul merkezli ekibimiz 14 kişiden oluşuyor; e-ticaretten fintech'e, sağlık turizminden SaaS girişimlerine kadar geniş bir portföye hizmet veriyoruz.`,
-          `Hâlâ her yeni proje kapsama alındığında ilk strateji görüşmesini kurucu olarak ben yapıyorum. Çünkü güven bir tek bu şekilde inşa edilir. Hızlı büyüyen bir ajans olsak da bu prensibimizi koruyacağız.`,
-        ];
-
-  const missionItems = itemsOf<IconItem>("mission_vision");
-  const missions: IconItem[] =
-    missionItems.length > 0
-      ? missionItems
-      : [
-          { icon: "Target", title: "Misyon", desc: "Markaların dijital büyümesini, ölçülebilir ve sürdürülebilir bir bilim haline getirmek. Her kararı veriyle alıp, her veriyi yaratıcılıkla yorumlamak." },
-          { icon: "Eye", title: "Vizyon", desc: "Türkiye'nin teknolojiyi en iyi anlayan, performansı en iyi yöneten dijital büyüme ortağı olmak. 2027'ye kadar 100 markaya ortak olmuş bir yapıya ulaşmak." },
-          { icon: "HeartHandshake", title: "Vaadimiz", desc: "İlk 90 günde ölçülebilir iyileşme. Olmadığı takdirde sözleşme bağlayıcı değil — şartlarımız ücretsiz keşif görüşmesinde net paylaşılır. Sözümüze sözleşmede yer veriyoruz." },
-        ];
+  const story = itemsOf<{ text: string }>("story").map((p) => p.text);
+  const missions = itemsOf<IconItem>("mission_vision");
 
   const timelineHeader = sec("timeline_header");
   const teamHeader = sec("team_header");
@@ -97,17 +73,15 @@ export default async function AboutPage({
         <GradientBlobs />
         <div className="container-x">
           <SectionHeader
-            eyebrow={heroSection?.eyebrow || "Hakkımızda"}
-            title={heroSection?.title || "Markaları büyütmek için kurulmuş bir ekip"}
-            description={
-              heroSection?.description ||
-              `${brand.name}, performans pazarlaması ile teknoloji geliştirmenin kesiştiği noktada konumlanır. 2019'dan bu yana e-ticaret, SaaS ve hizmet markalarına dijital büyüme ortaklığı sunuyoruz.`
-            }
+            eyebrow={heroSection?.eyebrow || t.nav.about}
+            title={heroSection?.title || ""}
+            description={heroSection?.description || undefined}
           />
         </div>
       </section>
 
       {/* Rakamlarla biz */}
+      {stats.length > 0 && (
       <section className="section pt-4">
         <div className="container-x">
           <Reveal>
@@ -118,7 +92,7 @@ export default async function AboutPage({
                   className="bg-ink-900/60 p-8 transition hover:bg-ink-800/60"
                 >
                   <div className="font-display text-4xl font-semibold tracking-tight sm:text-5xl">
-                    <span className="gradient-text">
+                    <span className="gradient-text-warm">
                       <Counter
                         to={s.to}
                         prefix={s.prefix ?? ""}
@@ -134,15 +108,20 @@ export default async function AboutPage({
           </Reveal>
         </div>
       </section>
+      )}
 
       {/* Hikaye + Misyon/Vizyon */}
       <section className="section">
         <div className="container-x grid items-start gap-12 lg:grid-cols-[1.1fr_1fr]">
           <Reveal>
-            <span className="eyebrow">{storySection?.eyebrow || "Hikayemiz"}</span>
-            <h3 className="mt-5 h-display text-3xl font-semibold sm:text-4xl">
-              {storySection?.title || `Kurucumuz ${brand.founder}'ın hikayesi`}
-            </h3>
+            {storySection?.eyebrow && (
+              <span className="eyebrow">{storySection.eyebrow}</span>
+            )}
+            {storySection?.title && (
+              <h3 className="mt-5 h-display text-3xl font-semibold sm:text-4xl">
+                {storySection.title}
+              </h3>
+            )}
             <div className="mt-6 space-y-4 text-white/65">
               {story.map((p, i) => (
                 <p key={i}>{p}</p>
@@ -171,12 +150,9 @@ export default async function AboutPage({
       <section className="section">
         <div className="container-x">
           <SectionHeader
-            eyebrow={timelineHeader?.eyebrow || "Yol Haritası"}
-            title={timelineHeader?.title || "2015'ten bugüne yolculuğumuz"}
-            description={
-              timelineHeader?.description ||
-              "Bir ajansın sadece bugünkü hali değil, oraya nasıl geldiği de önemlidir. İşte bizim adımlarımız."
-            }
+            eyebrow={timelineHeader?.eyebrow ?? undefined}
+            title={timelineHeader?.title || ""}
+            description={timelineHeader?.description || undefined}
           />
           <div className="relative mt-14">
             <div
@@ -225,12 +201,9 @@ export default async function AboutPage({
       <section className="section">
         <div className="container-x">
           <SectionHeader
-            eyebrow={teamHeader?.eyebrow || "Ekip"}
-            title={teamHeader?.title || "Markanızla doğrudan çalışacak isimler"}
-            description={
-              teamHeader?.description ||
-              "Junior asistanlara devredilen bir hesap planı yok. Aşağıdaki isimler, sizinle her hafta düzenli görüşen, projeyi sahiplenen kişiler."
-            }
+            eyebrow={teamHeader?.eyebrow ?? undefined}
+            title={teamHeader?.title || ""}
+            description={teamHeader?.description || undefined}
           />
           <Stagger className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {team.map((m) => (

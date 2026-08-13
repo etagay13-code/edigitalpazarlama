@@ -4,26 +4,33 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus } from "lucide-react";
 import { SectionHeader } from "./SectionHeader";
+import type { Dict } from "@/i18n/dictionaries";
 
 type FaqItem = { question: string; answer: string };
 
 export function FAQ({
   items,
-  eyebrow = "Sık Sorulanlar",
-  title = "Bilmek istediklerinin cevapları",
-  description = "Aklında olup da burada cevabını bulamadığın bir soru varsa, iletişim sayfasından bize ulaşabilirsin.",
+  dict,
+  eyebrow,
+  title,
+  description,
 }: {
   items: FaqItem[];
-  eyebrow?: string;
-  title?: string;
-  description?: string;
+  dict: Dict["faq"];
+  eyebrow?: string | null;
+  title?: string | null;
+  description?: string | null;
 }) {
   const [open, setOpen] = useState<number | null>(0);
   if (items.length === 0) return null;
   return (
     <section className="section">
       <div className="container-x">
-        <SectionHeader eyebrow={eyebrow} title={title} description={description} />
+        <SectionHeader
+          eyebrow={eyebrow || dict.eyebrow}
+          title={title || dict.title}
+          description={description || dict.description}
+        />
         <div className="mx-auto mt-10 max-w-3xl divide-y divide-white/[0.06] overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02]">
           {items.map((f, idx) => {
             const isOpen = open === idx;

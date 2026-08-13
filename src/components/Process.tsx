@@ -8,14 +8,7 @@ import { Compass } from "lucide-react";
 
 export type ProcessStep = { icon?: string; title: string; desc: string };
 
-const DEFAULT_STEPS: ProcessStep[] = [
-  { icon: "Compass", title: "Keşif", desc: "Markanızı, rakiplerinizi ve hedef kitlenizi derinlemesine anlıyoruz. Mevcut datalarınızı analiz ediyoruz." },
-  { icon: "Map", title: "Strateji", desc: "Hedeflerinize uygun kanalları, mesajları ve KPI'ları belirleyen 90 günlük yol haritasını çıkarıyoruz." },
-  { icon: "Rocket", title: "Uygulama", desc: "Kreatif üretiminden teknik kuruluma kadar her şeyi tek çatı altında devreye alıyoruz." },
-  { icon: "LineChart", title: "Optimizasyon", desc: "A/B testleri, bütçe yeniden dağıtımı ve haftalık iterasyonlarla performansı sürekli iyileştiriyoruz." },
-  { icon: "FileText", title: "Raporlama", desc: "Şeffaf canlı dashboard ve aylık sunumlarla sonuçları sadelikle gösteriyoruz." },
-];
-
+// Adımlar ve başlıklar dile göre DB'den gelir; veri yoksa bölüm render edilmez.
 export function Process({
   eyebrow,
   title,
@@ -27,17 +20,15 @@ export function Process({
   description?: string | null;
   steps?: ProcessStep[] | null;
 }) {
-  const list = steps && steps.length > 0 ? steps : DEFAULT_STEPS;
+  const list = steps ?? [];
+  if (list.length === 0) return null;
   return (
     <section className="section">
       <div className="container-x">
         <SectionHeader
-          eyebrow={eyebrow || "Çalışma Süreci"}
-          title={title || "Net adımlar, ölçülebilir sonuçlar"}
-          description={
-            description ||
-            "Müşterilerimizle ilk konuşmadan ilk raporlamaya kadar her aşamayı netleştirdik. Sürprizler büyüyen kampanyalarda olur, süreçte değil."
-          }
+          eyebrow={eyebrow ?? undefined}
+          title={title ?? ""}
+          description={description ?? undefined}
         />
         <div className="relative mt-12">
           {/* adımları birbirine bağlayan ince çizgi (masaüstü) */}

@@ -16,11 +16,13 @@ export function SectionHeader({ eyebrow, title, description, align = "left" }: P
           <span className="eyebrow">{eyebrow}</span>
         </Reveal>
       )}
-      <Reveal delay={0.08}>
-        <h2 className="mt-5 h-display text-3xl font-semibold leading-[1.1] sm:text-4xl md:text-5xl">
-          {title}
-        </h2>
-      </Reveal>
+      {title && (
+        <Reveal delay={0.08}>
+          <h2 className="mt-5 h-display text-3xl font-semibold leading-[1.1] sm:text-4xl md:text-5xl">
+            {title}
+          </h2>
+        </Reveal>
+      )}
       {description && (
         <Reveal delay={0.15}>
           <p className="mt-5 text-base text-white/65 sm:text-lg">{description}</p>

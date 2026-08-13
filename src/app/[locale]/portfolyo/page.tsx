@@ -10,6 +10,7 @@ import { Counter } from "@/components/Counter";
 import { listPortfolioProjectsPublic, listPageSectionsPublic, getPageSection } from "@/lib/data";
 import { Highlighted } from "@/components/Highlight";
 import { asLocale } from "@/i18n/config";
+import { getDict } from "@/i18n/dictionaries";
 import { localizeHref } from "@/i18n/routes";
 import { pageMeta } from "@/i18n/metadata";
 
@@ -46,6 +47,7 @@ export default async function PortfolioPage({
   params: { locale: string };
 }) {
   const locale = asLocale(params.locale);
+  const t = getDict(locale);
   const [projects, sections] = await Promise.all([
     listPortfolioProjectsPublic(locale),
     listPageSectionsPublic("portfolio", locale),
@@ -77,12 +79,9 @@ export default async function PortfolioPage({
         <GradientBlobs />
         <div className="container-x">
           <SectionHeader
-            eyebrow={heroSection?.eyebrow || "Çalışmalarımız"}
-            title={heroSection?.title || "Birlikte büyüttüğümüz markalar"}
-            description={
-              heroSection?.description ||
-              "Her proje farklı bir hedefle yola çıktı; ama hepsinde ortak olan tek şey ölçülebilir sonuçlar. Aşağıda, paylaşma izni aldığımız çalışmalardan örnekler."
-            }
+            eyebrow={heroSection?.eyebrow || t.nav.portfolio}
+            title={heroSection?.title || ""}
+            description={heroSection?.description || undefined}
           />
         </div>
       </section>
@@ -96,7 +95,7 @@ export default async function PortfolioPage({
                 {stats.map((s) => (
                   <div key={s.label} className="bg-ink-900/60 p-8">
                     <div className="font-display text-4xl font-semibold tracking-tight sm:text-5xl">
-                      <span className="gradient-text">
+                      <span className="gradient-text-warm">
                         <Counter
                           to={s.to}
                           prefix={s.prefix ?? ""}
@@ -204,15 +203,12 @@ export default async function PortfolioPage({
       <section className="section">
         <div className="container-x">
           <SectionHeader
-            eyebrow={projectsHeader?.eyebrow || "Tüm Projeler"}
-            title={projectsHeader?.title || "Kategorilere göre çalışmalarımız"}
-            description={
-              projectsHeader?.description ||
-              "Filtrelerle ilgilendiğin kategoriye daralt. Her kartta projenin ölçüt aldığı temel KPI'yı paylaşıyoruz."
-            }
+            eyebrow={projectsHeader?.eyebrow ?? undefined}
+            title={projectsHeader?.title || ""}
+            description={projectsHeader?.description || undefined}
           />
           <div className="mt-10">
-            <PortfolioGrid items={projects} />
+            <PortfolioGrid items={projects} dict={t.portfolio} />
           </div>
         </div>
       </section>
@@ -280,16 +276,15 @@ export default async function PortfolioPage({
               <TrendingUp className="h-10 w-10 text-violet-300" />
               <h3 className="h-display text-3xl font-semibold sm:text-4xl">
                 <Highlighted
-                  text={inviteSection?.title || "Sıra sizin markanızda"}
-                  highlight={inviteBody.highlight || "sizin markanızda"}
+                  text={inviteSection?.title || ""}
+                  highlight={inviteBody.highlight || ""}
                 />
               </h3>
               <p className="max-w-2xl text-white/65">
-                {inviteSection?.description ||
-                  "Bu rakamlar, bizi seçen markaların başardıklarıdır. Bir sonraki vaka çalışmasında sizin markanızı paylaşmak istiyoruz."}
+                {inviteSection?.description || ""}
               </p>
               <Link href={localizeHref(locale, inviteBody.primaryHref || "/iletisim")} className="btn-primary">
-                {inviteBody.primaryLabel || "Görüşme Planla"}
+                {inviteBody.primaryLabel || t.common.planCall}
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
             </div>

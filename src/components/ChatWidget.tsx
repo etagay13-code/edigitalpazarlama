@@ -13,9 +13,12 @@ export type ChatRule = {
 
 type Msg = { role: "user" | "assistant"; content: string };
 
-const norm = (s: string) => s.toLocaleLowerCase("tr").trim();
+// Küçük harfe çevirme dile bağlı (tr'de I/İ farkı) — eşleştirme doğru dilde yapılır.
+const makeNorm = (locale: Locale) => (s: string) =>
+  s.toLocaleLowerCase(locale).trim();
 
 export function ChatWidget({
+  locale,
   dict,
   rules,
 }: {
@@ -23,6 +26,7 @@ export function ChatWidget({
   dict: Dict["chat"];
   rules: ChatRule[];
 }) {
+  const norm = makeNorm(locale);
   const [open, setOpen] = useState(false);
   const [teaser, setTeaser] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([]);
@@ -110,7 +114,7 @@ export function ChatWidget({
             <button
               type="button"
               onClick={() => setOpen(false)}
-              aria-label="Kapat"
+              aria-label={dict.close}
               className="grid h-8 w-8 place-items-center rounded-full text-white/80 transition hover:bg-white/15 hover:text-white"
             >
               <X className="h-5 w-5" />
@@ -197,7 +201,7 @@ export function ChatWidget({
             <button
               type="submit"
               disabled={!input.trim()}
-              aria-label="Gönder"
+              aria-label={dict.send}
               className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gradient-to-br from-violet-500 to-indigo-500 text-white shadow-glow transition hover:brightness-110 disabled:opacity-40"
             >
               <Send className="h-4 w-4" />

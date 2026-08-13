@@ -1,4 +1,7 @@
+import type { Dict } from "@/i18n/dictionaries";
+
 // Hero altındaki "güven bandı" — marka isimleri (DB'den veya fallback).
+// Başlık DB'de yoksa sözlükten gelir (dil karışmasın diye hardcode yok).
 const DEFAULT_BRANDS = [
   "LUMEN",
   "TESSERA",
@@ -13,12 +16,14 @@ const DEFAULT_BRANDS = [
 export function BrandStrip({
   label,
   brands,
+  dict,
 }: {
   label?: string | null;
   brands?: string[] | null;
+  dict: Dict["brandStrip"];
 }) {
   const list = brands && brands.length > 0 ? brands : DEFAULT_BRANDS;
-  const heading = label && label.trim() ? label : "Birlikte büyüdüğümüz markalar";
+  const heading = label && label.trim() ? label : dict.label;
 
   return (
     <section className="relative border-y border-white/[0.05] bg-ink-900/50 py-10">

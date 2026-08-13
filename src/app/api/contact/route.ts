@@ -13,12 +13,14 @@ export async function POST(req: Request) {
     const service = body.service ? body.service.toString().trim() : null;
     const message = (body.message ?? "").toString().trim();
 
+    // Hata gövdesi dil-nötr kod döner; kullanıcıya gösterilen metin istemcide
+    // sözlükten seçilir (yanıt dili siteyle karışmasın diye).
     if (!name || name.length < 2)
-      return NextResponse.json({ error: "Ad gerekli" }, { status: 400 });
+      return NextResponse.json({ code: "name" }, { status: 400 });
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
-      return NextResponse.json({ error: "Geçersiz e-posta" }, { status: 400 });
+      return NextResponse.json({ code: "email" }, { status: 400 });
     if (!message || message.length < 20)
-      return NextResponse.json({ error: "Mesaj çok kısa" }, { status: 400 });
+      return NextResponse.json({ code: "message" }, { status: 400 });
 
     const supabase = createServiceClient();
 
@@ -34,10 +36,7 @@ export async function POST(req: Request) {
     });
     if (insErr) {
       console.error("messages insert:", insErr);
-      return NextResponse.json(
-        { error: "Mesaj kaydedilemedi." },
-        { status: 500 },
-      );
+      return NextResponse.json({ code: "submit" }, { status: 500 });
     }
 
     // 2) Resend ile mail gönder (varsa)
@@ -87,7 +86,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("contact form error:", err);
-    return NextResponse.json({ error: "Bilinmeyen hata" }, { status: 500 });
+    return NextResponse.json({ code: "submit" }, { status: 500 });
   }
 }
 

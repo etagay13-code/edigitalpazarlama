@@ -17,6 +17,7 @@ import {
 } from "@/lib/data";
 import { getBrand } from "@/lib/theme";
 import { asLocale } from "@/i18n/config";
+import { getDict } from "@/i18n/dictionaries";
 import { localizeHref } from "@/i18n/routes";
 import { pageMeta } from "@/i18n/metadata";
 
@@ -44,6 +45,7 @@ export default async function ServicesPage({
   params: { locale: string };
 }) {
   const locale = asLocale(params.locale);
+  const t = getDict(locale);
   const [services, industries, techStack, brand, sections, serviceFaqs] =
     await Promise.all([
       listServicesPublic(locale),
@@ -81,12 +83,9 @@ export default async function ServicesPage({
         <GradientBlobs />
         <div className="container-x">
           <SectionHeader
-            eyebrow={heroSection?.eyebrow || "Hizmetler"}
-            title={heroSection?.title || "Markanız için bütünsel dijital büyüme"}
-            description={
-              heroSection?.description ||
-              "Her hizmeti bağımsız bir ürün gibi düşünüyoruz; ama gücü bir araya geldiklerinde ortaya çıkıyor. Aşağıdaki hizmetlerin tümünü tek bir hesap planı, tek bir iletişim noktası altında alabilirsiniz."
-            }
+            eyebrow={heroSection?.eyebrow || t.nav.services}
+            title={heroSection?.title || ""}
+            description={heroSection?.description || undefined}
           />
         </div>
       </section>
@@ -96,13 +95,13 @@ export default async function ServicesPage({
         <div className="container-x">
           <div className="mb-8 flex items-center justify-between">
             <p className="text-sm text-white/55">
-              {gridBody.intro || "Detayları görmek için bir hizmete tıkla"}
+              {gridBody.intro || t.servicesPage.gridIntro}
             </p>
             <Link
               href={localizeHref(locale, gridBody.linkHref || "/iletisim")}
               className="hidden text-sm font-medium text-white/70 transition hover:text-white sm:inline-flex sm:items-center sm:gap-1"
             >
-              {gridBody.linkLabel || "Hangisi sana uygun?"}
+              {gridBody.linkLabel || t.servicesPage.gridLink}
               <ArrowUpRight className="h-4 w-4" />
             </Link>
           </div>
@@ -142,12 +141,9 @@ export default async function ServicesPage({
       <section className="section">
         <div className="container-x">
           <SectionHeader
-            eyebrow={industriesHeader?.eyebrow || "Sektörler"}
-            title={industriesHeader?.title || "Çalıştığımız sektörler"}
-            description={
-              industriesHeader?.description ||
-              "Her sektörün kendi dinamikleri, regülasyonları ve müşteri davranışları vardır. Geniş portföyümüz sayesinde sektörel öğrenmeleri yeni projelere hızlıca taşıyoruz."
-            }
+            eyebrow={industriesHeader?.eyebrow ?? undefined}
+            title={industriesHeader?.title || ""}
+            description={industriesHeader?.description || undefined}
           />
           <Stagger className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {industries.map((ind) => (
@@ -176,12 +172,9 @@ export default async function ServicesPage({
       <section className="section">
         <div className="container-x">
           <SectionHeader
-            eyebrow={techHeader?.eyebrow || "Teknoloji & Araçlar"}
-            title={techHeader?.title || "Birlikte çalıştığımız stack"}
-            description={
-              techHeader?.description ||
-              "Sevilen bir araç değil, doğru araç kullanıyoruz. Aşağıdaki teknolojileri günlük olarak deneyimliyor, müşterilerimize ekstra eğitim gerektirmeden devir alıyoruz."
-            }
+            eyebrow={techHeader?.eyebrow ?? undefined}
+            title={techHeader?.title || t.serviceDetail.toolsTitle}
+            description={techHeader?.description || undefined}
           />
           <Reveal>
             <div className="mt-12 flex flex-wrap gap-2">
@@ -224,7 +217,7 @@ export default async function ServicesPage({
                     </p>
                     <p className="mt-4 text-sm text-white/60">{p.desc}</p>
                     <p className="mt-auto pt-6 text-xs uppercase tracking-[0.16em] text-white/40">
-                      Uygun: {p.fits}
+                      {t.servicesPage.fits}: {p.fits}
                     </p>
                   </div>
                 </Reveal>
@@ -232,8 +225,7 @@ export default async function ServicesPage({
             </Stagger>
             <Reveal delay={0.1}>
               <p className="mt-8 text-center text-sm text-white/50">
-                Sürpriz fatura, gizli kalem, başlangıç ücreti yok. Sözleşme öncesi tüm
-                detaylar yazılı paylaşılır.
+                {t.servicesPage.pricingNote}
               </p>
             </Reveal>
           </div>
@@ -245,12 +237,9 @@ export default async function ServicesPage({
         <section className="section">
           <div className="container-x">
             <SectionHeader
-              eyebrow={faqHeader?.eyebrow || "Sık Sorulanlar"}
-              title={faqHeader?.title || "Hizmetlere özel sorular"}
-              description={
-                faqHeader?.description ||
-                "Aklında olup da burada cevabını bulamadığın bir konu varsa, iletişim sayfasından bize doğrudan sorabilirsin."
-              }
+              eyebrow={faqHeader?.eyebrow || t.faq.eyebrow}
+              title={faqHeader?.title || ""}
+              description={faqHeader?.description || undefined}
             />
             <div className="mx-auto mt-10 max-w-3xl divide-y divide-white/[0.06] overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02]">
               {serviceFaqs.map((f) => (
@@ -270,7 +259,7 @@ export default async function ServicesPage({
             </div>
             <Reveal delay={0.1}>
               <p className="mt-8 text-center text-sm text-white/50">
-                Daha fazla soru için{" "}
+                {t.servicesPage.moreQuestions}{" "}
                 <a
                   className="text-white underline-offset-4 hover:underline"
                   href={`mailto:${brand.email}`}

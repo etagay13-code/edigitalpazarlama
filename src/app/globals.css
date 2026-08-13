@@ -76,6 +76,41 @@ body::before {
   animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+/* Arka plan baloncukları — yavaş yükselip sönümlenen küçük ışık noktaları.
+   Sadece transform/opacity animasyonu (layout tetiklemez, ucuz). */
+@keyframes floatBubble {
+  0% {
+    transform: translate3d(0, 12px, 0) scale(0.85);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate3d(10px, -26px, 0) scale(1);
+  }
+  85% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate3d(-6px, -60px, 0) scale(0.9);
+    opacity: 0;
+  }
+}
+.bubble {
+  animation-name: floatBubble;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+/* Mobilde baloncukları seyrelt — pil/GPU dostu */
+@media (max-width: 640px) {
+  .bubble:nth-child(2n) {
+    display: none;
+  }
+}
+
 @keyframes toastIn {
   from {
     opacity: 0;
@@ -106,6 +141,14 @@ body::before {
   /* Statik, sakin gradient (animasyon yok — premium his) */
   .gradient-text {
     background: linear-gradient(100deg, #b9a8ff 0%, #7c5cff 45%, #38bdf8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Sıcak altın vurgu — rakamlar/öne çıkan başlıklar için (koyu paleti dengeler) */
+  .gradient-text-warm {
+    background: linear-gradient(100deg, #fde68a 0%, #fbbf24 45%, #ffffff 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;

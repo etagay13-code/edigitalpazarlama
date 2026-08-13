@@ -104,7 +104,7 @@ export default async function ServiceDetailPage({
         <GradientBlobs />
         <div className="container-x relative">
           <nav
-            aria-label="Yol"
+            aria-label={t.breadcrumbAria}
             className="mb-10 flex items-center gap-2 text-sm text-white/45"
           >
             <Link href={localizeHref(locale, "/")} className="hover:text-white">
@@ -279,7 +279,7 @@ export default async function ServiceDetailPage({
             <SectionHeader
               eyebrow={t.processEyebrow}
               title={t.processTitle}
-              description="Birlikte çalışmaya başladığımız andan teslim/yayın anına kadar geçtiğimiz adımlar."
+              description={t.processDesc}
             />
             <Stagger className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
               {service.process.map((step, i) => (
@@ -307,7 +307,7 @@ export default async function ServiceDetailPage({
             <SectionHeader
               eyebrow={t.toolsEyebrow}
               title={t.toolsTitle}
-              description="Bu hizmet için günlük olarak kullandığımız platformlar."
+              description={t.toolsDesc}
             />
             <Reveal>
               <div className="mt-10 flex flex-wrap gap-2">
@@ -362,8 +362,8 @@ export default async function ServiceDetailPage({
           <div className="container-x">
             <SectionHeader
               eyebrow={t.relatedEyebrow}
-              title="Bu hizmetle birlikte tercih edilenler"
-              description="Tek başına alabilirsiniz, ama birlikte sinerji çok daha güçlü."
+              title={t.relatedTitle}
+              description={t.relatedDesc}
             />
             <Stagger className="mt-12 grid gap-5 md:grid-cols-3">
               {related.map((r) => {

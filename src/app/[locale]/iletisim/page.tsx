@@ -94,32 +94,30 @@ export default async function ContactPage({
     return { icon: c.icon, label: c.label, value: c.value ?? "", href: c.href ?? null, hint: c.hint };
   };
 
+  // Kanallar ve ofis satırları dile göre DB'den gelir. DB boşsa e-posta/telefon
+  // gibi evrensel değerler sözlük etiketleriyle gösterilir — hardcoded TR yok.
   const channelItems = ((channelsSection?.body as { items?: ChannelItem[] } | null)?.items ?? []) as ChannelItem[];
   const channels =
     channelItems.length > 0
       ? channelItems.map(resolveChannel)
       : [
-          { icon: "Mail", label: "E-posta", value: brand.email, href: `mailto:${brand.email}`, hint: "En hızlı yanıt" },
+          {
+            icon: "Mail",
+            label: t.contactForm.email,
+            value: brand.email,
+            href: `mailto:${brand.email}`,
+            hint: undefined,
+          },
           {
             icon: "Phone",
-            label: "Telefon",
+            label: t.contactForm.phone,
             value: brand.phone,
             href: brand.phone ? `tel:${brand.phone.replace(/\s/g, "")}` : null,
-            hint: "Mesai içinde",
+            hint: undefined,
           },
-          { icon: "MapPin", label: "Ofis", value: brand.address, href: "https://maps.google.com/?q=Istanbul", hint: "Maslak / Levent çevresi" },
-          { icon: "Clock", label: "Çalışma Saatleri", value: "Hafta içi 09:00 — 18:30", href: null, hint: "Acil için 7/24 nöbetçi" },
         ];
 
-  const officeLines = ((officeSection?.body as { items?: OfficeLine[] } | null)?.items ?? []) as OfficeLine[];
-  const officeList: OfficeLine[] =
-    officeLines.length > 0
-      ? officeLines
-      : [
-          { icon: "MapPin", text: `${brand.address} — Maslak Plaza, Kat 7` },
-          { icon: "Clock", text: "Hafta içi 09:00 – 18:30 (Salı/Perşembe tam ofis)" },
-          { icon: "Coffee", text: "Buluşmadan önce kahve siparişinizi paylaşmayı unutmayın" },
-        ];
+  const officeList = ((officeSection?.body as { items?: OfficeLine[] } | null)?.items ?? []) as OfficeLine[];
 
   return (
     <>
@@ -127,12 +125,9 @@ export default async function ContactPage({
         <GradientBlobs />
         <div className="container-x">
           <SectionHeader
-            eyebrow={heroSection?.eyebrow || "İletişim"}
-            title={heroSection?.title || "Bir sonraki büyüme dönemini konuşalım"}
-            description={
-              heroSection?.description ||
-              "Aşağıdaki formu doldurun ya da bize doğrudan ulaşın. Tüm yeni başvurulara 48 saat içinde dönüş sağlıyoruz."
-            }
+            eyebrow={heroSection?.eyebrow || t.nav.contact}
+            title={heroSection?.title || ""}
+            description={heroSection?.description || undefined}
           />
         </div>
       </section>
@@ -276,12 +271,9 @@ export default async function ContactPage({
         <section className="section">
           <div className="container-x">
             <SectionHeader
-              eyebrow={faqHeader?.eyebrow || "Sık Sorulanlar"}
-              title={faqHeader?.title || "İletişim ve görüşme süreci"}
-              description={
-                faqHeader?.description ||
-                "Sözleşme öncesi olası soruların hızlı cevapları. Daha fazlasını sormak için form yeterli."
-              }
+              eyebrow={faqHeader?.eyebrow || t.faq.eyebrow}
+              title={faqHeader?.title || ""}
+              description={faqHeader?.description || undefined}
             />
             <div className="mx-auto mt-10 max-w-3xl divide-y divide-white/[0.06] overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02]">
               {contactFaqs.map((f) => (
@@ -311,12 +303,13 @@ export default async function ContactPage({
               <div className="card h-full">
                 <Building2 className="h-6 w-6 text-violet-300" />
                 <h3 className="mt-5 font-display text-2xl font-semibold">
-                  {officeSection?.title || "Ofisimiz"}
+                  {officeSection?.title || t.contactPage.officeTitle}
                 </h3>
-                <p className="mt-3 text-sm text-white/65">
-                  {officeSection?.description ||
-                    "Maslak'ta hibrit çalışan bir ekiple Salı ve Perşembe günleri tam dolu bir ofisimiz var. Buluşmak istediğinizde önceden randevulaşmak yeterli — kapımız her zaman açık ama kahvemiz biterse hep birlikte yenisini demlemek lazım."}
-                </p>
+                {officeSection?.description && (
+                  <p className="mt-3 text-sm text-white/65">
+                    {officeSection.description}
+                  </p>
+                )}
                 <ul className="mt-6 space-y-3 text-sm text-white/65">
                   {officeList.map((line, i) => (
                     <li key={i} className="flex items-start gap-3">
@@ -330,7 +323,7 @@ export default async function ContactPage({
             <Reveal delay={0.1}>
               <div className="group relative h-full min-h-[360px] overflow-hidden rounded-3xl border border-white/[0.08]">
                 <iframe
-                  title={officeSection?.title || "Ofis konumu"}
+                  title={officeSection?.title || t.contactPage.officeMapTitle}
                   src={`https://www.google.com/maps?q=${encodeURIComponent(brand.address || "Maslak, İstanbul")}&output=embed`}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"

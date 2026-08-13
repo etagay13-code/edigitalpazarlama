@@ -9,15 +9,11 @@ export type StatItem = {
   decimals?: number;
 };
 
-const DEFAULT_STATS: StatItem[] = [
-  { label: "Yönetilen reklam bütçesi", to: 18, prefix: "₺", suffix: "M+", decimals: 0 },
-  { label: "Tamamlanan kampanya", to: 320, suffix: "+", decimals: 0 },
-  { label: "Ortalama ROAS", to: 4.6, suffix: "x", decimals: 1 },
-  { label: "Mutlu müşteri", to: 64, suffix: "+", decimals: 0 },
-];
-
+// Not: hardcoded fallback yok — etiketler dile göre DB'den (page_sections.stats) gelir.
+// Veri yoksa bölüm hiç render edilmez ki yanlış dilde metin görünmesin.
 export function Stats({ items }: { items?: StatItem[] | null }) {
-  const stats = items && items.length > 0 ? items : DEFAULT_STATS;
+  const stats = items ?? [];
+  if (stats.length === 0) return null;
   return (
     <section className="section">
       <div className="container-x">
@@ -29,7 +25,7 @@ export function Stats({ items }: { items?: StatItem[] | null }) {
                 className="relative bg-ink-900/60 p-8 transition hover:bg-ink-800/60"
               >
                 <div className="font-display text-4xl font-semibold tracking-tight sm:text-5xl">
-                  <span className="gradient-text">
+                  <span className="gradient-text-warm">
                     <Counter
                       to={s.to}
                       prefix={s.prefix ?? ""}

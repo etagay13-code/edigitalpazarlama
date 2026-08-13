@@ -2,8 +2,10 @@ import { Sparkles, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { GradientBlobs } from "./GradientBlob";
 import { Highlighted } from "./Highlight";
+import type { Dict } from "@/i18n/dictionaries";
 
 export type HeroProps = {
+  dict: Dict["common"] & { services: string };
   eyebrow?: string;
   title?: string;
   highlight?: string;
@@ -16,33 +18,36 @@ export type HeroProps = {
   note2?: string;
 };
 
-const DEFAULTS: Required<Omit<HeroProps, "highlight">> & { highlight: string } = {
-  eyebrow: "Yeni nesil 360° dijital ajans",
-  title: "A'dan Z'ye dijital büyüme ortağınız",
-  highlight: "dijital büyüme",
-  description:
-    "Reklam, SEO, sosyal medya, mobil uygulama ve SaaS geliştirme — markanızı büyütmek için ihtiyacınız olan her şey tek bir ekipte. Stratejiyi kuruyor, kreatifi üretiyor, performansı ölçüyor ve sürekli optimize ediyoruz.",
-  primaryLabel: "Ücretsiz Teklif Al",
-  primaryHref: "/iletisim",
-  secondaryLabel: "Hizmetleri İncele",
-  secondaryHref: "/hizmetler",
-  note1: "Şu an 6 yeni proje kabul ediyoruz",
-  note2: "Ortalama 48 saat içinde teklif",
-};
-
+// İçerik (başlık, açıklama, notlar) dile göre DB'den gelir; sadece buton
+// etiketleri gibi sabit UI metinleri sözlükten karşılanır — hardcoded TR yok.
 // Server component + CSS animasyon: framer yok, içerik ilk boyamada görünür (mobil için hızlı).
 export function Hero(props: HeroProps) {
-  const c = { ...DEFAULTS, ...clean(props) };
+  const { dict } = props;
+  const c = {
+    eyebrow: "",
+    title: "",
+    highlight: "",
+    description: "",
+    primaryLabel: dict.getQuoteFree,
+    primaryHref: "/iletisim",
+    secondaryLabel: dict.services,
+    secondaryHref: "/hizmetler",
+    note1: "",
+    note2: "",
+    ...clean(props),
+  };
 
   return (
     <section className="relative overflow-hidden pb-24 pt-20 sm:pt-28">
       <GradientBlobs />
       <div className="container-x relative">
         <div className="mx-auto flex flex-col items-center text-center">
-          <span className="eyebrow fade-up">
-            <Sparkles className="h-3.5 w-3.5 text-violet-300" />
-            {c.eyebrow}
-          </span>
+          {c.eyebrow && (
+            <span className="eyebrow fade-up">
+              <Sparkles className="h-3.5 w-3.5 text-violet-300" />
+              {c.eyebrow}
+            </span>
+          )}
 
           <h1
             className="fade-up mt-6 max-w-4xl h-display text-4xl font-semibold leading-[1.05] sm:text-6xl md:text-7xl"
@@ -98,13 +103,15 @@ export function Hero(props: HeroProps) {
   );
 }
 
-function clean(props: HeroProps): HeroProps {
-  const out: HeroProps = {};
+type HeroText = Omit<HeroProps, "dict">;
+
+function clean(props: HeroProps): HeroText {
+  const out: Record<string, string> = {};
   (Object.keys(props) as (keyof HeroProps)[]).forEach((k) => {
+    if (k === "dict") return;
     const v = props[k];
-    if (typeof v === "string" && v.trim() === "") return;
-    if (v == null) return;
+    if (typeof v !== "string" || v.trim() === "") return;
     out[k] = v;
   });
-  return out;
+  return out as HeroText;
 }

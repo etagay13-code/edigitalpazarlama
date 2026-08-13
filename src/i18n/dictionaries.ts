@@ -15,6 +15,18 @@ const tr = {
     menuClose: "Menüyü kapat",
     servicesHint: "Tek bir hizmet mi, paket mi? Birlikte karar verelim.",
   },
+  meta: {
+    keywords: [
+      "dijital pazarlama ajansı",
+      "Google Ads ajansı",
+      "Meta Ads",
+      "SEO ajansı",
+      "mobil uygulama geliştirme",
+      "SaaS geliştirme",
+      "sosyal medya yönetimi",
+      "performans pazarlama",
+    ],
+  },
   common: {
     skipToContent: "İçeriğe geç",
     planCall: "Görüşme Planla",
@@ -26,6 +38,7 @@ const tr = {
     contact: "İletişim",
     rights: "Tüm hakları saklıdır.",
     founder: "Kurucu",
+    city: "İstanbul",
   },
   notFound: {
     title: "Aradığınız sayfa bulunamadı",
@@ -80,11 +93,18 @@ const tr = {
     faqEyebrow: "Sık Sorulanlar",
     relatedEyebrow: "İlgili Hizmetler",
     backToAll: "Tüm hizmetlere dön",
+    breadcrumbAria: "Yol haritası",
+    processDesc: "Birlikte çalışmaya başladığımız andan teslim/yayın anına kadar geçtiğimiz adımlar.",
+    toolsDesc: "Bu hizmet için günlük olarak kullandığımız platformlar.",
+    relatedTitle: "Bu hizmetle birlikte tercih edilenler",
+    relatedDesc: "Tek başına alabilirsiniz, ama birlikte sinerji çok daha güçlü.",
   },
   contactPage: {
     socialMedia: "Sosyal Medya",
     dmNote: "DM kanallarımız da aktif — ama detaylı projeler için e-posta önerilir.",
     mapsOpen: "Google Maps'te Aç",
+    officeTitle: "Ofisimiz",
+    officeMapTitle: "Ofis konumu",
   },
   dashboard: {
     label: "Canlı",
@@ -111,10 +131,41 @@ const tr = {
       { them: "Yavaş iterasyon, aylık değişim", us: "48 saatte test, haftalık optimizasyon" },
     ],
   },
+  brandStrip: { label: "Birlikte büyüdüğümüz markalar" },
+  testimonials: {
+    eyebrow: "Referanslar",
+    title: "Markalar bizimle ne anlatıyor?",
+    description:
+      "Sayılar etkileyici olabilir; ama bir ajansla çalışmanın asıl değeri, müşterinin sabah uyandığında içinin rahat olmasıdır.",
+    prev: "Önceki referans",
+    next: "Sonraki referans",
+    goTo: "{n}. referans",
+  },
+  faq: {
+    eyebrow: "Sık Sorulanlar",
+    title: "Bilmek istediklerinin cevapları",
+    description:
+      "Aklında olup da burada cevabını bulamadığın bir soru varsa, iletişim sayfasından bize ulaşabilirsin.",
+  },
+  portfolio: {
+    all: "Tümü",
+    empty: "Bu kategoride henüz paylaşılacak bir proje yok.",
+  },
+  servicesPage: {
+    gridIntro: "Detayları görmek için bir hizmete tıkla",
+    gridLink: "Hangisi sana uygun?",
+    fits: "Uygun",
+    pricingNote:
+      "Sürpriz fatura, gizli kalem, başlangıç ücreti yok. Sözleşme öncesi tüm detaylar yazılı paylaşılır.",
+    moreQuestions: "Daha fazla soru için",
+  },
   trust: { label: "Onaylar & ortaklıklar" },
   chat: {
     title: "EDigital Asistan",
     online: "Çevrimiçi",
+    close: "Kapat",
+    send: "Gönder",
+
     greeting: "Merhaba! 👋 Bugün sana nasıl yardımcı olabilirim?",
     subtitleAsk: "Hizmetlerimiz hakkında her şeyi sorabilirsin.",
     placeholder: "Mesajını yaz...",
@@ -143,6 +194,18 @@ const en: Dict = {
     menuClose: "Close menu",
     servicesHint: "A single service or a package? Let's decide together.",
   },
+  meta: {
+    keywords: [
+      "digital marketing agency",
+      "Google Ads agency",
+      "Meta Ads",
+      "SEO agency",
+      "mobile app development",
+      "SaaS development",
+      "social media management",
+      "performance marketing",
+    ],
+  },
   common: {
     skipToContent: "Skip to content",
     planCall: "Book a Call",
@@ -154,6 +217,7 @@ const en: Dict = {
     contact: "Contact",
     rights: "All rights reserved.",
     founder: "Founder",
+    city: "Istanbul",
   },
   notFound: {
     title: "The page you're looking for wasn't found",
@@ -208,11 +272,18 @@ const en: Dict = {
     faqEyebrow: "FAQ",
     relatedEyebrow: "Related Services",
     backToAll: "Back to all services",
+    breadcrumbAria: "Breadcrumb",
+    processDesc: "The steps we go through from the moment we start working together to delivery/launch.",
+    toolsDesc: "The platforms we use daily for this service.",
+    relatedTitle: "Frequently chosen alongside this service",
+    relatedDesc: "You can take it on its own, but the synergy together is far stronger.",
   },
   contactPage: {
     socialMedia: "Social Media",
     dmNote: "Our DM channels are active too — but email is recommended for detailed projects.",
     mapsOpen: "Open in Google Maps",
+    officeTitle: "Our office",
+    officeMapTitle: "Office location",
   },
   dashboard: {
     label: "Live",
@@ -239,10 +310,40 @@ const en: Dict = {
       { them: "Slow iteration, monthly changes", us: "Tests in 48h, weekly optimization" },
     ],
   },
+  brandStrip: { label: "Brands we've grown with" },
+  testimonials: {
+    eyebrow: "Testimonials",
+    title: "What brands say about working with us",
+    description:
+      "Numbers can be impressive; but the real value of working with an agency is the client waking up with peace of mind.",
+    prev: "Previous testimonial",
+    next: "Next testimonial",
+    goTo: "Testimonial {n}",
+  },
+  faq: {
+    eyebrow: "FAQ",
+    title: "Answers to what you want to know",
+    description:
+      "If something is on your mind and you can't find the answer here, reach out through the contact page.",
+  },
+  portfolio: {
+    all: "All",
+    empty: "No projects to share in this category yet.",
+  },
+  servicesPage: {
+    gridIntro: "Click a service to see the details",
+    gridLink: "Which one fits you?",
+    fits: "Fits",
+    pricingNote:
+      "No surprise invoices, no hidden items, no setup fee. Every detail is shared in writing before the contract.",
+    moreQuestions: "For more questions",
+  },
   trust: { label: "Certifications & partnerships" },
   chat: {
     title: "EDigital Assistant",
     online: "Online",
+    close: "Close",
+    send: "Send",
     greeting: "Hi there! 👋 How can I help you today?",
     subtitleAsk: "Ask anything about our services.",
     placeholder: "Type your message...",
@@ -269,6 +370,18 @@ const de: Dict = {
     menuClose: "Menü schließen",
     servicesHint: "Eine einzelne Leistung oder ein Paket? Entscheiden wir gemeinsam.",
   },
+  meta: {
+    keywords: [
+      "Digitalagentur",
+      "Google Ads Agentur",
+      "Meta Ads",
+      "SEO Agentur",
+      "App-Entwicklung",
+      "SaaS-Entwicklung",
+      "Social-Media-Management",
+      "Performance Marketing",
+    ],
+  },
   common: {
     skipToContent: "Zum Inhalt springen",
     planCall: "Termin buchen",
@@ -280,6 +393,7 @@ const de: Dict = {
     contact: "Kontakt",
     rights: "Alle Rechte vorbehalten.",
     founder: "Gründer",
+    city: "Istanbul",
   },
   notFound: {
     title: "Die gesuchte Seite wurde nicht gefunden",
@@ -334,11 +448,18 @@ const de: Dict = {
     faqEyebrow: "Häufige Fragen",
     relatedEyebrow: "Verwandte Leistungen",
     backToAll: "Zurück zu allen Leistungen",
+    breadcrumbAria: "Brotkrumenpfad",
+    processDesc: "Die Schritte vom Beginn der Zusammenarbeit bis zur Übergabe bzw. zum Launch.",
+    toolsDesc: "Die Plattformen, die wir für diese Leistung täglich nutzen.",
+    relatedTitle: "Häufig zusammen mit dieser Leistung gewählt",
+    relatedDesc: "Einzeln möglich – gemeinsam ist die Synergie deutlich stärker.",
   },
   contactPage: {
     socialMedia: "Soziale Medien",
     dmNote: "Unsere DM-Kanäle sind ebenfalls aktiv — für detaillierte Projekte empfehlen wir E-Mail.",
     mapsOpen: "In Google Maps öffnen",
+    officeTitle: "Unser Büro",
+    officeMapTitle: "Bürostandort",
   },
   dashboard: {
     label: "Live",
@@ -365,10 +486,40 @@ const de: Dict = {
       { them: "Langsame Iteration, monatliche Änderungen", us: "Tests in 48 Std., wöchentliche Optimierung" },
     ],
   },
+  brandStrip: { label: "Marken, mit denen wir gemeinsam gewachsen sind" },
+  testimonials: {
+    eyebrow: "Referenzen",
+    title: "Was Marken über die Zusammenarbeit sagen",
+    description:
+      "Zahlen können beeindrucken; der eigentliche Wert einer Agentur zeigt sich aber daran, dass Kundinnen und Kunden morgens beruhigt aufwachen.",
+    prev: "Vorherige Referenz",
+    next: "Nächste Referenz",
+    goTo: "Referenz {n}",
+  },
+  faq: {
+    eyebrow: "Häufige Fragen",
+    title: "Antworten auf Ihre Fragen",
+    description:
+      "Wenn Sie hier keine Antwort finden, schreiben Sie uns einfach über die Kontaktseite.",
+  },
+  portfolio: {
+    all: "Alle",
+    empty: "In dieser Kategorie gibt es noch keine Projekte.",
+  },
+  servicesPage: {
+    gridIntro: "Klicken Sie auf eine Leistung, um Details zu sehen",
+    gridLink: "Welche passt zu Ihnen?",
+    fits: "Passend für",
+    pricingNote:
+      "Keine Überraschungsrechnungen, keine versteckten Posten, keine Einrichtungsgebühr. Alle Details werden vor Vertragsabschluss schriftlich geteilt.",
+    moreQuestions: "Für weitere Fragen",
+  },
   trust: { label: "Zertifizierungen & Partnerschaften" },
   chat: {
     title: "EDigital Assistent",
     online: "Online",
+    close: "Schließen",
+    send: "Senden",
     greeting: "Hallo! 👋 Wie kann ich Ihnen heute helfen?",
     subtitleAsk: "Fragen Sie alles über unsere Leistungen.",
     placeholder: "Ihre Nachricht...",

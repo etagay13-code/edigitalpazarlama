@@ -19,6 +19,7 @@ export async function Footer({ locale }: { locale: Locale }) {
   return (
     <footer className="relative mt-24 border-t border-white/[0.06] bg-ink-950/80">
       <div className="pointer-events-none absolute inset-x-0 -top-32 h-64 bg-radial-fade opacity-60" />
+      <div className="pointer-events-none absolute inset-x-0 -top-24 h-48 bg-[radial-gradient(45%_60%_at_70%_0%,rgba(251,191,36,0.10),transparent_70%)]" />
       <div className="container-x relative py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-5">
@@ -131,7 +132,8 @@ export async function Footer({ locale }: { locale: Locale }) {
             © {new Date().getFullYear()} {brand.name}. {t.footer.rights}
           </p>
           <p>
-            {t.footer.founder}: <span className="text-white/70">{brand.founder}</span> · İstanbul
+            {t.footer.founder}: <span className="text-white/70">{brand.founder}</span> ·{" "}
+            {t.footer.city}
           </p>
         </div>
       </div>

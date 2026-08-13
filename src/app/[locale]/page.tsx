@@ -86,6 +86,7 @@ export default async function HomePage({
   return (
     <>
       <Hero
+        dict={{ ...t.common, services: t.nav.services }}
         eyebrow={heroSection?.eyebrow ?? undefined}
         title={heroSection?.title ?? undefined}
         description={heroSection?.description ?? undefined}
@@ -97,6 +98,8 @@ export default async function HomePage({
         note1={heroBody.note1}
         note2={heroBody.note2}
       />
+      <TrustBadges dict={t.trust} />
+
       <section className="relative pb-4 pt-2 sm:pb-8">
         <div className="container-x">
           <Reveal>
@@ -105,23 +108,23 @@ export default async function HomePage({
         </div>
       </section>
 
-      <BrandStrip label={brandSection?.title} brands={brands} />
-      <TrustBadges dict={t.trust} />
+      <BrandStrip
+        label={brandSection?.eyebrow || brandSection?.title}
+        brands={brands}
+        dict={t.brandStrip}
+      />
 
       <section className="section">
         <div className="container-x">
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <SectionHeader
-              eyebrow={servicesHeader?.eyebrow || "Hizmetler"}
-              title={servicesHeader?.title || "Markanızı büyütecek tüm uzmanlıklar"}
-              description={
-                servicesHeader?.description ||
-                "Reklamdan SEO'ya, mobil uygulamadan SaaS geliştirmeye — markanız büyüdükçe ihtiyaç duyacağınız her hizmet kendi içinde uzmanlaşmış ekiplerle sunuluyor."
-              }
+              eyebrow={servicesHeader?.eyebrow || t.nav.services}
+              title={servicesHeader?.title || ""}
+              description={servicesHeader?.description || undefined}
             />
             <Reveal delay={0.2}>
               <Link href={localizeHref(locale, servicesHeaderBody.linkHref || "/hizmetler")} className="btn-ghost">
-                {servicesHeaderBody.linkLabel || "Tüm hizmetler"}
+                {servicesHeaderBody.linkLabel || t.nav.allServices}
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
             </Reveal>
@@ -140,8 +143,11 @@ export default async function HomePage({
         steps={workflowSteps}
       />
       <Comparison dict={t.compare} />
-      <Testimonials items={testimonials} />
-      <FAQ items={faqs.map((f) => ({ question: f.question, answer: f.answer }))} />
+      <Testimonials items={testimonials} dict={t.testimonials} />
+      <FAQ
+        items={faqs.map((f) => ({ question: f.question, answer: f.answer }))}
+        dict={t.faq}
+      />
       <CTASection locale={locale} />
     </>
   );
