@@ -12,3 +12,9 @@ out
 test-results
 playwright-report
 /blob-report
+
+# /v2 WebGL tasarım prototipi — bağımlılıkları (three, r3f) prod build'e girmesin
+# diye kasıtlı olarak takip edilmiyor. Ana siteye taşınırsa package.json ile
+# birlikte commit'lenmeli.
+src/app/v2/
+src/components/v2/
