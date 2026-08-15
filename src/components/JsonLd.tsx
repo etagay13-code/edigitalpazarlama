@@ -31,12 +31,9 @@ export function FaqJsonLd({ items }: { items: { question: string; answer: string
 export function OrganizationJsonLd({
   brand,
   locale,
-  reviews,
 }: {
   brand: ResolvedBrand;
   locale?: string;
-  /** Yorum sayısı ve ortalama puan — varsa AggregateRating eklenir. */
-  reviews?: { count: number; rating: number };
 }) {
   const sameAs = [
     brand.socials.instagram,
@@ -73,16 +70,11 @@ export function OrganizationJsonLd({
               }
             : {}),
           ...(locale ? { inLanguage: locale } : {}),
-          ...(reviews && reviews.count > 0
-            ? {
-                aggregateRating: {
-                  "@type": "AggregateRating",
-                  ratingValue: reviews.rating.toFixed(1),
-                  reviewCount: reviews.count,
-                  bestRating: "5",
-                },
-              }
-            : {}),
+          // AggregateRating BİLEREK yok: site üzerindeki yorumlar kendi
+          // beyanımız olduğu için işaretlenemez. Google Yorum Snippet'i
+          // politikası, işletmenin kendi topladığı yorumları kendi sayfasında
+          // işaretlemesini yasaklıyor. Clutch/Google İşletme Profili gibi
+          // üçüncü taraf verisi bağlandığında burada tekrar değerlendirilecek.
           ...(sameAs.length ? { sameAs } : {}),
         },
         {

@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { getBrand } from "@/lib/theme";
-import { listServicesPublic, listChatRulesPublic, listTestimonialsPublic } from "@/lib/data";
+import { listServicesPublic, listChatRulesPublic } from "@/lib/data";
 import { LOCALES, isLocale, type Locale } from "@/i18n/config";
 import { getDict } from "@/i18n/dictionaries";
 import { OrganizationJsonLd } from "@/components/JsonLd";
@@ -26,23 +26,17 @@ export default async function PublicLayout({
   const locale = params.locale as Locale;
   const t = getDict(locale);
 
-  const [brand, services, chatRules, testimonials] = await Promise.all([
+  const [brand, services, chatRules] = await Promise.all([
     getBrand(locale),
     listServicesPublic(locale),
     listChatRulesPublic(locale),
-    listTestimonialsPublic(locale),
   ]);
 
   return (
     <>
       <HtmlLangSync locale={locale} />
       <OutboundTracker locale={locale} />
-      <OrganizationJsonLd
-        brand={brand}
-        locale={locale}
-        // Sitede yayınlanan müşteri yorumları AggregateRating'e beslenir.
-        reviews={testimonials.length > 0 ? { count: testimonials.length, rating: 5 } : undefined}
-      />
+      <OrganizationJsonLd brand={brand} locale={locale} />
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:text-black"

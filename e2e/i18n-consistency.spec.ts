@@ -46,8 +46,14 @@ const PATHS = {
 // Kişi/marka adlarında geçen Türkçe karakterler yanlış alarm üretmesin diye
 // bunlar metinden temizlenir.
 const PROPER_NOUNS = [
-  "Deniz Aydın", "Zeynep Şahin", "Burak Yıldız", "Onur Şahin", "Kerem Doğan",
-  "Beyza Yılmaz", "Emre Tagay", "İstanbul", "Istanbul", "Türkiye",
+  "Emre Tagay", "İstanbul", "Istanbul", "Türkiye",
+  // Gerçek müşteri markaları — özel isim oldukları için çevrilmez
+  "Istanbul Care", "MyHaar", "Estemoon", "Vibratech",
+  // Marka şeridindeki yazımı karışık büyük harfli ("MITSUBISHI" düz I,
+  // "KLİMA" noktalı İ), bu yüzden tam hâli de listede.
+  "Mitsubishi Klima", "MITSUBISHI KLİMA",
+  "Köşkeroğlu", "Bilen Tesisat", "Karagöz", "Neco Nakliyat", "Öz Bayrampaşa",
+  "IHH Belgium", "IHA Austria",
 ];
 
 // Sadece Türkçede bulunan harfler + yalnızca Türkçe olabilecek kelimeler.
@@ -56,7 +62,17 @@ const TR_ONLY = /[ığşİĞŞ]|\b(için|değil|ancak|hizmetlerimiz|sayfasından
 async function visibleText(page: Page, path: string) {
   await page.goto(path, { waitUntil: "domcontentloaded" });
   const body = (await page.locator("body").innerText()) ?? "";
-  return PROPER_NOUNS.reduce((acc, n) => acc.split(n).join(" "), body);
+  // Özel isimler metinden çıkarılır. Tüm metni küçük harfe çevirmek yerine
+  // ismin harf varyantları tek tek silinir: Türkçe küçültme Almanca "Inhalt"ı
+  // "ınhalt" yapıp yanlış alarm üretiyordu (noktasız ı Türkçe işareti sayılıyor).
+  const variants = (n: string) => [
+    n,
+    n.toLocaleUpperCase("tr"),
+    n.toLocaleUpperCase("en"),
+    n.toLocaleLowerCase("tr"),
+    n.toLocaleLowerCase("en"),
+  ];
+  return PROPER_NOUNS.flatMap(variants).reduce((acc, v) => acc.split(v).join(" "), body);
 }
 
 for (const locale of ["en", "de"] as const) {

@@ -28,7 +28,22 @@ export type ProjectFacts = {
   tags: string[];
 };
 
-async function deepseek(apiKey: string, system: string, user: string): Promise<Record<string, unknown>> {
+/** Model bazen bozuk JSON döndürüyor; bir kez daha deneriz. */
+async function deepseek(
+  apiKey: string,
+  system: string,
+  user: string,
+  attempt = 0,
+): Promise<Record<string, unknown>> {
+  try {
+    return await deepseekOnce(apiKey, system, user);
+  } catch (e) {
+    if (attempt >= 2) throw e;
+    return deepseek(apiKey, system, user, attempt + 1);
+  }
+}
+
+async function deepseekOnce(apiKey: string, system: string, user: string): Promise<Record<string, unknown>> {
   const res = await fetch(DEEPSEEK_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
@@ -70,6 +85,8 @@ export async function generateCaseStudy(opts: {
 
   const system = [
     "Sen bir dijital pazarlama ajansı için vaka çalışması yazan kıdemli bir içerik editörüsün.",
+    "MUTLAK KURAL: Hiçbir alanda SONUÇ İDDİASI kurma. 'arttı', 'iyileşti', 'yükseldi', 'düştü', 'increased', 'improved', 'boosted', 'gesteigert', 'verbessert' gibi fiiller ve yüzde/kat ifadeleri YASAK.",
+    "Sadece YAPILAN İŞİ anlat: ne kuruldu, nasıl yapılandırıldı, hangi sıra izlendi. Sonucun ne olduğunu iddia etme.",
     "Sadece sana verilen gerçeklerle çalışırsın: YENİ RAKAM, YENİ MÜŞTERİ ADI veya DOĞRULANMAMIŞ İDDİA ÜRETMEZSİN.",
     "Verilen metriği aynen kullanırsın; ek metrik gerekiyorsa sayı vermek yerine niteliksel ifade kullanırsın.",
     "Anlatın somut ve yöntem odaklıdır: ne yapıldığı, hangi sırayla, neden.",
@@ -90,9 +107,12 @@ KURALLAR
 - "challenge": 2-3 cümle. Müşterinin başlangıçtaki sorunu; sektör bağlamıyla.
 - "approach": 2-3 cümle. Ajansın stratejik yaklaşımı, neden bu yol seçildi.
 - "steps": 4 adım. Her biri { "title": kısa başlık, "desc": 1-2 cümle }. Kronolojik ve somut.
-- "results": 3 madde. Her biri { "label": metrik adı, "value": değer, "note": kısa açıklama }.
-  İLK madde verilen öne çıkan metrik olmalı (${facts.metric ?? "yoksa niteliksel bir sonuç"}).
-  Diğer ikisi için SAYI UYDURMA — "value" alanına niteliksel bir ifade yaz.
+- "results": 3 madde. Her biri { "label": başlık, "value": kısa değer, "note": kısa açıklama }.
+  İLK madde verilen öne çıkan bilgi olmalı (${facts.metric ?? "kapsamı özetleyen bir ifade"}).
+  KESİN KURAL: PERFORMANS RAKAMI UYDURMA. Yüzde artış, ROAS, trafik katı, tıklama
+  maliyeti gibi ölçüm sonuçları SANA VERİLMEDİYSE yazma. Bunun yerine "value"
+  alanına teslim edilen kapsamı veya yapısal kazanımı yaz (ör. hizmet/bölge sayısı,
+  dil sayısı, kurulan yapı). Ölçüm sonucu gibi görünen hiçbir sayı üretme.
   DİKKAT: Tüm alanlar hedef dilde (${LANG[locale]}) yazılmalı; bu talimatlardaki Türkçe
   kelimeleri çıktıya KOPYALAMA.
 - "deliverables": 4-5 madde, teslim edilen somut çıktılar.
