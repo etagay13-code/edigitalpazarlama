@@ -14,6 +14,7 @@ import {
   Mail,
   Plug,
   Bot,
+  Newspaper,
 } from "lucide-react";
 
 export type AdminNavItem = {
@@ -41,6 +42,7 @@ export const adminNav: AdminNavGroup[] = [
     title: "İçerik",
     items: [
       { href: "/admin/pages", label: "Sayfa İçerikleri", icon: FileText, description: "Hero, başlıklar, açıklamalar", ready: true },
+      { href: "/admin/blog", label: "Blog", icon: Newspaper, description: "Otomatik üretilen yazılar ve onay kuyruğu", ready: true },
       { href: "/admin/services", label: "Hizmetler", icon: Globe2, description: "8 hizmet ve alt detayları", ready: true },
       { href: "/admin/portfolio", label: "Portfolyo", icon: Briefcase, description: "Proje vakaları", ready: true },
       { href: "/admin/testimonials", label: "Yorumlar", icon: MessageSquare, description: "Müşteri referansları", ready: true },

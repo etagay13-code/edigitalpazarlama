@@ -306,6 +306,73 @@ body::before {
     @apply inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.2em] text-white/55;
   }
 
+  /* Blog yazısı tipografisi — model HTML üretiyor, sınıf koyamıyoruz;
+     bu yüzden stiller etiket seçicileriyle veriliyor. Okuma satırı 68ch. */
+  .prose-post {
+    @apply text-[17px] leading-[1.75] text-white/70;
+  }
+  .prose-post > * + * {
+    @apply mt-6;
+  }
+  .prose-post h2 {
+    @apply h-display mt-14 text-2xl font-semibold text-white sm:text-[28px];
+  }
+  .prose-post h3 {
+    @apply h-display mt-10 text-xl font-semibold text-white;
+  }
+  .prose-post p {
+    @apply text-white/70;
+  }
+  .prose-post strong {
+    @apply font-semibold text-white;
+  }
+  .prose-post a {
+    @apply font-medium text-violet-200 underline decoration-violet-300/40 underline-offset-4 transition;
+  }
+  .prose-post a:hover {
+    @apply text-white decoration-violet-200;
+  }
+  .prose-post ul,
+  .prose-post ol {
+    @apply space-y-2.5 pl-1;
+  }
+  .prose-post li {
+    @apply relative pl-7 text-white/70;
+  }
+  .prose-post ul > li::before {
+    content: "";
+    @apply absolute left-0 top-[0.7em] h-1.5 w-1.5 rounded-full;
+    background: linear-gradient(120deg, #8b6dff, #22d3ee);
+  }
+  .prose-post ol {
+    counter-reset: item;
+  }
+  .prose-post ol > li {
+    counter-increment: item;
+  }
+  .prose-post ol > li::before {
+    content: counter(item) ".";
+    @apply absolute left-0 top-0 font-display text-sm font-semibold text-violet-300;
+  }
+  .prose-post blockquote {
+    @apply rounded-2xl border-l-2 border-violet-400/60 bg-white/[0.03] px-6 py-4 text-white/80;
+  }
+  .prose-post table {
+    @apply w-full border-collapse overflow-hidden rounded-xl border border-white/[0.08] text-sm;
+  }
+  .prose-post th {
+    @apply bg-white/[0.04] px-4 py-3 text-left font-semibold text-white;
+  }
+  .prose-post td {
+    @apply border-t border-white/[0.06] px-4 py-3 text-white/70;
+  }
+  .prose-post code {
+    @apply rounded-md bg-white/[0.06] px-1.5 py-0.5 text-[0.9em] text-violet-100;
+  }
+  .prose-post img {
+    @apply rounded-2xl border border-white/[0.08];
+  }
+
   /* Bölüm ayıracı */
   .hairline {
     @apply h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent;

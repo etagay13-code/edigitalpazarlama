@@ -1,13 +1,16 @@
 import type { MetadataRoute } from "next";
 import { getBrand } from "@/lib/theme";
-import { listServicesPublic } from "@/lib/data";
+import { listServicesPublic, listBlogPostsPublic } from "@/lib/data";
 import { LOCALES } from "@/i18n/config";
 import { localizeHref } from "@/i18n/routes";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [brand, services] = await Promise.all([
+  const [brand, services, postsTr, postsEn, postsDe] = await Promise.all([
     getBrand(),
     listServicesPublic("tr"),
+    listBlogPostsPublic("tr", 500),
+    listBlogPostsPublic("en", 500),
+    listBlogPostsPublic("de", 500),
   ]);
   const base = brand.url.replace(/\/$/, "");
   const now = new Date();
@@ -19,7 +22,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/portfolyo",
     "/iletisim",
     ...services.map((s) => `/hizmetler/${s.slug}`),
+    "/blog",
   ];
+
+  // Blog yazıları dil başına farklı slug taşıdığı için ortak listeye giremez;
+  // her dil kendi adresleriyle ayrıca eklenir.
+  const blogByLocale: Record<string, { slug: string; published_at: string | null }[]> = {
+    tr: postsTr,
+    en: postsEn,
+    de: postsDe,
+  };
 
   const entries: MetadataRoute.Sitemap = [];
   for (const locale of LOCALES) {
@@ -37,5 +49,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       });
     }
   }
+  for (const [locale, posts] of Object.entries(blogByLocale)) {
+    for (const post of posts) {
+      entries.push({
+        url: base + localizeHref(locale as (typeof LOCALES)[number], `/blog/${post.slug}`),
+        lastModified: post.published_at ? new Date(post.published_at) : now,
+        changeFrequency: "monthly",
+        priority: 0.6,
+      });
+    }
+  }
+
   return entries;
 }

@@ -7,6 +7,7 @@ export const SEGMENTS = {
   hakkimizda: { tr: "hakkimizda", en: "about", de: "ueber-uns" },
   portfolyo: { tr: "portfolyo", en: "portfolio", de: "portfolio" },
   iletisim: { tr: "iletisim", en: "contact", de: "kontakt" },
+  blog: { tr: "blog", en: "blog", de: "blog" },
 } as const;
 
 // Hizmet slug'ları da dile göre yerelleştirilir. Kanonik (iç) slug DB'deki

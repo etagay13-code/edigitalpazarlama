@@ -365,6 +365,75 @@ export type Database = {
         Relationships: [];
       };
 
+      blog_posts: {
+        Row: {
+          id: string;
+          /** Aynı yazının üç dildeki sürümünü bağlar (hreflang grubu) */
+          group_id: string;
+          locale: "tr" | "en" | "de";
+          slug: string;
+          title: string;
+          excerpt: string;
+          content_html: string;
+          cover_url: string | null;
+          cover_alt: string | null;
+          meta_title: string | null;
+          meta_desc: string | null;
+          tags: string[];
+          reading_min: number;
+          status: "draft" | "published" | "archived";
+          source: "deepseek" | "manual" | "translation";
+          published_at: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: Omit<
+          Database["public"]["Tables"]["blog_posts"]["Row"],
+          "id" | "group_id" | "created_at" | "updated_at" | "excerpt" | "tags" | "reading_min" | "status" | "source" | "published_at" | "cover_url" | "cover_alt" | "meta_title" | "meta_desc"
+        > & {
+          id?: string;
+          group_id?: string;
+          /** Yayınlama/güncelleme sırasında elle set edilir */
+          updated_at?: string;
+          excerpt?: string;
+          tags?: string[];
+          reading_min?: number;
+          status?: "draft" | "published" | "archived";
+          source?: "deepseek" | "manual" | "translation";
+          published_at?: string | null;
+          cover_url?: string | null;
+          cover_alt?: string | null;
+          meta_title?: string | null;
+          meta_desc?: string | null;
+        };
+        Update: Partial<Database["public"]["Tables"]["blog_posts"]["Insert"]>;
+        Relationships: [];
+      };
+
+      blog_topics: {
+        Row: {
+          id: string;
+          topic: string;
+          keyword: string | null;
+          priority: number;
+          used_at: string | null;
+          post_id: string | null;
+          created_at: string;
+        };
+        Insert: Omit<
+          Database["public"]["Tables"]["blog_topics"]["Row"],
+          "id" | "created_at" | "keyword" | "priority" | "used_at" | "post_id"
+        > & {
+          id?: string;
+          keyword?: string | null;
+          priority?: number;
+          used_at?: string | null;
+          post_id?: string | null;
+        };
+        Update: Partial<Database["public"]["Tables"]["blog_topics"]["Insert"]>;
+        Relationships: [];
+      };
+
       messages: {
         Row: {
           id: string;

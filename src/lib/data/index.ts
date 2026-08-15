@@ -249,6 +249,76 @@ export const listChatRulesPublic = unstable_cache(
   { tags: ["chat_rules"], revalidate: 3600 },
 );
 
+// ── Blog ────────────────────────────────────────────────────────────────────
+// Not: Blog içeriği diğer tablolardan daha sık değişir (günde 2 yazı), bu yüzden
+// revalidate süresi kısa tutuldu. Yayınlama sonrası admin revalidateTag("blog")
+// çağırır; bu süre yalnızca emniyet ağıdır.
+
+export const listBlogPostsPublic = unstable_cache(
+  async (locale: Locale, limit = 24) => {
+    const supabase = createServiceClient();
+    const { data } = await supabase
+      .from("blog_posts")
+      .select("slug,title,excerpt,cover_url,cover_alt,tags,reading_min,published_at,group_id")
+      .eq("locale", locale)
+      .eq("status", "published")
+      .order("published_at", { ascending: false })
+      .limit(limit);
+    return data ?? [];
+  },
+  ["blog-list", "i18n-v3"],
+  { tags: ["blog"], revalidate: 300 },
+);
+
+export const getBlogPostPublic = unstable_cache(
+  async (slug: string, locale: Locale) => {
+    const supabase = createServiceClient();
+    const { data } = await supabase
+      .from("blog_posts")
+      .select("*")
+      .eq("slug", slug)
+      .eq("locale", locale)
+      .eq("status", "published")
+      .maybeSingle();
+    return data;
+  },
+  ["blog-detail", "i18n-v3"],
+  { tags: ["blog"], revalidate: 300 },
+);
+
+/** Bir yazının diğer dillerdeki sürümleri — hreflang bağlantıları için. */
+export const getBlogTranslations = unstable_cache(
+  async (groupId: string) => {
+    const supabase = createServiceClient();
+    const { data } = await supabase
+      .from("blog_posts")
+      .select("locale,slug")
+      .eq("group_id", groupId)
+      .eq("status", "published");
+    return data ?? [];
+  },
+  ["blog-translations", "i18n-v3"],
+  { tags: ["blog"], revalidate: 300 },
+);
+
+/** Yazının altında gösterilecek diğer yazılar. */
+export const listRelatedPosts = unstable_cache(
+  async (locale: Locale, excludeSlug: string, limit = 3) => {
+    const supabase = createServiceClient();
+    const { data } = await supabase
+      .from("blog_posts")
+      .select("slug,title,excerpt,cover_url,reading_min,published_at")
+      .eq("locale", locale)
+      .eq("status", "published")
+      .neq("slug", excludeSlug)
+      .order("published_at", { ascending: false })
+      .limit(limit);
+    return data ?? [];
+  },
+  ["blog-related", "i18n-v3"],
+  { tags: ["blog"], revalidate: 300 },
+);
+
 export const getSiteSettingsPublic = unstable_cache(
   async () => {
     const supabase = createServiceClient();

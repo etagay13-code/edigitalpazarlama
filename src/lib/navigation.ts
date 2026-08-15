@@ -5,6 +5,7 @@ export const navLinks = [
   { key: "about", internal: "/hakkimizda" },
   { key: "services", internal: "/hizmetler" },
   { key: "portfolio", internal: "/portfolyo" },
+  { key: "blog", internal: "/blog" },
   { key: "contact", internal: "/iletisim" },
 ] as const;
 
