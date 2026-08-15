@@ -26,6 +26,10 @@ export function pageMeta(opts: {
     openGraph: {
       url: path,
       locale: OG_LOCALE[locale],
+      // Next metadata'yı sığ birleştirir: sayfa openGraph tanımlarsa kök
+      // layout'taki openGraph tamamen ezilir. Bu yüzden görsel burada da
+      // verilmeli, yoksa alt sayfalarda og:image kayboluyor.
+      images: [{ url: `/og/og-${locale}.jpg`, width: 1200, height: 630 }],
       ...(title ? { title } : {}),
       ...(description ? { description } : {}),
     },

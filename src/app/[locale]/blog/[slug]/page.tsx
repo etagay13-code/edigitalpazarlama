@@ -61,7 +61,9 @@ export async function generateMetadata({
       title: post.meta_title || post.title,
       description: post.meta_desc || post.excerpt,
       publishedTime: post.published_at ?? undefined,
-      images: post.cover_url ? [{ url: post.cover_url, width: 1200, height: 675 }] : undefined,
+      images: post.cover_url
+        ? [{ url: post.cover_url, width: 1200, height: 675 }]
+        : [{ url: `/og/og-${locale}.jpg`, width: 1200, height: 630 }],
     },
   };
 }
