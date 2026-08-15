@@ -137,7 +137,14 @@ export async function generateTurkishPost(opts: {
     "Çıktıyı SADECE geçerli JSON olarak ver.",
   ].join(" ");
 
-  const user = `${
+  // Model eğitim verisindeki yılı yazıya taşıyor ("2024'te doğru kurulum" gibi).
+  // Güncel tarihi vererek hem bunu engelliyoruz hem de içeriğin tazeliğini koruyoruz.
+  const today = new Date();
+  const dateNote = `Bugünün tarihi: ${today.toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" })}. Başlıkta veya metinde yıl geçirecekseniz ${today.getFullYear()} kullanın; geçmiş yılları güncelmiş gibi yazmayın.`;
+
+  const user = `${dateNote}
+
+${
     opts.topic
       ? `Bu konuda bir blog yazısı yaz: "${opts.topic}"${opts.keyword ? ` (hedef anahtar kelime: "${opts.keyword}")` : ""}.`
       : "Dijital pazarlama alanında, okuyucuya somut fayda veren özgün bir blog yazısı konusu seç ve yaz."
