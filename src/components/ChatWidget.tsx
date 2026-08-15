@@ -40,11 +40,33 @@ export function ChatWidget({
     : dict.suggested
   ).slice(0, 4);
 
+  // Karşılama balonu zamanlayıcıyla değil, ilk kullanıcı etkileşiminde açılır.
+  // Zamanlayıcıyla açıldığında geç boyanan büyük bir metin bloğu olarak LCP'yi
+  // devralıyor ve anasayfa 0,9 sn yerine 4,2 sn ölçülüyordu.
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (sessionStorage.getItem("edigital_chat_seen")) return;
-    const t = setTimeout(() => setTeaser(true), 2600);
-    return () => clearTimeout(t);
+
+    let shown = false;
+    const show = () => {
+      if (shown) return;
+      shown = true;
+      setTeaser(true);
+      cleanup();
+    };
+    const onScroll = () => {
+      if (window.scrollY > 320) show();
+    };
+    const cleanup = () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("pointerdown", show);
+      window.removeEventListener("keydown", show);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("pointerdown", show, { passive: true });
+    window.addEventListener("keydown", show);
+    return cleanup;
   }, []);
 
   useEffect(() => {

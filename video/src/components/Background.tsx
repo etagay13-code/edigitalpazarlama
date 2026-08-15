@@ -4,9 +4,10 @@ import { COLORS } from "../brand";
 
 const PARTICLES = 42;
 
-export const Background: React.FC<{ tint?: "violet" | "cyan" | "mix" }> = ({
-  tint = "mix",
-}) => {
+export const Background: React.FC<{
+  tint?: "violet" | "cyan" | "mix";
+  children?: React.ReactNode;
+}> = ({ tint = "mix", children }) => {
   const frame = useCurrentFrame();
   const { width, height } = useVideoConfig();
 
@@ -94,6 +95,9 @@ export const Background: React.FC<{ tint?: "violet" | "cyan" | "mix" }> = ({
             "radial-gradient(circle at center, transparent 42%, rgba(0,0,0,0.6) 100%)",
         }}
       />
+
+      {/* önplan içeriği */}
+      {children}
     </AbsoluteFill>
   );
 };

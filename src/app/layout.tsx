@@ -44,13 +44,18 @@ export async function generateMetadata(): Promise<Metadata> {
       title: `${b.name} — ${b.tagline}`,
       description: b.description,
       siteName: b.name,
-      images: b.ogImageUrl ? [{ url: b.ogImageUrl }] : undefined,
+      // Paylaşım görseli: admin'den yüklenmişse o, yoksa dile göre hazır görsel.
+      images: [
+        b.ogImageUrl
+          ? { url: b.ogImageUrl }
+          : { url: `/og/og-${locale}.jpg`, width: 1200, height: 630, alt: b.name },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: `${b.name} — ${b.tagline}`,
       description: b.description,
-      images: b.ogImageUrl ? [b.ogImageUrl] : undefined,
+      images: [b.ogImageUrl ?? `/og/og-${locale}.jpg`],
     },
     icons: {
       icon: b.faviconUrl

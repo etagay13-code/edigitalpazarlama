@@ -111,6 +111,38 @@ body::before {
   }
 }
 
+/* Aurora: çok yavaş dönen konik ışık. Premium derinlik hissini JS olmadan verir;
+   sadece transform animasyonu olduğu için GPU'da ucuz. */
+@keyframes auroraSpin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+.aurora {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 140vmax;
+  height: 140vmax;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(124, 92, 255, 0) 0deg,
+    rgba(124, 92, 255, 0.22) 60deg,
+    rgba(34, 211, 238, 0.14) 140deg,
+    rgba(124, 92, 255, 0) 220deg,
+    rgba(139, 109, 255, 0.16) 300deg,
+    rgba(124, 92, 255, 0) 360deg
+  );
+  filter: blur(90px);
+  opacity: 0.55;
+  animation: auroraSpin 64s linear infinite;
+  will-change: transform;
+}
+/* Mobilde konik gradyan + büyük blur pahalı; orada sade kalır. */
+@media (max-width: 768px) {
+  .aurora { display: none; }
+}
+
 @keyframes toastIn {
   from {
     opacity: 0;
@@ -171,6 +203,25 @@ body::before {
       0 1px 0 0 rgba(255, 255, 255, 0.22) inset,
       0 10px 30px -8px rgba(124, 92, 255, 0.7);
   }
+  /* Hover'da butonun üzerinden geçen ışık — "canlı yüzey" hissi. */
+  .btn-primary {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .btn-primary::after {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 -40%;
+    width: 35%;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.42), transparent);
+    transform: skewX(-18deg) translateX(-120%);
+    transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+  }
+  .btn-primary:hover::after {
+    transform: skewX(-18deg) translateX(420%);
+  }
 
   .btn-ghost {
     @apply btn-base border border-white/10 bg-white/[0.03] text-white/85 hover:border-white/20 hover:bg-white/[0.06] hover:text-white;
@@ -205,6 +256,26 @@ body::before {
   .card:hover::after {
     opacity: 1;
   }
+  /* Hover'da kenarı saran ince gradient hat — maskeyle sadece çerçeve boyanır. */
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(140deg, rgba(124, 92, 255, 0.55), rgba(34, 211, 238, 0.35), transparent 60%);
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+  }
+  .card:hover::before {
+    opacity: 1;
+  }
 
   /* Doğal, tutarlı Lucide ikon kabı (rengârenk gradient kareler yerine) */
   .icon-chip {
@@ -220,6 +291,14 @@ body::before {
 
   .h-display {
     @apply font-display tracking-tight;
+    /* Başlık satırları eşit uzunlukta kırılsın — tek kelimelik dul satır olmasın. */
+    text-wrap: balance;
+    font-optical-sizing: auto;
+  }
+
+  /* Gövde metninde satır uzunluğunu okunur aralıkta tut. */
+  .measure {
+    max-width: 68ch;
   }
 
   /* İnce, kurumsal üst-etiket */

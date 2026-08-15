@@ -3,6 +3,8 @@
 export function GradientBlobs() {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+      {/* aurora: yavaş dönen konik ışık (masaüstü) — derinlik katmanı */}
+      <div aria-hidden className="aurora" />
       {/* tek odak, sakin parlama — mobilde daha hafif blur (GPU maliyeti) */}
       <div className="absolute left-1/2 -top-40 h-[34rem] w-[44rem] -translate-x-1/2 rounded-full bg-violet-600/16 blur-[80px] sm:blur-[130px]" />
       <div className="absolute right-[-8rem] top-52 hidden h-[24rem] w-[24rem] rounded-full bg-cyan-500/[0.08] blur-[130px] sm:block" />
