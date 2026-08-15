@@ -18,6 +18,7 @@ import {
 import { getBrand } from "@/lib/theme";
 import { asLocale } from "@/i18n/config";
 import { getDict } from "@/i18n/dictionaries";
+import { FaqJsonLd } from "@/components/JsonLd";
 import { localizeHref } from "@/i18n/routes";
 import { pageMeta } from "@/i18n/metadata";
 
@@ -233,6 +234,7 @@ export default async function ServicesPage({
       )}
 
       {/* Hizmet FAQ */}
+      <FaqJsonLd items={serviceFaqs.map((f) => ({ question: f.question, answer: f.answer }))} />
       {serviceFaqs.length > 0 && (
         <section className="section">
           <div className="container-x">

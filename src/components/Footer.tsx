@@ -77,6 +77,14 @@ export async function Footer({ locale }: { locale: Locale }) {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href={href("/roas-hesaplayici")}
+                  className="text-white/70 transition hover:text-white"
+                >
+                  {t.roasTool.title}
+                </Link>
+              </li>
             </ul>
           </div>
 

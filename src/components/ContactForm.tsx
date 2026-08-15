@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, Send } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import type { Dict } from "@/i18n/dictionaries";
+import { track } from "@/lib/analytics";
 
 type FormState = {
   name: string;
@@ -70,6 +71,7 @@ export function ContactForm({
     if (Object.keys(v).length > 0) return;
 
     setSubmitting(true);
+    track({ event: "form_start", form: "contact", locale });
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -85,6 +87,8 @@ export function ContactForm({
         };
         throw new Error((data.code && byCode[data.code]) || dict.errSubmit);
       }
+      // Asıl dönüşüm olayı — GA4'te "generate_lead" olarak işaretlenmeli.
+      track({ event: "generate_lead", form: "contact", service: form.service, locale });
       setSuccess(true);
       setForm(initial);
     } catch (err) {

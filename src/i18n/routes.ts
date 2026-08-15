@@ -8,6 +8,7 @@ export const SEGMENTS = {
   portfolyo: { tr: "portfolyo", en: "portfolio", de: "portfolio" },
   iletisim: { tr: "iletisim", en: "contact", de: "kontakt" },
   blog: { tr: "blog", en: "blog", de: "blog" },
+  "roas-hesaplayici": { tr: "roas-hesaplayici", en: "roas-calculator", de: "roas-rechner" },
 } as const;
 
 // Hizmet slug'ları da dile göre yerelleştirilir. Kanonik (iç) slug DB'deki

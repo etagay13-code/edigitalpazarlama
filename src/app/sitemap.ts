@@ -26,6 +26,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...services.map((s) => `/hizmetler/${s.slug}`),
     ...projects.map((p) => `/portfolyo/${p.slug}`),
     "/blog",
+    "/roas-hesaplayici",
   ];
 
   // Blog yazıları dil başına farklı slug taşıdığı için ortak listeye giremez;

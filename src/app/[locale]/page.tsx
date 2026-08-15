@@ -14,6 +14,7 @@ import { DashboardMockup } from "@/components/DashboardMockup";
 import { Comparison } from "@/components/Comparison";
 import { TrustBadges } from "@/components/TrustBadges";
 import { getDict } from "@/i18n/dictionaries";
+import { FaqJsonLd } from "@/components/JsonLd";
 import {
   listServicesPublic,
   listTestimonialsPublic,
@@ -144,6 +145,7 @@ export default async function HomePage({
       />
       <Comparison dict={t.compare} />
       <Testimonials items={testimonials} dict={t.testimonials} />
+      <FaqJsonLd items={faqs.map((f) => ({ question: f.question, answer: f.answer }))} />
       <FAQ
         items={faqs.map((f) => ({ question: f.question, answer: f.answer }))}
         dict={t.faq}

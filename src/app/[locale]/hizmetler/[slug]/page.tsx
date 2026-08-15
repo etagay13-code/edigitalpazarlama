@@ -25,7 +25,7 @@ import { asLocale } from "@/i18n/config";
 import { localizeHref } from "@/i18n/routes";
 import { pageMeta } from "@/i18n/metadata";
 import { getDict } from "@/i18n/dictionaries";
-import { JsonLd } from "@/components/JsonLd";
+import { JsonLd, FaqJsonLd } from "@/components/JsonLd";
 
 export async function generateStaticParams() {
   const services = await listServicesPublic("tr");
@@ -327,6 +327,7 @@ export default async function ServiceDetailPage({
       )}
 
       {/* FAQ */}
+      <FaqJsonLd items={service.faqs.map((f) => ({ question: f.question, answer: f.answer }))} />
       {service.faqs.length > 0 && (
         <section className="section">
           <div className="container-x">

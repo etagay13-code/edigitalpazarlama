@@ -164,6 +164,51 @@ const tr = {
     backToList: "Tüm çalışmalara dön",
     readCase: "Vakayı incele",
   },
+  roasTool: {
+    eyebrow: "Ücretsiz Araç",
+    title: "ROAS ve başabaş noktası hesaplayıcı",
+    description:
+      "Reklam harcamanı, cironu ve brüt kâr marjını gir; kampanyanın gerçekten kâr edip etmediğini gör. ROAS ciroyu ölçer, kârı değil — asıl eşik marjına bağlıdır.",
+    metaTitle: "ROAS Hesaplayıcı — Başabaş ROAS'ı Marjına Göre Hesapla",
+    metaDesc:
+      "Reklam harcaması, ciro ve kâr marjını gir; ROAS'ını, başabaş ROAS'ını ve net katkını anında gör. Ücretsiz ROAS hesaplama aracı.",
+    spend: "Reklam harcaması (aylık)",
+    revenue: "Reklamdan gelen ciro",
+    margin: "Brüt kâr marjı",
+    marginHint: "Ürün maliyeti düşüldükten sonra kalan yüzde",
+    yourRoas: "ROAS'ın",
+    breakEven: "Başabaş ROAS",
+    verdictGood: "Kâr eşiğinin üzerindesin",
+    verdictBad: "Kâr eşiğinin altındasın — bu harcama zarar yazıyor",
+    grossProfit: "Brüt kâr",
+    contribution: "Reklam sonrası net katkı",
+    poas: "POAS (kâr bazlı ROAS)",
+    poasHint: "Brüt kârın reklam harcamasına oranı. 1.0'ın altı zarar demektir.",
+    revenueNeeded: "Başabaş için gereken ciro",
+    revenueNeededHint: "Bu harcamanın kendini karşılaması için gereken minimum ciro.",
+    ctaText:
+      "Rakamların eşiğin altındaysa sorun genelde bütçede değil, huninin kendisindedir. Ücretsiz keşif görüşmesinde birlikte bakalım.",
+    ctaButton: "Ücretsiz görüşme",
+    faqTitle: "ROAS hakkında sık sorulanlar",
+    faq: [
+      {
+        q: "ROAS ile POAS arasındaki fark nedir?",
+        a: "ROAS ciroyu reklam harcamasına böler; ürün maliyetini hesaba katmaz. POAS ise brüt kârı reklam harcamasına böler. Marjı düşük ürünlerde yüksek ROAS bile zarar anlamına gelebilir, POAS bu yanılgıyı ortadan kaldırır.",
+      },
+      {
+        q: "Başabaş ROAS nasıl hesaplanır?",
+        a: "Başabaş ROAS = 1 ÷ brüt kâr marjı. Marjın %40 ise 1 ÷ 0,40 = 2,5x. Yani 2,5x'in altındaki her kampanya, raporda pozitif görünse bile kasadan para çıkarır.",
+      },
+      {
+        q: "İyi bir ROAS kaçtır?",
+        a: "Tek bir doğru rakam yok; eşik tamamen marjına bağlı. %20 marjlı bir üründe 5x bile başabaştır, %60 marjlı bir üründe 1,7x kâr eder. Sektör ortalamaları yerine kendi eşiğini hesapla.",
+      },
+      {
+        q: "İade ve kargo maliyetlerini nereye koymalıyım?",
+        a: "Brüt kâr marjını hesaplarken düşmelisin. İade oranı yüksek kategorilerde (moda gibi) marjı iade sonrası net değerle hesaplamak, gerçek eşiği görmenin tek yoludur.",
+      },
+    ],
+  },
   brandStrip: { label: "Birlikte büyüdüğümüz markalar" },
   testimonials: {
     eyebrow: "Referanslar",
@@ -376,6 +421,51 @@ const en: Dict = {
     backToList: "Back to all work",
     readCase: "Read the case",
   },
+  roasTool: {
+    eyebrow: "Free tool",
+    title: "ROAS and break-even calculator",
+    description:
+      "Enter your ad spend, revenue and gross margin to see whether the campaign is actually profitable. ROAS measures revenue, not profit — the real threshold depends on your margin.",
+    metaTitle: "ROAS Calculator — Find Your Break-Even ROAS by Margin",
+    metaDesc:
+      "Enter ad spend, revenue and profit margin to instantly see your ROAS, break-even ROAS and net contribution. Free ROAS calculator.",
+    spend: "Ad spend (monthly)",
+    revenue: "Revenue from ads",
+    margin: "Gross profit margin",
+    marginHint: "What remains after cost of goods",
+    yourRoas: "Your ROAS",
+    breakEven: "Break-even ROAS",
+    verdictGood: "You are above the profit threshold",
+    verdictBad: "You are below the profit threshold — this spend loses money",
+    grossProfit: "Gross profit",
+    contribution: "Net contribution after ads",
+    poas: "POAS (profit-based ROAS)",
+    poasHint: "Gross profit divided by ad spend. Below 1.0 means a loss.",
+    revenueNeeded: "Revenue needed to break even",
+    revenueNeededHint: "The minimum revenue required for this spend to pay for itself.",
+    ctaText:
+      "If your numbers sit below the threshold, the problem is usually the funnel rather than the budget. Let's look at it together in a free call.",
+    ctaButton: "Book a free call",
+    faqTitle: "Frequently asked about ROAS",
+    faq: [
+      {
+        q: "What is the difference between ROAS and POAS?",
+        a: "ROAS divides revenue by ad spend and ignores product cost. POAS divides gross profit by ad spend. On low-margin products a high ROAS can still mean a loss; POAS removes that illusion.",
+      },
+      {
+        q: "How is break-even ROAS calculated?",
+        a: "Break-even ROAS = 1 ÷ gross margin. With a 40% margin that is 1 ÷ 0.40 = 2.5x. Any campaign below 2.5x takes money out of the business even when the report looks positive.",
+      },
+      {
+        q: "What counts as a good ROAS?",
+        a: "There is no single number — the threshold depends entirely on your margin. At a 20% margin even 5x is break-even; at 60% margin 1.7x is already profitable. Calculate your own threshold instead of chasing industry averages.",
+      },
+      {
+        q: "Where do returns and shipping costs belong?",
+        a: "Deduct them when calculating gross margin. In categories with high return rates, such as fashion, using the post-returns margin is the only way to see the real threshold.",
+      },
+    ],
+  },
   brandStrip: { label: "Brands we've grown with" },
   testimonials: {
     eyebrow: "Testimonials",
@@ -584,6 +674,51 @@ const de: Dict = {
     otherTitle: "Ähnliche Projekte",
     backToList: "Zurück zu allen Projekten",
     readCase: "Fallstudie lesen",
+  },
+  roasTool: {
+    eyebrow: "Kostenloses Tool",
+    title: "ROAS- und Break-even-Rechner",
+    description:
+      "Geben Sie Werbeausgaben, Umsatz und Rohmarge ein und sehen Sie, ob die Kampagne tatsächlich profitabel ist. ROAS misst Umsatz, nicht Gewinn — die eigentliche Schwelle hängt von Ihrer Marge ab.",
+    metaTitle: "ROAS-Rechner — Break-even-ROAS nach Marge berechnen",
+    metaDesc:
+      "Werbeausgaben, Umsatz und Marge eingeben und sofort ROAS, Break-even-ROAS und Deckungsbeitrag sehen. Kostenloser ROAS-Rechner.",
+    spend: "Werbeausgaben (monatlich)",
+    revenue: "Umsatz aus Werbung",
+    margin: "Rohertragsmarge",
+    marginHint: "Was nach Wareneinsatz übrig bleibt",
+    yourRoas: "Ihr ROAS",
+    breakEven: "Break-even-ROAS",
+    verdictGood: "Sie liegen über der Gewinnschwelle",
+    verdictBad: "Sie liegen unter der Gewinnschwelle — diese Ausgaben sind ein Verlust",
+    grossProfit: "Rohertrag",
+    contribution: "Deckungsbeitrag nach Werbung",
+    poas: "POAS (gewinnbasierter ROAS)",
+    poasHint: "Rohertrag geteilt durch Werbeausgaben. Unter 1,0 bedeutet Verlust.",
+    revenueNeeded: "Umsatz bis zum Break-even",
+    revenueNeededHint: "Der Mindestumsatz, damit sich diese Ausgaben selbst tragen.",
+    ctaText:
+      "Liegen Ihre Zahlen unter der Schwelle, liegt das Problem meist im Funnel und nicht im Budget. Schauen wir gemeinsam darauf.",
+    ctaButton: "Kostenloses Gespräch",
+    faqTitle: "Häufige Fragen zum ROAS",
+    faq: [
+      {
+        q: "Was ist der Unterschied zwischen ROAS und POAS?",
+        a: "ROAS teilt den Umsatz durch die Werbeausgaben und ignoriert die Produktkosten. POAS teilt den Rohertrag durch die Werbeausgaben. Bei margenschwachen Produkten kann ein hoher ROAS trotzdem Verlust bedeuten; POAS beseitigt diesen Trugschluss.",
+      },
+      {
+        q: "Wie wird der Break-even-ROAS berechnet?",
+        a: "Break-even-ROAS = 1 ÷ Rohmarge. Bei 40 % Marge sind das 1 ÷ 0,40 = 2,5x. Jede Kampagne unter 2,5x kostet Geld, auch wenn der Report positiv aussieht.",
+      },
+      {
+        q: "Was ist ein guter ROAS?",
+        a: "Es gibt keine allgemeingültige Zahl — die Schwelle hängt vollständig von Ihrer Marge ab. Bei 20 % Marge ist selbst 5x nur Break-even, bei 60 % Marge ist 1,7x bereits profitabel.",
+      },
+      {
+        q: "Wohin gehören Retouren und Versandkosten?",
+        a: "Sie gehören in die Berechnung der Rohmarge. In Kategorien mit hoher Retourenquote, etwa Mode, zeigt nur die Marge nach Retouren die echte Schwelle.",
+      },
+    ],
   },
   brandStrip: { label: "Marken, mit denen wir gemeinsam gewachsen sind" },
   testimonials: {

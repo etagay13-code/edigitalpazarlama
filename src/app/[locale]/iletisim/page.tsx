@@ -16,6 +16,7 @@ import { getBrand } from "@/lib/theme";
 import { listServicesPublic, listFaqsPublic, listPageSectionsPublic, getPageSection } from "@/lib/data";
 import { asLocale } from "@/i18n/config";
 import { getDict } from "@/i18n/dictionaries";
+import { FaqJsonLd } from "@/components/JsonLd";
 import { pageMeta } from "@/i18n/metadata";
 
 export async function generateMetadata({
@@ -267,6 +268,7 @@ export default async function ContactPage({
       )}
 
       {/* İletişim FAQ */}
+      <FaqJsonLd items={contactFaqs.map((f) => ({ question: f.question, answer: f.answer }))} />
       {contactFaqs.length > 0 && (
         <section className="section">
           <div className="container-x">
