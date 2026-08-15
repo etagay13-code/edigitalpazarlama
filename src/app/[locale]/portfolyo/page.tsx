@@ -208,7 +208,12 @@ export default async function PortfolioPage({
             description={projectsHeader?.description || undefined}
           />
           <div className="mt-10">
-            <PortfolioGrid items={projects} dict={t.portfolio} />
+            <PortfolioGrid
+              items={projects}
+              dict={t.portfolio}
+              locale={locale}
+              readLabel={t.caseStudy.readCase}
+            />
           </div>
         </div>
       </section>

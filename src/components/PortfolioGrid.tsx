@@ -1,8 +1,12 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Dict } from "@/i18n/dictionaries";
+import { localizeHref } from "@/i18n/routes";
+import type { Locale } from "@/i18n/config";
 
 type Project = {
   slug: string;
@@ -18,9 +22,13 @@ type Project = {
 export function PortfolioGrid({
   items,
   dict,
+  locale,
+  readLabel,
 }: {
   items: Project[];
   dict: Dict["portfolio"];
+  locale: Locale;
+  readLabel: string;
 }) {
   const ALL = dict.all;
   const categories = useMemo(() => {
@@ -66,6 +74,7 @@ export function PortfolioGrid({
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
               className="card group overflow-hidden p-0"
             >
+              <Link href={localizeHref(locale, `/portfolyo/${p.slug}`)} className="block">
               <div
                 className={`relative h-44 bg-gradient-to-br ${p.gradient ?? "from-violet-500 to-indigo-500"}`}
               >
@@ -101,7 +110,12 @@ export function PortfolioGrid({
                     </span>
                   ))}
                 </div>
+                <span className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-violet-200">
+                  {readLabel}
+                  <ArrowUpRight className="h-4 w-4 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </span>
               </div>
+              </Link>
             </motion.article>
           ))}
         </AnimatePresence>

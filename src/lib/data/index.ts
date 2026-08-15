@@ -89,6 +89,22 @@ export const listPortfolioProjectsPublic = unstable_cache(
   { tags: ["portfolio"], revalidate: 3600 },
 );
 
+export const getProjectBySlugPublic = unstable_cache(
+  async (slug: string, locale: Locale) => {
+    const supabase = createServiceClient();
+    const { data } = await supabase
+      .from("portfolio_projects")
+      .select("*")
+      .eq("slug", slug)
+      .eq("locale", locale)
+      .eq("active", true)
+      .maybeSingle();
+    return data;
+  },
+  ["portfolio-detail", "i18n-v3"],
+  { tags: ["portfolio"], revalidate: 3600 },
+);
+
 export const listTestimonialsPublic = unstable_cache(
   async (locale: Locale) => {
     const supabase = createServiceClient();

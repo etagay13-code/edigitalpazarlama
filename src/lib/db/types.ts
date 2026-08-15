@@ -157,11 +157,22 @@ export type Database = {
           sort_order: number;
           active: boolean;
           created_at: string;
+          /** Detay sayfası içeriği (bkz. lib/blog/case-study.ts CaseStudy) */
+          case_study: Json | null;
+          meta_title: string | null;
+          meta_desc: string | null;
+          cover_url: string | null;
         };
         Insert: Omit<
           Database["public"]["Tables"]["portfolio_projects"]["Row"],
-          "id" | "created_at"
-        > & { id?: string };
+          "id" | "created_at" | "case_study" | "meta_title" | "meta_desc" | "cover_url"
+        > & {
+          id?: string;
+          case_study?: Json | null;
+          meta_title?: string | null;
+          meta_desc?: string | null;
+          cover_url?: string | null;
+        };
         Update: Partial<
           Database["public"]["Tables"]["portfolio_projects"]["Insert"]
         >;
