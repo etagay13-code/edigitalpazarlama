@@ -119,6 +119,8 @@ export async function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     // Statik dosyaları atla; admin + public sayfalarda çalış.
-    "/((?!_next/static|_next/image|favicon|logo|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)",
+    // Uzantı listesine video ve font da dahil: aksi halde /video/x.webm isteği
+    // dil rewrite'ına girip /tr/video/x.webm olarak 404 dönüyordu.
+    "/((?!_next/static|_next/image|favicon|logo|.*\\.(?:svg|png|jpg|jpeg|gif|webp|avif|ico|webm|mp4|woff|woff2|ttf)$).*)",
   ],
 };

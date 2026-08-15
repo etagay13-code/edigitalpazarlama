@@ -10,6 +10,7 @@ import { REELS, REEL_DURATION } from "./compositions/reels";
 import { Post, POST_FRAME } from "./posts/Post";
 import { POSTS } from "./posts/post-data";
 import { Og, OG_LOCALES } from "./posts/Og";
+import { HeroAmbient } from "./ambient/HeroAmbient";
 import { FORMATS, FPS, DURATION } from "./brand";
 
 const DUR15 = FPS * 15; // 15 saniye → 450 kare
@@ -72,6 +73,16 @@ export const RemotionRoot: React.FC = () => {
           defaultProps={{ id: p.id }}
         />
       ))}
+
+      {/* Site ambiyans klipleri — metinsiz, sessiz, kusursuz döngü (10 sn) */}
+      <Composition
+        id="HeroAmbient"
+        component={HeroAmbient}
+        durationInFrames={FPS * 10}
+        fps={FPS}
+        width={1920}
+        height={1080}
+      />
 
       {/* Sosyal paylaşım görselleri (1200×630) — dil başına bir tane */}
       {OG_LOCALES.map((loc) => (

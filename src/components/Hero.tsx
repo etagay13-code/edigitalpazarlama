@@ -39,7 +39,7 @@ export function Hero(props: HeroProps) {
 
   return (
     <section className="relative overflow-hidden pb-24 pt-20 sm:pt-28">
-      <GradientBlobs />
+      <GradientBlobs video />
       <div className="container-x relative">
         <div className="mx-auto flex flex-col items-center text-center">
           {c.eyebrow && (
