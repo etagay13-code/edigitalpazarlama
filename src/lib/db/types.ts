@@ -456,6 +456,9 @@ export type Database = {
           ip_address: string | null;
           user_agent: string | null;
           is_read: boolean;
+          form_type: "contact" | "audit";
+          payload: Json | null;
+          locale: string | null;
           is_archived: boolean;
           created_at: string;
         };

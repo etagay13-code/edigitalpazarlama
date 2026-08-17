@@ -12,6 +12,16 @@ export async function POST(req: Request) {
     const phone = body.phone ? body.phone.toString().trim() : null;
     const service = body.service ? body.service.toString().trim() : null;
     const message = (body.message ?? "").toString().trim();
+    // Denetim formu aynı uçtan gelir; yapılandırılmış cevaplar payload'da saklanır.
+    // Bal küpü doluysa bot demektir. Hata dönmüyoruz — bot uyarlanmasın diye
+    // başarı görünümü veriliyor, ama kayıt açılmıyor.
+    if (typeof body.website2 === "string" && body.website2.trim() !== "") {
+      return NextResponse.json({ ok: true });
+    }
+
+    const formType = body.formType === "audit" ? "audit" : "contact";
+    const payload = formType === "audit" && body.payload ? body.payload : null;
+    const locale = typeof body.locale === "string" ? body.locale.slice(0, 2) : "tr";
 
     // Hata gövdesi dil-nötr kod döner; kullanıcıya gösterilen metin istemcide
     // sözlükten seçilir (yanıt dili siteyle karışmasın diye).
@@ -31,6 +41,9 @@ export async function POST(req: Request) {
       phone,
       service,
       message,
+      form_type: formType,
+      payload,
+      locale,
       ip_address: req.headers.get("x-forwarded-for") ?? null,
       user_agent: req.headers.get("user-agent") ?? null,
     });
@@ -63,7 +76,10 @@ export async function POST(req: Request) {
           from: `${settings?.brand_name ?? "Site"} <${fromEmail}>`,
           to: [toEmail],
           replyTo: email,
-          subject: `Yeni iletişim formu: ${name}${service ? ` — ${service}` : ""}`,
+          subject:
+            formType === "audit"
+              ? `Ücretsiz denetim talebi: ${name}${service ? ` — ${service}` : ""}`
+              : `Yeni iletişim formu: ${name}${service ? ` — ${service}` : ""}`,
           html: `
             <div style="font-family:system-ui,sans-serif;line-height:1.5;max-width:560px">
               <h2>Yeni iletişim formu mesajı</h2>

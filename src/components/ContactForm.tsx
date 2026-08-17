@@ -51,6 +51,8 @@ export function ContactForm({
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // Bal küpü — botlar doldurur, insanlar göremez.
+  const [trap, setTrap] = useState("");
 
   const onChange =
     (key: keyof FormState) =>
@@ -76,7 +78,7 @@ export function ContactForm({
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, locale }),
+        body: JSON.stringify({ ...form, website2: trap, locale }),
       });
       if (!res.ok) {
         const data = (await res.json().catch(() => ({}))) as { code?: string };
@@ -134,6 +136,17 @@ export function ContactForm({
             noValidate
             className="card grid gap-5 p-8 sm:p-10"
           >
+            {/* Bal küpü — botlar doldurur, insanlar göremez */}
+            <input
+              type="text"
+              name="website2"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden
+              value={trap}
+              onChange={(e) => setTrap(e.target.value)}
+              className="absolute left-[-9999px] h-0 w-0 opacity-0"
+            />
             {error && (
               <div className="rounded-xl border border-rose-400/20 bg-rose-500/10 p-3 text-sm text-rose-200">
                 {error}

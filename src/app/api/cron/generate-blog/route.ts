@@ -19,7 +19,9 @@ import type { Locale } from "@/i18n/config";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-export const maxDuration = 120;
+// Hobby planında serverless fonksiyon üst sınırı 60 sn; 120 yazmak bu sınırı
+// yükseltmiyordu, yalnızca gerçekte alınmayan bir süreyi varsaymamıza yol açıyordu.
+export const maxDuration = 60;
 
 const BUCKET = "public-assets";
 
@@ -138,6 +140,17 @@ export async function GET(request: Request) {
 
       if (insErr) throw new Error(insErr.message);
 
+      // Konu HEMEN tüketilmiş sayılır. Daha önce bu işaretleme çevirilerden
+      // SONRA yapılıyordu; fonksiyon çeviri sırasında zaman aşımına uğrayınca
+      // konu havuzda kalıyor ve bir sonraki çalıştırma AYNI konuyu yeniden
+      // yazıyordu (üç ardışık yazı aynı konuda çıktı).
+      if (topic) {
+        await supabase
+          .from("blog_topics")
+          .update({ used_at: new Date().toISOString(), post_id: inserted.id })
+          .eq("id", topic.id);
+      }
+
       // Çeviriler: yalnızca yazı yayınlandığında üretilir (taslak için token yakmayız)
       if (autoPublish) {
         for (const target of ["en", "de"] as const) {
@@ -195,13 +208,6 @@ export async function GET(request: Request) {
             errors.push(`${target}: ${e instanceof Error ? e.message : "çeviri hatası"}`);
           }
         }
-      }
-
-      if (topic) {
-        await supabase
-          .from("blog_topics")
-          .update({ used_at: new Date().toISOString(), post_id: inserted.id })
-          .eq("id", topic.id);
       }
 
       created.push({ title: post.title, slug });

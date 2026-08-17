@@ -79,6 +79,14 @@ export async function Footer({ locale }: { locale: Locale }) {
               ))}
               <li>
                 <Link
+                  href={href("/dijital-denetim")}
+                  className="text-white/70 transition hover:text-white"
+                >
+                  {t.audit.title}
+                </Link>
+              </li>
+              <li>
+                <Link
                   href={href("/roas-hesaplayici")}
                   className="text-white/70 transition hover:text-white"
                 >
