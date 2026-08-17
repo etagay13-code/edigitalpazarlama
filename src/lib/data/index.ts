@@ -32,7 +32,7 @@ export const listServicesPublic = unstable_cache(
     };
     return localeList(run, locale);
   },
-  ["services-list", "i18n-v4"],
+  ["services-list", "i18n-v5"],
   { tags: ["services"], revalidate: 3600 },
 );
 
@@ -67,7 +67,7 @@ export const getServiceBySlugPublic = unstable_cache(
     ]);
     return { ...service, process: process ?? [], faqs: faqs ?? [] };
   },
-  ["service-detail", "i18n-v4"],
+  ["service-detail", "i18n-v5"],
   { tags: ["services"], revalidate: 3600 },
 );
 
@@ -85,7 +85,7 @@ export const listPortfolioProjectsPublic = unstable_cache(
     };
     return localeList(run, locale);
   },
-  ["portfolio-list", "i18n-v4"],
+  ["portfolio-list", "i18n-v5"],
   { tags: ["portfolio"], revalidate: 3600 },
 );
 
@@ -101,7 +101,7 @@ export const getProjectBySlugPublic = unstable_cache(
       .maybeSingle();
     return data;
   },
-  ["portfolio-detail", "i18n-v4"],
+  ["portfolio-detail", "i18n-v5"],
   { tags: ["portfolio"], revalidate: 3600 },
 );
 
@@ -119,7 +119,7 @@ export const listTestimonialsPublic = unstable_cache(
     };
     return localeList(run, locale);
   },
-  ["testimonials-list", "i18n-v4"],
+  ["testimonials-list", "i18n-v5"],
   { tags: ["testimonials"], revalidate: 3600 },
 );
 
@@ -137,7 +137,7 @@ export const listTeamPublic = unstable_cache(
     };
     return localeList(run, locale);
   },
-  ["team-list", "i18n-v4"],
+  ["team-list", "i18n-v5"],
   { tags: ["team"], revalidate: 3600 },
 );
 
@@ -155,7 +155,7 @@ export const listTimelinePublic = unstable_cache(
     };
     return localeList(run, locale);
   },
-  ["timeline-list", "i18n-v4"],
+  ["timeline-list", "i18n-v5"],
   { tags: ["timeline"], revalidate: 3600 },
 );
 
@@ -173,7 +173,7 @@ export const listIndustriesPublic = unstable_cache(
     };
     return localeList(run, locale);
   },
-  ["industries-list", "i18n-v4"],
+  ["industries-list", "i18n-v5"],
   { tags: ["industries"], revalidate: 3600 },
 );
 
@@ -190,7 +190,7 @@ export const listTechPublic = unstable_cache(
     };
     return localeList(run, locale);
   },
-  ["tech-list", "i18n-v4"],
+  ["tech-list", "i18n-v5"],
   { tags: ["tech"], revalidate: 3600 },
 );
 
@@ -209,7 +209,7 @@ export const listFaqsPublic = unstable_cache(
     };
     return localeList(run, locale);
   },
-  ["faqs-list", "i18n-v4"],
+  ["faqs-list", "i18n-v5"],
   { tags: ["faqs"], revalidate: 3600 },
 );
 
@@ -227,7 +227,7 @@ export const listPageSectionsPublic = unstable_cache(
     };
     return localeList(run, locale);
   },
-  ["page-sections", "i18n-v4"],
+  ["page-sections", "i18n-v5"],
   { tags: ["page_sections"], revalidate: 3600 },
 );
 
@@ -261,7 +261,7 @@ export const listChatRulesPublic = unstable_cache(
     };
     return localeList(run, locale);
   },
-  ["chat-rules", "i18n-v4"],
+  ["chat-rules", "i18n-v5"],
   { tags: ["chat_rules"], revalidate: 3600 },
 );
 
@@ -282,7 +282,7 @@ export const listBlogPostsPublic = unstable_cache(
       .limit(limit);
     return data ?? [];
   },
-  ["blog-list", "i18n-v4"],
+  ["blog-list", "i18n-v5"],
   { tags: ["blog"], revalidate: 300 },
 );
 
@@ -298,7 +298,7 @@ export const getBlogPostPublic = unstable_cache(
       .maybeSingle();
     return data;
   },
-  ["blog-detail", "i18n-v4"],
+  ["blog-detail", "i18n-v5"],
   { tags: ["blog"], revalidate: 300 },
 );
 
@@ -313,7 +313,7 @@ export const getBlogTranslations = unstable_cache(
       .eq("status", "published");
     return data ?? [];
   },
-  ["blog-translations", "i18n-v4"],
+  ["blog-translations", "i18n-v5"],
   { tags: ["blog"], revalidate: 300 },
 );
 
@@ -331,7 +331,7 @@ export const listRelatedPosts = unstable_cache(
       .limit(limit);
     return data ?? [];
   },
-  ["blog-related", "i18n-v4"],
+  ["blog-related", "i18n-v5"],
   { tags: ["blog"], revalidate: 300 },
 );
 
@@ -349,7 +349,7 @@ export const getSiteSettingsPublic = unstable_cache(
   // Vercel'in veri önbelleği deploy'larda SIFIRLANMIYOR; içeriği doğrudan SQL
   // ile değiştirdiğimizde (admin panelinden değil) bu eki artırmak gerekiyor,
   // yoksa site 1 saat boyunca eski veriyi servis etmeye devam ediyor.
-  ["site-settings", "i18n-v4"],
+  ["site-settings", "i18n-v5"],
   { tags: ["site_settings"], revalidate: 3600 },
 );
 
@@ -367,6 +367,6 @@ export const getSiteSettingsI18n = unstable_cache(
     };
     return (await pick(locale)) ?? (await pick(DEFAULT_LOCALE));
   },
-  ["site-settings-i18n", "i18n-v4"],
+  ["site-settings-i18n", "i18n-v5"],
   { tags: ["site_settings"], revalidate: 3600 },
 );
