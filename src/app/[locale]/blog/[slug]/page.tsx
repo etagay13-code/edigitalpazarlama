@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, ArrowUpRight, ChevronRight, Clock } from "lucide-react";
@@ -9,6 +9,7 @@ import { CTASection } from "@/components/CTASection";
 import { JsonLd } from "@/components/JsonLd";
 import {
   getBlogPostPublic,
+  getBlogRedirect,
   getBlogTranslations,
   listRelatedPosts,
 } from "@/lib/data";
@@ -76,7 +77,14 @@ export default async function BlogPostPage({
   const locale = asLocale(params.locale);
   const t = getDict(locale);
   const post = await getBlogPostPublic(params.slug, locale);
-  if (!post) notFound();
+  if (!post) {
+    // Birleştirilen yazı: arşivlenmiş sürüm yerini alan yazıya 301 verir.
+    // Silmek yerine yönlendirmek hem kullanıcıyı boş 404'e düşürmez hem de
+    // toplanmış bağlantı değerini yeni adrese taşır.
+    const to = await getBlogRedirect(params.slug, locale);
+    if (to) permanentRedirect(localizeHref(locale, `/blog/${to}`));
+    notFound();
+  }
 
   const [brand, related] = await Promise.all([
     getBrand(locale),

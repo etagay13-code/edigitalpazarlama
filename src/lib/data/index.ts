@@ -334,7 +334,48 @@ export const getBlogPostPublic = unstable_cache(
       .maybeSingle();
     return data;
   },
-  ["blog-detail", "i18n-v5"],
+  ["blog-detail", "i18n-v6"],
+  { tags: ["blog"], revalidate: 300 },
+);
+
+/**
+ * Arşivlenmiş bir yazının yerine geçen yazının aynı dildeki slug'ı.
+ *
+ * Aynı arama niyetini hedefleyen yazılar birleştirildiğinde eskisi silinmez,
+ * arşivlenip redirect_to ile yenisine bağlanır; burada o hedefin bu dildeki
+ * karşılığı bulunur ki 301 kullanıcıyı kendi dilinde bırakabilsin.
+ */
+export const getBlogRedirect = unstable_cache(
+  async (slug: string, locale: Locale) => {
+    const supabase = createServiceClient();
+    const { data: archived } = await supabase
+      .from("blog_posts")
+      .select("redirect_to,group_id")
+      .eq("slug", slug)
+      .eq("locale", locale)
+      .eq("status", "archived")
+      .maybeSingle();
+    if (!archived?.redirect_to) return null;
+
+    // Hedefin group_id'si üzerinden aynı dildeki sürümü bulunur; hedef yazının
+    // kendisi başka bir dilde kayıtlıysa bile kullanıcı dilini kaybetmez.
+    const { data: target } = await supabase
+      .from("blog_posts")
+      .select("group_id")
+      .eq("id", archived.redirect_to)
+      .maybeSingle();
+    if (!target) return null;
+
+    const { data: sameLocale } = await supabase
+      .from("blog_posts")
+      .select("slug")
+      .eq("group_id", target.group_id)
+      .eq("locale", locale)
+      .eq("status", "published")
+      .maybeSingle();
+    return sameLocale?.slug ?? null;
+  },
+  ["blog-redirect", "i18n-v6"],
   { tags: ["blog"], revalidate: 300 },
 );
 

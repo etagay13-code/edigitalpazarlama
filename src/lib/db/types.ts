@@ -408,14 +408,17 @@ export type Database = {
           reading_min: number;
           status: "draft" | "published" | "archived";
           source: "deepseek" | "manual" | "translation";
+          /** Arşivlenmiş yazının 301 ile yönlendirileceği yazı (bkz. 0011) */
+          redirect_to: string | null;
           published_at: string | null;
           created_at: string;
           updated_at: string;
         };
         Insert: Omit<
           Database["public"]["Tables"]["blog_posts"]["Row"],
-          "id" | "group_id" | "created_at" | "updated_at" | "excerpt" | "tags" | "reading_min" | "status" | "source" | "published_at" | "cover_url" | "cover_alt" | "meta_title" | "meta_desc"
+          "id" | "group_id" | "created_at" | "updated_at" | "excerpt" | "tags" | "reading_min" | "status" | "source" | "published_at" | "cover_url" | "cover_alt" | "meta_title" | "meta_desc" | "redirect_to"
         > & {
+          redirect_to?: string | null;
           id?: string;
           group_id?: string;
           /** Yayınlama/güncelleme sırasında elle set edilir */
