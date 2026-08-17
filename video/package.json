@@ -5,7 +5,10 @@
   "description": "True EDigital Marketing — sosyal medya tanıtım videoları (Remotion)",
   "scripts": {
     "studio": "remotion studio",
-    "render:all": "node render-all.mjs"
+    "render:all": "node render-all.mjs",
+    "render:ig": "node render-instagram.mjs",
+    "render:posts": "node render-posts.mjs",
+    "render:reels": "node render-reels.mjs"
   },
   "dependencies": {
     "@remotion/cli": "^4.0.0",

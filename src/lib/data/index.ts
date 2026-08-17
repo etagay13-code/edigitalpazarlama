@@ -159,6 +159,42 @@ export const listTimelinePublic = unstable_cache(
   { tags: ["timeline"], revalidate: 3600 },
 );
 
+/** Sektör (dikey) sayfaları — kendi sayfası olan, slug'lı kayıtlar. */
+export const listSectorsPublic = unstable_cache(
+  async (locale: Locale) => {
+    const supabase = createServiceClient();
+    const run = async (loc: Locale) => {
+      const { data } = await supabase
+        .from("industries")
+        .select("*")
+        .eq("active", true)
+        .eq("locale", loc)
+        .not("slug", "is", null)
+        .order("sort_order");
+      return data ?? [];
+    };
+    return localeList(run, locale);
+  },
+  ["sectors-list", "i18n-v5"],
+  { tags: ["industries"], revalidate: 3600 },
+);
+
+export const getSectorBySlug = unstable_cache(
+  async (slug: string, locale: Locale) => {
+    const supabase = createServiceClient();
+    const { data } = await supabase
+      .from("industries")
+      .select("*")
+      .eq("slug", slug)
+      .eq("locale", locale)
+      .eq("active", true)
+      .maybeSingle();
+    return data;
+  },
+  ["sector-detail", "i18n-v5"],
+  { tags: ["industries"], revalidate: 3600 },
+);
+
 export const listIndustriesPublic = unstable_cache(
   async (locale: Locale) => {
     const supabase = createServiceClient();

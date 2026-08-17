@@ -256,11 +256,25 @@ export type Database = {
           highlights: string[];
           sort_order: number;
           active: boolean;
+          /** Kendi sayfası olan sektörlerde dolu */
+          slug: string | null;
+          /** portfolio_projects.category ile eşleşir */
+          category: string | null;
+          meta_title: string | null;
+          meta_desc: string | null;
+          body: Json | null;
         };
         Insert: Omit<
           Database["public"]["Tables"]["industries"]["Row"],
-          "id"
-        > & { id?: string };
+          "id" | "slug" | "category" | "meta_title" | "meta_desc" | "body"
+        > & {
+          id?: string;
+          slug?: string | null;
+          category?: string | null;
+          meta_title?: string | null;
+          meta_desc?: string | null;
+          body?: Json | null;
+        };
         Update: Partial<
           Database["public"]["Tables"]["industries"]["Insert"]
         >;

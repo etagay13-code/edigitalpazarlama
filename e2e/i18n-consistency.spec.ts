@@ -37,10 +37,17 @@ const SLUGS = {
   ],
 } as const;
 
+// Sektör (dikey) slug'ları — birinci segment de ikinci segment de yerelleştirilir
+const SECTORS = {
+  tr: ["saglik-turizmi", "eticaret", "yerel-hizmet", "hukuk", "nakliyat", "endustri", "stk"],
+  en: ["health-tourism", "e-commerce", "local-services", "legal", "moving", "industry", "non-profit"],
+  de: ["gesundheitstourismus", "e-commerce", "lokale-dienstleistungen", "recht", "umzug", "industrie", "non-profit"],
+} as const;
+
 const PATHS = {
-  tr: ["/", "/hizmetler", "/hakkimizda", "/portfolyo", "/iletisim", ...SLUGS.tr.map((s) => `/hizmetler/${s}`)],
-  en: ["/en", "/en/services", "/en/about", "/en/portfolio", "/en/contact", ...SLUGS.en.map((s) => `/en/services/${s}`)],
-  de: ["/de", "/de/leistungen", "/de/ueber-uns", "/de/portfolio", "/de/kontakt", ...SLUGS.de.map((s) => `/de/leistungen/${s}`)],
+  tr: ["/", "/hizmetler", "/hakkimizda", "/portfolyo", "/iletisim", ...SLUGS.tr.map((s) => `/hizmetler/${s}`), ...SECTORS.tr.map((s) => `/sektorler/${s}`)],
+  en: ["/en", "/en/services", "/en/about", "/en/portfolio", "/en/contact", ...SLUGS.en.map((s) => `/en/services/${s}`), ...SECTORS.en.map((s) => `/en/industries/${s}`)],
+  de: ["/de", "/de/leistungen", "/de/ueber-uns", "/de/portfolio", "/de/kontakt", ...SLUGS.de.map((s) => `/de/leistungen/${s}`), ...SECTORS.de.map((s) => `/de/branchen/${s}`)],
 } as const;
 
 // Kişi/marka adlarında geçen Türkçe karakterler yanlış alarm üretmesin diye

@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getBrand } from "@/lib/theme";
-import { listServicesPublic, listBlogPostsPublic, listPortfolioProjectsPublic } from "@/lib/data";
+import { listServicesPublic, listBlogPostsPublic, listPortfolioProjectsPublic, listSectorsPublic } from "@/lib/data";
 import { LOCALES } from "@/i18n/config";
 import { localizeHref } from "@/i18n/routes";
 
@@ -14,6 +14,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]);
   // Vaka sayfaları: slug tüm dillerde aynı olduğu için ortak listeye girebilir
   const projects = await listPortfolioProjectsPublic("tr");
+  const sectors = await listSectorsPublic("tr");
   const base = brand.url.replace(/\/$/, "");
   const now = new Date();
 
@@ -25,6 +26,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/iletisim",
     ...services.map((s) => `/hizmetler/${s.slug}`),
     ...projects.map((p) => `/portfolyo/${p.slug}`),
+    ...sectors.filter((s) => s.slug).map((s) => `/sektorler/${s.slug}`),
     "/blog",
     "/roas-hesaplayici",
     "/dijital-denetim",

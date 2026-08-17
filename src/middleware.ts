@@ -11,6 +11,8 @@ import {
   localizeHref,
   serviceSlugToInternal,
   serviceSlugToExternal,
+  sectorSlugToInternal,
+  sectorSlugToExternal,
 } from "@/i18n/routes";
 
 const YEAR = 60 * 60 * 24 * 365;
@@ -55,17 +57,22 @@ export async function middleware(request: NextRequest) {
     const internalRest = rest.map((seg, i) =>
       i === 0 ? externalToInternal(locale, seg) : seg,
     );
-    // Hizmet detayı: dış slug → kanonik slug
-    if (internalRest[0] === "hizmetler" && internalRest[1]) {
-      const internalSlug = serviceSlugToInternal(locale, internalRest[1]);
+    // İkinci segment de yerelleşen bölümler: hizmet ve sektör detayları.
+    const NESTED: Record<string, { toInternal: (l: Locale, x: string) => string; toExternal: (l: Locale, x: string) => string }> = {
+      hizmetler: { toInternal: serviceSlugToInternal, toExternal: serviceSlugToExternal },
+      sektorler: { toInternal: sectorSlugToInternal, toExternal: sectorSlugToExternal },
+    };
+    const nested = NESTED[internalRest[0]];
+    if (nested && internalRest[1]) {
+      const internalSlug = nested.toInternal(locale, internalRest[1]);
       // Kanonik (Türkçe) slug ile gelindiyse ve bu dilin kendi slug'ı farklıysa
       // eski adres demektir → 301 ile yerelleştirilmiş adrese taşı.
-      const external = serviceSlugToExternal(locale, internalSlug);
+      const external = nested.toExternal(locale, internalSlug);
       if (internalRest[1] === internalSlug && external !== internalSlug) {
         const redirectUrl = request.nextUrl.clone();
         redirectUrl.pathname = localizeHref(
           locale,
-          "/" + ["hizmetler", internalSlug, ...internalRest.slice(2)].join("/"),
+          "/" + [internalRest[0], internalSlug, ...internalRest.slice(2)].join("/"),
         );
         return NextResponse.redirect(redirectUrl, 301);
       }

@@ -11,6 +11,7 @@ export const SEGMENTS = {
   "roas-hesaplayici": { tr: "roas-hesaplayici", en: "roas-calculator", de: "roas-rechner" },
   "dijital-denetim": { tr: "dijital-denetim", en: "digital-audit", de: "digital-audit" },
   tesekkurler: { tr: "tesekkurler", en: "thank-you", de: "danke" },
+  sektorler: { tr: "sektorler", en: "industries", de: "branchen" },
 } as const;
 
 // Hizmet slug'ları da dile göre yerelleştirilir. Kanonik (iç) slug DB'deki
@@ -56,6 +57,30 @@ export const SERVICE_SLUGS = {
   },
 } as const;
 
+// Sektör slug'ları da dile göre yerelleşir (hizmet slug'larıyla aynı desen).
+export const SECTOR_SLUGS = {
+  "saglik-turizmi": { tr: "saglik-turizmi", en: "health-tourism", de: "gesundheitstourismus" },
+  eticaret: { tr: "eticaret", en: "e-commerce", de: "e-commerce" },
+  "yerel-hizmet": { tr: "yerel-hizmet", en: "local-services", de: "lokale-dienstleistungen" },
+  hukuk: { tr: "hukuk", en: "legal", de: "recht" },
+  nakliyat: { tr: "nakliyat", en: "moving", de: "umzug" },
+  endustri: { tr: "endustri", en: "industry", de: "industrie" },
+  stk: { tr: "stk", en: "non-profit", de: "non-profit" },
+} as const;
+
+type SectorKey = keyof typeof SECTOR_SLUGS;
+const SECTOR_KEYS = Object.keys(SECTOR_SLUGS) as SectorKey[];
+
+export function sectorSlugToInternal(locale: Locale, ext: string): string {
+  const hit = SECTOR_KEYS.find((k) => SECTOR_SLUGS[k][locale] === ext);
+  return hit ?? ext;
+}
+
+export function sectorSlugToExternal(locale: Locale, internal: string): string {
+  const seg = SECTOR_SLUGS[internal as SectorKey];
+  return seg ? seg[locale] : internal;
+}
+
 type ServiceKey = keyof typeof SERVICE_SLUGS;
 const SERVICE_KEYS = Object.keys(SERVICE_SLUGS) as ServiceKey[];
 
@@ -95,6 +120,9 @@ export function toInternalPath(currentLocale: Locale, pathname: string): string 
   if (segs[0] === "hizmetler" && segs[1]) {
     segs[1] = serviceSlugToInternal(currentLocale, segs[1]);
   }
+  if (segs[0] === "sektorler" && segs[1]) {
+    segs[1] = sectorSlugToInternal(currentLocale, segs[1]);
+  }
   return "/" + segs.join("/");
 }
 
@@ -104,6 +132,9 @@ export function localizeHref(locale: Locale, internalPath: string): string {
   const segs = internalPath.split("/").filter(Boolean);
   if (segs[0] === "hizmetler" && segs[1]) {
     segs[1] = serviceSlugToExternal(locale, segs[1]);
+  }
+  if (segs[0] === "sektorler" && segs[1]) {
+    segs[1] = sectorSlugToExternal(locale, segs[1]);
   }
   if (segs.length > 0) {
     segs[0] = internalToExternal(locale, segs[0]);

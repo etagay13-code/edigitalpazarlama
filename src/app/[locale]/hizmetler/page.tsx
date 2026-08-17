@@ -9,7 +9,7 @@ import { GradientBlobs } from "@/components/GradientBlob";
 import { DynamicIcon } from "@/components/DynamicIcon";
 import {
   listServicesPublic,
-  listIndustriesPublic,
+  listSectorsPublic,
   listTechPublic,
   listFaqsPublic,
   listPageSectionsPublic,
@@ -50,7 +50,7 @@ export default async function ServicesPage({
   const [services, industries, techStack, brand, sections, serviceFaqs] =
     await Promise.all([
       listServicesPublic(locale),
-      listIndustriesPublic(locale),
+      listSectorsPublic(locale),
       listTechPublic(locale),
       getBrand(locale),
       listPageSectionsPublic("services", locale),
@@ -149,7 +149,10 @@ export default async function ServicesPage({
           <Stagger className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {industries.map((ind) => (
               <Reveal key={ind.name}>
-                <div className="card h-full">
+                <Link
+                  href={ind.slug ? localizeHref(locale, `/sektorler/${ind.slug}`) : localizeHref(locale, "/hizmetler")}
+                  className="card group flex h-full flex-col"
+                >
                   <h4 className="font-display text-lg font-semibold">{ind.name}</h4>
                   <p className="mt-3 text-sm text-white/60">{ind.description}</p>
                   <div className="mt-5 flex flex-wrap gap-2">
@@ -162,7 +165,8 @@ export default async function ServicesPage({
                       </span>
                     ))}
                   </div>
-                </div>
+                  <ArrowUpRight className="mt-auto pt-5 h-4 w-4 text-white/30 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white" />
+                </Link>
               </Reveal>
             ))}
           </Stagger>
