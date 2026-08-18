@@ -98,8 +98,11 @@ export default async function RootLayout({
           </Script>
         )}
 
-        {/* Google Analytics 4 */}
-        {b.integrations.ga4 && (
+        {/* Google Analytics 4 — yalnızca GTM YOKKEN doğrudan yüklenir.
+            GTM varsa GA4 zaten konteynerdeki Google etiketiyle geliyor; ikisini
+            birden yüklemek aynı sayfa görüntülemesini iki kez sayar. Ölçüm tek
+            kaynaktan (GTM) akar, kimlik değişikliği kod değil konteyner işidir. */}
+        {!b.integrations.gtm && b.integrations.ga4 && (
           <>
             <Script
               src={`https://www.googletagmanager.com/gtag/js?id=${b.integrations.ga4}`}
