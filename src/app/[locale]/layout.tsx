@@ -10,6 +10,8 @@ import { ChatWidget } from "@/components/ChatWidget";
 import { HtmlLangSync } from "@/components/HtmlLangSync";
 import { OutboundTracker } from "@/components/OutboundTracker";
 import { StickyCta } from "@/components/StickyCta";
+import { WhatsAppFab } from "@/components/WhatsAppFab";
+import { LeadPopup } from "@/components/LeadPopup";
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
@@ -61,6 +63,15 @@ export default async function PublicLayout({
       </main>
       <Footer locale={locale} />
       <StickyCta locale={locale} label={t.common.getQuoteFree} phone={brand.phone} />
+      <WhatsAppFab phone={brand.phone} locale={locale} dict={t.whatsapp} />
+      {/* Pencere yeni vaat üretmez: kartlar ve alt not denetim sayfasının
+          kendi metinleridir, iki sayfa böylece asla çelişmez. */}
+      <LeadPopup
+        locale={locale}
+        dict={t.popup}
+        benefits={t.audit.benefits}
+        promise={t.audit.promise}
+      />
       <ChatWidget
         locale={locale}
         dict={t.chat}

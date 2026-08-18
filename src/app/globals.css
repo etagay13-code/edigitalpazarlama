@@ -157,6 +157,81 @@ body::before {
   animation: toastIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+/* ── WhatsApp düğmesi: çerçevede dönen ışık ───────────────────────────────
+   Halka, konik gradyanlı bir sözde öğenin döndürülmesiyle yapılır. @property
+   ile açı animasyonu daha temiz olurdu ama Safari 16.4 öncesinde çalışmıyor;
+   transform: rotate her yerde çalışır ve compositor'da kalır (layout yok).
+   Işık düğmenin ARKASINDA döner, ikonun okunurluğunu bozmaz. */
+@keyframes ringSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fabBreath {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.wa-fab {
+  position: relative;
+  isolation: isolate;
+  animation: fabBreath 4.5s ease-in-out infinite;
+}
+
+/* Dönen konik ışık — çekirdeğin altında, hafif taşarak halka oluşturur */
+.wa-fab::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 9999px;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(37, 211, 102, 0.15) 40deg,
+    #4ef08a 80deg,
+    #eafff2 100deg,
+    #25d366 120deg,
+    transparent 175deg,
+    transparent 360deg
+  );
+  animation: ringSpin 3.2s linear infinite;
+  z-index: -2;
+}
+
+/* Aynı ışığın bulanık kopyası: düğmenin çevresine sıcaklık verir */
+.wa-fab::after {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border-radius: 9999px;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(78, 240, 138, 0.55) 90deg,
+    transparent 170deg,
+    transparent 360deg
+  );
+  filter: blur(9px);
+  opacity: 0.75;
+  animation: ringSpin 3.2s linear infinite;
+  z-index: -3;
+}
+
+/* Hareket azaltma tercihinde ışık durur ama halka görünür kalır */
+@media (prefers-reduced-motion: reduce) {
+  .wa-fab,
+  .wa-fab::before,
+  .wa-fab::after {
+    animation: none;
+  }
+}
+
 @layer components {
   .container-x {
     @apply mx-auto w-full max-w-6xl px-5 sm:px-8;

@@ -306,6 +306,24 @@ const tr = {
     moreQuestions: "Daha fazla soru için",
   },
   trust: { label: "Onaylar & ortaklıklar" },
+  whatsapp: {
+    label: "WhatsApp'tan yazın",
+    aria: "WhatsApp üzerinden mesaj gönderin",
+    // Hazır mesaj: ziyaretçi tuşa bastığında WhatsApp'ta yazılı gelir.
+    message:
+      "Merhaba, True EDigital Marketing sitesinden yazıyorum. Markam için dijital pazarlama desteği hakkında bilgi almak istiyorum.",
+  },
+  popup: {
+    eyebrow: "Ücretsiz dijital denetim",
+    titleTop: "Siteniz nerede",
+    titleAccent: "para kaybediyor?",
+    titleBottom: "Ücretsiz öğrenin.",
+    point1: "Taahhüt yok, satış görüşmesi şartı yok",
+    point2: "Rapor 3 iş günü içinde e-postanızda",
+    cta: "Ücretsiz denetimi başlat",
+    asideTitle: "Denetimde ne var?",
+    close: "Kapat",
+  },
   chat: {
     title: "EDigital Asistan",
     online: "Çevrimiçi",
@@ -631,6 +649,23 @@ const en: Dict = {
     moreQuestions: "For more questions",
   },
   trust: { label: "Certifications & partnerships" },
+  whatsapp: {
+    label: "Message on WhatsApp",
+    aria: "Send a message on WhatsApp",
+    message:
+      "Hello, I am writing from the True EDigital Marketing website. I would like to learn more about digital marketing support for my brand.",
+  },
+  popup: {
+    eyebrow: "Free digital audit",
+    titleTop: "Where is your site",
+    titleAccent: "losing money?",
+    titleBottom: "Find out for free.",
+    point1: "No commitment, no sales call required",
+    point2: "Report in your inbox within 3 business days",
+    cta: "Start the free audit",
+    asideTitle: "What the audit covers",
+    close: "Close",
+  },
   chat: {
     title: "EDigital Assistant",
     online: "Online",
@@ -953,6 +988,23 @@ const de: Dict = {
     moreQuestions: "Für weitere Fragen",
   },
   trust: { label: "Zertifizierungen & Partnerschaften" },
+  whatsapp: {
+    label: "Per WhatsApp schreiben",
+    aria: "Nachricht per WhatsApp senden",
+    message:
+      "Hallo, ich schreibe von der Website True EDigital Marketing. Ich möchte mehr über digitale Marketing-Unterstützung für meine Marke erfahren.",
+  },
+  popup: {
+    eyebrow: "Kostenloses Digital-Audit",
+    titleTop: "Wo verliert Ihre Website",
+    titleAccent: "Geld?",
+    titleBottom: "Kostenlos herausfinden.",
+    point1: "Keine Verpflichtung, kein Verkaufsgespräch nötig",
+    point2: "Bericht in 3 Werktagen in Ihrem Postfach",
+    cta: "Kostenloses Audit starten",
+    asideTitle: "Was das Audit prüft",
+    close: "Schließen",
+  },
   chat: {
     title: "EDigital Assistent",
     online: "Online",
