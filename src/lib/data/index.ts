@@ -426,7 +426,7 @@ export const getSiteSettingsPublic = unstable_cache(
   // Vercel'in veri önbelleği deploy'larda SIFIRLANMIYOR; içeriği doğrudan SQL
   // ile değiştirdiğimizde (admin panelinden değil) bu eki artırmak gerekiyor,
   // yoksa site 1 saat boyunca eski veriyi servis etmeye devam ediyor.
-  ["site-settings", "i18n-v5"],
+  ["site-settings", "i18n-v6"],
   { tags: ["site_settings"], revalidate: 3600 },
 );
 
@@ -444,6 +444,6 @@ export const getSiteSettingsI18n = unstable_cache(
     };
     return (await pick(locale)) ?? (await pick(DEFAULT_LOCALE));
   },
-  ["site-settings-i18n", "i18n-v5"],
+  ["site-settings-i18n", "i18n-v6"],
   { tags: ["site_settings"], revalidate: 3600 },
 );
