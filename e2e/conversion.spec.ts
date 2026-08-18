@@ -45,6 +45,9 @@ test.describe("dönüşüm penceresi", () => {
   });
 
   test("Esc ile kapanır ve aynı ziyarette geri gelmez", async ({ page }) => {
+    // İki kez 10 sn'lik gecikmeyi beklemek gerekiyor; varsayılan 30 sn'lik
+    // sınır paralel koşuda taşıyor ve ürün hatası gibi görünen flake üretiyor.
+    test.setTimeout(60_000);
     await page.goto("/");
     const pencere = page.locator('[role="dialog"]');
     await expect(pencere).toBeVisible({ timeout: 14000 });
