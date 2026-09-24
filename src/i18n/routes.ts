@@ -12,6 +12,8 @@ export const SEGMENTS = {
   "dijital-denetim": { tr: "dijital-denetim", en: "digital-audit", de: "digital-audit" },
   tesekkurler: { tr: "tesekkurler", en: "thank-you", de: "danke" },
   sektorler: { tr: "sektorler", en: "industries", de: "branchen" },
+  "gizlilik-politikasi": { tr: "gizlilik-politikasi", en: "privacy-policy", de: "datenschutz" },
+  kunye: { tr: "kunye", en: "imprint", de: "impressum" },
 } as const;
 
 // Hizmet slug'ları da dile göre yerelleştirilir. Kanonik (iç) slug DB'deki

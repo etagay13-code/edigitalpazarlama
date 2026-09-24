@@ -12,6 +12,7 @@ import { OutboundTracker } from "@/components/OutboundTracker";
 import { StickyCta } from "@/components/StickyCta";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
 import { LeadPopup } from "@/components/LeadPopup";
+import { ConsentBanner } from "@/components/ConsentBanner";
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
@@ -72,6 +73,7 @@ export default async function PublicLayout({
         benefits={t.audit.benefits}
         promise={t.audit.promise}
       />
+      <ConsentBanner locale={locale} dict={t.consent} />
       <ChatWidget
         locale={locale}
         dict={t.chat}

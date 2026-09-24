@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, BadgeDollarSign, Check, Gauge, ListChecks, Search, X } from "lucide-react";
 import { track } from "@/lib/analytics";
+import { CONSENT_CHANGE, readConsent } from "@/lib/consent";
 import { localizeHref } from "@/i18n/routes";
 import type { Locale } from "@/i18n/config";
 import type { Dict } from "@/i18n/dictionaries";
@@ -75,11 +76,19 @@ export function LeadPopup({
 
   useEffect(() => {
     if (haric || bastirilmis()) return;
-    const t = setTimeout(() => {
+    const ac = () => {
       oncekiOdak.current = document.activeElement as HTMLElement | null;
       setOpen(true);
+    };
+    // Çerez banner'ı açıkken pencere üstüne binmez; karar verilince açılır.
+    const t = setTimeout(() => {
+      if (readConsent()) ac();
+      else window.addEventListener(CONSENT_CHANGE, ac, { once: true });
     }, GECIKME_MS);
-    return () => clearTimeout(t);
+    return () => {
+      clearTimeout(t);
+      window.removeEventListener(CONSENT_CHANGE, ac);
+    };
   }, [haric]);
 
   // Esc ile kapanma + odak tuzağı: açıkken Tab pencereden çıkmaz.

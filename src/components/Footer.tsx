@@ -6,6 +6,7 @@ import { listServicesPublic } from "@/lib/data";
 import { navLinks } from "@/lib/navigation";
 import { localizeHref } from "@/i18n/routes";
 import { getDict } from "@/i18n/dictionaries";
+import { ConsentSettingsLink } from "@/components/ConsentBanner";
 import type { Locale } from "@/i18n/config";
 
 export async function Footer({ locale }: { locale: Locale }) {
@@ -147,9 +148,18 @@ export async function Footer({ locale }: { locale: Locale }) {
           <p>
             © {new Date().getFullYear()} {brand.name}. {t.footer.rights}
           </p>
-          <p>
-            {t.footer.founder}: <span className="text-white/70">{brand.founder}</span> ·{" "}
-            {t.footer.city}
+          <p className="flex flex-wrap items-center gap-x-4 gap-y-1">
+            <Link href={href("/kunye")} className="transition hover:text-white">
+              {t.footer.imprint}
+            </Link>
+            <Link href={href("/gizlilik-politikasi")} className="transition hover:text-white">
+              {t.footer.privacy}
+            </Link>
+            <ConsentSettingsLink label={t.consent.settingsLink} />
+            <span>
+              {t.footer.founder}: <span className="text-white/70">{brand.founder}</span> ·{" "}
+              {t.footer.city}
+            </span>
           </p>
         </div>
       </div>

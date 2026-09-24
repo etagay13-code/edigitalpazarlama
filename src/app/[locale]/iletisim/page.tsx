@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { SectionHeader } from "@/components/SectionHeader";
 import { ContactForm } from "@/components/ContactForm";
+import { MapEmbed } from "@/components/MapEmbed";
 import { Reveal, Stagger } from "@/components/Reveal";
 import { GradientBlobs } from "@/components/GradientBlob";
 import { DynamicIcon } from "@/components/DynamicIcon";
@@ -324,13 +325,11 @@ export default async function ContactPage({
             </Reveal>
             <Reveal delay={0.1}>
               <div className="group relative h-full min-h-[360px] overflow-hidden rounded-3xl border border-white/[0.08]">
-                <iframe
+                <MapEmbed
                   title={officeSection?.title || t.contactPage.officeMapTitle}
                   src={`https://www.google.com/maps?q=${encodeURIComponent(brand.address || "Maslak, İstanbul")}&output=embed`}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
                   className="absolute inset-0 h-full w-full grayscale invert-[0.92] hue-rotate-180 contrast-90"
-                  style={{ border: 0 }}
+                  dict={{ text: t.consent.mapText, button: t.consent.mapButton }}
                 />
                 {/* harita üstüne ince marka tonu + tıklanabilir adres rozeti */}
                 <div
