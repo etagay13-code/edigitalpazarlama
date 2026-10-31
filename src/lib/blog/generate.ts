@@ -36,9 +36,17 @@ const DE_MAP: Record<string, string> = {
   ä: "ae", Ä: "ae", ö: "oe", Ö: "oe", ü: "ue", Ü: "ue", ß: "ss",
 };
 
+// Rusça başlıklar Latin harflerine çevrilir; yoksa slug'dan geriye tire kalıyordu.
+const RU_MAP: Record<string, string> = {
+  а: "a", б: "b", в: "v", г: "g", д: "d", е: "e", ё: "e", ж: "zh", з: "z", и: "i", й: "y",
+  к: "k", л: "l", м: "m", н: "n", о: "o", п: "p", р: "r", с: "s", т: "t", у: "u", ф: "f",
+  х: "kh", ц: "ts", ч: "ch", ш: "sh", щ: "shch", ъ: "", ы: "y", ь: "", э: "e", ю: "yu", я: "ya",
+};
+
 export function slugify(text: string, locale: string = "tr"): string {
-  const map = locale === "de" ? { ...TR_MAP, ...DE_MAP } : TR_MAP;
+  const map = locale === "de" ? { ...TR_MAP, ...DE_MAP } : locale === "ru" ? RU_MAP : TR_MAP;
   return text
+    .toLowerCase()
     .split("")
     .map((ch) => map[ch] ?? ch)
     .join("")
@@ -203,6 +211,11 @@ const LOCALE_BRIEF: Record<Exclude<Locale, "tr">, string> = {
     "Zielsprache: Deutsch (professionelles Wirtschaftsdeutsch, Sie-Form).",
     "Lokalisieren statt wörtlich übersetzen: türkische Lira-Beträge in Euro umrechnen (runde Zahlen),",
     "türkeispezifische Bezüge durch DACH-Bezüge ersetzen, DSGVO-Kontext beachten wo relevant.",
+  ].join(" "),
+  ru: [
+    "Target language: Russian (professional business Russian, address the reader with «вы»).",
+    "Localize, don't translate literally: convert Turkish Lira amounts to euro/dollar equivalents with round numbers,",
+    "keep brand and platform names (Google Ads, Meta, GA4) in Latin script and keep idioms natural for a Russian-speaking reader.",
   ].join(" "),
 };
 

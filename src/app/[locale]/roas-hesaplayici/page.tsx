@@ -63,7 +63,7 @@ export default async function RoasToolPage({ params }: { params: { locale: strin
       <section className="relative overflow-hidden pb-10 pt-12 sm:pt-20">
         <GradientBlobs />
         <div className="container-x">
-          <SectionHeader
+          <SectionHeader as="h1"
             eyebrow={t.roasTool.eyebrow}
             title={t.roasTool.title}
             description={t.roasTool.description}

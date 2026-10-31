@@ -35,12 +35,13 @@ export async function middleware(request: NextRequest) {
     return updateSession(request);
   }
 
-  // API, sitemap, robots, dahili dosyalar → dokunma.
+  // API, sitemap (+ XSL stil dosyası), robots, dahili dosyalar → dokunma.
   // /v2 = tasarım prototipi (i18n dışı, kendi shell'i var) → dokunma.
   if (
     pathname.startsWith("/v2") ||
     pathname.startsWith("/api") ||
     pathname === "/sitemap.xml" ||
+    pathname === "/sitemap.xsl" ||
     pathname === "/robots.txt" ||
     pathname === "/manifest.webmanifest"
   ) {
@@ -50,8 +51,8 @@ export async function middleware(request: NextRequest) {
   const segments = pathname.split("/").filter(Boolean);
   const first = segments[0];
 
-  // 1) Açık dil öneki (/en, /de): dış kelimeleri iç (Türkçe) segmentlere çevir.
-  if (first === "en" || first === "de") {
+  // 1) Açık dil öneki (/en, /de, /ru): dış kelimeleri iç (Türkçe) segmentlere çevir.
+  if (first === "en" || first === "de" || first === "ru") {
     const locale = first as Locale;
     const rest = segments.slice(1);
     const internalRest = rest.map((seg, i) =>

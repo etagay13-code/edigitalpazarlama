@@ -32,7 +32,7 @@ export default async function AuditPage({ params }: { params: { locale: string }
       <section className="relative overflow-hidden pb-8 pt-12 sm:pt-20">
         <GradientBlobs />
         <div className="container-x">
-          <SectionHeader eyebrow={t.eyebrow} title={t.title} description={t.description} />
+          <SectionHeader as="h1" eyebrow={t.eyebrow} title={t.title} description={t.description} />
         </div>
       </section>
 

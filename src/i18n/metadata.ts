@@ -10,6 +10,31 @@ export function altLanguages(internalPath: string): Record<string, string> {
   return languages;
 }
 
+// ── SERP sinirlari ──────────────────────────────────────────────────────────
+// Google basligi ~60, aciklamayi ~160 karakterde kesiyor. Kok layout'taki
+// `template: "%s · True EDigital Marketing"` her basliga 26 karakter ekliyordu
+// ve 102 sayfanin 70'inde baslik kesiliyordu. Marka eki artik yalnizca
+// SIGDIGINDA ekleniyor; sigmadiginda baslik kendi basina daha degerli.
+const MARKA_EKI = " · True EDigital";
+const BASLIK_SINIR = 60;
+const ACIKLAMA_SINIR = 160;
+
+function baslikKur(title: string): string {
+  const t = title.trim();
+  return t.length + MARKA_EKI.length <= BASLIK_SINIR ? t + MARKA_EKI : t;
+}
+
+/** Aciklamayi cumle, olmazsa kelime sinirinda kirpar — ortadan kesmez. */
+function aciklamaKirp(description: string): string {
+  const d = description.trim().replace(/\s+/g, " ");
+  if (d.length <= ACIKLAMA_SINIR) return d;
+  const pencere = d.slice(0, ACIKLAMA_SINIR);
+  const cumle = Math.max(pencere.lastIndexOf(". "), pencere.lastIndexOf("! "), pencere.lastIndexOf("? "));
+  if (cumle > 90) return pencere.slice(0, cumle + 1);
+  const kelime = pencere.lastIndexOf(" ");
+  return (kelime > 90 ? pencere.slice(0, kelime) : pencere).replace(/[,;:\-—]$/, "") + "…";
+}
+
 // Sayfa metadata'sı: localized canonical + hreflang + openGraph.
 export function pageMeta(opts: {
   locale: Locale;
@@ -19,9 +44,13 @@ export function pageMeta(opts: {
 }): Metadata {
   const { locale, internalPath, title, description } = opts;
   const path = localizeHref(locale, internalPath);
+  // absolute: kok layout'un marka sablonunu devre disi birakir; eki burada
+  // kosullu olarak kendimiz ekliyoruz.
+  const baslik = title ? baslikKur(title) : null;
+  const aciklama = description ? aciklamaKirp(description) : null;
   return {
-    ...(title ? { title } : {}),
-    ...(description ? { description } : {}),
+    ...(baslik ? { title: { absolute: baslik } } : {}),
+    ...(aciklama ? { description: aciklama } : {}),
     alternates: { canonical: path, languages: altLanguages(internalPath) },
     openGraph: {
       url: path,
@@ -30,8 +59,8 @@ export function pageMeta(opts: {
       // layout'taki openGraph tamamen ezilir. Bu yüzden görsel burada da
       // verilmeli, yoksa alt sayfalarda og:image kayboluyor.
       images: [{ url: `/og/og-${locale}.jpg`, width: 1200, height: 630 }],
-      ...(title ? { title } : {}),
-      ...(description ? { description } : {}),
+      ...(baslik ? { title: baslik } : {}),
+      ...(aciklama ? { description: aciklama } : {}),
     },
   };
 }

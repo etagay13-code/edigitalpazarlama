@@ -71,7 +71,7 @@ export type Database = {
 
       services: {
         Row: {
-          locale: "tr" | "en" | "de";
+          locale: "tr" | "en" | "de" | "ru";
           id: string;
           slug: string;
           title: string;
@@ -105,7 +105,7 @@ export type Database = {
 
       service_process_steps: {
         Row: {
-          locale: "tr" | "en" | "de";
+          locale: "tr" | "en" | "de" | "ru";
           id: string;
           service_id: string;
           step_number: number;
@@ -124,7 +124,7 @@ export type Database = {
 
       service_faqs: {
         Row: {
-          locale: "tr" | "en" | "de";
+          locale: "tr" | "en" | "de" | "ru";
           id: string;
           service_id: string;
           question: string;
@@ -143,7 +143,7 @@ export type Database = {
 
       portfolio_projects: {
         Row: {
-          locale: "tr" | "en" | "de";
+          locale: "tr" | "en" | "de" | "ru";
           id: string;
           slug: string;
           title: string;
@@ -181,7 +181,7 @@ export type Database = {
 
       testimonials: {
         Row: {
-          locale: "tr" | "en" | "de";
+          locale: "tr" | "en" | "de" | "ru";
           id: string;
           name: string;
           role: string | null;
@@ -205,7 +205,7 @@ export type Database = {
 
       team_members: {
         Row: {
-          locale: "tr" | "en" | "de";
+          locale: "tr" | "en" | "de" | "ru";
           id: string;
           name: string;
           role: string | null;
@@ -229,7 +229,7 @@ export type Database = {
 
       timeline_events: {
         Row: {
-          locale: "tr" | "en" | "de";
+          locale: "tr" | "en" | "de" | "ru";
           id: string;
           year: string;
           title: string;
@@ -249,7 +249,7 @@ export type Database = {
 
       industries: {
         Row: {
-          locale: "tr" | "en" | "de";
+          locale: "tr" | "en" | "de" | "ru";
           id: string;
           name: string;
           description: string | null;
@@ -283,7 +283,7 @@ export type Database = {
 
       tech_items: {
         Row: {
-          locale: "tr" | "en" | "de";
+          locale: "tr" | "en" | "de" | "ru";
           id: string;
           name: string;
           category: string | null;
@@ -301,7 +301,7 @@ export type Database = {
 
       faqs: {
         Row: {
-          locale: "tr" | "en" | "de";
+          locale: "tr" | "en" | "de" | "ru";
           id: string;
           scope: "home" | "services" | "contact" | "about" | "portfolio";
           question: string;
@@ -319,7 +319,7 @@ export type Database = {
 
       page_sections: {
         Row: {
-          locale: "tr" | "en" | "de";
+          locale: "tr" | "en" | "de" | "ru";
           id: string;
           page_slug: string;
           section_key: string;
@@ -345,6 +345,24 @@ export type Database = {
           resend_api_key: string | null;
           resend_from_email: string | null;
           contact_form_to_email: string | null;
+          /** Mango mobil sunucusu — bkz. lib/mango/config.ts */
+          mango_base_url: string | null;
+          mango_username: string | null;
+          mango_password: string | null;
+          mango_api_key: string | null;
+          /** BTK'da kayıtlı mesaj başlığı */
+          mango_sender: string | null;
+          mango_webhook_secret: string | null;
+          mango_send_path: string | null;
+          mango_report_path: string | null;
+          mango_balance_path: string | null;
+          /** İYS (İleti Yönetim Sistemi) — bkz. lib/iys/client.ts */
+          iys_base_url: string | null;
+          iys_username: string | null;
+          iys_password: string | null;
+          iys_code: string | null;
+          iys_brand_code: string | null;
+          iys_auto_sync: boolean;
           updated_at: string;
           updated_by: string | null;
         };
@@ -357,7 +375,7 @@ export type Database = {
 
       site_settings_i18n: {
         Row: {
-          locale: "tr" | "en" | "de";
+          locale: "tr" | "en" | "de" | "ru";
           tagline: string | null;
           description: string | null;
           address: string | null;
@@ -365,7 +383,7 @@ export type Database = {
         };
         Insert: Partial<
           Database["public"]["Tables"]["site_settings_i18n"]["Row"]
-        > & { locale: "tr" | "en" | "de" };
+        > & { locale: "tr" | "en" | "de" | "ru" };
         Update: Partial<
           Database["public"]["Tables"]["site_settings_i18n"]["Row"]
         >;
@@ -375,7 +393,7 @@ export type Database = {
       chat_rules: {
         Row: {
           id: string;
-          locale: "tr" | "en" | "de";
+          locale: "tr" | "en" | "de" | "ru";
           question: string;
           keywords: string[];
           answer: string;
@@ -395,7 +413,7 @@ export type Database = {
           id: string;
           /** Aynı yazının üç dildeki sürümünü bağlar (hreflang grubu) */
           group_id: string;
-          locale: "tr" | "en" | "de";
+          locale: "tr" | "en" | "de" | "ru";
           slug: string;
           title: string;
           excerpt: string;
@@ -488,6 +506,175 @@ export type Database = {
           is_archived?: boolean;
         };
         Update: Partial<Database["public"]["Tables"]["messages"]["Row"]>;
+        Relationships: [];
+      };
+
+      /** İYS izin kayıtları (6563 s.K. / BTK ticari ileti onayları) */
+      consents: {
+        Row: {
+          id: string;
+          recipient: string;
+          recipient_type: "BIREYSEL" | "TACIR";
+          channel: "MESAJ" | "ARAMA" | "EPOSTA";
+          status: "ONAY" | "RET";
+          source:
+            | "HS_WEB"
+            | "HS_FIZIKSEL_ORTAM"
+            | "HS_ISLAK_IMZA"
+            | "HS_CAGRI_MERKEZI"
+            | "HS_SMS"
+            | "HS_EPOSTA"
+            | "HS_MOBIL"
+            | "HS_ETKINLIK"
+            | "HS_ATM";
+          consent_date: string;
+          ip_address: string | null;
+          note: string | null;
+          message_id: string | null;
+          iys_status: "pending" | "synced" | "error" | "skipped";
+          iys_synced_at: string | null;
+          iys_error: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: Omit<
+          Database["public"]["Tables"]["consents"]["Row"],
+          | "id"
+          | "created_at"
+          | "updated_at"
+          | "consent_date"
+          | "recipient_type"
+          | "source"
+          | "ip_address"
+          | "note"
+          | "message_id"
+          | "iys_status"
+          | "iys_synced_at"
+          | "iys_error"
+        > & {
+          id?: string;
+          consent_date?: string;
+          recipient_type?: "BIREYSEL" | "TACIR";
+          source?: Database["public"]["Tables"]["consents"]["Row"]["source"];
+          ip_address?: string | null;
+          note?: string | null;
+          message_id?: string | null;
+          iys_status?: "pending" | "synced" | "error" | "skipped";
+          iys_synced_at?: string | null;
+          iys_error?: string | null;
+        };
+        Update: Partial<Database["public"]["Tables"]["consents"]["Insert"]>;
+        Relationships: [];
+      };
+
+      /** SMS kuyruğu ve geçmişi (Mango mobil sunucusu) */
+      sms_messages: {
+        Row: {
+          id: string;
+          direction: "outbound" | "inbound";
+          recipient: string;
+          sender: string | null;
+          body: string;
+          purpose: "ticari" | "bilgilendirme";
+          status:
+            | "queued"
+            | "sending"
+            | "sent"
+            | "delivered"
+            | "failed"
+            | "blocked"
+            | "canceled";
+          campaign: string | null;
+          provider_message_id: string | null;
+          provider_status: string | null;
+          attempt_count: number;
+          error: string | null;
+          cost: number | null;
+          scheduled_at: string | null;
+          sent_at: string | null;
+          delivered_at: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: Partial<
+          Database["public"]["Tables"]["sms_messages"]["Row"]
+        > & { recipient: string; body: string };
+        Update: Partial<Database["public"]["Tables"]["sms_messages"]["Row"]>;
+        Relationships: [];
+      };
+
+      finance_settings: {
+        Row: {
+          id: 1;
+          default_kdv_rate: number;
+          default_oiv_rate: number;
+          default_withholding_rate: number;
+          default_payment_term_days: number;
+          kdv_declaration_day: number;
+          withholding_declaration_day: number;
+          default_interest_rate_type: "yasal" | "ticari_avans" | "gecikme_zammi";
+          updated_at: string;
+          updated_by: string | null;
+        };
+        Insert: Partial<
+          Database["public"]["Tables"]["finance_settings"]["Row"]
+        > & { id?: 1 };
+        Update: Partial<
+          Database["public"]["Tables"]["finance_settings"]["Row"]
+        >;
+        Relationships: [];
+      };
+
+      /** Tarihli faiz oranı dönemleri (yasal / TCMB avans / gecikme zammı) */
+      interest_rates: {
+        Row: {
+          id: string;
+          rate_type: "yasal" | "ticari_avans" | "gecikme_zammi";
+          period: "yillik" | "aylik";
+          rate_pct: number;
+          valid_from: string;
+          valid_to: string | null;
+          source_note: string | null;
+          created_at: string;
+        };
+        Insert: Omit<
+          Database["public"]["Tables"]["interest_rates"]["Row"],
+          "id" | "created_at"
+        > & { id?: string };
+        Update: Partial<
+          Database["public"]["Tables"]["interest_rates"]["Insert"]
+        >;
+        Relationships: [];
+      };
+
+      invoices: {
+        Row: {
+          id: string;
+          invoice_no: string | null;
+          client_name: string;
+          description: string | null;
+          currency: string;
+          amount_net: number;
+          kdv_rate: number;
+          oiv_rate: number;
+          withholding_rate: number;
+          kdv_withholding: string | null;
+          issue_date: string;
+          due_date: string;
+          paid_at: string | null;
+          paid_amount: number | null;
+          interest_rate_type: "yasal" | "ticari_avans" | "gecikme_zammi" | "ozel";
+          custom_interest_rate: number | null;
+          notes: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: Partial<Database["public"]["Tables"]["invoices"]["Row"]> & {
+          client_name: string;
+          amount_net: number;
+          due_date: string;
+        };
+        Update: Partial<Database["public"]["Tables"]["invoices"]["Row"]>;
         Relationships: [];
       };
     };

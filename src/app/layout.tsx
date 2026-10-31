@@ -14,7 +14,7 @@ async function currentLocale() {
 }
 
 const inter = Inter({
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin", "latin-ext", "cyrillic"],
   variable: "--font-sans",
   display: "swap",
 });

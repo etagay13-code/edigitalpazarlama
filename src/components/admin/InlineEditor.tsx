@@ -16,7 +16,16 @@ import { useToast } from "./Toast";
 export type EditorField = {
   name: string;
   label: string;
-  type?: "text" | "textarea" | "number" | "select" | "array" | "checkbox" | "color" | "json";
+  type?:
+    | "text"
+    | "textarea"
+    | "number"
+    | "select"
+    | "array"
+    | "checkbox"
+    | "color"
+    | "json"
+    | "date";
   rows?: number;
   required?: boolean;
   placeholder?: string;
@@ -24,6 +33,8 @@ export type EditorField = {
   full?: boolean;
   monospace?: boolean;
   hint?: string;
+  /** type="number" için adım (ondalıklı oranlarda "0.01" gerekiyor) */
+  step?: string;
 };
 
 type Status =
@@ -369,6 +380,7 @@ function FieldRenderer({
           defaultValue={defaultValue}
           required={field.required}
           placeholder={field.placeholder}
+          step={field.type === "number" ? (field.step ?? "any") : undefined}
           className={cls}
         />
       )}

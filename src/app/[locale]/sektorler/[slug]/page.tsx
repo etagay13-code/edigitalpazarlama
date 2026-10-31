@@ -131,7 +131,7 @@ export default async function SectorPage({
       {body.challenges.length > 0 && (
         <section className="section">
           <div className="container-x">
-            <SectionHeader eyebrow={t.sectors.challengeEyebrow} title={t.sectors.challengeTitle} />
+            <SectionHeader as="h1" eyebrow={t.sectors.challengeEyebrow} title={t.sectors.challengeTitle} />
             <Stagger className="mt-12 grid gap-5 md:grid-cols-3">
               {body.challenges.map((ch) => (
                 <Reveal key={ch.title}>

@@ -10,7 +10,7 @@ import type { Dict } from "@/i18n/dictionaries";
 
 type Props = { locale: Locale; dict: Dict["roasTool"]; currency: string };
 
-const CURRENCY: Record<Locale, string> = { tr: "₺", en: "€", de: "€" };
+const CURRENCY: Record<Locale, string> = { tr: "₺", en: "€", de: "€", ru: "€" };
 
 export function RoasCalculator({ locale, dict }: Props) {
   const [spend, setSpend] = useState(50000);

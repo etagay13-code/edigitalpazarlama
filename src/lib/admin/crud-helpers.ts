@@ -15,6 +15,13 @@ export function getInt(fd: FormData, key: string, fallback = 0): number {
   return isNaN(v) ? fallback : v;
 }
 
+/** Ondalıklı değerler için (oranlar, tutarlar). Virgüllü giriş de kabul edilir. */
+export function getNum(fd: FormData, key: string, fallback = 0): number {
+  const raw = getStr(fd, key).replace(",", ".");
+  const v = parseFloat(raw);
+  return isNaN(v) ? fallback : v;
+}
+
 export function getArr(fd: FormData, key: string): string[] {
   const raw = getStr(fd, key);
   return raw

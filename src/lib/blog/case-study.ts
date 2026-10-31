@@ -74,6 +74,7 @@ const LANG: Record<Locale, string> = {
   tr: "Türkçe",
   en: "English (international business English)",
   de: "Deutsch (professionelles Wirtschaftsdeutsch, Sie-Form)",
+  ru: "Русский (деловой русский, обращение на «вы»)",
 };
 
 export async function generateCaseStudy(opts: {

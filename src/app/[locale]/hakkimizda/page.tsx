@@ -72,7 +72,7 @@ export default async function AboutPage({
       <section className="relative overflow-hidden pb-16 pt-12 sm:pt-20">
         <GradientBlobs />
         <div className="container-x">
-          <SectionHeader
+          <SectionHeader as="h1"
             eyebrow={heroSection?.eyebrow || t.nav.about}
             title={heroSection?.title || ""}
             description={heroSection?.description || undefined}

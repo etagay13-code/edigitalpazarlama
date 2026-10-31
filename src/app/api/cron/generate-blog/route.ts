@@ -48,7 +48,7 @@ async function targetLinks(supabase: Supa, target: Exclude<Locale, "tr">): Promi
     .eq("active", true);
   return [
     ...(data ?? []).map((x) => ({ title: x.title, url: localizeHref(target, `/hizmetler/${x.slug}`) })),
-    { title: target === "de" ? "Kontakt" : "contact", url: localizeHref(target, "/iletisim") },
+    { title: target === "de" ? "Kontakt" : target === "ru" ? "контакты" : "contact", url: localizeHref(target, "/iletisim") },
   ];
 }
 
@@ -128,13 +128,13 @@ async function repairMissingTranslations(
   const { data: others } = await supabase
     .from("blog_posts")
     .select("group_id,locale")
-    .in("locale", ["en", "de"])
+    .in("locale", ["en", "de", "ru"])
     .in("group_id", trPosts.map((p) => p.group_id));
 
   const have = new Set((others ?? []).map((o) => `${o.group_id}:${o.locale}`));
 
   for (const p of trPosts) {
-    for (const target of ["en", "de"] as const) {
+    for (const target of ["en", "de", "ru"] as const) {
       if (have.has(`${p.group_id}:${target}`)) continue;
       if (timeLeft() < TRANSLATION_BUDGET_MS) return repaired;
       try {
@@ -311,7 +311,7 @@ export async function GET(request: Request) {
       // Çeviriler: yalnızca yazı yayınlandığında üretilir (taslak için token
       // yakmayız). Süre yetmezse yazı tek dilde kalır; Faz 1 ertesi gün kapatır.
       if (autoPublish) {
-        for (const target of ["en", "de"] as const) {
+        for (const target of ["en", "de", "ru"] as const) {
           if (timeLeft() < TRANSLATION_BUDGET_MS) {
             errors.push(`${target} çevirisi süre yetmediği için ertelendi (onarım fazı tamamlayacak)`);
             continue;

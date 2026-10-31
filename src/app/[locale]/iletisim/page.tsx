@@ -126,7 +126,7 @@ export default async function ContactPage({
       <section className="relative overflow-hidden pb-12 pt-12 sm:pt-20">
         <GradientBlobs />
         <div className="container-x">
-          <SectionHeader
+          <SectionHeader as="h1"
             eyebrow={heroSection?.eyebrow || t.nav.contact}
             title={heroSection?.title || ""}
             description={heroSection?.description || undefined}

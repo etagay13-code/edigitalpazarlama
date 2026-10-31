@@ -39,16 +39,22 @@ function formatDate(value: string | null, locale: string) {
 export default async function BlogPage({ params }: { params: { locale: string } }) {
   const locale = asLocale(params.locale);
   const t = getDict(locale).blog;
-  const posts = await listBlogPostsPublic(locale);
+  // SEO: sitemap 54 yaziyi bildiriyordu ama bu sayfa varsayilan limit (24) ile
+  // calisiyordu; kalan yazilara sitede hicbir ic link kalmiyor ve Google onlari
+  // "kesfedildi, dizine eklenmedi" durumunda birakiyordu. Hepsini cekip, kart
+  // izgarasinin disinda kalanlari arsiv listesinde linkliyoruz.
+  const posts = await listBlogPostsPublic(locale, 500);
 
-  const [featured, ...rest] = posts;
+  const KART_SAYISI = 24;
+  const [featured, ...rest] = posts.slice(0, KART_SAYISI);
+  const arsiv = posts.slice(KART_SAYISI);
 
   return (
     <>
       <section className="relative overflow-hidden pb-12 pt-12 sm:pt-20">
         <GradientBlobs />
         <div className="container-x">
-          <SectionHeader eyebrow={t.eyebrow} title={t.title} description={t.description} />
+          <SectionHeader as="h1" eyebrow={t.eyebrow} title={t.title} description={t.description} />
         </div>
       </section>
 
@@ -145,6 +151,29 @@ export default async function BlogPage({ params }: { params: { locale: string } 
                     </Reveal>
                   ))}
                 </Stagger>
+              </div>
+            </section>
+          )}
+          {/* Arsiv — her yazinin en az bir ic linki olmasini garanti eder */}
+          {arsiv.length > 0 && (
+            <section className="section pt-0">
+              <div className="container-x">
+                <h2 className="h-display mb-5 text-xl font-semibold text-white">
+                  {t.archiveTitle}
+                </h2>
+                <ul className="grid gap-x-8 gap-y-2 sm:grid-cols-2">
+                  {arsiv.map((p) => (
+                    <li key={p.slug}>
+                      <Link
+                        href={localizeHref(locale, `/blog/${p.slug}`)}
+                        className="group flex items-baseline gap-2 py-1 text-sm text-white/60 transition hover:text-white"
+                      >
+                        <span className="leading-snug">{p.title}</span>
+                        <ArrowUpRight className="h-3.5 w-3.5 shrink-0 opacity-0 transition group-hover:opacity-60" />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </section>
           )}

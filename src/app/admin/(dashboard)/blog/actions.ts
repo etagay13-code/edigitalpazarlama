@@ -35,7 +35,7 @@ async function linksFor(locale: Locale): Promise<LinkOption[]> {
       title: s.title,
       url: localizeHref(locale, `/hizmetler/${s.slug}`),
     })),
-    { title: locale === "de" ? "Kontakt" : locale === "en" ? "contact" : "iletişim", url: localizeHref(locale, "/iletisim") },
+    { title: locale === "de" ? "Kontakt" : locale === "en" ? "contact" : locale === "ru" ? "контакты" : "iletişim", url: localizeHref(locale, "/iletisim") },
   ];
 }
 
@@ -66,7 +66,7 @@ export async function publishPost(id: string) {
       if (!apiKey) {
         warnings.push("DEEPSEEK_API_KEY yok — çeviriler üretilmedi.");
       } else {
-        for (const target of ["en", "de"] as const) {
+        for (const target of ["en", "de", "ru"] as const) {
           try {
             const { data: existing } = await supabase
               .from("blog_posts")

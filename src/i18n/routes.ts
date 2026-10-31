@@ -3,17 +3,17 @@ import { DEFAULT_LOCALE, type Locale } from "./config";
 // İç (kanonik, Türkçe klasör adı) → dil başına dış URL kelimesi.
 // Klasör adları repo'da Türkçe kalır; URL'ler bu haritayla yerelleştirilir.
 export const SEGMENTS = {
-  hizmetler: { tr: "hizmetler", en: "services", de: "leistungen" },
-  hakkimizda: { tr: "hakkimizda", en: "about", de: "ueber-uns" },
-  portfolyo: { tr: "portfolyo", en: "portfolio", de: "portfolio" },
-  iletisim: { tr: "iletisim", en: "contact", de: "kontakt" },
-  blog: { tr: "blog", en: "blog", de: "blog" },
-  "roas-hesaplayici": { tr: "roas-hesaplayici", en: "roas-calculator", de: "roas-rechner" },
-  "dijital-denetim": { tr: "dijital-denetim", en: "digital-audit", de: "digital-audit" },
-  tesekkurler: { tr: "tesekkurler", en: "thank-you", de: "danke" },
-  sektorler: { tr: "sektorler", en: "industries", de: "branchen" },
-  "gizlilik-politikasi": { tr: "gizlilik-politikasi", en: "privacy-policy", de: "datenschutz" },
-  kunye: { tr: "kunye", en: "imprint", de: "impressum" },
+  hizmetler: { tr: "hizmetler", en: "services", de: "leistungen", ru: "uslugi" },
+  hakkimizda: { tr: "hakkimizda", en: "about", de: "ueber-uns", ru: "o-nas" },
+  portfolyo: { tr: "portfolyo", en: "portfolio", de: "portfolio", ru: "portfolio" },
+  iletisim: { tr: "iletisim", en: "contact", de: "kontakt", ru: "kontakty" },
+  blog: { tr: "blog", en: "blog", de: "blog", ru: "blog" },
+  "roas-hesaplayici": { tr: "roas-hesaplayici", en: "roas-calculator", de: "roas-rechner", ru: "roas-kalkulyator" },
+  "dijital-denetim": { tr: "dijital-denetim", en: "digital-audit", de: "digital-audit", ru: "tsifrovoy-audit" },
+  tesekkurler: { tr: "tesekkurler", en: "thank-you", de: "danke", ru: "spasibo" },
+  sektorler: { tr: "sektorler", en: "industries", de: "branchen", ru: "otrasli" },
+  "gizlilik-politikasi": { tr: "gizlilik-politikasi", en: "privacy-policy", de: "datenschutz", ru: "politika-konfidentsialnosti" },
+  kunye: { tr: "kunye", en: "imprint", de: "impressum", ru: "rekvizity" },
 } as const;
 
 // Hizmet slug'ları da dile göre yerelleştirilir. Kanonik (iç) slug DB'deki
@@ -25,49 +25,56 @@ export const SERVICE_SLUGS = {
     tr: "360-dijital-pazarlama",
     en: "360-digital-marketing",
     de: "360-digitales-marketing",
+    ru: "360-tsifrovoy-marketing",
   },
   "reklam-yonetimi": {
     tr: "reklam-yonetimi",
     en: "ad-management",
     de: "anzeigenmanagement",
+    ru: "upravlenie-reklamoy",
   },
-  seo: { tr: "seo", en: "seo", de: "seo" },
+  seo: { tr: "seo", en: "seo", de: "seo", ru: "seo" },
   "mobil-uygulama-gelistirme": {
     tr: "mobil-uygulama-gelistirme",
     en: "mobile-app-development",
     de: "app-entwicklung",
+    ru: "razrabotka-mobilnykh-prilozheniy",
   },
   "saas-proje-gelistirme": {
     tr: "saas-proje-gelistirme",
     en: "saas-development",
     de: "saas-entwicklung",
+    ru: "razrabotka-saas",
   },
   "sosyal-medya-yonetimi": {
     tr: "sosyal-medya-yonetimi",
     en: "social-media-management",
     de: "social-media-management",
+    ru: "smm",
   },
   "web-tasarim-gelistirme": {
     tr: "web-tasarim-gelistirme",
     en: "web-design-development",
     de: "webdesign-entwicklung",
+    ru: "veb-dizayn-i-razrabotka",
   },
   "icerik-marka-stratejisi": {
     tr: "icerik-marka-stratejisi",
     en: "content-brand-strategy",
     de: "content-markenstrategie",
+    ru: "kontent-i-brend-strategiya",
   },
 } as const;
 
 // Sektör slug'ları da dile göre yerelleşir (hizmet slug'larıyla aynı desen).
 export const SECTOR_SLUGS = {
-  "saglik-turizmi": { tr: "saglik-turizmi", en: "health-tourism", de: "gesundheitstourismus" },
-  eticaret: { tr: "eticaret", en: "e-commerce", de: "e-commerce" },
-  "yerel-hizmet": { tr: "yerel-hizmet", en: "local-services", de: "lokale-dienstleistungen" },
-  hukuk: { tr: "hukuk", en: "legal", de: "recht" },
-  nakliyat: { tr: "nakliyat", en: "moving", de: "umzug" },
-  endustri: { tr: "endustri", en: "industry", de: "industrie" },
-  stk: { tr: "stk", en: "non-profit", de: "non-profit" },
+  "saglik-turizmi": { tr: "saglik-turizmi", en: "health-tourism", de: "gesundheitstourismus", ru: "meditsinskiy-turizm" },
+  eticaret: { tr: "eticaret", en: "e-commerce", de: "e-commerce", ru: "e-commerce" },
+  "yerel-hizmet": { tr: "yerel-hizmet", en: "local-services", de: "lokale-dienstleistungen", ru: "lokalnye-uslugi" },
+  hukuk: { tr: "hukuk", en: "legal", de: "recht", ru: "yuridicheskie-uslugi" },
+  nakliyat: { tr: "nakliyat", en: "moving", de: "umzug", ru: "pereezdy" },
+  endustri: { tr: "endustri", en: "industry", de: "industrie", ru: "promyshlennost" },
+  stk: { tr: "stk", en: "non-profit", de: "non-profit", ru: "nko" },
 } as const;
 
 type SectorKey = keyof typeof SECTOR_SLUGS;
@@ -117,7 +124,7 @@ export function internalToExternal(locale: Locale, internal: string): string {
 // ("/hizmetler/seo"). Dil değiştirici bunu kullanıp hedef dile localize eder.
 export function toInternalPath(currentLocale: Locale, pathname: string): string {
   let segs = pathname.split("/").filter(Boolean);
-  if (segs[0] === "en" || segs[0] === "de") segs = segs.slice(1);
+  if (segs[0] === "en" || segs[0] === "de" || segs[0] === "ru") segs = segs.slice(1);
   if (segs.length > 0) segs[0] = externalToInternal(currentLocale, segs[0]);
   if (segs[0] === "hizmetler" && segs[1]) {
     segs[1] = serviceSlugToInternal(currentLocale, segs[1]);

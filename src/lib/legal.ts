@@ -13,7 +13,7 @@ export const LEGAL = {
   // Tam posta adresi — Impressum için zorunlu
   street: "",
   city: "İstanbul",
-  country: { tr: "Türkiye", en: "Türkiye", de: "Türkei" },
+  country: { tr: "Türkiye", en: "Türkiye", de: "Türkei", ru: "Турция" },
   // Vergi dairesi + vergi numarası (varsa)
   taxId: "",
   updated: "2026-09-24",
@@ -30,7 +30,7 @@ function addressLines(locale: Locale): string[] {
 
 function fmtDate(locale: Locale): string {
   const d = new Date(LEGAL.updated + "T00:00:00Z");
-  return d.toLocaleDateString(locale === "de" ? "de-DE" : locale === "en" ? "en-GB" : "tr-TR", {
+  return d.toLocaleDateString(locale === "de" ? "de-DE" : locale === "en" ? "en-GB" : locale === "ru" ? "ru-RU" : "tr-TR", {
     day: "2-digit",
     month: "long",
     year: "numeric",
@@ -88,7 +88,8 @@ export function getImprint(locale: Locale, b: Brand): LegalDoc {
     };
   }
 
-  if (locale === "en") {
+  // Rusça yasal metin yok; RU sayfaları İngilizce metni gösterir.
+  if (locale === "en" || locale === "ru") {
     return {
       title: "Imprint",
       description: `Legal notice and provider information for ${b.name}.`,
@@ -284,7 +285,8 @@ export function getPrivacy(locale: Locale, b: Brand): LegalDoc {
     };
   }
 
-  if (locale === "en") {
+  // Rusça yasal metin yok; RU sayfaları İngilizce metni gösterir.
+  if (locale === "en" || locale === "ru") {
     const G = GOOGLE_IE.replace("Irland", "Ireland");
     const M = META_IE.replace("Irland", "Ireland");
     return {

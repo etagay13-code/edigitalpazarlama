@@ -184,7 +184,7 @@ export default async function CaseStudyPage({
           {cs.steps.length > 0 && (
             <section className="section">
               <div className="container-x">
-                <SectionHeader eyebrow={t.caseStudy.processEyebrow} title={t.caseStudy.processTitle} />
+                <SectionHeader as="h1" eyebrow={t.caseStudy.processEyebrow} title={t.caseStudy.processTitle} />
                 <Stagger className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
                   {cs.steps.map((step, i) => (
                     <Reveal key={step.title}>

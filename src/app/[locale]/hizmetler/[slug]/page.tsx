@@ -197,7 +197,7 @@ export default async function ServiceDetailPage({
       {(service.bullets.length > 0 || service.deliverables.length > 0) && (
         <section className="section">
           <div className="container-x">
-            <SectionHeader
+            <SectionHeader as="h1"
               eyebrow={t.scopeEyebrow}
               title={t.scopeTitle}
               description={t.scopeDesc}
