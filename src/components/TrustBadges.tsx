@@ -2,7 +2,8 @@ import Image from "next/image";
 import type { Dict } from "@/i18n/dictionaries";
 
 // Onay/ortaklık rozetleri şeridi — marka adları evrensel (proper noun),
-// bu yüzden alt metinleri çevrilmez; sadece bölüm başlığı sözlükten gelir.
+// bu yüzden alt metinleri çevrilmez; açıklama içeren exali alt metni ve
+// bölüm başlığı sözlükten gelir.
 // Yeni rozet eklemek için: dosyayı public/badges/ altına koy + buraya bir satır ekle.
 type Badge = {
   src: string;
@@ -37,7 +38,7 @@ const BADGES: Badge[] = [
   },
   {
     src: "/badges/exali.png",
-    alt: "exali.de — Haftpflicht gesichert",
+    alt: "exali",
     width: 120,
     height: 120,
     size: "h-14",
@@ -59,7 +60,7 @@ export function TrustBadges({ dict }: { dict: Dict["trust"] }) {
             >
               <Image
                 src={b.src}
-                alt={b.alt}
+                alt={b.alt === "exali" ? dict.exaliAlt : b.alt}
                 width={b.width}
                 height={b.height}
                 className={`${b.size} w-auto object-contain`}

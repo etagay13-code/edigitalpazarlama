@@ -171,7 +171,7 @@ export function AuditForm({ locale, dict }: { locale: Locale; dict: Dict["audit"
                     autoFocus
                     value={form.website}
                     onChange={(e) => set("website", e.target.value)}
-                    placeholder="ornek.com"
+                    placeholder={dict.websitePlaceholder}
                     className={inputCls}
                   />
                 </Field>

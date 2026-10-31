@@ -136,6 +136,7 @@ const tr = {
     cpa: "Edinme Maliyeti",
     traffic: "Performans · son 90 gün",
     channels: "Kanal dağılımı",
+    emailChannel: "E-posta",
   },
   compare: {
     eyebrow: "Farkımız",
@@ -244,6 +245,7 @@ const tr = {
     step4: "İletişim",
     website: "Web siteniz",
     websiteHint: "Denetim bu adres üzerinden yapılacak",
+    websitePlaceholder: "ornek.com",
     sector: "Sektörünüz",
     sectors: ["E-ticaret", "Sağlık / Klinik", "Hukuk", "Yerel hizmet", "Sanayi / B2B", "SaaS", "STK", "Diğer"],
     channels: "Şu an aktif olan kanallar",
@@ -326,7 +328,7 @@ const tr = {
       "Sürpriz fatura, gizli kalem, başlangıç ücreti yok. Sözleşme öncesi tüm detaylar yazılı paylaşılır.",
     moreQuestions: "Daha fazla soru için",
   },
-  trust: { label: "Onaylar & ortaklıklar" },
+  trust: { label: "Onaylar & ortaklıklar", exaliAlt: "exali.de — Mesleki sorumluluk sigortalı" },
   whatsapp: {
     label: "WhatsApp'tan yazın",
     aria: "WhatsApp üzerinden mesaj gönderin",
@@ -500,6 +502,7 @@ const en: Dict = {
     cpa: "CPA",
     traffic: "Performance · last 90 days",
     channels: "Channel split",
+    emailChannel: "Email",
   },
   compare: {
     eyebrow: "The difference",
@@ -608,6 +611,7 @@ const en: Dict = {
     step4: "Contact",
     website: "Your website",
     websiteHint: "The audit will be based on this address",
+    websitePlaceholder: "example.com",
     sector: "Your sector",
     sectors: ["E-commerce", "Health / Clinic", "Legal", "Local services", "Industry / B2B", "SaaS", "Non-profit", "Other"],
     channels: "Channels currently running",
@@ -690,7 +694,7 @@ const en: Dict = {
       "No surprise invoices, no hidden items, no setup fee. Every detail is shared in writing before the contract.",
     moreQuestions: "For more questions",
   },
-  trust: { label: "Certifications & partnerships" },
+  trust: { label: "Certifications & partnerships", exaliAlt: "exali.de — Professional liability insured" },
   whatsapp: {
     label: "Message on WhatsApp",
     aria: "Send a message on WhatsApp",
@@ -860,6 +864,7 @@ const de: Dict = {
     cpa: "CPA",
     traffic: "Leistung · letzte 90 Tage",
     channels: "Kanalverteilung",
+    emailChannel: "E-Mail",
   },
   compare: {
     eyebrow: "Der Unterschied",
@@ -968,6 +973,7 @@ const de: Dict = {
     step4: "Kontakt",
     website: "Ihre Website",
     websiteHint: "Das Audit basiert auf dieser Adresse",
+    websitePlaceholder: "beispiel.de",
     sector: "Ihre Branche",
     sectors: ["E-Commerce", "Gesundheit / Klinik", "Recht", "Lokale Dienstleistungen", "Industrie / B2B", "SaaS", "Non-Profit", "Sonstiges"],
     channels: "Aktuell laufende Kanäle",
@@ -1050,7 +1056,7 @@ const de: Dict = {
       "Keine Überraschungsrechnungen, keine versteckten Posten, keine Einrichtungsgebühr. Alle Details werden vor Vertragsabschluss schriftlich geteilt.",
     moreQuestions: "Für weitere Fragen",
   },
-  trust: { label: "Zertifizierungen & Partnerschaften" },
+  trust: { label: "Zertifizierungen & Partnerschaften", exaliAlt: "exali.de — Haftpflicht gesichert" },
   whatsapp: {
     label: "Per WhatsApp schreiben",
     aria: "Nachricht per WhatsApp senden",
@@ -1219,7 +1225,8 @@ const ru: Dict = {
     conversions: "Конверсии",
     cpa: "CPA",
     traffic: "Эффективность · последние 90 дней",
-    channels: "Распределение по каналам"
+    channels: "Распределение по каналам",
+    emailChannel: "Email-рассылки",
   },
   compare: {
     eyebrow: "Разница",
@@ -1336,6 +1343,7 @@ const ru: Dict = {
     step4: "Контакт",
     website: "Ваш сайт",
     websiteHint: "Аудит будет основан на этом адресе",
+    websitePlaceholder: "example.com",
     sector: "Ваша отрасль",
     sectors: [
       "Электронная коммерция",
@@ -1436,9 +1444,7 @@ const ru: Dict = {
     pricingNote: "Никаких неожиданных счетов, скрытых пунктов и платы за настройку. Все детали обсуждаются в письменной форме до заключения договора.",
     moreQuestions: "Есть ещё вопросы?"
   },
-  trust: {
-    label: "Сертификаты и партнёрства"
-  },
+  trust: { label: "Сертификаты и партнёрства", exaliAlt: "exali.de — Застрахованная профессиональная ответственность" },
   whatsapp: {
     label: "Написать в WhatsApp",
     aria: "Отправить сообщение в WhatsApp",

@@ -6,6 +6,14 @@ import { Globe, Check } from "lucide-react";
 import { LOCALES, LOCALE_LABELS, type Locale } from "@/i18n/config";
 import { toInternalPath, localizeHref } from "@/i18n/routes";
 
+// Her dilde "Language" da geçer: dili bilmeyen ziyaretçi de düğmeyi tanısın.
+const SWITCH_LABEL: Record<Locale, string> = {
+  tr: "Dil / Language",
+  en: "Language",
+  de: "Sprache / Language",
+  ru: "Язык / Language",
+};
+
 export function LanguageSwitcher({
   locale,
   variant = "bar",
@@ -66,7 +74,7 @@ export function LanguageSwitcher({
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="menu"
         aria-expanded={open}
-        aria-label="Dil / Language"
+        aria-label={SWITCH_LABEL[locale]}
         className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-3 py-2 text-sm font-medium text-white/75 transition hover:border-white/20 hover:bg-white/[0.06] hover:text-white"
       >
         <Globe className="h-4 w-4" />

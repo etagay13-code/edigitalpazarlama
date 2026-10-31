@@ -105,7 +105,7 @@ test.describe("dil değiştirici", () => {
   for (const c of cases) {
     test(`${c.from} → ${c.target} aynı sayfada kalır ve içerik çevrilir`, async ({ page }) => {
       await page.goto(c.from);
-      await page.getByRole("button", { name: /Dil \/ Language/i }).click();
+      await page.getByRole("button", { name: /Language/i }).click();
       await page.getByRole("button", { name: new RegExp(c.target === "tr" ? "Türkçe" : c.target === "en" ? "English" : "Deutsch") }).click();
       await expect(page).toHaveURL(c.to);
       await expect(page.getByText(c.expect).first()).toBeVisible();
@@ -115,7 +115,7 @@ test.describe("dil değiştirici", () => {
 
   test("dil seçimi sonraki sayfalarda korunur", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: /Dil \/ Language/i }).click();
+    await page.getByRole("button", { name: /Language/i }).click();
     await page.getByRole("button", { name: /English/ }).click();
     await expect(page).toHaveURL(/\/en$/);
     await page.getByRole("link", { name: "Portfolio", exact: true }).first().click();

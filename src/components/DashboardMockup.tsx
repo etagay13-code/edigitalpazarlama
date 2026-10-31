@@ -14,7 +14,7 @@ export function DashboardMockup({ dict }: { dict: Dict["dashboard"] }) {
     { name: "Meta Ads", pct: 82 },
     { name: "Google Ads", pct: 68 },
     { name: "SEO", pct: 54 },
-    { name: "E-mail", pct: 33 },
+    { name: dict.emailChannel, pct: 33 },
   ];
 
   return (

@@ -117,12 +117,17 @@ async function pool(items, n, fn) {
 // Kategori etiketleri filtrelerde eşleştiği için sabit sözlükle çevrilir.
 const CATEGORY_RU = {
   "health tourism": "Медицинский туризм", legal: "Юридические услуги", industry: "Промышленность",
-  "non-profit": "НКО", "local services": "Локальные услуги", moving: "Переезды", "e-commerce": "E-commerce",
+  "non-profit": "НКО", "local services": "Локальные услуги", moving: "Переезды", "e-commerce": "Электронная коммерция",
   "project management": "Управление проектами", ai: "ИИ", hosting: "Хостинг", collaboration: "Совместная работа",
   advertising: "Реклама", analytics: "Аналитика", backend: "Backend", mobile: "Мобильная разработка",
   frontend: "Frontend", communication: "Коммуникации", database: "Базы данных", design: "Дизайн",
   "backend-as-a-service": "Backend-as-a-Service", reporting: "Отчётность", seo: "SEO", payments: "Платежи",
   "cdn/dns": "CDN/DNS",
+};
+const TAG_RU = {
+  Web: "Веб", "Local SEO": "Локальное SEO", Localization: "Локализация", Content: "Контент",
+  "Social Media": "Соцсети", "E-commerce": "Электронная коммерция", "Quote Flow": "Форма расчёта",
+  "SEO Migration": "SEO-миграция", Video: "Видео",
 };
 const cat = (v) => (v == null ? v : CATEGORY_RU[v.toLowerCase()] ?? v);
 
@@ -174,6 +179,16 @@ async function copyTable({ t, fields, map = {}, noId }, extra = {}) {
 
 async function content() {
   for (const spec of TABLES) await copyTable(spec);
+
+  // Portfolyo etiketleri sabit sözlükle; vaka sayfasındaki "Оказанные услуги"
+  // değeri de etiketlerden kurulur (EN kaynağında bu değer Türkçe kalmıştı).
+  for (const r of await rows("select id,tags,case_study from portfolio_projects where locale='ru'")) {
+    const tags = (r.tags ?? []).map((t) => TAG_RU[t] ?? t);
+    const cs = r.case_study?.results
+      ? { ...r.case_study, results: r.case_study.results.map((x) => (x.value?.includes("·") && /услуги/.test(x.label) ? { ...x, value: tags.join(" · ") } : x)) }
+      : r.case_study;
+    await c.query("update portfolio_projects set tags=$1, case_study=$2 where id=$3", [tags, cs ? JSON.stringify(cs) : null, r.id]);
+  }
 
   // Hizmet alt tabloları: service_id → RU hizmetinin id'si (slug üzerinden)
   const ruIds = Object.fromEntries((await rows("select slug,id from services where locale='ru'")).map((r) => [r.slug, r.id]));
